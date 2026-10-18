@@ -25,10 +25,12 @@ public sealed class SettingsViewModel : ObservableObject
     private Choice<MatchMode> _matchMode;
     private Choice<int> _maxResults;
     private int _timeoutSeconds;
+    private bool _checkForUpdates;
 
-    public SettingsViewModel(AppServices services)
+    public SettingsViewModel(AppServices services, UpdateViewModel update)
     {
         _services = services;
+        Update = update;
         var settings = services.Settings;
 
         Languages = Loc.Languages.Select(l => new Choice<string>(l.Code, l.NativeName)).ToList();
@@ -65,6 +67,7 @@ public sealed class SettingsViewModel : ObservableObject
         _maxResults = MaxResultsChoices.First(c => c.Value == maxResults);
 
         _timeoutSeconds = Math.Clamp(settings.ProviderTimeoutSeconds, 5, 60);
+        _checkForUpdates = settings.CheckForUpdates;
 
         Providers = new ObservableCollection<ProviderSettingViewModel>(
             services.Search.Providers.Select(p => new ProviderSettingViewModel(p.Info, settings.IsProviderEnabled(p.Info), settings.GetApiKey(p.Info.Id))));
@@ -83,6 +86,9 @@ public sealed class SettingsViewModel : ObservableObject
     public IReadOnlyList<Choice<int>> MaxResultsChoices { get; }
     public ObservableCollection<ProviderSettingViewModel> Providers { get; }
 
+    /// <summary>Shared with the main window, so an update found here shows up in its banner too.</summary>
+    public UpdateViewModel Update { get; }
+
     public ICommand OpenDataFolderCommand { get; }
     public ICommand OpenLogsFolderCommand { get; }
     public ICommand ClearCacheCommand { get; }
@@ -99,6 +105,12 @@ public sealed class SettingsViewModel : ObservableObject
     {
         get => _timeoutSeconds;
         set => Set(ref _timeoutSeconds, Math.Clamp(value, 5, 60));
+    }
+
+    public bool CheckForUpdates
+    {
+        get => _checkForUpdates;
+        set => Set(ref _checkForUpdates, value);
     }
 
     public string VersionText => Loc.F("About_Version", AppServices.Version);
@@ -126,6 +138,7 @@ public sealed class SettingsViewModel : ObservableObject
         settings.MatchMode = MatchMode.Value;
         settings.MaxResultsPerProvider = MaxResults.Value;
         settings.ProviderTimeoutSeconds = TimeoutSeconds;
+        settings.CheckForUpdates = CheckForUpdates;
 
         foreach (var provider in Providers)
         {

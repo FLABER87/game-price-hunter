@@ -300,6 +300,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
@@ -387,8 +388,33 @@
             </Grid>
         </Border>
 
+        <!-- ===== Update banner ===== -->
+        <Border Grid.Row="1" DataContext="{Binding Update}" Margin="20,14,20,0" Padding="14,8,8,8"
+                Background="{DynamicResource Brush.AccentSoft}" BorderBrush="{DynamicResource Brush.Accent}" BorderThickness="1"
+                CornerRadius="{StaticResource Radius.Card}"
+                Visibility="{Binding IsBannerVisible, Converter={StaticResource BoolToVisibility}}">
+            <DockPanel>
+                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Center" Margin="12,0,0,0">
+                    <StackPanel Orientation="Horizontal" Visibility="{Binding IsOfferVisible, Converter={StaticResource BoolToVisibility}}">
+                        <Button Style="{StaticResource GhostButton}" Content="{Binding ReleasePageText}" Command="{Binding OpenReleasePageCommand}" />
+                        <Button Style="{StaticResource AccentButton}" Content="{Binding PrimaryText}" Command="{Binding PrimaryCommand}" Margin="6,0,0,0" />
+                        <Button Style="{StaticResource GhostButton}" Content="{loc:Loc Update_Later}" Command="{Binding LaterCommand}" Margin="6,0,0,0" />
+                    </StackPanel>
+                    <Button Content="{loc:Loc Common_Cancel}" Command="{Binding CancelCommand}"
+                            Visibility="{Binding IsDownloading, Converter={StaticResource BoolToVisibility}}" />
+                </StackPanel>
+                <TextBlock Style="{StaticResource Text.Icon}" Text="&#xE896;" FontSize="16" Margin="0,0,12,0" Foreground="{DynamicResource Brush.Accent}" />
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="{Binding BannerText}" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" ToolTip="{Binding BannerText}" />
+                    <ProgressBar Style="{StaticResource ProgressLine}" Height="3" Margin="0,6,0,0" Maximum="100" Background="{DynamicResource Brush.Border}"
+                                 Value="{Binding ProgressPercent, Mode=OneWay}"
+                                 Visibility="{Binding IsDownloading, Converter={StaticResource BoolToVisibility}}" />
+                </StackPanel>
+            </DockPanel>
+        </Border>
+
         <!-- ===== Content ===== -->
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="268" />
                 <ColumnDefinition Width="*" />
@@ -506,7 +532,7 @@
         </Grid>
 
         <!-- ===== Status bar ===== -->
-        <Border Grid.Row="2" Background="{DynamicResource Brush.Panel}" BorderBrush="{DynamicResource Brush.Border}" BorderThickness="0,1,0,0" Padding="20,6">
+        <Border Grid.Row="3" Background="{DynamicResource Brush.Panel}" BorderBrush="{DynamicResource Brush.Border}" BorderThickness="0,1,0,0" Padding="20,6">
             <DockPanel>
                 <TextBlock DockPanel.Dock="Right" Text="{Binding VersionText}" Style="{StaticResource Text.Secondary}" FontSize="11" />
                 <StackPanel Orientation="Horizontal">

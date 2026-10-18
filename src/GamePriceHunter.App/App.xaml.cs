@@ -11,13 +11,23 @@ namespace GamePriceHunter.App;
 
 public partial class App : Application
 {
+    /// <summary>
+    /// Exists while the app runs; the setup waits for it to go away before replacing the exe during
+    /// an update. Must match AppMutex in build\installer\GamePriceHunter.iss.
+    /// </summary>
+    private const string RunningMutexName = "GamePriceHunter.Running";
+
     private static AppServices? _services;
+
+    // Never released explicitly: the handle has to live until the process is gone.
+    private static Mutex? _runningMutex;
 
     public static AppServices Services => _services ?? throw new InvalidOperationException("Services are not initialized.");
 
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
+        _runningMutex = new Mutex(initiallyOwned: false, RunningMutexName);
 
         DispatcherUnhandledException += OnDispatcherUnhandledException;
         AppDomain.CurrentDomain.UnhandledException += (_, args) =>

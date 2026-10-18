@@ -88,6 +88,14 @@ public sealed class AppSettings
 
     public WindowBounds? Window { get; set; }
 
+    /// <summary>Look for a new version at startup (at most once a day).</summary>
+    public bool CheckForUpdates { get; set; } = true;
+
+    public DateTimeOffset? LastUpdateCheck { get; set; }
+
+    /// <summary>Tag of the newest release seen by the last check ("v1.2.0"), so an update offer survives restarts.</summary>
+    public string? LatestReleaseTag { get; set; }
+
     public bool IsProviderEnabled(ProviderInfo provider) =>
         provider.EnabledByDefault
             ? !DisabledProviders.Contains(provider.Id, StringComparer.OrdinalIgnoreCase)
