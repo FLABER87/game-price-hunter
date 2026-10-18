@@ -17,19 +17,27 @@ dotnet run --project src/GamePriceHunter.Cli -- health
 dotnet run --project src/GamePriceHunter.Cli -- update   # latest release, as the app's update check sees it
 ```
 
-## Release
-
-1. Set `<Version>` in `Directory.Build.props`, or pass `-Version` to the script.
-2. `.\build\publish.ps1 -Version 0.2.0` runs the tests and builds the exe and the installer. The installer needs [Inno Setup 6](https://jrsoftware.org/isinfo.php): `winget install --id JRSoftware.InnoSetup -e`.
-3. Commit, then publish both files as a release tagged `v` + version:
-
-```powershell
-gh release create v0.2.0 artifacts\installer\GamePriceHunter-Setup.exe artifacts\publish\win-x64\GamePriceHunter.exe --title "Game Price Hunter 0.2.0" --notes "What changed, in a few lines for players."
-```
-
-The app finds new versions through the redirect of `/releases/latest` to `/releases/tag/vX.Y.Z` (not the GitHub API, which rate-limits per IP), at most once a day. So keep the `vX.Y.Z` tags and the `GamePriceHunter-Setup.exe` asset name. Installed copies download that asset and run it with `/VERYSILENT /SUPPRESSMSGBOXES /CLOSEAPPLICATIONS /RELAUNCH=1`; portable and stand-alone copies only link to the release page. The installer is per-user (`%LOCALAPPDATA%\Programs\Game Price Hunter`), and its `AppId` in `build\installer\GamePriceHunter.iss` must never change.
-
 - **Stores:** one `StoreProvider` subclass per store in `src/GamePriceHunter.Core/Providers`, registered in `ProviderCatalog`. Keep parsing in an `internal Parse(...)` method and add a fixture test.
 - **Languages:** copy `src/GamePriceHunter.App/Localization/Strings.resx` to `Strings.<culture>.resx`, then add the culture to `Loc.Languages` and `SatelliteResourceLanguages`.
 - **Portable mode:** an empty `portable` file next to the exe keeps all data in `Data\`.
 - **Not used:** Epic, Humble, GMG and GameBillet reject the .NET client and come through CheapShark/IsThereAnyDeal instead. Kinguin, G2A, Gamivo, HRK and CDKeys are behind bot protection.
+
+## CI
+
+The `Build` workflow builds and tests every push and pull request. It uploads the exe and the installer as an artifact. `main` requires its `Build and test` check. Pull requests from this repository's branches merge automatically (squash) once the check passes, and their branch is deleted. Open a pull request as a draft to hold it back.
+
+## Release
+
+1. Set `<Version>` in `Directory.Build.props` and merge that to `main`.
+2. Tag it, putting a few lines for players in the tag message, and push the tag:
+
+```powershell
+git tag -a v0.2.0 -m "What changed, in a few lines for players."
+git push origin v0.2.0
+```
+
+3. The `Build` workflow creates a draft release with both files and the tag message as notes. Check it on GitHub and publish it.
+
+To build a release locally, run `.\build\publish.ps1 -Version 0.2.0`. It needs [Inno Setup 6](https://jrsoftware.org/isinfo.php): `winget install --id JRSoftware.InnoSetup -e`.
+
+The app finds new versions through the redirect of `/releases/latest` to `/releases/tag/vX.Y.Z`, not the GitHub API, which rate-limits per IP. It checks at most once a day. So keep the `vX.Y.Z` tags and the `GamePriceHunter-Setup.exe` asset name. Installed copies download that asset and run it with `/VERYSILENT /SUPPRESSMSGBOXES /CLOSEAPPLICATIONS /RELAUNCH=1`. Portable and stand-alone copies only link to the release page. The installer is per-user (`%LOCALAPPDATA%\Programs\Game Price Hunter`), and its `AppId` in `build\installer\GamePriceHunter.iss` must never change.
