@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Runtime.ExceptionServices;
+using System.Text.Json;
 using GamePriceHunter.Core.Models;
 using GamePriceHunter.Core.Text;
 
@@ -17,32 +18,71 @@ public sealed partial class SteamProvider(HttpClient http) : StoreProvider(http)
     public override async Task<IReadOnlyList<Offer>> SearchAsync(SearchContext context, CancellationToken cancellationToken)
     {
         var cc = context.Region.CountryCode;
-        var apiTask = GetJsonAsync($"{Host}/api/storesearch/?term={Encode(context.Query)}&l=english&cc={cc}", cancellationToken);
+        var apiTask = SearchApiAsync($"{Host}/api/storesearch/?term={Encode(context.Query)}&l=english&cc={cc}", cancellationToken);
         var pageTask = GetStringAsync($"{Host}/search/results/?term={Encode(context.Query)}&infinite=1&cc={cc}&l=english&start=0&count=50", cancellationToken);
 
-        using var api = await apiTask.ConfigureAwait(false);
-        var apiOffers = ParseStoreSearch(api.RootElement);
-        var currency = apiOffers.FirstOrDefault()?.Price.Currency;
+        // The endpoints fail independently (the HTML one more often): wait for both so no failure goes
+        // unobserved, then use whatever answered.
+        try
+        {
+            await Task.WhenAll(apiTask, pageTask).ConfigureAwait(false);
+        }
+        catch (Exception)
+        {
+            // Each endpoint is checked below.
+        }
+        cancellationToken.ThrowIfCancellationRequested();
 
+        IReadOnlyList<Offer>? apiOffers = null;
+        Exception? apiError = null;
+        try
+        {
+            apiOffers = await apiTask.ConfigureAwait(false);
+        }
+        catch (Exception ex) when (IsEndpointFailure(ex))
+        {
+            apiError = ex;
+        }
+
+        IReadOnlyList<Offer> pageOffers = [];
         try
         {
             var page = await pageTask.ConfigureAwait(false);
             using var doc = JsonDocument.Parse(page);
-            var pageOffers = ParseSearchResults(doc.RootElement.Str("results_html") ?? string.Empty, currency, context.Region.CurrencyCode);
-            if (pageOffers.Count > 0)
-            {
-                // The page has more rows and discount info; the API only fills gaps.
-                var urls = pageOffers.Select(o => AppKey(o.Url)).ToHashSet();
-                return [.. pageOffers, .. apiOffers.Where(o => !urls.Contains(AppKey(o.Url)))];
-            }
+            var currency = apiOffers?.FirstOrDefault()?.Price.Currency;
+            pageOffers = ParseSearchResults(doc.RootElement.Str("results_html") ?? string.Empty, currency, context.Region.CurrencyCode);
         }
-        catch (Exception ex) when (ex is JsonException or HttpRequestException or InvalidDataException)
+        catch (Exception ex) when (IsEndpointFailure(ex))
         {
-            // The HTML endpoint is the fragile one; the API result is still good.
+            // The page only adds rows and discount details to the API result.
         }
 
-        return apiOffers;
+        if (apiOffers is null)
+        {
+            // Without the API and without page rows there is nothing to show: report why.
+            if (pageOffers.Count == 0)
+                ExceptionDispatchInfo.Throw(apiError!);
+            return pageOffers;
+        }
+
+        if (pageOffers.Count == 0)
+            return apiOffers;
+
+        // The page has more rows and discount info; the API only fills gaps.
+        var urls = pageOffers.Select(o => AppKey(o.Url)).ToHashSet();
+        return [.. pageOffers, .. apiOffers.Where(o => !urls.Contains(AppKey(o.Url)))];
     }
+
+    /// <summary>Parses inside the task, so a search cancelled while the page loads leaves no document undisposed.</summary>
+    private async Task<IReadOnlyList<Offer>> SearchApiAsync(string url, CancellationToken cancellationToken)
+    {
+        using var doc = await GetJsonAsync(url, cancellationToken).ConfigureAwait(false);
+        return ParseStoreSearch(doc.RootElement);
+    }
+
+    /// <summary>A failure of one endpoint; the search itself was not cancelled at this point.</summary>
+    private static bool IsEndpointFailure(Exception ex) =>
+        ex is JsonException or HttpRequestException or InvalidDataException or ProviderBlockedException or OperationCanceledException;
 
     internal IReadOnlyList<Offer> ParseStoreSearch(JsonElement root)
     {
@@ -80,7 +120,9 @@ public sealed partial class SteamProvider(HttpClient http) : StoreProvider(http)
 
             var finalText = Html.Decode(Html.Match(row, @"discount_final_price[^>]*>([^<]+)<"));
             // The API reports the currency authoritatively; symbols like "$" or "kr" are ambiguous.
-            var currency = knownCurrency ?? PriceParser.DetectCurrency(finalText) ?? regionCurrency;
+            var currency = knownCurrency ?? CurrencyFromText(finalText, regionCurrency);
+            if (currency is null)
+                continue;
             var price = Money.Of(decimal.Parse(finalMinor) / 100m, currency);
 
             Money? regular = null;
@@ -100,6 +142,32 @@ public sealed partial class SteamProvider(HttpClient http) : StoreProvider(http)
             });
         }
         return offers;
+    }
+
+    /// <summary>
+    /// The currency of a page price when the API named none. "$" and "¥" also stand for other
+    /// currencies, so a bare one counts only when it is the region's own currency, and one after a
+    /// prefix the parser doesn't know ("CDN$", "HK$", "CN¥") never does: such rows are skipped
+    /// rather than shown in a wrong currency.
+    /// </summary>
+    internal static string? CurrencyFromText(string priceText, string regionCurrency)
+    {
+        var detected = PriceParser.DetectCurrency(priceText);
+        if (detected is null)
+            return regionCurrency;
+
+        char? symbol = detected switch
+        {
+            "USD" when !priceText.Contains("USD", StringComparison.Ordinal) && !priceText.Contains("US$", StringComparison.Ordinal) => '$',
+            "JPY" when !priceText.Contains("JPY", StringComparison.Ordinal) => '¥',
+            _ => null,
+        };
+        if (symbol is null)
+            return detected;
+
+        var index = priceText.IndexOf(symbol.Value);
+        var bare = index == 0 || (index > 0 && !char.IsLetter(priceText[index - 1]));
+        return bare && detected == regionCurrency ? detected : null;
     }
 
     private static string AppKey(string url)
