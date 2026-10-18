@@ -20,9 +20,6 @@ public sealed class UpdateChecker(HttpClient http, string repositoryUrl = Update
 {
     public const string RepositoryUrl = "https://github.com/FLABER87/game-price-hunter";
 
-    /// <summary>Startup checks run at most this often.</summary>
-    public static readonly TimeSpan CheckInterval = TimeSpan.FromHours(24);
-
     private const string TagPathMarker = "/releases/tag/";
 
     private readonly string _repositoryUrl = repositoryUrl.TrimEnd('/');
@@ -91,9 +88,6 @@ public sealed class UpdateChecker(HttpClient http, string repositoryUrl = Update
     /// <summary>True when <paramref name="release"/> is newer than the running version.</summary>
     public static bool IsNewer(ReleaseInfo release, string currentVersion) =>
         TryParseVersion(currentVersion, out var current) && release.Version > current;
-
-    public static bool IsCheckDue(DateTimeOffset? lastCheck, DateTimeOffset now) =>
-        lastCheck is not { } last || now - last >= CheckInterval || last > now;
 
     /// <summary>
     /// True when <paramref name="directory"/> holds a copy installed by the setup (its uninstaller
