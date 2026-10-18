@@ -1,20 +1,34 @@
+using System.Net;
+
 namespace GamePriceHunter.Core.Updates;
 
-/// <summary>Downloads a release installer and makes sure it is a Windows executable, not an error page.</summary>
+/// <summary>
+/// Downloads a release installer and makes sure it is the one the release key signed, not an error page
+/// or a replaced file.
+/// </summary>
 public static class InstallerDownloader
 {
     /// <summary>
-    /// Saves <paramref name="url"/> to <paramref name="destinationPath"/>, reporting progress from 0 to 1.
-    /// The file only appears under its final name once it is complete and valid.
+    /// Saves the installer of <paramref name="release"/> to <paramref name="destinationPath"/>, reporting progress
+    /// from 0 to 1. The file only appears under its final name once it is complete and its signature (see
+    /// <see cref="UpdateSignature"/>) matches; otherwise this throws <see cref="InvalidDataException"/>.
     /// </summary>
-    public static async Task<string> DownloadAsync(
-        HttpClient http, Uri url, string destinationPath, IProgress<double>? progress = null, CancellationToken cancellationToken = default)
+    public static Task<string> DownloadAsync(
+        HttpClient http, ReleaseInfo release, string destinationPath, IProgress<double>? progress = null, CancellationToken cancellationToken = default) =>
+        DownloadAsync(http, release, destinationPath, UpdateSignature.ReleasePublicKey, progress, cancellationToken);
+
+    internal static async Task<string> DownloadAsync(
+        HttpClient http, ReleaseInfo release, string destinationPath, string publicKey, IProgress<double>? progress, CancellationToken cancellationToken)
     {
+        // The signature first: an unsigned release is not worth downloading. Releases before signing
+        // started (0.2.0 and older) never get here, as the app only installs versions newer than itself.
+        var signature = await DownloadSignatureAsync(http, release, cancellationToken).ConfigureAwait(false);
+
         Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(destinationPath))!);
         var partial = destinationPath + ".part";
         try
         {
-            using (var response = await http.GetAsync(url, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false))
+            using (var response = await http.GetAsync(release.InstallerUrl, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false))
             {
                 response.EnsureSuccessStatusCode();
                 var total = response.Content.Headers.ContentLength;
@@ -44,6 +58,8 @@ public static class InstallerDownloader
 
             if (!IsWindowsExecutable(partial))
                 throw new InvalidDataException("The downloaded file is not a Windows executable.");
+            if (!await UpdateSignature.VerifyAsync(partial, release.Tag, signature, publicKey, cancellationToken).ConfigureAwait(false))
+                throw new InvalidDataException($"The installer of {release.Tag} does not match its signature, so it is not the file the release was built with.");
 
             File.Move(partial, destinationPath, overwrite: true);
             return destinationPath;
@@ -52,6 +68,15 @@ public static class InstallerDownloader
         {
             TryDelete(partial);
         }
+    }
+
+    private static async Task<string> DownloadSignatureAsync(HttpClient http, ReleaseInfo release, CancellationToken cancellationToken)
+    {
+        using var response = await http.GetAsync(release.SignatureUrl, cancellationToken).ConfigureAwait(false);
+        if (response.StatusCode == HttpStatusCode.NotFound)
+            throw new InvalidDataException($"Release {release.Tag} has no signature ({release.SignatureUrl}), so its installer can't be checked.");
+        response.EnsureSuccessStatusCode();
+        return await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
     }
 
     internal static bool IsWindowsExecutable(string path)

@@ -4,7 +4,11 @@ using System.Runtime.InteropServices;
 namespace GamePriceHunter.Core.Updates;
 
 /// <summary>A published release of the app, identified by its git tag ("v1.2.3").</summary>
-public sealed record ReleaseInfo(string Tag, Version Version, Uri PageUrl, Uri InstallerUrl);
+public sealed record ReleaseInfo(string Tag, Version Version, Uri PageUrl, Uri InstallerUrl)
+{
+    /// <summary>The installer's signature, attached to the release next to it (see <see cref="UpdateSignature"/>).</summary>
+    public Uri SignatureUrl => new(InstallerUrl.AbsoluteUri + UpdateSignature.FileExtension);
+}
 
 /// <summary>
 /// Finds the latest release through the public releases page rather than the GitHub API, which

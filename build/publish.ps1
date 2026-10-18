@@ -7,6 +7,10 @@
     Without -Version the version comes from Directory.Build.props. The installer is skipped with a
     warning when Inno Setup 6 is not installed.
 
+    When UPDATE_SIGNING_KEY holds the release signing key (PEM), the installer is also signed for the
+    in-app updater (GamePriceHunter-Setup.exe.sig, for the tag v<Version>), and the signature is checked
+    against the public key the app is built with. CI does this for tags; see docs\DEVELOPMENT.md.
+
 .EXAMPLE
     .\build\publish.ps1                    # win-x64 exe + GamePriceHunter-Setup.exe
     .\build\publish.ps1 -Version 0.2.0     # release build with an explicit version
@@ -27,6 +31,10 @@ $command = Get-Command dotnet -ErrorAction SilentlyContinue
 $dotnet = if ($command) { $command.Source } else { 'C:\Program Files\dotnet\dotnet.exe' }
 $output = Join-Path $root "artifacts\publish\$Runtime"
 $installerOutput = Join-Path $root 'artifacts\installer'
+
+# Taken out of the environment at once, so that the tests and the build never see the signing key.
+$signingKey = $env:UPDATE_SIGNING_KEY
+Remove-Item Env:UPDATE_SIGNING_KEY -ErrorAction SilentlyContinue
 
 function Find-InnoSetupCompiler {
     $command = Get-Command ISCC.exe -ErrorAction SilentlyContinue
@@ -77,6 +85,23 @@ try {
             $setup = Get-ChildItem $installerOutput -Filter 'GamePriceHunter-Setup*.exe' | Sort-Object LastWriteTime -Descending | Select-Object -First 1
             $size = [math]::Round($setup.Length / 1MB, 1)
             Write-Host "Installer $($setup.FullName) ($size MB)" -ForegroundColor Green
+
+            # A signature left from an earlier build would not match the new installer.
+            Remove-Item "$($setup.FullName).sig" -ErrorAction SilentlyContinue
+            if ($signingKey) {
+                $tools = Join-Path $root 'artifacts\tools'
+                & $dotnet build src\GamePriceHunter.Cli -c Release -o $tools --nologo -v q
+                if ($LASTEXITCODE -ne 0) { throw "CLI build failed." }
+                $gph = Join-Path $tools 'gph.exe'
+
+                $env:UPDATE_SIGNING_KEY = $signingKey
+                try { & $gph sign $setup.FullName --tag "v$Version" }
+                finally { Remove-Item Env:UPDATE_SIGNING_KEY }
+                if ($LASTEXITCODE -ne 0) { throw "Signing failed." }
+
+                & $gph verify $setup.FullName --tag "v$Version"
+                if ($LASTEXITCODE -ne 0) { throw "The signature does not match ReleasePublicKey in UpdateSignature.cs: UPDATE_SIGNING_KEY must be the key build\new-signing-key.ps1 created." }
+            }
         }
         else {
             Write-Warning "Inno Setup 6 was not found, so the installer was skipped. Install it with: winget install --id JRSoftware.InnoSetup -e"

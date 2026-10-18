@@ -1,5 +1,6 @@
 # Builds and tests every push and pull request, and turns a pushed vX.Y.Z tag into a draft release
-# with the exe and the installer. "Build and test" is the check main requires before merging.
+# with the exe, the installer and the installer's signature for the in-app updater.
+# "Build and test" is the check main requires before merging.
 name: Build
 
 on:
@@ -30,12 +31,18 @@ jobs:
       - name: Build all projects
         run: dotnet build GamePriceHunter.slnx --nologo
 
-      # Tests, the single-file exe and the installer (Inno Setup is preinstalled on the runner).
+      # Tests, the single-file exe and the installer (Inno Setup is preinstalled on the runner). Tag builds
+      # also sign the installer with the UPDATE_SIGNING_KEY secret; the app won't install it without that.
       - name: Test and publish
+        env:
+          UPDATE_SIGNING_KEY: ${{ github.ref_type == 'tag' && secrets.UPDATE_SIGNING_KEY || '' }}
         run: |
           $version = if ($env:GITHUB_REF_TYPE -eq 'tag') { $env:GITHUB_REF_NAME.TrimStart('v') } else { '' }
           ./build/publish.ps1 -Version $version
           if (-not (Test-Path artifacts/installer/GamePriceHunter-Setup.exe)) { throw 'The installer was not built.' }
+          if ($version -and -not (Test-Path artifacts/installer/GamePriceHunter-Setup.exe.sig)) {
+            throw 'The installer was not signed: the UPDATE_SIGNING_KEY secret is missing (see build/new-signing-key.ps1).'
+          }
 
       - uses: actions/upload-artifact@v7
         with:
@@ -43,6 +50,7 @@ jobs:
           path: |
             artifacts/publish/win-x64/GamePriceHunter.exe
             artifacts/installer/GamePriceHunter-Setup.exe
+            artifacts/installer/GamePriceHunter-Setup.exe.sig
           if-no-files-found: error
           retention-days: 14
 
@@ -71,7 +79,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           TAG: ${{ github.ref_name }}
         run: |
-          files=(dist/installer/GamePriceHunter-Setup.exe dist/publish/win-x64/GamePriceHunter.exe)
+          files=(dist/installer/GamePriceHunter-Setup.exe dist/installer/GamePriceHunter-Setup.exe.sig dist/publish/win-x64/GamePriceHunter.exe)
           if gh release view "$TAG" > /dev/null 2>&1; then
             gh release upload "$TAG" "${files[@]}" --clobber
           else

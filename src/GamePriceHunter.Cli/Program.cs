@@ -1,4 +1,6 @@
-﻿using System.Globalization;
+﻿using System.Diagnostics;
+using System.Globalization;
+using System.Security.Cryptography;
 using System.Text;
 using GamePriceHunter.Core.Currency;
 using GamePriceHunter.Core.Diagnostics;
@@ -15,6 +17,12 @@ using GamePriceHunter.Core.Updates;
 //   gph health [query]        exit code 1 when any provider fails
 //   gph providers
 //   gph update                the latest release, as the app's update check sees it
+// Release signing (see build\publish.ps1 and build\new-signing-key.ps1):
+//   gph sign <installer> --tag v1.2.3     writes <installer>.sig for the in-app updater, with the key in UPDATE_SIGNING_KEY
+//   gph verify <installer> --tag v1.2.3   checks <installer>.sig against the app's release key; exit code 1 when it fails
+//   gph new-key <owner/repository>        creates a key, stores it in the repository's UPDATE_SIGNING_KEY secret (gh)
+//                                         and prints the public half for UpdateSignature.ReleasePublicKey
+const string SigningKeyVariable = "UPDATE_SIGNING_KEY";
 Console.OutputEncoding = Encoding.UTF8;
 CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
 
@@ -24,6 +32,8 @@ if (args.Length == 0 || args[0] is "-h" or "--help")
     Console.WriteLine("       gph health [query]");
     Console.WriteLine("       gph providers");
     Console.WriteLine("       gph update");
+    Console.WriteLine("       gph sign|verify <installer> --tag v1.2.3");
+    Console.WriteLine("       gph new-key <owner/repository>");
     return 0;
 }
 
@@ -42,8 +52,73 @@ if (command == "update")
 {
     using var updateHttp = UpdateChecker.CreateHttpClient("GamePriceHunter-Cli");
     var latest = await new UpdateChecker(updateHttp).GetLatestReleaseAsync();
-    Console.WriteLine(latest is null ? "No release published." : $"Latest release {latest.Tag} ({latest.Version})\n  {latest.PageUrl}\n  {latest.InstallerUrl}");
+    Console.WriteLine(latest is null ? "No release published." : $"Latest release {latest.Tag} ({latest.Version})\n  {latest.PageUrl}\n  {latest.InstallerUrl}\n  {latest.SignatureUrl}");
     return 0;
+}
+
+if (command == "new-key")
+{
+    if (args.Length != 2)
+    {
+        Console.Error.WriteLine("Usage: gph new-key <owner/repository>");
+        return 2;
+    }
+
+    // The private key goes to gh on its standard input, so it never appears on screen, on disk or in a command line.
+    using var key = UpdateSignature.CreateKey();
+    var start = new ProcessStartInfo("gh")
+    {
+        RedirectStandardInput = true,
+        RedirectStandardOutput = true,
+        StandardInputEncoding = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false),
+    };
+    foreach (var argument in new[] { "secret", "set", SigningKeyVariable, "--repo", args[1] })
+        start.ArgumentList.Add(argument);
+
+    using (var gh = Process.Start(start)!)
+    {
+        var output = gh.StandardOutput.ReadToEndAsync();
+        await gh.StandardInput.WriteAsync(key.ExportPkcs8PrivateKeyPem());
+        gh.StandardInput.Close();
+        await gh.WaitForExitAsync();
+        Console.Error.Write(await output);
+        if (gh.ExitCode != 0)
+        {
+            Console.Error.WriteLine($"gh could not store the key in the {SigningKeyVariable} secret of {args[1]}.");
+            return 1;
+        }
+    }
+
+    Console.WriteLine(Convert.ToBase64String(key.ExportSubjectPublicKeyInfo()));
+    return 0;
+}
+
+if (command is "sign" or "verify")
+{
+    if (args.Length != 4 || args[2] != "--tag")
+    {
+        Console.Error.WriteLine($"Usage: gph {command} <installer> --tag v1.2.3");
+        return 2;
+    }
+
+    var installer = args[1];
+    var tag = args[3];
+    var signaturePath = installer + UpdateSignature.FileExtension;
+    if (command == "sign")
+    {
+        using var key = LoadSigningKey();
+        if (key is null)
+            return 2;
+        await File.WriteAllTextAsync(signaturePath, await UpdateSignature.SignAsync(installer, tag, key));
+        Console.WriteLine($"Signed {installer} for {tag}: {signaturePath}");
+        return 0;
+    }
+
+    var valid = File.Exists(signaturePath) && await UpdateSignature.VerifyAsync(installer, tag, await File.ReadAllTextAsync(signaturePath));
+    Console.WriteLine(valid
+        ? $"{signaturePath} is valid for {tag}."
+        : $"{signaturePath} is missing or does not match {installer} and {tag} under the app's release key.");
+    return valid ? 0 : 1;
 }
 
 var options = ParseOptions(args.Skip(1).ToArray());
@@ -102,6 +177,20 @@ if (command == "search")
 }
 
 return command == "health" && failures > 0 ? 1 : 0;
+
+static ECDsa? LoadSigningKey()
+{
+    var pem = Environment.GetEnvironmentVariable(SigningKeyVariable);
+    if (string.IsNullOrWhiteSpace(pem))
+    {
+        Console.Error.WriteLine($"Set {SigningKeyVariable} to the release signing key (PEM).");
+        return null;
+    }
+
+    var key = ECDsa.Create();
+    key.ImportFromPem(pem);
+    return key;
+}
 
 static CliOptions ParseOptions(string[] args)
 {
