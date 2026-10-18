@@ -259,6 +259,8 @@ public sealed class MainViewModel : ObservableObject
 
     public string VersionText => $"v{AppServices.Version}";
 
+    public string WindowTitle => Loc.F("App_TitleWithVersion", AppServices.Version);
+
     private ResultFilters Filters => _services.Settings.Filters;
 
     public async Task InitializeAsync()
@@ -645,6 +647,7 @@ public sealed class MainViewModel : ObservableObject
         }
         OnPropertyChanged(nameof(RegionTooltip));
         OnPropertyChanged(nameof(RatesText));
+        OnPropertyChanged(nameof(WindowTitle));
         RaiseStateProperties();
     }
 

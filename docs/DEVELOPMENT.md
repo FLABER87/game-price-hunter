@@ -6,7 +6,7 @@
 dotnet build GamePriceHunter.slnx
 dotnet test tests/GamePriceHunter.Core.Tests
 .\build\publish.ps1            # artifacts\publish\win-x64\GamePriceHunter.exe (self-contained, single file)
-                               # + artifacts\installer\GamePriceHunter-Setup.exe (needs Inno Setup 6)
+                               # + artifacts\installer\GamePriceHunter-Setup.exe (needs Inno Setup 7.1+)
 ```
 
 Diagnostics CLI, which runs the app's search pipeline and prints every store's status:
@@ -40,7 +40,7 @@ git push origin v0.2.0
 
 3. The `Build` workflow creates a draft release with the exe, the installer, the installer's signature (`GamePriceHunter-Setup.exe.sig`) and the tag message as notes. Check it on GitHub and publish it.
 
-To build a release locally, run `.\build\publish.ps1 -Version 0.2.0`. It needs [Inno Setup 6](https://jrsoftware.org/isinfo.php): `winget install --id JRSoftware.InnoSetup -e`.
+To build a release locally, run `.\build\publish.ps1 -Version 0.2.0`. It needs [Inno Setup 7.1 or later](https://jrsoftware.org/isinfo.php): `winget install --id JRSoftware.InnoSetup.7 -e`. CI installs the version pinned in `.github/workflows/build.yml`; to move to a newer one, change its URL and SHA-256 there (both are on the release page of [jrsoftware/issrc](https://github.com/jrsoftware/issrc/releases)).
 
 The app finds new versions through the redirect of `/releases/latest` to `/releases/tag/vX.Y.Z`, not the GitHub API, which rate-limits per IP. It checks at most once a day. So keep the `vX.Y.Z` tags and the `GamePriceHunter-Setup.exe` and `GamePriceHunter-Setup.exe.sig` asset names. Installed copies download both, check the signature and only then run the installer with `/VERYSILENT /SUPPRESSMSGBOXES /CLOSEAPPLICATIONS /RELAUNCH=1`. Portable and stand-alone copies only link to the release page. The installer is per-user (`%LOCALAPPDATA%\Programs\Game Price Hunter`), and its `AppId` in `build\installer\GamePriceHunter.iss` must never change.
 

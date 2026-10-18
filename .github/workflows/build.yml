@@ -34,14 +34,29 @@ jobs:
       - name: Build all projects
         run: dotnet build GamePriceHunter.slnx --nologo
 
-      # Tests, the single-file exe and the installer (Inno Setup is preinstalled on the runner). Tag builds
+      # A fixed Inno Setup 7 release, checked against its SHA-256 and installed into a folder of its own; the
+      # installer is built with its ISCC.exe rather than any Inno Setup the runner image has.
+      - name: Install Inno Setup
+        env:
+          INNO_URL: https://github.com/jrsoftware/issrc/releases/download/is-7_1_0/innosetup-7.1.0-x64.exe
+          INNO_SHA256: 0362a383ed217d4c4239b5933866dd96d3eb2102737da92f80f6057a4b40df2f
+        run: |
+          $setup = Join-Path $env:RUNNER_TEMP 'innosetup.exe'
+          $dir = Join-Path $env:RUNNER_TEMP 'InnoSetup'
+          Invoke-WebRequest $env:INNO_URL -OutFile $setup
+          if ((Get-FileHash $setup -Algorithm SHA256).Hash -ne $env:INNO_SHA256) { throw 'The Inno Setup download does not match its SHA-256.' }
+          $process = Start-Process $setup -ArgumentList '/VERYSILENT', '/SUPPRESSMSGBOXES', '/NORESTART', '/SP-', '/CURRENTUSER', "/DIR=`"$dir`"" -Wait -PassThru
+          if ($process.ExitCode -ne 0) { throw "Installing Inno Setup failed with exit code $($process.ExitCode)." }
+          "ISCC=$(Join-Path $dir 'ISCC.exe')" >> $env:GITHUB_ENV
+
+      # Tests, the single-file exe and the installer. Tag builds
       # also sign the installer with the UPDATE_SIGNING_KEY secret; the app won't install it without that.
       - name: Test and publish
         env:
           UPDATE_SIGNING_KEY: ${{ github.ref_type == 'tag' && secrets.UPDATE_SIGNING_KEY || '' }}
         run: |
           $version = if ($env:GITHUB_REF_TYPE -eq 'tag') { $env:GITHUB_REF_NAME.TrimStart('v') } else { '' }
-          ./build/publish.ps1 -Version $version
+          ./build/publish.ps1 -Version $version -InnoSetupCompiler $env:ISCC
           if (-not (Test-Path artifacts/installer/GamePriceHunter-Setup.exe)) { throw 'The installer was not built.' }
           if ($version -and -not (Test-Path artifacts/installer/GamePriceHunter-Setup.exe.sig)) {
             throw 'The installer was not signed: the UPDATE_SIGNING_KEY secret is missing (see build/new-signing-key.ps1).'

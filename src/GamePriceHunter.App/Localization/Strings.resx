@@ -5,6 +5,7 @@
   <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <data name="App_Title" xml:space="preserve"><value>Game Price Hunter</value></data>
+  <data name="App_TitleWithVersion" xml:space="preserve"><value>Game Price Hunter {0}</value></data>
   <data name="Search_Placeholder" xml:space="preserve"><value>Search for a game, e.g. &quot;witcher 3&quot; or &quot;hollow knight&quot;</value></data>
   <data name="Search_Clear" xml:space="preserve"><value>Clear</value></data>
   <data name="Search_Button" xml:space="preserve"><value>Search</value></data>

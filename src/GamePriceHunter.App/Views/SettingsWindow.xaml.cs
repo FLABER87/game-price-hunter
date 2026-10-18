@@ -11,6 +11,7 @@ public partial class SettingsWindow : Window
         InitializeComponent();
         DataContext = viewModel;
         ThemeManager.Attach(this);
+        WorkArea.KeepInside(this);
     }
 
     private void OnSaveClick(object sender, RoutedEventArgs e) => DialogResult = true;

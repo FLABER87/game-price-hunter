@@ -11,23 +11,18 @@ namespace GamePriceHunter.App;
 
 public partial class App : Application
 {
-    /// <summary>
-    /// Exists while the app runs; the setup waits for it to go away before replacing the exe during
-    /// an update. Must match AppMutex in build\installer\GamePriceHunter.iss.
-    /// </summary>
-    private const string RunningMutexName = "GamePriceHunter.Running";
-
     private static AppServices? _services;
-
-    // Never released explicitly: the handle has to live until the process is gone.
-    private static Mutex? _runningMutex;
 
     public static AppServices Services => _services ?? throw new InvalidOperationException("Services are not initialized.");
 
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
-        _runningMutex = new Mutex(initiallyOwned: false, RunningMutexName);
+        if (!SingleInstance.TryStart(() => Dispatcher.BeginInvoke(BringToFront)))
+        {
+            Shutdown();
+            return;
+        }
 
         DispatcherUnhandledException += OnDispatcherUnhandledException;
         AppDomain.CurrentDomain.UnhandledException += (_, args) =>
@@ -47,6 +42,18 @@ public partial class App : Application
         MainWindow = window;
         window.Show();
         _ = viewModel.InitializeAsync();
+    }
+
+    // The app was launched again while running: show this copy instead.
+    private void BringToFront()
+    {
+        if (MainWindow is not { } window)
+            return;
+        if (window.WindowState == WindowState.Minimized)
+            SystemCommands.RestoreWindow(window);
+        // An open dialog goes in front, as on a click on the taskbar button.
+        var target = Windows.OfType<Window>().LastOrDefault(w => w.IsVisible && w.Owner == window) ?? window;
+        target.Activate();
     }
 
     protected override void OnExit(ExitEventArgs e)
