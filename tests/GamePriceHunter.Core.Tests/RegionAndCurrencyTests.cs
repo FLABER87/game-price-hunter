@@ -42,6 +42,12 @@ public class RegionTagsTests
     [InlineData("Italy", "SK", RegionCompatibility.Incompatible)]
     [InlineData("RU+World", "SK", RegionCompatibility.Compatible)]
     [InlineData("XBOX Europe", "SK", RegionCompatibility.Compatible)]
+    [InlineData("united states, canada", "US", RegionCompatibility.Compatible)]
+    [InlineData("united states, canada", "CA", RegionCompatibility.Compatible)]
+    [InlineData("united states, canada", "SK", RegionCompatibility.Incompatible)]
+    [InlineData("europe, united kingdom", "GB", RegionCompatibility.Compatible)]
+    [InlineData("RU/CIS", "KZ", RegionCompatibility.Compatible)]
+    [InlineData("Bosnia & Herzegovina", "BA", RegionCompatibility.Compatible)]
     public void Parses_store_region_labels(string label, string country, RegionCompatibility expected) =>
         Assert.Equal(expected, RegionTags.FromLabel(label, country)?.Compatibility);
 

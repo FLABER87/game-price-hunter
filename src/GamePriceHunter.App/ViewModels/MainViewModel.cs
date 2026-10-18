@@ -355,6 +355,7 @@ public sealed class MainViewModel : ObservableObject
         _completedProviders = 0;
         IsSearching = true;
         HasSearched = true;
+        _ = RefreshRatesIfDueAsync();
 
         if (_regionTask is not null)
             await _regionTask;
@@ -382,6 +383,9 @@ public sealed class MainViewModel : ObservableObject
         {
             await foreach (var result in _services.Search.SearchAsync(query, _services.EffectiveRegion, options, cts.Token))
             {
+                // A result read just before a newer search started must not leak into its list.
+                if (!IsCurrentSearch(cts))
+                    break;
                 ApplyResult(result);
                 _completedProviders++;
                 RaiseProgress();
@@ -423,6 +427,8 @@ public sealed class MainViewModel : ObservableObject
         {
             await foreach (var result in _services.Search.SearchAsync(_lastQuery, _services.EffectiveRegion, options, cts.Token))
             {
+                if (!IsCurrentSearch(cts))
+                    break;
                 ApplyResult(result);
                 _completedProviders++;
             }
@@ -447,6 +453,8 @@ public sealed class MainViewModel : ObservableObject
     {
         _searchCts?.Cancel();
     }
+
+    private bool IsCurrentSearch(CancellationTokenSource cts) => _searchCts == cts && !cts.IsCancellationRequested;
 
     private void ApplyResult(ProviderSearchResult result)
     {
@@ -592,6 +600,24 @@ public sealed class MainViewModel : ObservableObject
             offer.UpdatePrice(_services.Currency, currency);
         OnPropertyChanged(nameof(RegionText));
         Rebuild();
+    }
+
+    /// <summary>
+    /// The app may stay open for days, so every search renews rates that got old, without waiting
+    /// for them: <see cref="OnRatesChanged"/> re-prices the offers when new ones arrive.
+    /// </summary>
+    private async Task RefreshRatesIfDueAsync()
+    {
+        OnPropertyChanged(nameof(RatesText));
+        OnPropertyChanged(nameof(AreRatesStale));
+        try
+        {
+            await _services.Currency.RefreshIfDueAsync();
+        }
+        catch (Exception ex)
+        {
+            _services.Logger.Warn($"Exchange rate refresh failed: {ex.Message}");
+        }
     }
 
     private void OnRatesChanged()

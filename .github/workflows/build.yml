@@ -66,14 +66,22 @@ jobs:
           path: dist
 
       # The message of an annotated tag becomes the release notes; publish the draft on GitHub after a look.
+      # A re-run refreshes the files of a draft only: published files are final, a fix ships as a new version.
       - name: Create the draft release
         env:
           GH_TOKEN: ${{ github.token }}
           TAG: ${{ github.ref_name }}
         run: |
           files=(dist/installer/GamePriceHunter-Setup.exe dist/publish/win-x64/GamePriceHunter.exe)
-          if gh release view "$TAG" > /dev/null 2>&1; then
+          if is_draft=$(gh release view "$TAG" --json isDraft --jq .isDraft 2> view-error.txt); then
+            if [ "$is_draft" != true ]; then
+              echo "::error::Release $TAG is already published; its files are not replaced. Release the change as a new version."
+              exit 1
+            fi
             gh release upload "$TAG" "${files[@]}" --clobber
+          elif ! grep -q 'release not found' view-error.txt; then
+            cat view-error.txt >&2
+            exit 1
           else
             if [ "$(git cat-file -t "$TAG")" = tag ]; then
               git tag -l --format='%(contents:subject)%0a%0a%(contents:body)' "$TAG" > notes.md

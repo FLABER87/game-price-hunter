@@ -20,6 +20,7 @@ dotnet run --project src/GamePriceHunter.Cli -- update   # latest release, as th
 - **Stores:** one `StoreProvider` subclass per store in `src/GamePriceHunter.Core/Providers`, registered in `ProviderCatalog`. Keep parsing in an `internal Parse(...)` method and add a fixture test.
 - **Languages:** copy `src/GamePriceHunter.App/Localization/Strings.resx` to `Strings.<culture>.resx`, then add the culture to `Loc.Languages` and `SatelliteResourceLanguages`.
 - **Portable mode:** an empty `portable` file next to the exe keeps all data in `Data\`.
+- **Region:** the country chosen in Settings goes to every store that takes a country or currency in its request. Fanatical does not: its catalog follows the IP address (as at its checkout), and only its prices follow the chosen currency.
 - **Not used:** Epic, Humble, GMG and GameBillet reject the .NET client and come through CheapShark/IsThereAnyDeal instead. Kinguin, G2A, Gamivo, HRK and CDKeys are behind bot protection.
 
 ## CI

@@ -16,6 +16,7 @@ namespace GamePriceHunter.App.Infrastructure;
 public static class ImageLoader
 {
     private const int MemoryCapacity = 500;
+    private const int MaxImageBytes = 8 * 1024 * 1024;
     private static readonly SemaphoreSlim DownloadGate = new(6);
     private static readonly Dictionary<string, LinkedListNode<(string Key, BitmapSource Image)>> MemoryIndex = [];
     private static readonly LinkedList<(string Key, BitmapSource Image)> MemoryOrder = new();
@@ -126,11 +127,11 @@ public static class ImageLoader
         try
         {
             using var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(15));
-            using var response = await _http.GetAsync(url, timeout.Token).ConfigureAwait(false);
-            if (!response.IsSuccessStatusCode)
+            using var response = await _http.GetAsync(url, HttpCompletionOption.ResponseHeadersRead, timeout.Token).ConfigureAwait(false);
+            if (!response.IsSuccessStatusCode || response.Content.Headers.ContentLength > MaxImageBytes)
                 return null;
-            var bytes = await response.Content.ReadAsByteArrayAsync(timeout.Token).ConfigureAwait(false);
-            if (bytes.Length == 0 || bytes.Length > 8 * 1024 * 1024)
+            var bytes = await ReadLimitedAsync(response.Content, timeout.Token).ConfigureAwait(false);
+            if (bytes is not { Length: > 0 })
                 return null;
 
             if (path is not null)
@@ -145,7 +146,7 @@ public static class ImageLoader
             }
             return bytes;
         }
-        catch (Exception ex) when (ex is HttpRequestException or TaskCanceledException)
+        catch (Exception ex) when (ex is HttpRequestException or OperationCanceledException or IOException)
         {
             return null;
         }
@@ -153,6 +154,25 @@ public static class ImageLoader
         {
             DownloadGate.Release();
         }
+    }
+
+    /// <summary>
+    /// Reads the body, giving up past <see cref="MaxImageBytes"/>: store data names the image URLs,
+    /// and a declared length can be missing or wrong.
+    /// </summary>
+    private static async Task<byte[]?> ReadLimitedAsync(HttpContent content, CancellationToken cancellationToken)
+    {
+        await using var stream = await content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+        using var buffer = new MemoryStream();
+        var chunk = new byte[81920];
+        int read;
+        while ((read = await stream.ReadAsync(chunk, cancellationToken).ConfigureAwait(false)) > 0)
+        {
+            if (buffer.Length + read > MaxImageBytes)
+                return null;
+            buffer.Write(chunk, 0, read);
+        }
+        return buffer.ToArray();
     }
 
     private static BitmapSource? Decode(byte[] bytes, int width)

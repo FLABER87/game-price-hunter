@@ -118,23 +118,28 @@ public static partial class RegionTags
         if (string.IsNullOrWhiteSpace(label))
             return null;
 
-        var compact = label.Replace(" ", "").Replace("-", "");
+        // Lists ("united states, canada", "RU/CIS") are read item by item, so multi-word names keep their meaning.
+        var tokens = LabelListRegex().Split(label).SelectMany(LabelTokens).ToList();
+        return Evaluate(tokens, userCountry, trustCodes: true) ?? new RegionTag(label.Trim(), RegionCompatibility.Unknown);
+    }
+
+    private static IEnumerable<string> LabelTokens(string item)
+    {
+        var compact = item.Replace(" ", "").Replace("-", "");
         if (Words.ContainsKey(compact) || UnknownWords.Contains(compact))
-            return Evaluate([compact], userCountry, trustCodes: true) ?? new RegionTag(label.Trim(), RegionCompatibility.Unknown);
+            return [compact];
 
         // Stores also label keys with plain country names: "France", "United States".
         if (CountryNames.Value.TryGetValue(compact, out var countryCode))
-            return Evaluate([countryCode], userCountry, trustCodes: true);
+            return [countryCode];
 
         // "RU+World" style labels: "World" alone means everywhere.
-        var tokens = TokenRegex().Matches(label)
+        return TokenRegex().Matches(item)
             .Select(m => m.Value)
             .Select(t => t.Equals("World", StringComparison.OrdinalIgnoreCase) ? "GLOBAL"
                 : CountryNames.Value.TryGetValue(t, out var code) ? code
                 : t.Length == 2 ? t.ToUpperInvariant()
-                : t)
-            .ToList();
-        return Evaluate(tokens, userCountry, trustCodes: true) ?? new RegionTag(label.Trim(), RegionCompatibility.Unknown);
+                : t);
     }
 
     private static readonly Lazy<Dictionary<string, string>> CountryNames = new(() =>
@@ -252,6 +257,10 @@ public static partial class RegionTags
 
     [GeneratedRegex(@"[\p{L}]+")]
     private static partial Regex TokenRegex();
+
+    // Not "&": it is part of country names ("Bosnia & Herzegovina").
+    [GeneratedRegex(@"[,;/|+]")]
+    private static partial Regex LabelListRegex();
 
     [GeneratedRegex(@"\b(GLOBAL|WORLDWIDE|EUROPE|LATAM|ROW|CIS|СНГ|EU)\b")]
     private static partial Regex CapsWordRegex();
