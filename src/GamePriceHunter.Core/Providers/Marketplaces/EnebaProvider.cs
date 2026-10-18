@@ -11,6 +11,7 @@ namespace GamePriceHunter.Core.Providers.Marketplaces;
 public sealed class EnebaProvider(HttpClient http) : StoreProvider(http)
 {
     private const string Host = "https://www.eneba.com";
+    private const string StateId = "__ALGOLIA_STATE__";
 
     public override ProviderInfo Info { get; } = new("eneba", "Eneba", StoreKind.Marketplace, "https://www.eneba.com/")
     {
@@ -20,14 +21,27 @@ public sealed class EnebaProvider(HttpClient http) : StoreProvider(http)
     public override async Task<IReadOnlyList<Offer>> SearchAsync(SearchContext context, CancellationToken cancellationToken)
     {
         var currency = context.Region.CurrencyCode;
-        var html = await GetStringAsync($"{Host}/store/all?text={Encode(context.Query)}&page=1&currency={Encode(currency)}", cancellationToken).ConfigureAwait(false);
+        var url = $"{Host}/store/all?text={Encode(context.Query)}&page=1&currency={Encode(currency)}";
+        var html = await GetStringAsync(url, cancellationToken).ConfigureAwait(false);
+        if (Html.ScriptById(html, StateId) is null)
+        {
+            // Now and then a 200 page comes without the search state (not a challenge page);
+            // the next request is fine.
+            await Task.Delay(500, cancellationToken).ConfigureAwait(false);
+            html = await GetStringAsync(url, cancellationToken).ConfigureAwait(false);
+        }
         return Parse(html, currency);
     }
 
     internal IReadOnlyList<Offer> Parse(string html, string preferredCurrency)
     {
-        var state = Html.ScriptById(html, "__ALGOLIA_STATE__")
-            ?? throw new InvalidDataException("Eneba search results not found in the page.");
+        var state = Html.ScriptById(html, StateId);
+        if (state is null)
+        {
+            // Name the page that came instead, so the log tells what happened.
+            var title = Html.Decode(Html.Match(html, "<title[^>]*>(.*?)</title>"));
+            throw new InvalidDataException($"Eneba search results not found in the page (title \"{title}\", {html.Length} chars).");
+        }
         using var doc = JsonDocument.Parse(state);
 
         var offers = new List<Offer>();

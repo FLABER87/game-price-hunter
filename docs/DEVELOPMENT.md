@@ -22,6 +22,7 @@ dotnet run --project src/GamePriceHunter.Cli -- update   # latest release, as th
 - **Portable mode:** an empty `portable` file next to the exe keeps all data in `Data\`.
 - **Region:** the country chosen in Settings goes to every store that takes a country or currency in its request. Fanatical does not: its catalog follows the IP address (as at its checkout), and only its prices follow the chosen currency.
 - **Not used:** Epic, Humble, GMG and GameBillet reject the .NET client and come through CheapShark/IsThereAnyDeal instead. Kinguin, G2A, Gamivo, HRK and CDKeys are behind bot protection.
+- **Rate limits:** Eneba answers a burst of searches (about six in a few seconds) with a Cloudflare challenge (HTTP 429). It shows as Blocked and clears after a short wait, so don't run the CLI against it in a tight loop.
 
 ## CI
 
