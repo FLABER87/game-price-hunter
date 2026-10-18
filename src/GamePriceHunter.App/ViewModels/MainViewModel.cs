@@ -681,14 +681,14 @@ public sealed class MainViewModel : ObservableObject
                 Suggestions.Add(new SuggestionViewModel(history, null, null, isHistory: true));
             }
             foreach (var item in items.Take(8))
-                Suggestions.Add(new SuggestionViewModel(item.Title, item.ImageUrl, item.Price, isHistory: false));
+                Suggestions.Add(new SuggestionViewModel(item.Title, item.ImageUrl, item.Price, isHistory: false, isFree: item.IsFree));
 
             IsSuggestionsOpen = Suggestions.Count > 0;
         }
         catch (OperationCanceledException)
         {
         }
-        catch (Exception ex) when (ex is System.Net.Http.HttpRequestException or System.Text.Json.JsonException)
+        catch (Exception ex) when (ex is System.Net.Http.HttpRequestException or System.Text.Json.JsonException or System.IO.IOException)
         {
             _services.Logger.Warn($"Suggestions failed: {ex.Message}");
         }

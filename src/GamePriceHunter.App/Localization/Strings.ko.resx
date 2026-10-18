@@ -10,6 +10,7 @@
   <data name="Search_Clear" xml:space="preserve"><value>지우기</value></data>
   <data name="Search_Button" xml:space="preserve"><value>검색</value></data>
   <data name="Search_Stop" xml:space="preserve"><value>중지</value></data>
+  <data name="Suggestion_Free" xml:space="preserve"><value>무료</value></data>
   <data name="Filter_Placeholder" xml:space="preserve"><value>결과 필터</value></data>
   <data name="Sort_Label" xml:space="preserve"><value>결과 정렬</value></data>
   <data name="Sort_PriceLowToHigh" xml:space="preserve"><value>낮은 가격순</value></data>

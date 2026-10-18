@@ -134,13 +134,16 @@ public sealed class ProviderViewModel : ObservableObject
     }
 }
 
-public sealed class SuggestionViewModel(string title, string? imageUrl, Money? price, bool isHistory)
+public sealed class SuggestionViewModel(string title, string? imageUrl, Money? price, bool isHistory, bool isFree = false)
 {
     public string Title { get; } = title;
 
     public string? ImageUrl { get; } = imageUrl;
 
-    public string? PriceText { get; } = price is { } money ? MoneyFormatter.Format(money, Loc.Instance.FormatCulture) : null;
+    public string? PriceText { get; } =
+        price is { } money ? MoneyFormatter.Format(money, Loc.Instance.FormatCulture)
+        : isFree ? Loc.T("Suggestion_Free")
+        : null;
 
     public bool IsHistory { get; } = isHistory;
 }

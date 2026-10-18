@@ -61,8 +61,9 @@ public sealed class EnebaProvider(HttpClient http) : StoreProvider(http)
                 if (currency is null || minor is not > 0)
                     continue;
 
-                var price = minor.Value / 100m;
-                var before = (hit.Long($"lowestPriceBeforeDiscount.{currency}") ?? hit.Long($"msrp.{currency}")) / 100m;
+                var perUnit = MinorUnitsPerUnit(currency);
+                var price = minor.Value / perUnit;
+                var before = (hit.Long($"lowestPriceBeforeDiscount.{currency}") ?? hit.Long($"msrp.{currency}")) / perUnit;
                 offers.Add(CreateOffer(title.Trim(), $"{Host}/{slug}", Money.Of(price, currency)) with
                 {
                     RegularPrice = before > price ? Money.Of(before.Value, currency) : null,
@@ -81,6 +82,18 @@ public sealed class EnebaProvider(HttpClient http) : StoreProvider(http)
         }
         return offers;
     }
+
+    /// <summary>
+    /// Eneba counts in ISO 4217 minor units: ¥360 is 360, not 36000 (checked live for JPY, KRW, CLP,
+    /// VND, PYG; HUF, COP and IDR do have two digits there).
+    /// </summary>
+    internal static decimal MinorUnitsPerUnit(string currency) => currency.ToUpperInvariant() switch
+    {
+        "BIF" or "CLP" or "DJF" or "GNF" or "ISK" or "JPY" or "KMF" or "KRW" or "PYG" or "RWF" or "UGX" or "UYI"
+            or "VND" or "VUV" or "XAF" or "XOF" or "XPF" => 1m,
+        "BHD" or "IQD" or "JOD" or "KWD" or "LYD" or "OMR" or "TND" => 1000m,
+        _ => 100m,
+    };
 
     /// <summary>["europe"] → "europe", ["united_states"] → "united states" (RegionTags parses these labels).</summary>
     private static string? RegionLabel(JsonElement hit)

@@ -30,7 +30,9 @@ public sealed class TwoGameProvider(HttpClient http) : StoreProvider(http)
         {
             doc = await SuggestAsync(market, context.Query, cancellationToken).ConfigureAwait(false);
         }
-        catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.NotFound && market.Length > 0)
+        // A storefront that is gone (404), or one in a language Shopify's search does not support:
+        // ja-jp, th-th and zh-cn answer 417 "Unsupported buyer locale". The root (US) store still sells there.
+        catch (HttpRequestException ex) when ((ex.StatusCode is HttpStatusCode.NotFound or HttpStatusCode.ExpectationFailed) && market.Length > 0)
         {
             market = string.Empty;
             doc = await SuggestAsync(market, context.Query, cancellationToken).ConfigureAwait(false);

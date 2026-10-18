@@ -70,7 +70,17 @@ public sealed partial class SteamProvider(HttpClient http) : StoreProvider(http)
 
         // The page has more rows and discount info; the API only fills gaps.
         var urls = pageOffers.Select(o => AppKey(o.Url)).ToHashSet();
-        return [.. pageOffers, .. apiOffers.Where(o => !urls.Contains(AppKey(o.Url)))];
+        return [.. pageOffers.Select(o => WithApiRegularPrice(o, apiOffers)), .. apiOffers.Where(o => !urls.Contains(AppKey(o.Url)))];
+    }
+
+    /// <summary>A page row without a usable original price takes the API's one for the same item and price.</summary>
+    private static Offer WithApiRegularPrice(Offer offer, IReadOnlyList<Offer> apiOffers)
+    {
+        if (offer.RegularPrice is not null)
+            return offer;
+        var key = AppKey(offer.Url);
+        var api = apiOffers.FirstOrDefault(a => a.RegularPrice is not null && a.Price == offer.Price && AppKey(a.Url) == key);
+        return api is null ? offer : offer with { RegularPrice = api.RegularPrice };
     }
 
     /// <summary>Parses inside the task, so a search cancelled while the page loads leaves no document undisposed.</summary>
@@ -119,15 +129,23 @@ public sealed partial class SteamProvider(HttpClient http) : StoreProvider(http)
                 continue;
 
             var finalText = Html.Decode(Html.Match(row, @"discount_final_price[^>]*>([^<]+)<"));
+            // Rows without a price (not out yet, or not sold in this country) say data-price-final="0"
+            // too; only a row that shows one ("Free") is free.
+            if (finalMinor == "0" && finalText.Length == 0)
+                continue;
             // The API reports the currency authoritatively; symbols like "$" or "kr" are ambiguous.
             var currency = knownCurrency ?? CurrencyFromText(finalText, regionCurrency);
             if (currency is null)
                 continue;
             var price = Money.Of(decimal.Parse(finalMinor) / 100m, currency);
 
+            // A row whose cheapest option is a bundle ("Includes 2 games") keeps the item's own price on
+            // the row but shows the bundle's discount: its original price is not this item's.
             Money? regular = null;
+            var discountFinal = Html.Match(row, @"discount_block[^>]*data-price-final=""(\d+)""");
             var originalText = Html.Decode(Html.Match(row, @"discount_original_price[^>]*>([^<]+)<"));
-            if (PriceParser.TryParseAmount(originalText, out var original) && original > price.Amount)
+            if ((discountFinal is null || discountFinal == finalMinor)
+                && PriceParser.TryParseAmount(originalText, out var original) && original > price.Amount)
                 regular = Money.Of(original, currency);
 
             var itemKey = Html.Match(row, @"data-ds-itemkey=""([A-Za-z]+)_");

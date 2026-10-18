@@ -32,12 +32,14 @@ public sealed class InstantGamingProvider(HttpClient http) : StoreProvider(http)
             var id = hit.Str("prod_id");
             var seoName = hit.Str("seo_name");
             var title = hit.Str("fullname") ?? hit.Str("name");
-            var price = hit.Dec("price");
+            // "price" is the amount the page shows, so it can be in the visitor's currency; the *_eur and
+            // retail_prices.EUR fields are euros whatever the page shows.
+            var price = hit.Dec("price_eur") ?? hit.Dec("price");
             // Price "0.00" is a placeholder for products that are not on sale yet.
             if (id is null || seoName is null || string.IsNullOrWhiteSpace(title) || price is not > 0 || hit.Bool("has_stock") != true)
                 continue;
 
-            var retail = hit.Dec("retail");
+            var retail = hit.Dec("retail_prices.EUR") ?? (hit.Str("retail_currency") is null or "EUR" ? hit.Dec("retail") : null);
             offers.Add(CreateOffer(Html.Decode(title), $"{Host}/en/{id}-buy-{seoName}/", Money.Of(price.Value, "EUR")) with
             {
                 RegularPrice = retail > price ? Money.Of(retail.Value, "EUR") : null,

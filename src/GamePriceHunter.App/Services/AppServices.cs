@@ -30,7 +30,7 @@ public sealed class AppServices : IDisposable
         Currency = new CurrencyService(http, paths.RatesCacheFile, logger);
         RegionDetector = new RegionDetector(http, logger);
         Search = new SearchService(ProviderCatalog.CreateAll(http), logger);
-        Suggestions = new SuggestionService(http);
+        Suggestions = new SuggestionService(http, logger);
         _updateHttp = UpdateChecker.CreateHttpClient($"GamePriceHunter/{Version} (+{UpdateChecker.RepositoryUrl})");
         Updates = new UpdateChecker(_updateHttp);
         CanInstallUpdates = !paths.IsPortable && UpdateChecker.IsInstalledCopy(AppContext.BaseDirectory);
