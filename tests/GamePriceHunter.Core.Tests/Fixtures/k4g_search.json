@@ -1,0 +1,1511 @@
+{
+ "observed": false,
+ "page": 1,
+ "show": 30,
+ "category": null,
+ "total": 76,
+ "sort": "bestseller",
+ "sort_dir": 1,
+ "items": [
+  {
+   "id": "PYG3XZ62",
+   "title": "Aim To Get The Witcher 3 - Wild Hunt: Random 1 Steam Key",
+   "slug": "aim-to-get-the-witcher-3-wild-hunt-random-1-steam-key-steam-global-instant-cd-key-cd-key",
+   "confirm_view_key": false,
+   "metacritic": 0,
+   "min_market_price": 0,
+   "show_metacritic": false,
+   "distribution": 1,
+   "delivery_type": 1,
+   "delivery_type_custom": null,
+   "delivery_from": 1,
+   "min_price": "1.99",
+   "unavailableCountries": null,
+   "show_in_bundle": true,
+   "additional_vendor_confirmation": null,
+   "urlMeta": [],
+   "recent_sales": 4,
+   "updated_at": "2026-10-12 09:24:23",
+   "hash_d": "",
+   "hash_a": "",
+   "categories": [
+    {
+     "id": 19,
+     "title": "Aim to Get",
+     "title_en": "Aim to Get"
+    }
+   ],
+   "instruction": {
+    "url": "https://help.k4g.com/how-to-activate-a-steam-key/",
+    "activationType": "steam"
+   },
+   "hot_deal": null,
+   "k4g_choice": null,
+   "new_from": "2026-01-16 11:46:00",
+   "new_to": "2026-01-30 11:46:00",
+   "product": {
+    "id": 25067,
+    "date_release": "2025-10-30 00:00:00",
+    "type": {
+     "id": 21,
+     "name": "Aim To Get",
+     "review_disabled": true
+    },
+    "has_adult_content": false,
+    "frontend_special_promotion": null
+   },
+   "cover": [
+    {
+     "type": "original",
+     "resource": "https://cdn.k4g.com/files/cover/f92aeaecb9bf72db0edfd371d2241746.jpg"
+    },
+    {
+     "type": "cover_270",
+     "resource": "https://cdn.k4g.com/files/media/cache/cover_270/cover/f92aeaecb9bf72db0edfd371d2241746.jpg"
+    },
+    {
+     "type": "cover_206",
+     "resource": "https://cdn.k4g.com/files/media/cache/cover_206/cover/f92aeaecb9bf72db0edfd371d2241746.jpg"
+    },
+    {
+     "type": "cover_132",
+     "resource": "https://cdn.k4g.com/files/media/cache/cover_132/cover/f92aeaecb9bf72db0edfd371d2241746.jpg"
+    },
+    {
+     "type": "cover_66",
+     "resource": "https://cdn.k4g.com/files/media/cache/cover_66/cover/f92aeaecb9bf72db0edfd371d2241746.jpg"
+    },
+    {
+     "type": "cover_20",
+     "resource": "https://cdn.k4g.com/files/media/cache/cover_20/cover/f92aeaecb9bf72db0edfd371d2241746.jpg"
+    }
+   ],
+   "featured_offer": {
+    "id": "FE41V3IS",
+    "price": {
+     "EUR": {
+      "price": 1.99,
+      "discount_percentage": 95
+     },
+     "PLN": {
+      "price": 8.78,
+      "discount_percentage": 95
+     },
+     "GBP": {
+      "price": 1.71,
+      "discount_percentage": 95
+     },
+     "USD": {
+      "price": 2.28,
+      "discount_percentage": 95
+     },
+     "DKK": {
+      "price": 15.17,
+      "discount_percentage": 95
+     },
+     "NOK": {
+      "price": 21.5,
+      "discount_percentage": 95
+     },
+     "SEK": {
+      "price": 22.61,
+      "discount_percentage": 95
+     },
+     "CHF": {
+      "price": 1.88,
+      "discount_percentage": 95
+     },
+     "CAD": {
+      "price": 3.23,
+      "discount_percentage": 95
+     },
+     "JPY": {
+      "price": 360.4,
+      "discount_percentage": 95
+     },
+     "CZK": {
+      "price": 49.37,
+      "discount_percentage": 95
+     },
+     "AUD": {
+      "price": 3.28,
+      "discount_percentage": 95
+     },
+     "BRL": {
+      "price": 11.55,
+      "discount_percentage": 95
+     },
+     "HUF": {
+      "price": 737.45,
+      "discount_percentage": 95
+     },
+     "RON": {
+      "price": 10.79,
+      "discount_percentage": 95
+     },
+     "ILS": {
+      "price": 7.06,
+      "discount_percentage": 95
+     },
+     "MXN": {
+      "price": 42.18,
+      "discount_percentage": 95
+     },
+     "ARS": {
+      "price": 3443.09,
+      "discount_percentage": 95
+     },
+     "TRY": {
+      "price": 112.94,
+      "discount_percentage": 95
+     },
+     "UAH": {
+      "price": 102.31,
+      "discount_percentage": 95
+     },
+     "NGN": {
+      "price": 3036.38,
+      "discount_percentage": 95
+     },
+     "KRW": {
+      "price": 3044.44,
+      "discount_percentage": 95
+     },
+     "SAR": {
+      "price": 8.56,
+      "discount_percentage": 95
+     },
+     "IDR": {
+      "price": 41177.45,
+      "discount_percentage": 95
+     },
+     "BGN": {
+      "price": 3.99,
+      "discount_percentage": 95
+     },
+     "ZAR": {
+      "price": 37.62,
+      "discount_percentage": 95
+     },
+     "INR": {
+      "price": 216.59,
+      "discount_percentage": 95
+     }
+    },
+    "adds_balance": false,
+    "subscription_price": {
+     "default": {
+      "EUR": {
+       "price": 1,
+       "discount_percentage": 97
+      },
+      "PLN": {
+       "price": 4.41,
+       "discount_percentage": 97
+      },
+      "GBP": {
+       "price": 0.86,
+       "discount_percentage": 97
+      },
+      "USD": {
+       "price": 1.15,
+       "discount_percentage": 97
+      },
+      "DKK": {
+       "price": 7.62,
+       "discount_percentage": 97
+      },
+      "NOK": {
+       "price": 10.81,
+       "discount_percentage": 97
+      },
+      "SEK": {
+       "price": 11.36,
+       "discount_percentage": 97
+      },
+      "CHF": {
+       "price": 0.94,
+       "discount_percentage": 97
+      },
+      "CAD": {
+       "price": 1.62,
+       "discount_percentage": 97
+      },
+      "JPY": {
+       "price": 181.1,
+       "discount_percentage": 97
+      },
+      "CZK": {
+       "price": 24.81,
+       "discount_percentage": 97
+      },
+      "AUD": {
+       "price": 1.65,
+       "discount_percentage": 97
+      },
+      "BRL": {
+       "price": 5.81,
+       "discount_percentage": 97
+      },
+      "HUF": {
+       "price": 370.58,
+       "discount_percentage": 97
+      },
+      "RON": {
+       "price": 5.42,
+       "discount_percentage": 97
+      },
+      "ILS": {
+       "price": 3.55,
+       "discount_percentage": 97
+      },
+      "MXN": {
+       "price": 21.2,
+       "discount_percentage": 97
+      },
+      "ARS": {
+       "price": 1730.19,
+       "discount_percentage": 97
+      },
+      "TRY": {
+       "price": 56.75,
+       "discount_percentage": 97
+      },
+      "UAH": {
+       "price": 51.41,
+       "discount_percentage": 97
+      },
+      "NGN": {
+       "price": 1525.82,
+       "discount_percentage": 97
+      },
+      "KRW": {
+       "price": 1529.87,
+       "discount_percentage": 97
+      },
+      "SAR": {
+       "price": 4.3,
+       "discount_percentage": 97
+      },
+      "IDR": {
+       "price": 20692.18,
+       "discount_percentage": 97
+      },
+      "BGN": {
+       "price": 2,
+       "discount_percentage": 97
+      },
+      "ZAR": {
+       "price": 18.91,
+       "discount_percentage": 97
+      },
+      "INR": {
+       "price": 108.84,
+       "discount_percentage": 97
+      }
+     }
+    },
+    "stock_quality": 100,
+    "retail_price": {
+     "EUR": 39.99,
+     "PLN": 176.48,
+     "GBP": 34.39,
+     "USD": 45.84,
+     "DKK": 304.87,
+     "NOK": 432.13,
+     "SEK": 454.35,
+     "CHF": 37.77,
+     "CAD": 64.87,
+     "JPY": 7242.35,
+     "CZK": 992.14,
+     "AUD": 65.82,
+     "BRL": 232.16,
+     "HUF": 14819.31,
+     "RON": 216.83,
+     "ILS": 141.85,
+     "MXN": 847.64,
+     "ARS": 69190.44,
+     "TRY": 2269.53,
+     "UAH": 2055.96,
+     "NGN": 61017.59,
+     "KRW": 61179.39,
+     "SAR": 172,
+     "IDR": 827480.46,
+     "BGN": 80.11,
+     "ZAR": 756.02,
+     "INR": 4352.56
+    },
+    "low_stock_from": null,
+    "low_stock_to": null,
+    "instruction": null,
+    "promotions": [],
+    "owner": {
+     "id": "3b3cc4c0a92d6d4cf471c2dd050a7cb9",
+     "username": "GamersUniverse",
+     "badge": false,
+     "software_expert_badge": false,
+     "rating": 100,
+     "profile_description": "",
+     "complaintRatio": 0,
+     "vatRates": [],
+     "allow_image_key": false,
+     "total_sales": 191507,
+     "avatar": [
+      {
+       "type": "original",
+       "resource": "https://cdn.k4g.com/files/avatar/26321cfe4042d531140c1999de4ecbf6.jpg"
+      }
+     ],
+     "created_at": "2023-09-05 09:11:07"
+    }
+   },
+   "platform": {
+    "id": 1,
+    "name": "Steam",
+    "description": "Steam",
+    "icon": [
+     {
+      "type": "original",
+      "resource": "https://cdn.k4g.com/files/platform/f1d38f165daa878d4c1d1d618d185731.png"
+     }
+    ]
+   },
+   "region": {
+    "id": 1,
+    "name": "Global",
+    "description": "Global",
+    "icon": [
+     {
+      "type": "original",
+      "resource": "https://cdn.k4g.com/files/locale_region/03438f8b90d0b925b18d79bf6daa6a13.png"
+     }
+    ]
+   }
+  },
+  {
+   "id": "4EF86363",
+   "title": "Thronebreaker: The Witcher Tales Steam CD Key",
+   "slug": "thronebreaker-the-witcher-tales-steam-global-cd-key",
+   "confirm_view_key": false,
+   "metacritic": 85,
+   "min_market_price": 0,
+   "show_metacritic": true,
+   "distribution": 1,
+   "delivery_type": 1,
+   "delivery_type_custom": null,
+   "delivery_from": 1,
+   "min_price": null,
+   "unavailableCountries": null,
+   "show_in_bundle": true,
+   "additional_vendor_confirmation": null,
+   "urlMeta": [],
+   "recent_sales": 3,
+   "updated_at": "2026-10-18 09:40:34",
+   "hash_d": "91858ece811",
+   "hash_a": "aHR0cHM6Ly93d3cuYWxsa2V5c2hvcC5jb20vYmxvZy9idXktdGhyb25lYnJlYWtlci10aGUtd2l0Y2hlci10YWxlcy1jZC1rZXktY29tcGFyZS1wcmljZXMvP2VkaXRpb25zPTEmcmVnaW9ucz0y",
+   "categories": [
+    {
+     "id": 2,
+     "title": "Games",
+     "title_en": "Games"
+    }
+   ],
+   "instruction": {
+    "url": "https://help.k4g.com/how-to-activate-a-steam-key/",
+    "activationType": "steam"
+   },
+   "hot_deal": null,
+   "k4g_choice": null,
+   "new_from": null,
+   "new_to": null,
+   "product": {
+    "id": 10656,
+    "date_release": "2018-11-08 23:00:00",
+    "type": {
+     "id": 1,
+     "name": "Base product",
+     "review_disabled": false
+    },
+    "has_adult_content": false,
+    "frontend_special_promotion": null
+   },
+   "cover": [
+    {
+     "type": "original",
+     "resource": "https://cdn.k4g.com/files/cover/8aca79ce614603a701ab24edd2d9c798.jpeg"
+    },
+    {
+     "type": "cover_270",
+     "resource": "https://cdn.k4g.com/files/media/cache/cover_270/cover/8aca79ce614603a701ab24edd2d9c798.jpeg"
+    },
+    {
+     "type": "cover_206",
+     "resource": "https://cdn.k4g.com/files/media/cache/cover_206/cover/8aca79ce614603a701ab24edd2d9c798.jpeg"
+    },
+    {
+     "type": "cover_132",
+     "resource": "https://cdn.k4g.com/files/media/cache/cover_132/cover/8aca79ce614603a701ab24edd2d9c798.jpeg"
+    },
+    {
+     "type": "cover_66",
+     "resource": "https://cdn.k4g.com/files/media/cache/cover_66/cover/8aca79ce614603a701ab24edd2d9c798.jpeg"
+    },
+    {
+     "type": "cover_20",
+     "resource": "https://cdn.k4g.com/files/media/cache/cover_20/cover/8aca79ce614603a701ab24edd2d9c798.jpeg"
+    }
+   ],
+   "featured_offer": {
+    "id": "5V7OQU8Y",
+    "price": {
+     "EUR": {
+      "price": 0.74,
+      "discount_percentage": 96
+     },
+     "PLN": {
+      "price": 3.27,
+      "discount_percentage": 96
+     },
+     "GBP": {
+      "price": 0.64,
+      "discount_percentage": 96
+     },
+     "USD": {
+      "price": 0.85,
+      "discount_percentage": 96
+     },
+     "DKK": {
+      "price": 5.64,
+      "discount_percentage": 96
+     },
+     "NOK": {
+      "price": 8,
+      "discount_percentage": 96
+     },
+     "SEK": {
+      "price": 8.41,
+      "discount_percentage": 96
+     },
+     "CHF": {
+      "price": 0.7,
+      "discount_percentage": 96
+     },
+     "CAD": {
+      "price": 1.2,
+      "discount_percentage": 96
+     },
+     "JPY": {
+      "price": 134.03,
+      "discount_percentage": 96
+     },
+     "CZK": {
+      "price": 18.36,
+      "discount_percentage": 96
+     },
+     "AUD": {
+      "price": 1.22,
+      "discount_percentage": 96
+     },
+     "BRL": {
+      "price": 4.3,
+      "discount_percentage": 96
+     },
+     "HUF": {
+      "price": 274.23,
+      "discount_percentage": 96
+     },
+     "RON": {
+      "price": 4.01,
+      "discount_percentage": 96
+     },
+     "ILS": {
+      "price": 2.62,
+      "discount_percentage": 96
+     },
+     "MXN": {
+      "price": 15.69,
+      "discount_percentage": 96
+     },
+     "ARS": {
+      "price": 1285.21,
+      "discount_percentage": 96
+     },
+     "TRY": {
+      "price": 42,
+      "discount_percentage": 96
+     },
+     "UAH": {
+      "price": 38.1,
+      "discount_percentage": 96
+     },
+     "NGN": {
+      "price": 1129.11,
+      "discount_percentage": 96
+     },
+     "KRW": {
+      "price": 1132.1,
+      "discount_percentage": 96
+     },
+     "SAR": {
+      "price": 3.18,
+      "discount_percentage": 96
+     },
+     "IDR": {
+      "price": 15312.22,
+      "discount_percentage": 96
+     },
+     "BGN": {
+      "price": 1.48,
+      "discount_percentage": 96
+     },
+     "ZAR": {
+      "price": 13.99,
+      "discount_percentage": 96
+     },
+     "INR": {
+      "price": 80.55,
+      "discount_percentage": 96
+     }
+    },
+    "adds_balance": false,
+    "subscription_price": {
+     "default": {
+      "EUR": {
+       "price": 0.37,
+       "discount_percentage": 98
+      },
+      "PLN": {
+       "price": 1.63,
+       "discount_percentage": 98
+      },
+      "GBP": {
+       "price": 0.32,
+       "discount_percentage": 98
+      },
+      "USD": {
+       "price": 0.42,
+       "discount_percentage": 98
+      },
+      "DKK": {
+       "price": 2.82,
+       "discount_percentage": 98
+      },
+      "NOK": {
+       "price": 4,
+       "discount_percentage": 98
+      },
+      "SEK": {
+       "price": 4.2,
+       "discount_percentage": 98
+      },
+      "CHF": {
+       "price": 0.35,
+       "discount_percentage": 98
+      },
+      "CAD": {
+       "price": 0.6,
+       "discount_percentage": 98
+      },
+      "JPY": {
+       "price": 67.01,
+       "discount_percentage": 98
+      },
+      "CZK": {
+       "price": 9.18,
+       "discount_percentage": 98
+      },
+      "AUD": {
+       "price": 0.61,
+       "discount_percentage": 98
+      },
+      "BRL": {
+       "price": 2.15,
+       "discount_percentage": 98
+      },
+      "HUF": {
+       "price": 137.11,
+       "discount_percentage": 98
+      },
+      "RON": {
+       "price": 2.01,
+       "discount_percentage": 98
+      },
+      "ILS": {
+       "price": 1.31,
+       "discount_percentage": 98
+      },
+      "MXN": {
+       "price": 7.84,
+       "discount_percentage": 98
+      },
+      "ARS": {
+       "price": 642.61,
+       "discount_percentage": 98
+      },
+      "TRY": {
+       "price": 21,
+       "discount_percentage": 98
+      },
+      "UAH": {
+       "price": 19.05,
+       "discount_percentage": 98
+      },
+      "NGN": {
+       "price": 564.55,
+       "discount_percentage": 98
+      },
+      "KRW": {
+       "price": 566.05,
+       "discount_percentage": 98
+      },
+      "SAR": {
+       "price": 1.59,
+       "discount_percentage": 98
+      },
+      "IDR": {
+       "price": 7656.11,
+       "discount_percentage": 98
+      },
+      "BGN": {
+       "price": 0.74,
+       "discount_percentage": 98
+      },
+      "ZAR": {
+       "price": 6.99,
+       "discount_percentage": 98
+      },
+      "INR": {
+       "price": 40.27,
+       "discount_percentage": 98
+      }
+     }
+    },
+    "stock_quality": 100,
+    "retail_price": {
+     "EUR": 19.98,
+     "PLN": 88.17,
+     "GBP": 17.22,
+     "USD": 22.9,
+     "DKK": 152.32,
+     "NOK": 215.9,
+     "SEK": 227,
+     "CHF": 18.91,
+     "CAD": 32.42,
+     "JPY": 3618.69,
+     "CZK": 495.7,
+     "AUD": 32.88,
+     "BRL": 116,
+     "HUF": 7404.1,
+     "RON": 108.34,
+     "ILS": 70.87,
+     "MXN": 423.5,
+     "ARS": 34700.68,
+     "TRY": 1133.91,
+     "UAH": 1028.73,
+     "NGN": 30485.91,
+     "KRW": 30566.75,
+     "SAR": 85.94,
+     "IDR": 413429.85,
+     "BGN": 40.03,
+     "ZAR": 377.73,
+     "INR": 2174.79
+    },
+    "low_stock_from": null,
+    "low_stock_to": null,
+    "instruction": null,
+    "promotions": [],
+    "owner": {
+     "id": "42d1acdeed9c3efdfa6782f61f273116",
+     "username": "CollectionStore",
+     "badge": false,
+     "software_expert_badge": false,
+     "rating": 100,
+     "profile_description": "We have been running for more than 10 years. We are committed to offering the finest products on the market. We specialize in various game keys. We have successfully sold well over 2,000,000 game keys. Every key is carefully checked to ensure valid activation without problems. Our service is available 24/7. Choose us and enjoy your gaming experience.",
+     "complaintRatio": 0,
+     "vatRates": [],
+     "allow_image_key": false,
+     "total_sales": 10849,
+     "avatar": [
+      {
+       "type": "original",
+       "resource": "https://cdn.k4g.com/files/media/cache/avatar/f084b8fc653d68333e407bc96fc0e847.jpg"
+      }
+     ],
+     "created_at": "2026-06-30 07:13:47"
+    }
+   },
+   "platform": {
+    "id": 1,
+    "name": "Steam",
+    "description": "Steam",
+    "icon": [
+     {
+      "type": "original",
+      "resource": "https://cdn.k4g.com/files/platform/f1d38f165daa878d4c1d1d618d185731.png"
+     }
+    ]
+   },
+   "region": {
+    "id": 1,
+    "name": "Global",
+    "description": "Global",
+    "icon": [
+     {
+      "type": "original",
+      "resource": "https://cdn.k4g.com/files/locale_region/03438f8b90d0b925b18d79bf6daa6a13.png"
+     }
+    ]
+   }
+  },
+  {
+   "id": "8863FDF1",
+   "title": "The Witcher 2 Assassins of Kings Enhanced Edition GOG CD Key",
+   "slug": "the-witcher-2-assassins-of-kings-gog-global-cd-key-enhanced-edition-cd-key",
+   "confirm_view_key": true,
+   "metacritic": 88,
+   "min_market_price": 0,
+   "show_metacritic": true,
+   "distribution": 1,
+   "delivery_type": 1,
+   "delivery_type_custom": null,
+   "delivery_from": 1,
+   "min_price": null,
+   "unavailableCountries": null,
+   "show_in_bundle": true,
+   "additional_vendor_confirmation": null,
+   "urlMeta": [],
+   "recent_sales": 3,
+   "updated_at": "2026-10-18 09:40:39",
+   "hash_d": "9184eb81d13",
+   "hash_a": "",
+   "categories": [
+    {
+     "id": 2,
+     "title": "Games",
+     "title_en": "Games"
+    }
+   ],
+   "instruction": {
+    "url": "https://help.k4g.com/how-to-activate-a-gog-key/",
+    "activationType": null
+   },
+   "hot_deal": null,
+   "k4g_choice": null,
+   "new_from": null,
+   "new_to": null,
+   "product": {
+    "id": 757,
+    "date_release": "2017-11-05 00:00:00",
+    "type": {
+     "id": 1,
+     "name": "Base product",
+     "review_disabled": false
+    },
+    "has_adult_content": false,
+    "frontend_special_promotion": null
+   },
+   "cover": [
+    {
+     "type": "original",
+     "resource": "https://cdn.k4g.com/files/cover/146119c85787ad5a2b39794ac5cddabe.jpg"
+    },
+    {
+     "type": "cover_270",
+     "resource": "https://cdn.k4g.com/files/media/cache/cover_270/cover/146119c85787ad5a2b39794ac5cddabe.jpg"
+    },
+    {
+     "type": "cover_206",
+     "resource": "https://cdn.k4g.com/files/media/cache/cover_206/cover/146119c85787ad5a2b39794ac5cddabe.jpg"
+    },
+    {
+     "type": "cover_132",
+     "resource": "https://cdn.k4g.com/files/media/cache/cover_132/cover/146119c85787ad5a2b39794ac5cddabe.jpg"
+    },
+    {
+     "type": "cover_66",
+     "resource": "https://cdn.k4g.com/files/media/cache/cover_66/cover/146119c85787ad5a2b39794ac5cddabe.jpg"
+    },
+    {
+     "type": "cover_20",
+     "resource": "https://cdn.k4g.com/files/media/cache/cover_20/cover/146119c85787ad5a2b39794ac5cddabe.jpg"
+    }
+   ],
+   "featured_offer": {
+    "id": "A91C233F",
+    "price": {
+     "EUR": {
+      "price": 1.58,
+      "discount_percentage": 82
+     },
+     "PLN": {
+      "price": 6.97,
+      "discount_percentage": 82
+     },
+     "GBP": {
+      "price": 1.36,
+      "discount_percentage": 82
+     },
+     "USD": {
+      "price": 1.81,
+      "discount_percentage": 82
+     },
+     "DKK": {
+      "price": 12.05,
+      "discount_percentage": 82
+     },
+     "NOK": {
+      "price": 17.07,
+      "discount_percentage": 82
+     },
+     "SEK": {
+      "price": 17.95,
+      "discount_percentage": 82
+     },
+     "CHF": {
+      "price": 1.5,
+      "discount_percentage": 82
+     },
+     "CAD": {
+      "price": 2.56,
+      "discount_percentage": 82
+     },
+     "JPY": {
+      "price": 286.16,
+      "discount_percentage": 82
+     },
+     "CZK": {
+      "price": 39.2,
+      "discount_percentage": 82
+     },
+     "AUD": {
+      "price": 2.6,
+      "discount_percentage": 82
+     },
+     "BRL": {
+      "price": 9.17,
+      "discount_percentage": 82
+     },
+     "HUF": {
+      "price": 585.51,
+      "discount_percentage": 82
+     },
+     "RON": {
+      "price": 8.57,
+      "discount_percentage": 82
+     },
+     "ILS": {
+      "price": 5.6,
+      "discount_percentage": 82
+     },
+     "MXN": {
+      "price": 33.49,
+      "discount_percentage": 82
+     },
+     "ARS": {
+      "price": 2744.1,
+      "discount_percentage": 82
+     },
+     "TRY": {
+      "price": 89.67,
+      "discount_percentage": 82
+     },
+     "UAH": {
+      "price": 81.35,
+      "discount_percentage": 82
+     },
+     "NGN": {
+      "price": 2410.8,
+      "discount_percentage": 82
+     },
+     "KRW": {
+      "price": 2417.19,
+      "discount_percentage": 82
+     },
+     "SAR": {
+      "price": 6.8,
+      "discount_percentage": 82
+     },
+     "IDR": {
+      "price": 32693.65,
+      "discount_percentage": 82
+     },
+     "BGN": {
+      "price": 3.17,
+      "discount_percentage": 82
+     },
+     "ZAR": {
+      "price": 29.87,
+      "discount_percentage": 82
+     },
+     "INR": {
+      "price": 171.98,
+      "discount_percentage": 82
+     }
+    },
+    "adds_balance": false,
+    "subscription_price": {
+     "default": {
+      "EUR": {
+       "price": 0.79,
+       "discount_percentage": 91
+      },
+      "PLN": {
+       "price": 3.49,
+       "discount_percentage": 91
+      },
+      "GBP": {
+       "price": 0.68,
+       "discount_percentage": 91
+      },
+      "USD": {
+       "price": 0.91,
+       "discount_percentage": 91
+      },
+      "DKK": {
+       "price": 6.02,
+       "discount_percentage": 91
+      },
+      "NOK": {
+       "price": 8.54,
+       "discount_percentage": 91
+      },
+      "SEK": {
+       "price": 8.98,
+       "discount_percentage": 91
+      },
+      "CHF": {
+       "price": 0.75,
+       "discount_percentage": 91
+      },
+      "CAD": {
+       "price": 1.28,
+       "discount_percentage": 91
+      },
+      "JPY": {
+       "price": 143.08,
+       "discount_percentage": 91
+      },
+      "CZK": {
+       "price": 19.6,
+       "discount_percentage": 91
+      },
+      "AUD": {
+       "price": 1.3,
+       "discount_percentage": 91
+      },
+      "BRL": {
+       "price": 4.59,
+       "discount_percentage": 91
+      },
+      "HUF": {
+       "price": 292.75,
+       "discount_percentage": 91
+      },
+      "RON": {
+       "price": 4.28,
+       "discount_percentage": 91
+      },
+      "ILS": {
+       "price": 2.8,
+       "discount_percentage": 91
+      },
+      "MXN": {
+       "price": 16.75,
+       "discount_percentage": 91
+      },
+      "ARS": {
+       "price": 1372.05,
+       "discount_percentage": 91
+      },
+      "TRY": {
+       "price": 44.83,
+       "discount_percentage": 91
+      },
+      "UAH": {
+       "price": 40.68,
+       "discount_percentage": 91
+      },
+      "NGN": {
+       "price": 1205.4,
+       "discount_percentage": 91
+      },
+      "KRW": {
+       "price": 1208.6,
+       "discount_percentage": 91
+      },
+      "SAR": {
+       "price": 3.4,
+       "discount_percentage": 91
+      },
+      "IDR": {
+       "price": 16346.83,
+       "discount_percentage": 91
+      },
+      "BGN": {
+       "price": 1.58,
+       "discount_percentage": 91
+      },
+      "ZAR": {
+       "price": 14.94,
+       "discount_percentage": 91
+      },
+      "INR": {
+       "price": 85.99,
+       "discount_percentage": 91
+      }
+     }
+    },
+    "stock_quality": 96,
+    "retail_price": {
+     "EUR": 8.99,
+     "PLN": 39.67,
+     "GBP": 7.75,
+     "USD": 10.3,
+     "DKK": 68.54,
+     "NOK": 97.15,
+     "SEK": 102.14,
+     "CHF": 8.51,
+     "CAD": 14.59,
+     "JPY": 1628.23,
+     "CZK": 223.04,
+     "AUD": 14.8,
+     "BRL": 52.19,
+     "HUF": 3331.47,
+     "RON": 48.75,
+     "ILS": 31.89,
+     "MXN": 190.56,
+     "ARS": 15613.57,
+     "TRY": 510.2,
+     "UAH": 462.88,
+     "NGN": 13717.13,
+     "KRW": 13753.51,
+     "SAR": 38.67,
+     "IDR": 186022.74,
+     "BGN": 18.01,
+     "ZAR": 169.96,
+     "INR": 978.55
+    },
+    "low_stock_from": null,
+    "low_stock_to": null,
+    "instruction": null,
+    "promotions": [],
+    "owner": {
+     "id": "059ca9ad8f74d92ecc72e8426bd150f8",
+     "username": "Top Gun Games",
+     "badge": false,
+     "software_expert_badge": false,
+     "rating": 98,
+     "profile_description": "sale of digital keys for games. Steam, origin, xbox",
+     "complaintRatio": 1,
+     "vatRates": [],
+     "allow_image_key": false,
+     "total_sales": 12735,
+     "avatar": [
+      {
+       "type": "original",
+       "resource": "https://cdn.k4g.com/files/media/cache/avatar/9d5c71758be09723c002cccaf17418b6.jpeg"
+      }
+     ],
+     "created_at": "2022-10-19 14:19:46"
+    }
+   },
+   "platform": {
+    "id": 5,
+    "name": "GOG",
+    "description": "GOG",
+    "icon": [
+     {
+      "type": "original",
+      "resource": "https://cdn.k4g.com/files/platform/03760199a33a1716c46b1df1dc2f9a2a.png"
+     }
+    ]
+   },
+   "region": {
+    "id": 1,
+    "name": "Global",
+    "description": "Global",
+    "icon": [
+     {
+      "type": "original",
+      "resource": "https://cdn.k4g.com/files/locale_region/03438f8b90d0b925b18d79bf6daa6a13.png"
+     }
+    ]
+   }
+  },
+  {
+   "id": "9E32C2EF",
+   "title": "The Witcher 3: Wild Hunt Standard Edition PS4 Account",
+   "slug": "the-witcher-3-wild-hunt-playstation-4-global-instant-account-standard-edition-account",
+   "confirm_view_key": true,
+   "metacritic": 92,
+   "min_market_price": 0,
+   "show_metacritic": true,
+   "distribution": 3,
+   "delivery_type": 1,
+   "delivery_type_custom": null,
+   "delivery_from": 1,
+   "min_price": null,
+   "unavailableCountries": null,
+   "show_in_bundle": false,
+   "additional_vendor_confirmation": null,
+   "urlMeta": [],
+   "recent_sales": 2,
+   "updated_at": "2026-08-28 12:19:05",
+   "hash_d": "9184e7cbdf8",
+   "hash_a": "",
+   "categories": [
+    {
+     "id": 2,
+     "title": "Games",
+     "title_en": "Games"
+    }
+   ],
+   "instruction": {
+    "url": "https://help.k4g.com/how-to-log-in-to-a-purchased-playstation-account/",
+    "activationType": null
+   },
+   "hot_deal": null,
+   "k4g_choice": null,
+   "new_from": null,
+   "new_to": null,
+   "product": {
+    "id": 758,
+    "date_release": "2015-05-18 00:00:00",
+    "type": {
+     "id": 1,
+     "name": "Base product",
+     "review_disabled": false
+    },
+    "has_adult_content": false,
+    "frontend_special_promotion": null
+   },
+   "cover": [
+    {
+     "type": "original",
+     "resource": "https://cdn.k4g.com/files/cover/79afaac256a33b3d9def903d18bd026e.jpeg"
+    },
+    {
+     "type": "cover_270",
+     "resource": "https://cdn.k4g.com/files/media/cache/cover_270/cover/79afaac256a33b3d9def903d18bd026e.jpeg"
+    },
+    {
+     "type": "cover_206",
+     "resource": "https://cdn.k4g.com/files/media/cache/cover_206/cover/79afaac256a33b3d9def903d18bd026e.jpeg"
+    },
+    {
+     "type": "cover_132",
+     "resource": "https://cdn.k4g.com/files/media/cache/cover_132/cover/79afaac256a33b3d9def903d18bd026e.jpeg"
+    },
+    {
+     "type": "cover_66",
+     "resource": "https://cdn.k4g.com/files/media/cache/cover_66/cover/79afaac256a33b3d9def903d18bd026e.jpeg"
+    },
+    {
+     "type": "cover_20",
+     "resource": "https://cdn.k4g.com/files/media/cache/cover_20/cover/79afaac256a33b3d9def903d18bd026e.jpeg"
+    }
+   ],
+   "featured_offer": {
+    "id": "42FC356E",
+    "price": {
+     "EUR": {
+      "price": 7.99,
+      "discount_percentage": 84
+     },
+     "PLN": {
+      "price": 35.26,
+      "discount_percentage": 84
+     },
+     "GBP": {
+      "price": 6.89,
+      "discount_percentage": 84
+     },
+     "USD": {
+      "price": 9.16,
+      "discount_percentage": 84
+     },
+     "DKK": {
+      "price": 60.91,
+      "discount_percentage": 84
+     },
+     "NOK": {
+      "price": 86.34,
+      "discount_percentage": 84
+     },
+     "SEK": {
+      "price": 90.78,
+      "discount_percentage": 84
+     },
+     "CHF": {
+      "price": 7.56,
+      "discount_percentage": 84
+     },
+     "CAD": {
+      "price": 12.97,
+      "discount_percentage": 84
+     },
+     "JPY": {
+      "price": 1447.11,
+      "discount_percentage": 84
+     },
+     "CZK": {
+      "price": 198.23,
+      "discount_percentage": 84
+     },
+     "AUD": {
+      "price": 13.15,
+      "discount_percentage": 84
+     },
+     "BRL": {
+      "price": 46.39,
+      "discount_percentage": 84
+     },
+     "HUF": {
+      "price": 2960.9,
+      "discount_percentage": 84
+     },
+     "RON": {
+      "price": 43.32,
+      "discount_percentage": 84
+     },
+     "ILS": {
+      "price": 28.34,
+      "discount_percentage": 84
+     },
+     "MXN": {
+      "price": 169.36,
+      "discount_percentage": 84
+     },
+     "ARS": {
+      "price": 13876.8,
+      "discount_percentage": 84
+     },
+     "TRY": {
+      "price": 453.45,
+      "discount_percentage": 84
+     },
+     "UAH": {
+      "price": 411.39,
+      "discount_percentage": 84
+     },
+     "NGN": {
+      "price": 12191.31,
+      "discount_percentage": 84
+     },
+     "KRW": {
+      "price": 12223.64,
+      "discount_percentage": 84
+     },
+     "SAR": {
+      "price": 34.37,
+      "discount_percentage": 84
+     },
+     "IDR": {
+      "price": 165330.56,
+      "discount_percentage": 84
+     },
+     "BGN": {
+      "price": 16.01,
+      "discount_percentage": 84
+     },
+     "ZAR": {
+      "price": 151.05,
+      "discount_percentage": 84
+     },
+     "INR": {
+      "price": 869.7,
+      "discount_percentage": 84
+     }
+    },
+    "adds_balance": false,
+    "subscription_price": {
+     "default": {
+      "EUR": {
+       "price": 6.39,
+       "discount_percentage": 87
+      },
+      "PLN": {
+       "price": 28.2,
+       "discount_percentage": 87
+      },
+      "GBP": {
+       "price": 5.51,
+       "discount_percentage": 87
+      },
+      "USD": {
+       "price": 7.32,
+       "discount_percentage": 87
+      },
+      "DKK": {
+       "price": 48.71,
+       "discount_percentage": 87
+      },
+      "NOK": {
+       "price": 69.05,
+       "discount_percentage": 87
+      },
+      "SEK": {
+       "price": 72.6,
+       "discount_percentage": 87
+      },
+      "CHF": {
+       "price": 6.05,
+       "discount_percentage": 87
+      },
+      "CAD": {
+       "price": 10.37,
+       "discount_percentage": 87
+      },
+      "JPY": {
+       "price": 1157.33,
+       "discount_percentage": 87
+      },
+      "CZK": {
+       "price": 158.53,
+       "discount_percentage": 87
+      },
+      "AUD": {
+       "price": 10.52,
+       "discount_percentage": 87
+      },
+      "BRL": {
+       "price": 37.1,
+       "discount_percentage": 87
+      },
+      "HUF": {
+       "price": 2367.98,
+       "discount_percentage": 87
+      },
+      "RON": {
+       "price": 34.65,
+       "discount_percentage": 87
+      },
+      "ILS": {
+       "price": 22.67,
+       "discount_percentage": 87
+      },
+      "MXN": {
+       "price": 135.44,
+       "discount_percentage": 87
+      },
+      "ARS": {
+       "price": 11097.97,
+       "discount_percentage": 87
+      },
+      "TRY": {
+       "price": 362.65,
+       "discount_percentage": 87
+      },
+      "UAH": {
+       "price": 329.01,
+       "discount_percentage": 87
+      },
+      "NGN": {
+       "price": 9750,
+       "discount_percentage": 87
+      },
+      "KRW": {
+       "price": 9775.85,
+       "discount_percentage": 87
+      },
+      "SAR": {
+       "price": 27.49,
+       "discount_percentage": 87
+      },
+      "IDR": {
+       "price": 132223.06,
+       "discount_percentage": 87
+      },
+      "BGN": {
+       "price": 12.8,
+       "discount_percentage": 87
+      },
+      "ZAR": {
+       "price": 120.8,
+       "discount_percentage": 87
+      },
+      "INR": {
+       "price": 695.54,
+       "discount_percentage": 87
+      }
+     }
+    },
+    "stock_quality": 93,
+    "retail_price": {
+     "EUR": 49.99,
+     "PLN": 220.61,
+     "GBP": 43.09,
+     "USD": 57.3,
+     "DKK": 381.1,
+     "NOK": 540.19,
+     "SEK": 567.96,
+     "CHF": 47.32,
+     "CAD": 81.12,
+     "JPY": 9053.96,
+     "CZK": 1240.23,
+     "AUD": 82.28,
+     "BRL": 290.22,
+     "HUF": 18525.07,
+     "RON": 271.05,
+     "ILS": 177.32,
+     "MXN": 1059.61,
+     "ARS": 86821.17,
+     "TRY": 2837.05,
+     "UAH": 2573.88,
+     "NGN": 76275.8,
+     "KRW": 76478.07,
+     "SAR": 215.03,
+     "IDR": 1034402.31,
+     "BGN": 100.15,
+     "ZAR": 945.08,
+     "INR": 5441.34
+    },
+    "low_stock_from": null,
+    "low_stock_to": null,
+    "instruction": null,
+    "promotions": [],
+    "owner": {
+     "id": "38fd5a5a7f468cb5eaa2891ac2bb089f",
+     "username": "PixelPuffin",
+     "badge": false,
+     "software_expert_badge": false,
+     "rating": 93,
+     "profile_description": "Buy Games Cheaper Than Ever",
+     "complaintRatio": 7,
+     "vatRates": [],
+     "allow_image_key": false,
+     "total_sales": 420,
+     "avatar": [
+      {
+       "type": "original",
+       "resource": "https://cdn.k4g.com/files/media/cache/avatar/6d520d6668395d6ff96f9f57f1572b60.png"
+      }
+     ],
+     "created_at": "2025-04-24 13:24:17"
+    }
+   },
+   "platform": {
+    "id": 68,
+    "name": "PlayStation 4",
+    "description": "PlayStation 4",
+    "icon": [
+     {
+      "type": "original",
+      "resource": "https://cdn.k4g.com/files/platform/c10165ee3f7b5cf571b97f32f9997384.png"
+     }
+    ]
+   },
+   "region": {
+    "id": 1,
+    "name": "Global",
+    "description": "Global",
+    "icon": [
+     {
+      "type": "original",
+      "resource": "https://cdn.k4g.com/files/locale_region/03438f8b90d0b925b18d79bf6daa6a13.png"
+     }
+    ]
+   }
+  }
+ ]
+}

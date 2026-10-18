@@ -1,0 +1,524 @@
+{
+ "_note": "POST https://shop.buka.ru/s/f/v3/search/get-result body {\"term\":\"witcher\",\"channel\":\"WEB\"} -> get_result; then POST /s/f/v3/search/get-page body {\"pageIndex\":0,\"filter\":{\"term\":\"witcher\",\"area_id\":2002,\"channel\":\"WEB\"}} -> get_page (rows trimmed to 3)",
+ "get_result": {
+  "areas": [
+   {
+    "id": 100001,
+    "title": "Все",
+    "entityType": "product",
+    "foundQty": 13
+   },
+   {
+    "id": 2016,
+    "title": "Товары по играм и кино/Фигурки Tubbz",
+    "entityType": "product",
+    "foundQty": 3
+   },
+   {
+    "id": 2002,
+    "title": "Игры/Игры для Windows",
+    "entityType": "product",
+    "foundQty": 9
+   },
+   {
+    "id": 2005,
+    "title": "Игры/Игры для Mac OS",
+    "entityType": "product",
+    "foundQty": 1
+   }
+  ]
+ },
+ "get_page": {
+  "entityType": "product",
+  "page": {
+   "pageIndex": 0,
+   "totalRows": 9,
+   "hasNext": false,
+   "pageSize": 12,
+   "rows": [
+    {
+     "price": {
+      "actual": 1999,
+      "old": 0,
+      "bonus": 0,
+      "discount": 0
+     },
+     "labels": [],
+     "id": 5091,
+     "title": "SoulCalibur VI (PC)",
+     "description": "<p><strong>Легендарная серия файтингов в сеттинге вселенной Soul вышла на аркадные автоматы в далёком 1998 году и до сих...(trimmed)",
+     "alias": "soulcalibur_vi__predzakaz_",
+     "filters": [
+      {
+       "id": 10,
+       "title": "Система активации",
+       "field": "activation_system",
+       "values": [
+        {
+         "id": 38,
+         "title": "Steam"
+        }
+       ]
+      },
+      {
+       "id": 9,
+       "title": "Серии",
+       "field": "series",
+       "values": [
+        {
+         "id": 301,
+         "title": "SoulCalibur"
+        }
+       ]
+      },
+      {
+       "id": 4,
+       "title": "Жанр",
+       "field": "genre",
+       "values": [
+        {
+         "id": 411,
+         "title": "Драки"
+        },
+        {
+         "id": 439,
+         "title": "Экшен"
+        }
+       ]
+      },
+      {
+       "id": 7,
+       "title": "Издатель",
+       "field": "publisher",
+       "values": [
+        {
+         "id": 477,
+         "title": "BANDAI NAMCO"
+        }
+       ]
+      },
+      {
+       "id": 3,
+       "title": "Регионы",
+       "field": "region",
+       "values": [
+        {
+         "id": 889,
+         "title": "Россия"
+        }
+       ]
+      },
+      {
+       "id": 5,
+       "title": "Платформа",
+       "field": "platform",
+       "values": [
+        {
+         "id": 907,
+         "title": "ПК"
+        }
+       ]
+      },
+      {
+       "id": 11,
+       "title": "Возраст",
+       "field": "ageRating",
+       "values": [
+        {
+         "id": 924,
+         "title": "16+"
+        }
+       ]
+      },
+      {
+       "id": 6,
+       "title": "Локализация",
+       "field": "lang",
+       "values": [
+        {
+         "id": 8503,
+         "title": "Русский (интерфейс и субтитры)"
+        }
+       ]
+      }
+     ],
+     "modifiers": [
+      {
+       "type": "Тип издания",
+       "links": [
+        {
+         "title": "Standard Edition",
+         "productId": 5091,
+         "icon": null
+        },
+        {
+         "title": "Deluxe Edition",
+         "productId": 5092,
+         "icon": null
+        }
+       ]
+      }
+     ],
+     "type": 3,
+     "isInWishlist": false,
+     "saleState": "available",
+     "releaseDate": "2018-10-19T00:00:00+00:00",
+     "images": {
+      "main": {
+       "id": 77681,
+       "maxSize": "https://static.buka.ru/img/685b05ebd7b9a.jpg",
+       "minSize": "https://static.buka.ru/img/685b05ebd7b9a160x.jpg",
+       "resized": {
+        "x": "https://static.buka.ru/img/685b05ebd7b9a.jpg",
+        "160x": "https://static.buka.ru/img/685b05ebd7b9a160x.jpg",
+        "296x": "https://static.buka.ru/img/685b05ebd7b9a296x.jpg"
+       }
+      },
+      "secondary": {
+       "id": 77682,
+       "maxSize": "https://static.buka.ru/img/685b05ec07479.jpg",
+       "minSize": "https://static.buka.ru/img/685b05ec07479135x.jpg",
+       "resized": {
+        "x": "https://static.buka.ru/img/685b05ec07479.jpg",
+        "135x": "https://static.buka.ru/img/685b05ec07479135x.jpg"
+       }
+      },
+      "screenshots": [
+       {
+        "id": 77683,
+        "maxSize": "https://static.buka.ru/img/685b05edcf54a.png",
+        "minSize": "https://static.buka.ru/img/685b05edcf54a135x.png",
+        "resized": {
+         "x": "https://static.buka.ru/img/685b05edcf54a.png",
+         "x97": "https://static.buka.ru/img/685b05edcf54ax97.png",
+         "x125": "https://static.buka.ru/img/685b05edcf54ax125.png",
+         "x229": "https://static.buka.ru/img/685b05edcf54ax229.png",
+         "135x": "https://static.buka.ru/img/685b05edcf54a135x.png",
+         "160x": "https://static.buka.ru/img/685b05edcf54a160x.png",
+         "296x": "https://static.buka.ru/img/685b05edcf54a296x.png"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "price": {
+      "actual": 2999,
+      "old": 0,
+      "bonus": 0,
+      "discount": 0
+     },
+     "labels": [],
+     "id": 5092,
+     "title": "SoulCalibur VI Deluxe (PC)",
+     "description": "<p><strong>Цифровое эксклюзивное издание SOULCALIBUR VI включает &laquo;Сезонный пропуск&raquo;!</strong></p>\n\n<p><stron...(trimmed)",
+     "alias": "soulcalibur_vi_deluxe__predzakaz_",
+     "filters": [
+      {
+       "id": 10,
+       "title": "Система активации",
+       "field": "activation_system",
+       "values": [
+        {
+         "id": 38,
+         "title": "Steam"
+        }
+       ]
+      },
+      {
+       "id": 9,
+       "title": "Серии",
+       "field": "series",
+       "values": [
+        {
+         "id": 301,
+         "title": "SoulCalibur"
+        }
+       ]
+      },
+      {
+       "id": 4,
+       "title": "Жанр",
+       "field": "genre",
+       "values": [
+        {
+         "id": 411,
+         "title": "Драки"
+        },
+        {
+         "id": 439,
+         "title": "Экшен"
+        }
+       ]
+      },
+      {
+       "id": 7,
+       "title": "Издатель",
+       "field": "publisher",
+       "values": [
+        {
+         "id": 477,
+         "title": "BANDAI NAMCO"
+        }
+       ]
+      },
+      {
+       "id": 3,
+       "title": "Регионы",
+       "field": "region",
+       "values": [
+        {
+         "id": 889,
+         "title": "Россия"
+        }
+       ]
+      },
+      {
+       "id": 5,
+       "title": "Платформа",
+       "field": "platform",
+       "values": [
+        {
+         "id": 907,
+         "title": "ПК"
+        }
+       ]
+      },
+      {
+       "id": 11,
+       "title": "Возраст",
+       "field": "ageRating",
+       "values": [
+        {
+         "id": 924,
+         "title": "16+"
+        }
+       ]
+      },
+      {
+       "id": 6,
+       "title": "Локализация",
+       "field": "lang",
+       "values": [
+        {
+         "id": 8503,
+         "title": "Русский (интерфейс и субтитры)"
+        }
+       ]
+      }
+     ],
+     "modifiers": [
+      {
+       "type": "Тип издания",
+       "links": [
+        {
+         "title": "Standard Edition",
+         "productId": 5091,
+         "icon": null
+        },
+        {
+         "title": "Deluxe Edition",
+         "productId": 5092,
+         "icon": null
+        }
+       ]
+      }
+     ],
+     "type": 3,
+     "isInWishlist": false,
+     "saleState": "available",
+     "releaseDate": "2018-10-19T00:00:00+00:00",
+     "images": {
+      "main": {
+       "id": 104624,
+       "maxSize": "https://static.buka.ru/img/685e6adad9f5c.jpg",
+       "minSize": "https://static.buka.ru/img/685e6adad9f5c160x.jpg",
+       "resized": {
+        "x": "https://static.buka.ru/img/685e6adad9f5c.jpg",
+        "296x": "https://static.buka.ru/img/685e6adad9f5c296x.jpg",
+        "160x": "https://static.buka.ru/img/685e6adad9f5c160x.jpg"
+       }
+      },
+      "secondary": {
+       "id": 104625,
+       "maxSize": "https://static.buka.ru/img/685e6adb01363.jpg",
+       "minSize": "https://static.buka.ru/img/685e6adb01363135x.jpg",
+       "resized": {
+        "x": "https://static.buka.ru/img/685e6adb01363.jpg",
+        "135x": "https://static.buka.ru/img/685e6adb01363135x.jpg"
+       }
+      },
+      "screenshots": [
+       {
+        "id": 104626,
+        "maxSize": "https://static.buka.ru/img/685e6adcdaded.png",
+        "minSize": "https://static.buka.ru/img/685e6adcdaded135x.png",
+        "resized": {
+         "x": "https://static.buka.ru/img/685e6adcdaded.png",
+         "296x": "https://static.buka.ru/img/685e6adcdaded296x.png",
+         "160x": "https://static.buka.ru/img/685e6adcdaded160x.png",
+         "135x": "https://static.buka.ru/img/685e6adcdaded135x.png",
+         "x229": "https://static.buka.ru/img/685e6adcdadedx229.png",
+         "x97": "https://static.buka.ru/img/685e6adcdadedx97.png",
+         "x125": "https://static.buka.ru/img/685e6adcdadedx125.png"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "price": {
+      "actual": 999,
+      "old": 0,
+      "bonus": 0,
+      "discount": 0
+     },
+     "labels": [],
+     "id": 5182,
+     "title": "SoulCalibur VI Season Pass (PC)",
+     "description": "<p><strong>Внимание!</strong> <strong>Для запуска требуется наличие&nbsp;игры&nbsp;SoulCalibur VI.</strong></p>\n\n<p>Загр...(trimmed)",
+     "alias": "soulcalibur_vi_season_pass",
+     "filters": [
+      {
+       "id": 10,
+       "title": "Система активации",
+       "field": "activation_system",
+       "values": [
+        {
+         "id": 38,
+         "title": "Steam"
+        }
+       ]
+      },
+      {
+       "id": 9,
+       "title": "Серии",
+       "field": "series",
+       "values": [
+        {
+         "id": 301,
+         "title": "SoulCalibur"
+        }
+       ]
+      },
+      {
+       "id": 4,
+       "title": "Жанр",
+       "field": "genre",
+       "values": [
+        {
+         "id": 411,
+         "title": "Драки"
+        },
+        {
+         "id": 439,
+         "title": "Экшен"
+        }
+       ]
+      },
+      {
+       "id": 7,
+       "title": "Издатель",
+       "field": "publisher",
+       "values": [
+        {
+         "id": 477,
+         "title": "BANDAI NAMCO"
+        }
+       ]
+      },
+      {
+       "id": 3,
+       "title": "Регионы",
+       "field": "region",
+       "values": [
+        {
+         "id": 889,
+         "title": "Россия"
+        }
+       ]
+      },
+      {
+       "id": 5,
+       "title": "Платформа",
+       "field": "platform",
+       "values": [
+        {
+         "id": 907,
+         "title": "ПК"
+        }
+       ]
+      },
+      {
+       "id": 11,
+       "title": "Возраст",
+       "field": "ageRating",
+       "values": [
+        {
+         "id": 924,
+         "title": "16+"
+        }
+       ]
+      },
+      {
+       "id": 6,
+       "title": "Локализация",
+       "field": "lang",
+       "values": [
+        {
+         "id": 8503,
+         "title": "Русский (интерфейс и субтитры)"
+        }
+       ]
+      }
+     ],
+     "modifiers": [],
+     "type": 3,
+     "isInWishlist": false,
+     "saleState": "available",
+     "releaseDate": "2018-10-19T00:00:00+00:00",
+     "images": {
+      "main": {
+       "id": 114568,
+       "maxSize": "https://static.buka.ru/img/68679b74c5f4c.jpg",
+       "minSize": "https://static.buka.ru/img/68679b74c5f4c50x.jpg",
+       "resized": {
+        "x": "https://static.buka.ru/img/68679b74c5f4c.jpg",
+        "50x": "https://static.buka.ru/img/68679b74c5f4c50x.jpg",
+        "160x": "https://static.buka.ru/img/68679b74c5f4c160x.jpg",
+        "296x": "https://static.buka.ru/img/68679b74c5f4c296x.jpg"
+       }
+      },
+      "secondary": {
+       "id": 114569,
+       "maxSize": "https://static.buka.ru/img/68679b74f02a4.jpg",
+       "minSize": "https://static.buka.ru/img/68679b74f02a450x.jpg",
+       "resized": {
+        "x": "https://static.buka.ru/img/68679b74f02a4.jpg",
+        "50x": "https://static.buka.ru/img/68679b74f02a450x.jpg",
+        "135x": "https://static.buka.ru/img/68679b74f02a4135x.jpg"
+       }
+      },
+      "screenshots": [
+       {
+        "id": 114570,
+        "maxSize": "https://static.buka.ru/img/68679b7555ba0.jpg",
+        "minSize": "https://static.buka.ru/img/68679b7555ba050x.jpg",
+        "resized": {
+         "x": "https://static.buka.ru/img/68679b7555ba0.jpg",
+         "x97": "https://static.buka.ru/img/68679b7555ba0x97.jpg",
+         "x125": "https://static.buka.ru/img/68679b7555ba0x125.jpg",
+         "x229": "https://static.buka.ru/img/68679b7555ba0x229.jpg",
+         "50x": "https://static.buka.ru/img/68679b7555ba050x.jpg",
+         "135x": "https://static.buka.ru/img/68679b7555ba0135x.jpg",
+         "160x": "https://static.buka.ru/img/68679b7555ba0160x.jpg",
+         "296x": "https://static.buka.ru/img/68679b7555ba0296x.jpg"
+        }
+       }
+      ]
+     }
+    }
+   ]
+  }
+ }
+}

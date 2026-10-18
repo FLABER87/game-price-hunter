@@ -1,0 +1,227 @@
+{
+ "retval": 0,
+ "retdesc": null,
+ "errors": null,
+ "content": {
+  "page": 1,
+  "count": 100,
+  "has_next_page": true,
+  "has_previous_page": false,
+  "total_count": 359,
+  "total_pages": 4,
+  "items": [
+   {
+    "product_id": 5381383,
+    "name": [
+     {
+      "locale": "ru-RU",
+      "value": "Hollow Knight: Silksong / Steam АВТО / РУ + МИР"
+     },
+     {
+      "locale": "en-US",
+      "value": "Hollow Knight: Silksong / Steam AUTO / RU+WORLD"
+     }
+    ],
+    "name_url": "hollow-knight-silksong-steam-auto-ru-world",
+    "images_count": 3,
+    "video_count": 0,
+    "price": 6.6,
+    "currency": "EUR",
+    "month_sales": 81,
+    "month_sales_exceeded": false,
+    "three_month_sales_exceeded": false,
+    "half_year_sales_exceeded": false,
+    "three_month_sales": 214,
+    "total_sales": 1569,
+    "hide_total_sales": null,
+    "seller_rating": 13594.7785,
+    "half_year_sales": 337,
+    "seller_id": 1261486,
+    "seller_name": "LegitMarket",
+    "owner_id": 1,
+    "owner_section_id": 20887,
+    "hide_agent": true,
+    "percent": 0.0,
+    "fee": 0.0,
+    "individual_percent": null,
+    "individual_fee": null,
+    "price_before_discount": 0.0,
+    "discount_percent": null,
+    "added_in_category": null,
+    "added_in_store": null,
+    "ticks_last_change": 845654373,
+    "Score": 6544.1753
+   },
+   {
+    "product_id": 5376802,
+    "name": [
+     {
+      "locale": "ru-RU",
+      "value": "Hollow Knight / Steam АВТО / РУ + МИР"
+     },
+     {
+      "locale": "en-US",
+      "value": "Hollow Knight / Steam AUTO / RU+WORLD"
+     }
+    ],
+    "name_url": "hollow-knight-steam-auto-ru-world",
+    "images_count": 3,
+    "video_count": 0,
+    "price": 5.32,
+    "currency": "EUR",
+    "month_sales": 34,
+    "month_sales_exceeded": false,
+    "three_month_sales_exceeded": false,
+    "half_year_sales_exceeded": false,
+    "three_month_sales": 62,
+    "total_sales": 254,
+    "hide_total_sales": null,
+    "seller_rating": 13591.0941,
+    "half_year_sales": 89,
+    "seller_id": 1261486,
+    "seller_name": "LegitMarket",
+    "owner_id": 1,
+    "owner_section_id": 20887,
+    "hide_agent": true,
+    "percent": 0.0,
+    "fee": 0.0,
+    "individual_percent": null,
+    "individual_fee": null,
+    "price_before_discount": 0.0,
+    "discount_percent": null,
+    "added_in_category": null,
+    "added_in_store": null,
+    "ticks_last_change": 844819021,
+    "Score": 6611.0566
+   },
+   {
+    "product_id": 5406173,
+    "name": [
+     {
+      "locale": "ru-RU",
+      "value": "Hollow Knight: Silksong +ВЫБОР РЕГИОНА · STEAM RU · АВТО"
+     },
+     {
+      "locale": "en-US",
+      "value": "Hollow Knight: Silksong +SELECT REGION · STEAM RU · AUTO"
+     }
+    ],
+    "name_url": "hollow-knight-silksong-select-region-steam-ru-auto",
+    "images_count": 1,
+    "video_count": 0,
+    "price": 6.63,
+    "currency": "EUR",
+    "month_sales": 27,
+    "month_sales_exceeded": false,
+    "three_month_sales_exceeded": false,
+    "half_year_sales_exceeded": false,
+    "three_month_sales": 71,
+    "total_sales": 3447,
+    "hide_total_sales": null,
+    "seller_rating": 20804.8743,
+    "half_year_sales": 119,
+    "seller_id": 1063966,
+    "seller_name": "KEYBD",
+    "owner_id": 1,
+    "owner_section_id": 20887,
+    "hide_agent": false,
+    "percent": 0.0,
+    "fee": 0.0,
+    "individual_percent": null,
+    "individual_fee": null,
+    "price_before_discount": 0.0,
+    "discount_percent": null,
+    "added_in_category": null,
+    "added_in_store": null,
+    "ticks_last_change": 845336060,
+    "Score": 6503.8364
+   },
+   {
+    "product_id": 5406033,
+    "name": [
+     {
+      "locale": "ru-RU",
+      "value": "Hollow Knight: Silksong +ВЫБОР РЕГИОНА STEAM ⚡️"
+     },
+     {
+      "locale": "en-US",
+      "value": "Hollow Knight: Silksong +SELECT REGION STEAM ⚡️"
+     }
+    ],
+    "name_url": "hollow-knight-silksong-select-region-steam",
+    "images_count": 1,
+    "video_count": 0,
+    "price": 7.07,
+    "currency": "EUR",
+    "month_sales": 14,
+    "month_sales_exceeded": false,
+    "three_month_sales_exceeded": false,
+    "half_year_sales_exceeded": false,
+    "three_month_sales": 42,
+    "total_sales": 3224,
+    "hide_total_sales": null,
+    "seller_rating": 20934.5487,
+    "half_year_sales": 84,
+    "seller_id": 392951,
+    "seller_name": "DarkAwe",
+    "owner_id": 1,
+    "owner_section_id": 20887,
+    "hide_agent": false,
+    "percent": 1.0,
+    "fee": 0.07,
+    "individual_percent": null,
+    "individual_fee": null,
+    "price_before_discount": 0.0,
+    "discount_percent": null,
+    "added_in_category": null,
+    "added_in_store": null,
+    "ticks_last_change": 844290489,
+    "Score": 6585.018
+   },
+   {
+    "product_id": 3393203,
+    "name": [
+     {
+      "locale": "ru-RU",
+      "value": "Hollow Knight STEAM•RU ⚡️АВТОДОСТАВКА 💳0%"
+     },
+     {
+      "locale": "en-US",
+      "value": "Hollow Knight STEAM•RU ⚡️AUTODELIVERY 💳0%"
+     }
+    ],
+    "name_url": "hollow-knight-steam-ru-autodelivery-0",
+    "images_count": 4,
+    "video_count": 0,
+    "price": 5.48,
+    "currency": "EUR",
+    "month_sales": 27,
+    "month_sales_exceeded": false,
+    "three_month_sales_exceeded": false,
+    "half_year_sales_exceeded": false,
+    "three_month_sales": 42,
+    "total_sales": 2021,
+    "hide_total_sales": null,
+    "seller_rating": 20759.5403,
+    "half_year_sales": 93,
+    "seller_id": 392951,
+    "seller_name": "DarkAwe",
+    "owner_id": 1,
+    "owner_section_id": 20887,
+    "hide_agent": false,
+    "percent": 1.0,
+    "fee": 0.05,
+    "individual_percent": null,
+    "individual_fee": null,
+    "price_before_discount": 0.0,
+    "discount_percent": null,
+    "added_in_category": null,
+    "added_in_store": null,
+    "ticks_last_change": 844290669,
+    "Score": 6585.0176
+   }
+  ],
+  "aggregation_attributes": [],
+  "prices_threasholds": null
+ }
+}

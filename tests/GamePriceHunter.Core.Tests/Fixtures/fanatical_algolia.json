@@ -1,0 +1,943 @@
+{
+  "hits": [
+    {
+      "product_id": "69986466dc21fe2274851252",
+      "sku": "PCD42457",
+      "name": "Reigns: The Witcher",
+      "slug": "reigns-the-witcher",
+      "type": "game",
+      "display_type": "game",
+      "cover": "ec7eaa7c-2ecd-49c4-9e7f-8b85f83442f0.jpeg",
+      "portrait_cover": "802df47f-f847-4ed4-aabc-b809047d79e4.jpeg",
+      "cover_type": null,
+      "cover_alt_text": null,
+      "tiered": false,
+      "discount_percent": 0,
+      "on_sale": false,
+      "best_ever": false,
+      "lowest_in_30_days": false,
+      "flash_sale": false,
+      "star_deal": false,
+      "system_discount": false,
+      "price": {
+        "GBP": 4.99,
+        "EUR": 5.99,
+        "USD": 5.99,
+        "CAD": 7.99,
+        "AUD": 8.99,
+        "RUB": 542,
+        "JPY": 700
+      },
+      "fullPrice": {
+        "GBP": 4.99,
+        "EUR": 5.99,
+        "USD": 5.99,
+        "CAD": 7.99,
+        "AUD": 8.99,
+        "RUB": 542,
+        "JPY": 700
+      },
+      "operating_systems": [
+        "windows",
+        "mac"
+      ],
+      "drm": [
+        "steam"
+      ],
+      "features": [
+        "Singleplayer",
+        "Full controller support"
+      ],
+      "categories": [
+        "Adventure",
+        "Interactive Fiction",
+        "Casual",
+        "Choose Your Own Adventure",
+        "Visual Novel",
+        "Story Rich",
+        "Fantasy",
+        "Colorful",
+        "Hand-drawn",
+        "Comedy",
+        "Family Friendly",
+        "Lore-Rich",
+        "Mystery",
+        "Choices Matter",
+        "2D",
+        "Conversation",
+        "Multiple Endings",
+        "Singleplayer"
+      ],
+      "collections": [],
+      "video": [
+        "xhClV-7ixjU"
+      ],
+      "available_valid_from": 1772038800,
+      "available_valid_until": 32535216000,
+      "position": 2908,
+      "release_date": 1772038800,
+      "presale": false,
+      "hide_discount": false,
+      "hide_price": false,
+      "giveaway": false,
+      "epic_ska": false,
+      "no_release_date": false,
+      "free_to_play": false,
+      "mystery": false,
+      "pay_what_you_want": false,
+      "mystery_homepage": false,
+      "game_total": 0,
+      "dlc_total": 0,
+      "bundle_covers": [],
+      "screenshots": [
+        "d8ed96d2-ce04-4aba-a875-3eaa19227105.jpeg"
+      ],
+      "featured_screenshot": null,
+      "video_clip_files": [],
+      "video_clip_poster": 0,
+      "age_ratings": {
+        "ESRB": 0,
+        "PEGI": 0,
+        "USK": 0,
+        "ACB": 0
+      },
+      "bundle_tiers": [],
+      "metacritic_score": 74,
+      "preorder_playable_from": null,
+      "is_srp_bundle": false,
+      "reveal_template": null,
+      "objectID": "10806204002"
+    },
+    {
+      "product_id": "664f24c3ba6bd7cea37493a4",
+      "sku": "PCD34112",
+      "name": "Withering Rooms",
+      "slug": "withering-rooms",
+      "type": "game",
+      "display_type": "game",
+      "cover": "4f87e4bd-b80f-4a24-b7d1-19c892c42fde.jpeg",
+      "portrait_cover": "e4948812-25d1-41f4-8e37-75b547604dc4.jpeg",
+      "cover_type": null,
+      "tiered": false,
+      "discount_percent": 20,
+      "on_sale": true,
+      "best_ever": false,
+      "lowest_in_30_days": false,
+      "flash_sale": false,
+      "star_deal": false,
+      "system_discount": true,
+      "price": {
+        "GBP": 15.91,
+        "EUR": 19.88,
+        "USD": 19.88,
+        "CAD": 25.86,
+        "AUD": 29.05,
+        "RUB": 2285.82,
+        "JPY": 2228.52
+      },
+      "fullPrice": {
+        "GBP": 19.99,
+        "EUR": 24.99,
+        "USD": 24.99,
+        "CAD": 32.5,
+        "AUD": 36.5,
+        "RUB": 2872,
+        "JPY": 2800
+      },
+      "operating_systems": [
+        "windows"
+      ],
+      "drm": [
+        "steam"
+      ],
+      "features": [
+        "Singleplayer",
+        "Full controller support",
+        "Steam achievements"
+      ],
+      "categories": [
+        "Action Roguelike",
+        "Adventure",
+        "Action",
+        "RPG",
+        "Souls-like",
+        "Survival Horror",
+        "Action RPG",
+        "Roguelite",
+        "Horror",
+        "Mystery",
+        "Female Protagonist",
+        "Side Scroller",
+        "Dark",
+        "2.5D",
+        "Procedural Generation",
+        "2D",
+        "Stealth",
+        "Singleplayer"
+      ],
+      "collections": [],
+      "video": [
+        "pLSzn0O78xw"
+      ],
+      "available_valid_from": 1792308065,
+      "available_valid_until": 1792944000,
+      "position": 549,
+      "release_date": 1712332800,
+      "presale": false,
+      "hide_discount": false,
+      "hide_price": false,
+      "giveaway": false,
+      "epic_ska": false,
+      "no_release_date": false,
+      "free_to_play": false,
+      "mystery": false,
+      "pay_what_you_want": false,
+      "mystery_homepage": false,
+      "game_total": 0,
+      "dlc_total": 0,
+      "bundle_covers": [],
+      "screenshots": [
+        "f80487f7-2159-4426-ba35-1ffb24f86926.jpeg"
+      ],
+      "featured_screenshot": null,
+      "video_clip_files": [
+        {
+          "fileType": "mp4",
+          "resolution": "480p",
+          "path": "gEBNZJvRmXUYk0Wo-480p.mp4"
+        },
+        {
+          "fileType": "webm",
+          "resolution": "480p",
+          "path": "gEBNZJvRmXUYk0Wo-480p.webm"
+        },
+        {
+          "fileType": "mp4",
+          "resolution": "360p",
+          "path": "gEBNZJvRmXUYk0Wo-360p.mp4"
+        },
+        {
+          "fileType": "webm",
+          "resolution": "360p",
+          "path": "gEBNZJvRmXUYk0Wo-360p.webm"
+        },
+        {
+          "fileType": "mp4",
+          "resolution": "240p",
+          "path": "gEBNZJvRmXUYk0Wo-240p.mp4"
+        },
+        {
+          "fileType": "webm",
+          "resolution": "240p",
+          "path": "gEBNZJvRmXUYk0Wo-240p.webm"
+        }
+      ],
+      "video_clip_poster": "gEBNZJvRmXUYk0Wo-poster.jpg",
+      "age_ratings": {
+        "ESRB": 0,
+        "PEGI": 16,
+        "USK": 16,
+        "ACB": 15,
+        "audio": 0,
+        "book": 0
+      },
+      "bundle_tiers": [],
+      "rating_score": 4.9,
+      "total_ratings": 18,
+      "percent_recommended": 80,
+      "metacritic_score": 75,
+      "preorder_playable_from": null,
+      "is_srp_bundle": false,
+      "reveal_template": null,
+      "objectID": "39870469001"
+    },
+    {
+      "product_id": "67e6b30f067acae88a1c4de9",
+      "sku": "PCD38187",
+      "name": "Rain World: The Watcher",
+      "slug": "rain-world-the-watcher",
+      "parent_slug": "rain-world",
+      "type": "dlc",
+      "display_type": "dlc",
+      "cover": "1222ce31-8f74-446f-8fa2-860606dbedee.jpeg",
+      "portrait_cover": null,
+      "cover_type": null,
+      "cover_alt_text": null,
+      "tiered": false,
+      "discount_percent": 21,
+      "on_sale": true,
+      "best_ever": false,
+      "lowest_in_30_days": false,
+      "flash_sale": false,
+      "star_deal": false,
+      "system_discount": true,
+      "price": {
+        "GBP": 10.14,
+        "EUR": 11.73,
+        "USD": 11.89,
+        "CAD": 15.45,
+        "AUD": 17.41,
+        "RUB": 1947.3,
+        "JPY": 1348.44
+      },
+      "fullPrice": {
+        "GBP": 12.79,
+        "EUR": 14.79,
+        "USD": 14.99,
+        "CAD": 19.49,
+        "AUD": 21.95,
+        "RUB": 2455,
+        "JPY": 1700
+      },
+      "operating_systems": [
+        "windows"
+      ],
+      "drm": [
+        "steam"
+      ],
+      "features": [
+        "Singleplayer",
+        "Steam trading cards",
+        "Full controller support",
+        "Steam achievements"
+      ],
+      "categories": [
+        "Survival",
+        "Platformer",
+        "Exploration",
+        "Adventure",
+        "2D Platformer",
+        "Survival Horror",
+        "Action",
+        "Metroidvania",
+        "Simulation",
+        "Souls-like",
+        "Difficult",
+        "Atmospheric",
+        "Pixel Graphics",
+        "Post-apocalyptic",
+        "Cute",
+        "2D",
+        "Open World",
+        "Singleplayer",
+        "Physics"
+      ],
+      "collections": [],
+      "video": [
+        "qjRNglZB-Bs",
+        "yHoQfL7Fwnk"
+      ],
+      "available_valid_from": 1792135265,
+      "available_valid_until": 1792771200,
+      "position": 1854,
+      "release_date": 1743177600,
+      "presale": false,
+      "hide_discount": false,
+      "hide_price": false,
+      "giveaway": false,
+      "epic_ska": false,
+      "no_release_date": false,
+      "free_to_play": false,
+      "mystery": false,
+      "pay_what_you_want": false,
+      "mystery_homepage": false,
+      "game_total": 0,
+      "dlc_total": 0,
+      "bundle_covers": [],
+      "screenshots": [
+        "e4d14ca6-20a0-43a6-b458-b2949ca9c8e0.png"
+      ],
+      "featured_screenshot": null,
+      "video_clip_files": [],
+      "video_clip_poster": 0,
+      "age_ratings": {
+        "ESRB": 0,
+        "PEGI": 0,
+        "USK": 0,
+        "ACB": 0,
+        "audio": 0,
+        "book": 0
+      },
+      "bundle_tiers": [],
+      "rating_score": 5,
+      "total_ratings": 2,
+      "percent_recommended": 50,
+      "metacritic_score": null,
+      "preorder_playable_from": null,
+      "is_srp_bundle": false,
+      "reveal_template": null,
+      "objectID": "10811267002"
+    },
+    {
+      "product_id": "6ab25b689e2abae37a278248",
+      "sku": "PNM0729",
+      "name": "Build your own Misfits and Mayhem Bundle",
+      "slug": "build-your-own-misfits-and-mayhem-bundle",
+      "type": "pick-and-mix",
+      "display_type": "bundle",
+      "cover": "41f82346-79bf-4388-a50c-280f103c04cd.jpeg",
+      "tiered": true,
+      "discount_percent": 0,
+      "on_sale": true,
+      "best_ever": false,
+      "lowest_in_30_days": false,
+      "flash_sale": false,
+      "star_deal": false,
+      "system_discount": false,
+      "price": {
+        "GBP": 4.95,
+        "EUR": 4.95,
+        "USD": 4.95,
+        "CAD": 6.95,
+        "AUD": 7.65,
+        "RUB": 490,
+        "JPY": 855
+      },
+      "fullPrice": {
+        "GBP": 4.95,
+        "EUR": 4.95,
+        "USD": 4.95,
+        "CAD": 6.95,
+        "AUD": 7.65,
+        "RUB": 490,
+        "JPY": 855
+      },
+      "operating_systems": [],
+      "drm": [
+        "steam"
+      ],
+      "features": [],
+      "categories": [
+        "Souls-like",
+        "RPG",
+        "Action-Adventure",
+        "Hack and Slash",
+        "Action",
+        "Adventure",
+        "3D Platformer",
+        "Metroidvania",
+        "Casual",
+        "Simulation",
+        "2D Platformer",
+        "Precision Platformer",
+        "Platformer",
+        "Story Rich",
+        "Base Building",
+        "Visual Novel",
+        "Puzzle",
+        "Typing",
+        "Interactive Fiction",
+        "Immersive Sim",
+        "Point & Click",
+        "Sandbox",
+        "Exploration",
+        "Collectathon",
+        "Action RPG",
+        "Idler",
+        "Looter Shooter",
+        "Dungeon Crawler",
+        "Roguelike",
+        "Third-Person Shooter",
+        "Roguelite",
+        "Bullet Hell",
+        "Action Roguelike",
+        "Arena Shooter",
+        "Shoot 'Em Up",
+        "Top-Down Shooter",
+        "Shooter",
+        "Twin Stick Shooter",
+        "Dark Fantasy",
+        "Horror",
+        "Atmospheric",
+        "Lore-Rich",
+        "Lovecraftian",
+        "Difficult",
+        "Hand-drawn",
+        "Cyberpunk",
+        "Comedy",
+        "Cats",
+        "Destruction",
+        "Stylized",
+        "Cute",
+        "Family Friendly",
+        "1980s",
+        "Relaxing",
+        "Pixel Graphics",
+        "Detective",
+        "Dynamic Narration",
+        "Abstract",
+        "Funny",
+        "Space",
+        "Colorful",
+        "Sci-fi",
+        "Loot",
+        "Dark",
+        "Agriculture",
+        "Aliens",
+        "Fantasy",
+        "Boss Rush",
+        "Co-op",
+        "Local Co-Op",
+        "Online Co-Op",
+        "Combat",
+        "2D",
+        "Controller",
+        "Third Person",
+        "Character Customization",
+        "Singleplayer",
+        "Clicker",
+        "3D",
+        "Top-Down",
+        "PvP",
+        "Text-Based",
+        "Artificial Intelligence",
+        "First-Person",
+        "Linear",
+        "Open World",
+        "Split Screen",
+        "Multiplayer",
+        "Physics",
+        "PvE",
+        "4 Player Local",
+        "Local Multiplayer"
+      ],
+      "collections": [],
+      "video": [],
+      "available_valid_from": 1790254800,
+      "available_valid_until": 1793260800,
+      "position": 56,
+      "release_date": 1790254800,
+      "presale": false,
+      "hide_discount": false,
+      "hide_price": false,
+      "giveaway": false,
+      "epic_ska": false,
+      "no_release_date": false,
+      "free_to_play": false,
+      "mystery": false,
+      "pay_what_you_want": false,
+      "mystery_homepage": false,
+      "game_total": 17,
+      "dlc_total": 0,
+      "bundle_covers": [
+        {
+          "name": "Mashina",
+          "slug": "mashina",
+          "cover": "55501f26-3e88-4eee-8670-b4bb6c2d1265.jpeg",
+          "type": "game",
+          "drm": [
+            "steam"
+          ],
+          "operating_systems": [
+            "windows"
+          ],
+          "price": {
+            "GBP": 9.09,
+            "EUR": 10.25,
+            "USD": 9.99,
+            "CAD": 11.99,
+            "AUD": 13.95,
+            "RUB": 986,
+            "JPY": 1350
+          }
+        },
+        {
+          "name": "Dead Finger Dice: A Billionaire Killing Game",
+          "slug": "dead-finger-dice-a-billionaire-killing-game",
+          "cover": "6f65b7bf-52ba-4126-b790-40bed2a04ddd.jpeg",
+          "type": "game",
+          "drm": [
+            "steam"
+          ],
+          "operating_systems": [
+            "windows",
+            "linux"
+          ],
+          "price": {
+            "GBP": 4.29,
+            "EUR": 4.99,
+            "USD": 4.99,
+            "CAD": 6.49,
+            "AUD": 7.5,
+            "RUB": 200,
+            "JPY": 490
+          }
+        }
+      ],
+      "screenshots": [],
+      "featured_screenshot": null,
+      "video_clip_files": [],
+      "video_clip_poster": 0,
+      "age_ratings": {},
+      "bundle_tiers": [
+        {
+          "_id": "6ab25b689e2abae37a27824a",
+          "displayTotal": 3,
+          "downloadTotal": 3,
+          "deliveredProducts": 3,
+          "products": [
+            {
+              "product_id": "6ab24c2a5e1eefcf99300c43",
+              "name": "Mashina",
+              "steamId": "",
+              "steamIdType": "",
+              "cover": "55501f26-3e88-4eee-8670-b4bb6c2d1265.jpeg",
+              "slug": "mashina",
+              "type": "game",
+              "drm": [
+                "steam"
+              ]
+            },
+            {
+              "product_id": "6ab25504d45a481385cfefb3",
+              "name": "Dead Finger Dice: A Billionaire Killing Game",
+              "steamId": "",
+              "steamIdType": "",
+              "cover": "6f65b7bf-52ba-4126-b790-40bed2a04ddd.jpeg",
+              "slug": "dead-finger-dice-a-billionaire-killing-game",
+              "type": "game",
+              "drm": [
+                "steam"
+              ]
+            }
+          ],
+          "price": {
+            "GBP": 4.95,
+            "EUR": 4.95,
+            "USD": 4.95,
+            "CAD": 6.95,
+            "AUD": 7.65,
+            "RUB": 490,
+            "JPY": 855
+          }
+        },
+        {
+          "_id": "6ab25b689e2abae37a27824b",
+          "displayTotal": 5,
+          "downloadTotal": 5,
+          "deliveredProducts": 5,
+          "products": null,
+          "price": {
+            "GBP": 7.99,
+            "EUR": 7.99,
+            "USD": 7.99,
+            "CAD": 11.19,
+            "AUD": 12.29,
+            "RUB": 790,
+            "JPY": 1380
+          }
+        },
+        {
+          "_id": "6ab25b689e2abae37a27824c",
+          "displayTotal": 7,
+          "downloadTotal": 7,
+          "deliveredProducts": 7,
+          "products": null,
+          "price": {
+            "GBP": 10.49,
+            "EUR": 10.49,
+            "USD": 10.49,
+            "CAD": 14.69,
+            "AUD": 16.19,
+            "RUB": 1040,
+            "JPY": 1810
+          }
+        }
+      ],
+      "metacritic_score": null,
+      "pnm_saving": 90,
+      "preorder_playable_from": null,
+      "is_srp_bundle": false,
+      "reveal_template": null,
+      "objectID": "10831597002"
+    },
+    {
+      "product_id": "6abc480338981519e88143cb",
+      "sku": "BUN4181",
+      "name": "Cthulhu & Lovecraftian Miniatures Bundle",
+      "slug": "cthulhu-and-lovecraftian-miniatures-bundle",
+      "type": "bundle",
+      "display_type": "software-bundle",
+      "cover": "dd97a3d4-efc8-4998-87ef-59362c629861.jpeg",
+      "portrait_cover": null,
+      "cover_type": null,
+      "cover_alt_text": null,
+      "tiered": true,
+      "discount_percent": 94,
+      "on_sale": true,
+      "best_ever": false,
+      "lowest_in_30_days": false,
+      "flash_sale": false,
+      "star_deal": false,
+      "system_discount": false,
+      "price": {
+        "GBP": 0.9,
+        "EUR": 1.05,
+        "USD": 1,
+        "CAD": 1.4,
+        "AUD": 1.59,
+        "RUB": 100,
+        "JPY": 173
+      },
+      "fullPrice": {
+        "GBP": 14.97,
+        "EUR": 14.85,
+        "USD": 17.97,
+        "CAD": 25.5,
+        "AUD": 25.5,
+        "RUB": 1500,
+        "JPY": 2850
+      },
+      "operating_systems": [],
+      "drm": [
+        "drm free"
+      ],
+      "features": [],
+      "categories": [
+        "STL File"
+      ],
+      "collections": [
+        "Fanatical Media",
+        "Entertainment",
+        "Fiction Fantasy & Tabletop Gaming",
+        "Fanatical Frights"
+      ],
+      "video": [],
+      "available_valid_from": 1790931600,
+      "available_valid_until": 1795823940,
+      "position": 666,
+      "release_date": 1790724099,
+      "presale": false,
+      "hide_discount": false,
+      "hide_price": false,
+      "giveaway": false,
+      "epic_ska": false,
+      "no_release_date": false,
+      "free_to_play": false,
+      "mystery": false,
+      "pay_what_you_want": false,
+      "mystery_homepage": false,
+      "game_total": 153,
+      "dlc_total": 0,
+      "bundle_covers": [
+        {
+          "name": "Beatrice Blackwood - Cthulhu Investigator",
+          "slug": "beatrice-blackwood-cthulhu-investigator",
+          "cover": "74370323-7cfd-4853-b675-15b0570f15eb.jpeg",
+          "portrait_cover": null,
+          "type": "software",
+          "drm": [
+            "drm_free"
+          ],
+          "operating_systems": [],
+          "display_type": "software",
+          "cover_type": null,
+          "cover_alt_text": null,
+          "price": {
+            "GBP": 4.99,
+            "EUR": 4.95,
+            "USD": 5.99,
+            "CAD": 8.5,
+            "AUD": 8.5,
+            "RUB": 500,
+            "JPY": 950
+          }
+        },
+        {
+          "name": "Ruth Gilman - Innsmouth People",
+          "slug": "ruth-gilman-innsmouth-people",
+          "cover": "2fda8748-ec3e-4899-bee9-1c2079b947cd.jpeg",
+          "portrait_cover": null,
+          "type": "software",
+          "drm": [
+            "drm_free"
+          ],
+          "operating_systems": [],
+          "display_type": "software",
+          "cover_type": null,
+          "cover_alt_text": null,
+          "price": {
+            "GBP": 4.99,
+            "EUR": 4.95,
+            "USD": 5.99,
+            "CAD": 8.5,
+            "AUD": 8.5,
+            "RUB": 500,
+            "JPY": 950
+          }
+        }
+      ],
+      "screenshots": [],
+      "featured_screenshot": null,
+      "video_clip_files": [],
+      "video_clip_poster": 0,
+      "age_ratings": {
+        "ESRB": 0,
+        "PEGI": 0,
+        "USK": 0,
+        "ACB": 0,
+        "book": 0,
+        "audio": 0
+      },
+      "bundle_tiers": [
+        {
+          "_id": "6abc480338981519e88143cc",
+          "displayTotal": 5,
+          "downloadTotal": 5,
+          "deliveredProducts": 5,
+          "products": [
+            {
+              "product_id": "6abc45fe7c22cd86400fb796",
+              "name": "Beatrice Blackwood - Cthulhu Investigator",
+              "steamId": null,
+              "steamIdType": "app",
+              "cover": "74370323-7cfd-4853-b675-15b0570f15eb.jpeg",
+              "slug": "beatrice-blackwood-cthulhu-investigator",
+              "portrait_cover": null,
+              "type": "software",
+              "drm": [
+                "drm_free"
+              ]
+            },
+            {
+              "product_id": "6abc45fe7c22cd86400fb868",
+              "name": "Ruth Gilman - Innsmouth People",
+              "steamId": null,
+              "steamIdType": "app",
+              "cover": "2fda8748-ec3e-4899-bee9-1c2079b947cd.jpeg",
+              "slug": "ruth-gilman-innsmouth-people",
+              "portrait_cover": null,
+              "type": "software",
+              "drm": [
+                "drm_free"
+              ]
+            }
+          ],
+          "price": {
+            "GBP": 0.9,
+            "EUR": 1.05,
+            "USD": 1,
+            "CAD": 1.4,
+            "AUD": 1.59,
+            "RUB": 100,
+            "JPY": 173
+          }
+        },
+        {
+          "_id": "6abc480338981519e88143cd",
+          "displayTotal": 50,
+          "downloadTotal": 50,
+          "deliveredProducts": 50,
+          "products": [
+            {
+              "product_id": "66f554832f4f82f5bb83bacc",
+              "name": "Mystery Sculpture - At the Mountains of Madness",
+              "steamId": null,
+              "steamIdType": "app",
+              "cover": "a63b2b71-ac39-4632-82cc-8ff412a19348.jpeg",
+              "slug": "mystery-sculpture-at-the-mountains-of-madness",
+              "type": "software",
+              "drm": [
+                "drm_free"
+              ]
+            },
+            {
+              "product_id": "66f554852f4f82f5bb83bae1",
+              "name": "Amelia Airhart - At the Mountains of Madness",
+              "steamId": null,
+              "steamIdType": "app",
+              "cover": "3e6ca9dd-0b49-4052-a12e-a4422331b774.jpeg",
+              "slug": "amelia-airhart-at-the-mountains-of-madness",
+              "type": "software",
+              "drm": [
+                "drm_free"
+              ]
+            }
+          ],
+          "price": {
+            "GBP": 8.15,
+            "EUR": 9.5,
+            "USD": 8.99,
+            "CAD": 12.75,
+            "AUD": 14.1,
+            "RUB": 897,
+            "JPY": 1552
+          }
+        },
+        {
+          "_id": "6abc480338981519e88143ce",
+          "displayTotal": 153,
+          "downloadTotal": 153,
+          "deliveredProducts": 153,
+          "products": [
+            {
+              "product_id": "66f5548d2f4f82f5bb83bb68",
+              "name": "Shoggoth Diorama - At the Mountains of Madness",
+              "steamId": null,
+              "steamIdType": "app",
+              "cover": "450a8e02-2089-45e1-afcf-3c0f7695f8e2.jpeg",
+              "slug": "shoggoth-diorama-at-the-mountains-of-madness",
+              "type": "software",
+              "drm": [
+                "drm_free"
+              ]
+            },
+            {
+              "product_id": "6abc45ff7c22cd86400fb8a4",
+              "name": "Zadok Allen - Innsmouth People",
+              "steamId": null,
+              "steamIdType": "app",
+              "cover": "0409ba4d-8887-4106-8e11-c6676b842769.jpeg",
+              "slug": "zadok-allen-innsmouth-people",
+              "portrait_cover": null,
+              "type": "software",
+              "drm": [
+                "drm_free"
+              ]
+            }
+          ],
+          "price": {
+            "GBP": 18.1,
+            "EUR": 21.1,
+            "USD": 19.99,
+            "CAD": 28.3,
+            "AUD": 31.35,
+            "RUB": 1994,
+            "JPY": 3450
+          }
+        }
+      ],
+      "metacritic_score": null,
+      "preorder_playable_from": null,
+      "is_srp_bundle": false,
+      "reveal_template": null,
+      "objectID": "10801759002"
+    }
+  ],
+  "nbHits": 13,
+  "page": 0,
+  "nbPages": 1,
+  "hitsPerPage": 20,
+  "exhaustiveNbHits": true,
+  "exhaustiveTypo": true,
+  "exhaustive": {
+    "nbHits": true,
+    "typo": true
+  },
+  "query": "witcher",
+  "params": "query=witcher&hitsPerPage=20&facetFilters=%5B%5B%22type%3Agame%22%2C%22type%3Adlc%22%2C%22type%3Abundle%22%2C%22type%3Apick-and-mix%22%5D%5D&filters=disabled%20%3D%200%20AND%20available_valid_from%20%3C%3D%201792335822%20AND(available_valid_until%20%3D%200%20OR%20available_valid_until%20%3E%201792335822)&facetFilters=%5B%22included_regions%3ASK%22%5D&restrictIndices=fan%2Cfan_alt_rank%2Cfan_name%2Cfan_latest_deals%2Cfan_discount%2Cfan_release_date_desc%2Cfan_release_date_asc%2Cfan_price_asc%2Cfan_price_desc%2Cfan_ending_soon%2Cfan_most_wanted%2Cfan_manual_price_rank%2Cfan_best_price_rank%2Cfan_unlimited%2Cfan_metacritic%2Cfan_top_rated%2Cfan_price_asc_unlimited%2Cfan_latest_deals_unlimited%2Cfan_alt_rank_us%2Cfan_alt_rank_eu%2Cfan_alt_rank_row&validUntil=1792336421",
+  "renderingContent": {},
+  "processingTimeMS": 1,
+  "processingTimingsMS": {
+    "_request": {
+      "roundTrip": 105
+    },
+    "afterFetch": {
+      "format": {
+        "total": 2
+      }
+    },
+    "total": 1
+  },
+  "serverTimeMS": 6
+}

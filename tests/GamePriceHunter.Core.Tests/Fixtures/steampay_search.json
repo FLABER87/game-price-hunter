@@ -1,0 +1,91 @@
+{
+ "_note": "two live responses: q=witcher&available=false (unavailable statuses) and q=star&available=true (first 4 products)",
+ "witcher": {
+  "count": 2,
+  "products": [
+   {
+    "id": 927,
+    "url": "/game/the-witcher-3-wild-hunt-gog",
+    "name": "The Witcher 3: Wild Hunt (GOG)",
+    "activation": {
+     "title": "GOG.COM",
+     "img": "/img/platforms/5.png"
+    },
+    "img": "/image/the-witcher-3-wild-hunt.jpg?1505771258",
+    "genres": "RPG",
+    "discount": null,
+    "price": "СКОРО"
+   },
+   {
+    "id": 3430,
+    "url": "/game/the-witcher-3-wild-hunt-game-of-the-year-edition-gog",
+    "name": "The Witcher 3: Wild Hunt Game of the Year Edition (GOG)",
+    "activation": {
+     "title": "GOG.COM",
+     "img": "/img/platforms/5.png"
+    },
+    "img": "/image/the-witcher-3-wild-hunt-game-of-the-year-edition-gog.jpg?1752588843",
+    "genres": "RPG",
+    "discount": null,
+    "price": "—"
+   }
+  ]
+ },
+ "star": {
+  "count": 40,
+  "products": [
+   {
+    "id": 16129,
+    "url": "/game/star-wars-galactic-racertm",
+    "name": "STAR WARS: Galactic Racer™ (СНГ без РФ/РБ)",
+    "activation": {
+     "title": "STEAM",
+     "img": "/icons/steam.svg"
+    },
+    "img": "/image/star-wars-galactic-racertm.jpg?1790326621",
+    "genres": "Экшены, Гонки, Приключения, Спорт",
+    "discount": "-15%",
+    "price": "3395 ₽"
+   },
+   {
+    "id": 16130,
+    "url": "/game/star-wars-galactic-racertm-deluxe-edition",
+    "name": "STAR WARS: Galactic Racer™ Deluxe Edition (СНГ без РФ/РБ)",
+    "activation": {
+     "title": "STEAM",
+     "img": "/icons/steam.svg"
+    },
+    "img": "/image/star-wars-galactic-racertm-deluxe-edition.jpg?1790327176",
+    "genres": "Экшены, Гонки, Приключения, Спорт",
+    "discount": "-15%",
+    "price": "4545 ₽"
+   },
+   {
+    "id": 16093,
+    "url": "/game/star-wars-zero-company",
+    "name": "Star Wars Zero Company (EA App)",
+    "activation": {
+     "title": "Origin",
+     "img": "/img/platforms/2.png"
+    },
+    "img": "/image/star-wars-zero-company.jpg?1789064328",
+    "genres": "RPG, Стратегии, Симуляторы, Приключения",
+    "discount": null,
+    "price": "СКОРО"
+   },
+   {
+    "id": 16220,
+    "url": "/game/star-trek-voyager-across-the-unknown-captains-collection",
+    "name": "Star Trek: Voyager - Across the Unknown - Captain's Collection",
+    "activation": {
+     "title": "STEAM",
+     "img": "/icons/steam.svg"
+    },
+    "img": "/image/star-trek-voyager-across-the-unknown-captains-collection.jpg?1791918339",
+    "genres": "Стратегии",
+    "discount": "-18%",
+    "price": "3199 ₽"
+   }
+  ]
+ }
+}

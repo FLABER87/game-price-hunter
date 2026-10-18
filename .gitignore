@@ -1,0 +1,23 @@
+# Build output
+bin/
+obj/
+artifacts/
+publish/
+
+# IDE
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+
+# Test results
+TestResults/
+*.trx
+coverage*.xml
+
+# Portable-mode user data
+Data/
+
+# Raw store responses captured during development (tests keep their own copies)
+research/

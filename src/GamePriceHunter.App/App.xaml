@@ -1,0 +1,19 @@
+﻿<Application x:Class="GamePriceHunter.App.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:infra="clr-namespace:GamePriceHunter.App.Infrastructure"
+             ShutdownMode="OnMainWindowClose">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Replaced at runtime by ThemeManager. -->
+                <ResourceDictionary Source="Themes/Colors.Dark.xaml" />
+                <ResourceDictionary Source="Themes/Controls.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+            <infra:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibility" />
+            <infra:NotEmptyToVisibilityConverter x:Key="NotEmptyToVisibility" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

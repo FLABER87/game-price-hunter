@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/GamePriceHunter.App/GamePriceHunter.App.csproj" />
+    <Project Path="src/GamePriceHunter.Cli/GamePriceHunter.Cli.csproj" />
+    <Project Path="src/GamePriceHunter.Core/GamePriceHunter.Core.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/GamePriceHunter.Core.Tests/GamePriceHunter.Core.Tests.csproj" />
+  </Folder>
+</Solution>

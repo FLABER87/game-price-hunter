@@ -1,0 +1,731 @@
+{
+ "total": 5,
+ "page": 1,
+ "staticBaseUrl": "https://steammachine.ru",
+ "staticImgExt": "webp",
+ "items": [
+  {
+   "id_good": 3428718,
+   "title": "The Witcher 3: Wild Hunt — Remastered",
+   "tags": [
+    "Открытый мир",
+    "Ролевая игра",
+    "Приключение",
+    "Экшен",
+    "Песочница"
+   ],
+   "tags_extra": [
+    "Глубокий сюжет",
+    "Атмосферная",
+    "Фэнтези",
+    "Для одного игрока",
+    "Нагота"
+   ],
+   "tags_product": [
+    "Открытый мир",
+    "Ролевая игра",
+    "Глубокий сюжет",
+    "Атмосферная",
+    "Фэнтези"
+   ],
+   "tags_all": [
+    "Открытый мир",
+    "Ролевая игра",
+    "Глубокий сюжет",
+    "Атмосферная",
+    "Фэнтези"
+   ],
+   "edition_ids": [],
+   "edition_group_id": 3428718,
+   "is_main_edition": true,
+   "dlc_ids": [],
+   "appid_steam": 292030,
+   "subid_steam": 68476,
+   "bundle_steam": 0,
+   "catalog_pair_peer_id": 0,
+   "catalog_pair_pending_groups": [],
+   "price": 3189,
+   "price_rrc": 4499,
+   "price_uah": 1711,
+   "price_rrc_uah": 1349,
+   "price_kzt": 17320,
+   "price_rrc_kzt": 15999,
+   "price_eur": 34.03,
+   "price_rrc_eur": 49.99,
+   "nal": 1,
+   "steam_desc_tmp": 0,
+   "activation": "Steam",
+   "activation_icon": "Steam",
+   "platforms": [
+    "windows"
+   ],
+   "url": "/steam/the-witcher-3-wild-hunt-game-of-the-year-edition-russia/",
+   "release_date": "2015-05-18",
+   "shop_stock": "0000-00-00 00:00:00",
+   "steam_review": "Крайне положительные",
+   "top": 0,
+   "cnt_sell_day": 2,
+   "date_add": 2022,
+   "category": "games",
+   "features1": [
+    "Достижения Steam",
+    "Коллекционные карточки Steam",
+    "Мастерская Steam",
+    "Регулируемая сложность",
+    "Сохранение в любое время"
+   ],
+   "features2": [
+    "Регулируемый размер текста",
+    "Альтернативные цвета",
+    "Настройки движения камеры",
+    "Расширенное управление громкостью",
+    "Стереозвук"
+   ],
+   "languages": [
+    "ru",
+    "en"
+   ],
+   "publisher": "CD PROJEKT RED",
+   "developer": "CD PROJEKT RED",
+   "series": null,
+   "series_slug": "",
+   "availability": null,
+   "players": [
+    "Для одного игрока"
+   ],
+   "compatibility": [
+    "steam_deck"
+   ],
+   "promotion": 0,
+   "special_offers": 0,
+   "hidden_old_oos": false,
+   "is_gift": true,
+   "name_good": "++ The Witcher 3: Wild Hunt - Game of the Year Edition",
+   "digiseller_num_in_stock": 3,
+   "id": "3428718",
+   "discount_percent": 29
+  },
+  {
+   "id_good": 4642992,
+   "title": "Thronebreaker: The Witcher Tales",
+   "tags": [
+    "Ролевая игра",
+    "Приключение",
+    "Карточная игра",
+    "Стратегия",
+    "Головоломка"
+   ],
+   "tags_extra": [
+    "Глубокий сюжет",
+    "Для одного игрока",
+    "Решения с последствиями",
+    "Протагонистка",
+    "Фэнтези"
+   ],
+   "tags_product": [
+    "Ролевая игра",
+    "Приключение",
+    "Карточная игра",
+    "Глубокий сюжет",
+    "Для одного игрока"
+   ],
+   "tags_all": [
+    "Ролевая игра",
+    "Приключение",
+    "Карточная игра",
+    "Глубокий сюжет",
+    "Для одного игрока"
+   ],
+   "edition_ids": [],
+   "edition_group_id": 4642992,
+   "is_main_edition": true,
+   "dlc_ids": [],
+   "appid_steam": 973760,
+   "subid_steam": 319429,
+   "bundle_steam": 0,
+   "catalog_pair_peer_id": 3786956,
+   "catalog_pair_pending_groups": [],
+   "price": 1759,
+   "price_rrc": 1799,
+   "price_uah": 944,
+   "price_rrc_uah": 599,
+   "price_kzt": 9554,
+   "price_rrc_kzt": 7499,
+   "price_eur": 18.77,
+   "price_rrc_eur": 19.99,
+   "nal": 1,
+   "steam_desc_tmp": 0,
+   "activation": "Steam",
+   "activation_icon": "Steam",
+   "platforms": [
+    "windows"
+   ],
+   "url": "/steam/thronebreaker-the-witcher-tales-russia/",
+   "release_date": "2018-11-09",
+   "shop_stock": "0000-00-00 00:00:00",
+   "steam_review": "Очень положительные",
+   "top": 0,
+   "cnt_sell_day": 0,
+   "date_add": 2024,
+   "category": "games",
+   "features1": [
+    "Достижения Steam",
+    "Коллекционные карточки Steam",
+    "Регулируемая сложность",
+    "Семейный доступ",
+    "Полная поддержка контроллеров"
+   ],
+   "features2": [
+    "Альтернативные цвета",
+    "Настройки движения камеры",
+    "Расширенное управление громкостью",
+    "Стереозвук",
+    "Объёмный звук"
+   ],
+   "languages": [
+    "ru",
+    "en"
+   ],
+   "publisher": "CD PROJEKT RED",
+   "developer": "CD PROJEKT RED",
+   "series": null,
+   "series_slug": "",
+   "availability": null,
+   "players": [
+    "Для одного игрока"
+   ],
+   "compatibility": [
+    "steam_deck"
+   ],
+   "promotion": 0,
+   "special_offers": 0,
+   "hidden_old_oos": false,
+   "is_gift": true,
+   "name_good": "++ Thronebreaker: The Witcher Tales",
+   "digiseller_num_in_stock": 3,
+   "id": "4642992",
+   "discount_percent": 2
+  },
+  {
+   "id_good": 4642993,
+   "title": "The Witcher Adventure Game",
+   "tags": [
+    "Стратегия",
+    "Приключение",
+    "Карточная игра",
+    "Ролевая игра"
+   ],
+   "tags_extra": [
+    "Настольная с полем",
+    "Настольная игра",
+    "Для нескольких игроков",
+    "Фэнтези",
+    "Для одного игрока"
+   ],
+   "tags_product": [
+    "Стратегия",
+    "Приключение",
+    "Настольная с полем",
+    "Настольная игра",
+    "Для нескольких игроков"
+   ],
+   "tags_all": [
+    "Стратегия",
+    "Приключение",
+    "Настольная с полем",
+    "Настольная игра",
+    "Для нескольких игроков"
+   ],
+   "edition_ids": [],
+   "edition_group_id": 4642993,
+   "is_main_edition": true,
+   "dlc_ids": [],
+   "appid_steam": 303800,
+   "subid_steam": 44847,
+   "bundle_steam": 0,
+   "catalog_pair_peer_id": 1953593,
+   "catalog_pair_pending_groups": [],
+   "price": 759,
+   "price_rrc": 899,
+   "price_uah": 408,
+   "price_rrc_uah": 249,
+   "price_kzt": 4123,
+   "price_rrc_kzt": 3999,
+   "price_eur": 8.1,
+   "price_rrc_eur": 9.99,
+   "nal": 1,
+   "steam_desc_tmp": 0,
+   "activation": "Steam",
+   "activation_icon": "Steam",
+   "platforms": [
+    "windows",
+    "mac"
+   ],
+   "url": "/steam/the-witcher-adventure-game-russia/",
+   "release_date": "2014-11-27",
+   "shop_stock": "0000-00-00 00:00:00",
+   "steam_review": "В основном положительные",
+   "top": 0,
+   "cnt_sell_day": 0,
+   "date_add": 2024,
+   "category": "games",
+   "features1": [
+    "Достижения Steam",
+    "Таблицы лидеров Steam",
+    "Семейный доступ"
+   ],
+   "features2": [
+    "Альтернативные цвета",
+    "Настройки движения камеры",
+    "Расширенное управление громкостью",
+    "Стереозвук",
+    "Можно играть без QTE"
+   ],
+   "languages": [
+    "en"
+   ],
+   "publisher": "CD PROJEKT RED",
+   "developer": "CD PROJEKT RED",
+   "series": null,
+   "series_slug": "",
+   "availability": null,
+   "players": [
+    "Для одного игрока",
+    "Для нескольких игроков",
+    "Общий/разделённый экран"
+   ],
+   "compatibility": [
+    "steam_deck"
+   ],
+   "promotion": 0,
+   "special_offers": 0,
+   "hidden_old_oos": false,
+   "is_gift": true,
+   "name_good": "++ The Witcher Adventure Game",
+   "digiseller_num_in_stock": 3,
+   "id": "4642993",
+   "discount_percent": 16
+  },
+  {
+   "id_good": 200057379,
+   "title": "GwenBlade Witcheresque",
+   "tags": [
+    "Экшен",
+    "Ролевая игра",
+    "Платформер",
+    "Инди",
+    "Казуальная игра"
+   ],
+   "tags_extra": [
+    "Похожа на Dark Souls",
+    "По комиксу",
+    "Экшен-рогалик",
+    "Слэшер",
+    "Кастомизация персонажа"
+   ],
+   "tags_product": [
+    "Экшен",
+    "Ролевая игра",
+    "Похожа на Dark Souls",
+    "По комиксу",
+    "Экшен-рогалик"
+   ],
+   "tags_all": [
+    "Экшен",
+    "Ролевая игра",
+    "Похожа на Dark Souls",
+    "По комиксу",
+    "Экшен-рогалик"
+   ],
+   "edition_ids": [],
+   "edition_group_id": 200057379,
+   "is_main_edition": true,
+   "dlc_ids": [],
+   "appid_steam": 4354550,
+   "subid_steam": 1521863,
+   "bundle_steam": 0,
+   "catalog_pair_peer_id": 0,
+   "catalog_pair_pending_groups": [],
+   "price": 169,
+   "price_rrc": 400,
+   "price_uah": 91,
+   "price_rrc_uah": 200,
+   "price_kzt": 918,
+   "price_rrc_kzt": 2250,
+   "price_eur": 1.8,
+   "price_rrc_eur": 5,
+   "nal": 1,
+   "steam_desc_tmp": 0,
+   "activation": "Steam",
+   "activation_icon": "Steam",
+   "platforms": [
+    "windows"
+   ],
+   "url": "/goods.php?idd=200057379",
+   "release_date": "2026-08-23",
+   "shop_stock": "2026-10-29 19:00:00",
+   "steam_review": "Положительные",
+   "top": 0,
+   "cnt_sell_day": 0,
+   "date_add": 2026,
+   "category": "games",
+   "features1": [
+    "Семейный доступ",
+    "Полная поддержка контроллеров"
+   ],
+   "features2": null,
+   "languages": [
+    "en"
+   ],
+   "publisher": "ArcWillow",
+   "developer": "ArcWillow",
+   "series": "GwenBlade",
+   "series_slug": "gwenblade",
+   "availability": [
+    "early"
+   ],
+   "players": [
+    "Для одного игрока"
+   ],
+   "compatibility": null,
+   "promotion": 1,
+   "special_offers": 0,
+   "hidden_old_oos": false,
+   "is_gift": true,
+   "name_good": "",
+   "digiseller_num_in_stock": 0,
+   "id": "200057379",
+   "discount_percent": 58
+  },
+  {
+   "id_good": 2235228,
+   "title": "The Witcher 3: Wild Hunt - Game of the Year Edition",
+   "tags": [
+    "Открытый мир",
+    "Ролевая игра",
+    "Приключение",
+    "Экшен",
+    "Песочница"
+   ],
+   "tags_extra": [
+    "Глубокий сюжет",
+    "Атмосферная",
+    "Фэнтези",
+    "Для одного игрока",
+    "Нагота"
+   ],
+   "tags_product": [
+    "Открытый мир",
+    "Ролевая игра",
+    "Глубокий сюжет",
+    "Атмосферная",
+    "Фэнтези"
+   ],
+   "tags_all": [
+    "Открытый мир",
+    "Ролевая игра",
+    "Глубокий сюжет",
+    "Атмосферная",
+    "Фэнтези"
+   ],
+   "edition_ids": [],
+   "edition_group_id": 2235228,
+   "is_main_edition": false,
+   "dlc_ids": [],
+   "appid_steam": 292030,
+   "subid_steam": 124923,
+   "bundle_steam": 0,
+   "catalog_pair_peer_id": 0,
+   "catalog_pair_pending_groups": [],
+   "price": 1349,
+   "price_rrc": 1500,
+   "price_uah": 724,
+   "price_rrc_uah": 0,
+   "price_kzt": 7327,
+   "price_rrc_kzt": 0,
+   "price_eur": 14.39,
+   "price_rrc_eur": 49.99,
+   "nal": 2,
+   "steam_desc_tmp": 0,
+   "activation": "GOG",
+   "activation_icon": "GOG",
+   "platforms": [
+    "windows"
+   ],
+   "url": "/steam/the-witcher-3-wild-hunt-game-of-the-year-edition/",
+   "release_date": "2015-05-18",
+   "shop_stock": "0000-00-00 00:00:00",
+   "steam_review": "Крайне положительные",
+   "top": 0,
+   "cnt_sell_day": 2,
+   "date_add": 2016,
+   "category": "games",
+   "features1": [
+    "Достижения Steam",
+    "Коллекционные карточки Steam",
+    "Мастерская Steam",
+    "Регулируемая сложность",
+    "Сохранение в любое время"
+   ],
+   "features2": [
+    "Регулируемый размер текста",
+    "Альтернативные цвета",
+    "Настройки движения камеры",
+    "Расширенное управление громкостью",
+    "Стереозвук"
+   ],
+   "languages": [
+    "ru",
+    "en"
+   ],
+   "publisher": "CD PROJEKT RED",
+   "developer": "CD PROJEKT RED",
+   "series": null,
+   "series_slug": "",
+   "availability": null,
+   "players": [
+    "Для одного игрока"
+   ],
+   "compatibility": [
+    "steam_deck"
+   ],
+   "promotion": 0,
+   "special_offers": 0,
+   "hidden_old_oos": false,
+   "is_gift": false,
+   "name_good": "The Witcher 3 Wild Hunt - Game of the Year Edition",
+   "digiseller_num_in_stock": 0,
+   "id": "2235228",
+   "discount_percent": 10
+  }
+ ],
+ "platforms": [
+  {
+   "key": "windows",
+   "doc_count": 5
+  },
+  {
+   "key": "mac",
+   "doc_count": 1
+  }
+ ],
+ "activations": [
+  {
+   "key": "steam",
+   "doc_count": 4
+  },
+  {
+   "key": "gog",
+   "doc_count": 1
+  }
+ ],
+ "tags": [
+  {
+   "key": "приключение",
+   "doc_count": 5
+  },
+  {
+   "key": "ролевая игра",
+   "doc_count": 5
+  },
+  {
+   "key": "открытый мир",
+   "doc_count": 4
+  },
+  {
+   "key": "экшен",
+   "doc_count": 3
+  },
+  {
+   "key": "карточная игра",
+   "doc_count": 2
+  }
+ ],
+ "tags_extra": [
+  {
+   "key": "для одного игрока",
+   "doc_count": 5
+  },
+  {
+   "key": "атмосферная",
+   "doc_count": 4
+  },
+  {
+   "key": "отличный саундтрек",
+   "doc_count": 4
+  },
+  {
+   "key": "фэнтези",
+   "doc_count": 4
+  },
+  {
+   "key": "глубокий сюжет",
+   "doc_count": 3
+  }
+ ],
+ "tags_product": [],
+ "categories": [
+  {
+   "key": "games",
+   "doc_count": 5
+  }
+ ],
+ "availability": [
+  {
+   "key": "early",
+   "doc_count": 1
+  }
+ ],
+ "price_range": {
+  "min": 169,
+  "max": 3189
+ },
+ "features1": [
+  {
+   "key": "семейный доступ",
+   "doc_count": 5
+  },
+  {
+   "key": "достижения steam",
+   "doc_count": 4
+  },
+  {
+   "key": "коллекционные карточки steam",
+   "doc_count": 3
+  },
+  {
+   "key": "регулируемая сложность",
+   "doc_count": 3
+  },
+  {
+   "key": "мастерская steam",
+   "doc_count": 2
+  }
+ ],
+ "features2": [
+  {
+   "key": "альтернативные цвета",
+   "doc_count": 4
+  },
+  {
+   "key": "можно играть без qte",
+   "doc_count": 4
+  },
+  {
+   "key": "настройки движения камеры",
+   "doc_count": 4
+  },
+  {
+   "key": "расширенное управление громкостью",
+   "doc_count": 4
+  },
+  {
+   "key": "стереозвук",
+   "doc_count": 4
+  }
+ ],
+ "languages": [
+  {
+   "key": "en",
+   "doc_count": 5
+  },
+  {
+   "key": "ru",
+   "doc_count": 3
+  }
+ ],
+ "publisher": [
+  {
+   "key": "cd projekt red",
+   "doc_count": 4
+  },
+  {
+   "key": "arcwillow",
+   "doc_count": 1
+  }
+ ],
+ "developer": [
+  {
+   "key": "cd projekt red",
+   "doc_count": 4
+  },
+  {
+   "key": "arcwillow",
+   "doc_count": 1
+  }
+ ],
+ "series": [
+  {
+   "key": "",
+   "doc_count": 4,
+   "actual_name": {
+    "hits": {
+     "total": {
+      "value": 4,
+      "relation": "eq"
+     },
+     "max_score": 1279.4581,
+     "hits": [
+      {
+       "_index": "catalog_v3",
+       "_id": "3428718",
+       "_score": 1279.4581,
+       "_ignored": [
+        "shop_stock"
+       ],
+       "_source": {
+        "series": null
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "key": "gwenblade",
+   "doc_count": 1,
+   "actual_name": {
+    "hits": {
+     "total": {
+      "value": 1,
+      "relation": "eq"
+     },
+     "max_score": 0,
+     "hits": [
+      {
+       "_index": "catalog_v3",
+       "_id": "200057379",
+       "_score": 0,
+       "_source": {
+        "series": "GwenBlade"
+       }
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "players": [
+  {
+   "key": "для одного игрока",
+   "doc_count": 5
+  },
+  {
+   "key": "для нескольких игроков",
+   "doc_count": 1
+  },
+  {
+   "key": "общий/разделённый экран",
+   "doc_count": 1
+  }
+ ],
+ "compatibility": [
+  {
+   "key": "steam_deck",
+   "doc_count": 4
+  }
+ ],
+ "currency": {
+  "symbol": "р"
+ }
+}

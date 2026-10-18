@@ -1,0 +1,509 @@
+{
+  "pages": 2,
+  "currentlyShownProductCount": 59,
+  "productCount": 59,
+  "products": [
+    {
+      "id": "1213176929",
+      "slug": "reigns_the_witcher",
+      "features": [
+        {
+          "name": "Achievements",
+          "slug": "achievements"
+        },
+        {
+          "name": "Cloud saves",
+          "slug": "cloud_saves"
+        },
+        {
+          "name": "Controller support",
+          "slug": "controller_support"
+        },
+        {
+          "name": "Overlay",
+          "slug": "overlay"
+        },
+        {
+          "name": "Single-player",
+          "slug": "single"
+        }
+      ],
+      "screenshots": [
+        "https://images.gog-statics.com/824cb314f39694738c86b94f064eb1335d8512141737624d57c083f048360a9e_{formatter}.jpg",
+        "https://images.gog-statics.com/9f51fec6d27b1187dcaf78200de693ca6c0122611435cd2d066cf161824e711b_{formatter}.jpg"
+      ],
+      "userPreferredLanguage": {
+        "code": "en",
+        "inAudio": false,
+        "inText": true
+      },
+      "releaseDate": "2026.02.25",
+      "storeReleaseDate": "2026.02.25",
+      "productType": "game",
+      "title": "Reigns: The Witcher",
+      "coverHorizontal": "https://images.gog-statics.com/6a4c67c9cdb2343134e73e06ecaa26198588faff65c633e8b3ca5a1a76589638.png",
+      "coverVertical": "https://images.gog-statics.com/10779d6b291ba601d5f3baad4f16982083514366c0caf227dc06f8f2a4daf1c2.jpg",
+      "logo": "https://images.gog-statics.com/aeb9e85ef10270a15e74bc26369d3b4429ac8202207ec7459449633ec9bf0d8f.png",
+      "galaxyBackgroundImage": "https://images.gog-statics.com/2c35b950937a9bb8efbb6833626fabf0871b1bbff027536a0fc05fa5eb7a1051.jpg",
+      "developers": [
+        "Nerial"
+      ],
+      "publishers": [
+        "Devolver Digital"
+      ],
+      "operatingSystems": [
+        "windows",
+        "osx"
+      ],
+      "price": {
+        "final": "4,19 €",
+        "base": "5,99 €",
+        "discount": "-30%",
+        "finalMoney": {
+          "amount": "4.19",
+          "currency": "EUR",
+          "discount": "1.80"
+        },
+        "baseMoney": {
+          "amount": "5.99",
+          "currency": "EUR"
+        }
+      },
+      "productState": "default",
+      "genres": [
+        {
+          "name": "Simulation",
+          "slug": "simulation"
+        },
+        {
+          "name": "Fantasy",
+          "slug": "fantasy"
+        },
+        {
+          "name": "Adventure",
+          "slug": "adventure"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Indie",
+          "slug": "indie"
+        },
+        {
+          "name": "Fantasy",
+          "slug": "fantasy"
+        },
+        {
+          "name": "Story Rich",
+          "slug": "story-rich"
+        }
+      ],
+      "reviewsRating": 37,
+      "reviewsCount": 20,
+      "editions": [],
+      "ratings": [],
+      "storeLink": "https://www.gog.com/en/game/reigns_the_witcher"
+    },
+    {
+      "id": "1441199941",
+      "slug": "the_witcher_3_redkit",
+      "features": [],
+      "screenshots": [
+        "https://images.gog-statics.com/b353bdd58401e71f0f5db7c40f14d50df964b2971cfdba8082cc4f8b6ca39560_{formatter}.jpg",
+        "https://images.gog-statics.com/6df78235b5cb3e6fdace6046862b3ab694c6b435596944226a8eb754ebca702c_{formatter}.jpg"
+      ],
+      "userPreferredLanguage": {
+        "code": "en",
+        "inAudio": false,
+        "inText": true
+      },
+      "releaseDate": "2024.05.21",
+      "storeReleaseDate": "2024.05.21",
+      "productType": "game",
+      "title": "The Witcher 3 REDkit",
+      "coverHorizontal": "https://images.gog-statics.com/6808c0f7f179257a0eb94000b5062b87ae4afc2037119e67f30b7d68d148b59b.png",
+      "coverVertical": "https://images.gog-statics.com/1da93b20a0389c37d3da140a7b320489030f8d3df31cf9ae11869ebdcabc5e94.jpg",
+      "logo": "https://images.gog-statics.com/b5e57d8aaf25f8bf73d445839e54373f7bd17c04cf45f3cb1f3faf64201467a1.png",
+      "galaxyBackgroundImage": "https://images.gog-statics.com/f0b4b9b6a1a187e8d190bc915fd16f144cf263a706e199001ecff44ab334199c.jpg",
+      "developers": [
+        "CD PROJEKT RED",
+        "Yigsoft"
+      ],
+      "publishers": [
+        "CD PROJEKT RED"
+      ],
+      "operatingSystems": [
+        "windows"
+      ],
+      "price": {
+        "final": "0,00 €",
+        "base": "0,00 €",
+        "discount": null,
+        "finalMoney": {
+          "amount": "0.00",
+          "currency": "EUR",
+          "discount": "0.00"
+        },
+        "baseMoney": {
+          "amount": "0.00",
+          "currency": "EUR"
+        }
+      },
+      "productState": "default",
+      "genres": [
+        {
+          "name": "Role-playing",
+          "slug": "rpg"
+        },
+        {
+          "name": "Action",
+          "slug": "action"
+        },
+        {
+          "name": "Fantasy",
+          "slug": "fantasy"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Adventure",
+          "slug": "adventure"
+        },
+        {
+          "name": "Action",
+          "slug": "action"
+        },
+        {
+          "name": "Fantasy",
+          "slug": "fantasy"
+        }
+      ],
+      "reviewsRating": 38,
+      "reviewsCount": 109,
+      "editions": [],
+      "ratings": [],
+      "storeLink": "https://www.gog.com/en/game/the_witcher_3_redkit"
+    },
+    {
+      "id": "1207666883",
+      "slug": "witcher_adventure_game",
+      "features": [
+        {
+          "name": "Achievements",
+          "slug": "achievements"
+        },
+        {
+          "name": "Co-op",
+          "slug": "coop"
+        },
+        {
+          "name": "Multi-player",
+          "slug": "multi"
+        },
+        {
+          "name": "Overlay",
+          "slug": "overlay"
+        },
+        {
+          "name": "Single-player",
+          "slug": "single"
+        }
+      ],
+      "screenshots": [
+        "https://images.gog-statics.com/58c5f0aac787cc80cf85967dd6392840d123446d360d4542a23510e18084457c_{formatter}.jpg",
+        "https://images.gog-statics.com/7f8680495bf0b6e5361d5b100819547fc68b86a06f4747967b24a758e29cbe15_{formatter}.jpg"
+      ],
+      "userPreferredLanguage": {
+        "code": "en",
+        "inAudio": true,
+        "inText": true
+      },
+      "releaseDate": "2014.11.27",
+      "storeReleaseDate": "2014.11.27",
+      "productType": "game",
+      "title": "The Witcher Adventure Game",
+      "coverHorizontal": "https://images.gog-statics.com/5bc58089e14771de0c1b872c529c8b8b150b87fe28c7e4db1856389526849bb3.png",
+      "coverVertical": "https://images.gog-statics.com/28a3e31f92ddd9e288b92fafe6b81bb347afb17a5a40df6c5245e169c535ba94.jpg",
+      "logo": "https://images.gog-statics.com/7447b7e154d3ea1a1f0f3a7d7d5afa631f37f381f7136b1205d23811968b9602.png",
+      "galaxyBackgroundImage": "https://images.gog-statics.com/3899a843b334322a0fd51c351aed6513d899f24588e9f9efa1381726e02e6c6f.jpg",
+      "developers": [
+        "Can Explode"
+      ],
+      "publishers": [
+        "CD PROJEKT RED"
+      ],
+      "operatingSystems": [
+        "windows"
+      ],
+      "price": {
+        "final": "1,49 €",
+        "base": "9,99 €",
+        "discount": "-85%",
+        "finalMoney": {
+          "amount": "1.49",
+          "currency": "EUR",
+          "discount": "8.50"
+        },
+        "baseMoney": {
+          "amount": "9.99",
+          "currency": "EUR"
+        }
+      },
+      "productState": "default",
+      "genres": [
+        {
+          "name": "Turn-based",
+          "slug": "turnbased"
+        },
+        {
+          "name": "Fantasy",
+          "slug": "fantasy"
+        },
+        {
+          "name": "Adventure",
+          "slug": "adventure"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Adventure",
+          "slug": "adventure"
+        },
+        {
+          "name": "Fantasy",
+          "slug": "fantasy"
+        },
+        {
+          "name": "Atmospheric",
+          "slug": "atmospheric"
+        }
+      ],
+      "reviewsRating": 37,
+      "reviewsCount": 605,
+      "editions": [],
+      "ratings": [],
+      "storeLink": "https://www.gog.com/en/game/witcher_adventure_game"
+    },
+    {
+      "id": "1297352383",
+      "slug": "thronebreaker_the_witcher_tales",
+      "features": [
+        {
+          "name": "Achievements",
+          "slug": "achievements"
+        },
+        {
+          "name": "Cloud saves",
+          "slug": "cloud_saves"
+        },
+        {
+          "name": "Controller support",
+          "slug": "controller_support"
+        },
+        {
+          "name": "Overlay",
+          "slug": "overlay"
+        },
+        {
+          "name": "Single-player",
+          "slug": "single"
+        }
+      ],
+      "screenshots": [
+        "https://images.gog-statics.com/df288acb58bf26fe78588374116ed1e5bdf49b3c6b536feb3de3c48957da2a74_{formatter}.jpg",
+        "https://images.gog-statics.com/b823c3bd500b19c06cc9599b35991389abab73a7de3811939d523790cb8d4129_{formatter}.jpg"
+      ],
+      "userPreferredLanguage": {
+        "code": "en",
+        "inAudio": true,
+        "inText": true
+      },
+      "releaseDate": "2018.10.23",
+      "storeReleaseDate": "2018.10.23",
+      "productType": "game",
+      "title": "Thronebreaker: The Witcher Tales",
+      "coverHorizontal": "https://images.gog-statics.com/8ad695136c08bc4ebb229bb7ed8b29b05a00aab72400329f8bd3592c7e41682a.png",
+      "coverVertical": "https://images.gog-statics.com/2646d785bcbf78996ca815eba904c807849fd2386224831547b5fe7ae75250f7.jpg",
+      "logo": "https://images.gog-statics.com/8d8da159e807143303f291de1af58d3489d797fd4b888dabf7cb3d77fbc95327.png",
+      "galaxyBackgroundImage": "https://images.gog-statics.com/13da701fe0aa61970907f7ae85cfe7f652e315f811976448c559c56fdf93b813.jpg",
+      "developers": [
+        "CD PROJEKT RED"
+      ],
+      "publishers": [
+        "CD PROJEKT RED"
+      ],
+      "operatingSystems": [
+        "windows"
+      ],
+      "price": {
+        "final": "3,99 €",
+        "base": "19,99 €",
+        "discount": "-80%",
+        "finalMoney": {
+          "amount": "3.99",
+          "currency": "EUR",
+          "discount": "16.00"
+        },
+        "baseMoney": {
+          "amount": "19.99",
+          "currency": "EUR"
+        }
+      },
+      "productState": "default",
+      "genres": [
+        {
+          "name": "Role-playing",
+          "slug": "rpg"
+        },
+        {
+          "name": "Fantasy",
+          "slug": "fantasy"
+        },
+        {
+          "name": "Strategy",
+          "slug": "strategy"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Fantasy",
+          "slug": "fantasy"
+        },
+        {
+          "name": "Story Rich",
+          "slug": "story-rich"
+        },
+        {
+          "name": "Atmospheric",
+          "slug": "atmospheric"
+        }
+      ],
+      "reviewsRating": 43,
+      "reviewsCount": 3423,
+      "editions": [],
+      "ratings": [
+        {
+          "name": "pegiRating",
+          "ageRating": "12"
+        },
+        {
+          "name": "esrbRating",
+          "ageRating": "13"
+        },
+        {
+          "name": "brRating",
+          "ageRating": "12"
+        }
+      ],
+      "storeLink": "https://www.gog.com/en/game/thronebreaker_the_witcher_tales"
+    },
+    {
+      "id": "1207658924",
+      "slug": "the_witcher",
+      "features": [
+        {
+          "name": "Cloud saves",
+          "slug": "cloud_saves"
+        },
+        {
+          "name": "Single-player",
+          "slug": "single"
+        }
+      ],
+      "screenshots": [
+        "https://images.gog-statics.com/84aa9ca13d2dbbaaf9208d54690b015ec15643c021ada3f3d66f080ab2430047_{formatter}.jpg",
+        "https://images.gog-statics.com/92186f55b3af6298f62a9b6f99c44f1aabbfcaea578862b1e73da0c10845cb03_{formatter}.jpg"
+      ],
+      "userPreferredLanguage": {
+        "code": "en",
+        "inAudio": true,
+        "inText": true
+      },
+      "releaseDate": "2007.10.26",
+      "storeReleaseDate": "2011.05.09",
+      "productType": "game",
+      "title": "The Witcher: Enhanced Edition",
+      "coverHorizontal": "https://images.gog-statics.com/37d4a208d1f5bb0e163da540ac894ba46a7d566ede31aaaefc74bbcd46ebd190.png",
+      "coverVertical": "https://images.gog-statics.com/32385c2c39b8715a9ccfb159ed481b55503b96526b00866f75a4af48461615a5.jpg",
+      "logo": "https://images.gog-statics.com/def9381ff2a8047fc343f023e3f976a65818f81381e616ac04094595cb1893a0.png",
+      "galaxyBackgroundImage": "https://images.gog-statics.com/46d5f76e789d0f335558b4ea79487ef7f1b2864ca67e77e127494882a3571751.jpg",
+      "developers": [
+        "CD PROJEKT RED"
+      ],
+      "publishers": [
+        "CD PROJEKT RED"
+      ],
+      "operatingSystems": [
+        "windows",
+        "osx"
+      ],
+      "price": {
+        "final": "1,19 €",
+        "base": "7,99 €",
+        "discount": "-85%",
+        "finalMoney": {
+          "amount": "1.19",
+          "currency": "EUR",
+          "discount": "6.80"
+        },
+        "baseMoney": {
+          "amount": "7.99",
+          "currency": "EUR"
+        }
+      },
+      "productState": "default",
+      "genres": [
+        {
+          "name": "Role-playing",
+          "slug": "rpg"
+        },
+        {
+          "name": "Action",
+          "slug": "action"
+        },
+        {
+          "name": "Fantasy",
+          "slug": "fantasy"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Action",
+          "slug": "action"
+        },
+        {
+          "name": "Fantasy",
+          "slug": "fantasy"
+        },
+        {
+          "name": "Story Rich",
+          "slug": "story-rich"
+        }
+      ],
+      "reviewsRating": 46,
+      "reviewsCount": 14105,
+      "editions": [],
+      "ratings": [
+        {
+          "name": "pegiRating",
+          "ageRating": "18"
+        },
+        {
+          "name": "esrbRating",
+          "ageRating": "17"
+        },
+        {
+          "name": "uskRating",
+          "ageRating": "18"
+        },
+        {
+          "name": "gogRating",
+          "ageRating": "18"
+        }
+      ],
+      "storeLink": "https://www.gog.com/en/game/the_witcher"
+    }
+  ],
+  "dreamlistGames": [],
+  "searchAlgo": "default"
+}

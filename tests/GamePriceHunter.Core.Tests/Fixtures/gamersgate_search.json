@@ -1,0 +1,114 @@
+{
+ "products_per_page_choice": [
+  "30",
+  "60",
+  "90"
+ ],
+ "products_per_page": 30,
+ "show_headline": true,
+ "show_filters": true,
+ "show_sorting": true,
+ "headline": "Games",
+ "seo_data": {
+  "title": "Games",
+  "description": ""
+ },
+ "empty_text": "Oops! Looks like there is nothing to be displayed here. Double-check your search filters and try again.",
+ "slug": "games",
+ "ga_slug": "search",
+ "sort_choice": {
+  "default": "Default",
+  "release": "Release date",
+  "alphabetically": "Alphabetically",
+  "price_low": "Price (low-high)",
+  "price_high": "Price (high-low)"
+ },
+ "sort": "price_low",
+ "catalog": [
+  {
+   "id": 18482132,
+   "sku": "DD-PID-BATMAN-THE-ENEMY-WITHIN",
+   "name": "Batman: The Enemy Within - The Telltale Series",
+   "vendor_name": "Plug in Digital",
+   "image": "https://sttc.gamersgate.com/images/product/batman-the-enemy-within-the-telltale-series/cover-616-f3fbc6.jpg",
+   "link": "/product/batman-the-enemy-within-the-telltale-series/",
+   "discount_percent": 59.9733155436958,
+   "price": "&#8364; 6.00",
+   "baseprice": "&#8364; 14.99",
+   "raw_price": "6.00",
+   "currency_code": "EUR",
+   "labels": {
+    "discount": "-60%"
+   },
+   "is_favorite": false,
+   "is_available": true,
+   "st": 2,
+   "required_age": 18,
+   "is_blured_cover": false
+  },
+  {
+   "id": 18482582,
+   "sku": "DD-PID-BATMAN-THE-TELLTALE-SERIES",
+   "name": "Batman - The Telltale Series",
+   "vendor_name": "Plug in Digital",
+   "image": "https://sttc.gamersgate.com/images/product/batman-the-telltale-series/cover-616-2e22a5.jpg",
+   "link": "/product/batman-the-telltale-series/",
+   "discount_percent": 49.96664442961975,
+   "price": "&#8364; 7.50",
+   "baseprice": "&#8364; 14.99",
+   "raw_price": "7.50",
+   "currency_code": "EUR",
+   "labels": {
+    "discount": "-50%"
+   },
+   "is_favorite": false,
+   "is_available": true,
+   "st": 2,
+   "required_age": 18,
+   "is_blured_cover": false
+  },
+  {
+   "id": 19269569,
+   "sku": "DLC-LEGO-BATMAN-3-BEYOND-GOTHAM-SEASON-PASS",
+   "name": "LEGO® Batman™ 3: Beyond Gotham Season Pass",
+   "vendor_name": "Warner Games Inc.",
+   "image": "https://sttc.gamersgate.com/images/product/lego-batman-3-beyond-gotham-season-pass/cover-616-5c6f29.jpg",
+   "link": "/product/lego-batman-3-beyond-gotham-season-pass/",
+   "discount_percent": 0.0,
+   "price": "&#8364; 14.99",
+   "baseprice": "&#8364; 14.99",
+   "raw_price": "14.99",
+   "currency_code": "EUR",
+   "labels": {
+    "dlc": "DLC"
+   },
+   "is_favorite": false,
+   "is_available": true,
+   "st": 2,
+   "required_age": null,
+   "is_blured_cover": false
+  },
+  {
+   "id": 19263624,
+   "sku": "DD-BATMAN-ARKHAM-CITY-GOTY",
+   "name": "Batman: Arkham City - Game of the Year Edition",
+   "vendor_name": "Warner Games Inc.",
+   "image": "https://sttc.gamersgate.com/images/product/batman-arkham-city-game-of-the-year-edition/cover-616-50d1bc.jpg",
+   "link": "/product/batman-arkham-city-game-of-the-year-edition/",
+   "discount_percent": 0.0,
+   "price": "&#8364; 19.99",
+   "baseprice": "&#8364; 19.99",
+   "raw_price": "19.99",
+   "currency_code": "EUR",
+   "labels": {},
+   "is_favorite": false,
+   "is_available": true,
+   "st": 2,
+   "required_age": 16,
+   "is_blured_cover": false
+  }
+ ],
+ "number_of_pages": 1,
+ "page_number": null,
+ "timestamp": 0
+}
