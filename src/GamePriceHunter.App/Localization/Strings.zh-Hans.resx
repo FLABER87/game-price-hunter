@@ -156,4 +156,8 @@
   <data name="Edit_Copy" xml:space="preserve"><value>复制</value></data>
   <data name="Edit_Paste" xml:space="preserve"><value>粘贴</value></data>
   <data name="Edit_SelectAll" xml:space="preserve"><value>全选</value></data>
+  <data name="Window_Minimize" xml:space="preserve"><value>最小化</value></data>
+  <data name="Window_Maximize" xml:space="preserve"><value>最大化</value></data>
+  <data name="Window_Restore" xml:space="preserve"><value>向下还原</value></data>
+  <data name="Window_Close" xml:space="preserve"><value>关闭</value></data>
 </root>

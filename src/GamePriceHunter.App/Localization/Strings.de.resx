@@ -164,4 +164,8 @@
   <data name="Edit_Copy" xml:space="preserve"><value>Kopieren</value></data>
   <data name="Edit_Paste" xml:space="preserve"><value>Einfügen</value></data>
   <data name="Edit_SelectAll" xml:space="preserve"><value>Alles auswählen</value></data>
+  <data name="Window_Minimize" xml:space="preserve"><value>Minimieren</value></data>
+  <data name="Window_Maximize" xml:space="preserve"><value>Maximieren</value></data>
+  <data name="Window_Restore" xml:space="preserve"><value>Verkleinern</value></data>
+  <data name="Window_Close" xml:space="preserve"><value>Schließen</value></data>
 </root>

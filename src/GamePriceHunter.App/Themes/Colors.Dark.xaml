@@ -41,4 +41,8 @@
     <SolidColorBrush x:Key="Brush.ScrollThumb" Color="#3A404D" />
     <SolidColorBrush x:Key="Brush.ScrollThumbHover" Color="#4C5363" />
     <SolidColorBrush x:Key="Brush.Placeholder" Color="#232731" />
+
+    <!-- Close button of the title bar: Windows' own red. -->
+    <SolidColorBrush x:Key="Brush.CloseHover" Color="#C42B1C" />
+    <SolidColorBrush x:Key="Brush.ClosePressed" Color="#B2281C" />
 </ResourceDictionary>

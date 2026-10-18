@@ -156,4 +156,8 @@
   <data name="Edit_Copy" xml:space="preserve"><value>コピー</value></data>
   <data name="Edit_Paste" xml:space="preserve"><value>貼り付け</value></data>
   <data name="Edit_SelectAll" xml:space="preserve"><value>すべて選択</value></data>
+  <data name="Window_Minimize" xml:space="preserve"><value>最小化</value></data>
+  <data name="Window_Maximize" xml:space="preserve"><value>最大化</value></data>
+  <data name="Window_Restore" xml:space="preserve"><value>元に戻す (縮小)</value></data>
+  <data name="Window_Close" xml:space="preserve"><value>閉じる</value></data>
 </root>
