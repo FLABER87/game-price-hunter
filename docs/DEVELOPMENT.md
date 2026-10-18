@@ -37,8 +37,16 @@ git tag -a v0.2.0 -m "What changed, in a few lines for players."
 git push origin v0.2.0
 ```
 
-3. The `Build` workflow creates a draft release with both files and the tag message as notes. Check it on GitHub and publish it.
+3. The `Build` workflow creates a draft release with the exe, the installer, the installer's signature (`GamePriceHunter-Setup.exe.sig`) and the tag message as notes. Check it on GitHub and publish it.
 
 To build a release locally, run `.\build\publish.ps1 -Version 0.2.0`. It needs [Inno Setup 6](https://jrsoftware.org/isinfo.php): `winget install --id JRSoftware.InnoSetup -e`.
 
-The app finds new versions through the redirect of `/releases/latest` to `/releases/tag/vX.Y.Z`, not the GitHub API, which rate-limits per IP. It checks at most once a day. So keep the `vX.Y.Z` tags and the `GamePriceHunter-Setup.exe` asset name. Installed copies download that asset and run it with `/VERYSILENT /SUPPRESSMSGBOXES /CLOSEAPPLICATIONS /RELAUNCH=1`. Portable and stand-alone copies only link to the release page. The installer is per-user (`%LOCALAPPDATA%\Programs\Game Price Hunter`), and its `AppId` in `build\installer\GamePriceHunter.iss` must never change.
+The app finds new versions through the redirect of `/releases/latest` to `/releases/tag/vX.Y.Z`, not the GitHub API, which rate-limits per IP. It checks at most once a day. So keep the `vX.Y.Z` tags and the `GamePriceHunter-Setup.exe` and `GamePriceHunter-Setup.exe.sig` asset names. Installed copies download both, check the signature and only then run the installer with `/VERYSILENT /SUPPRESSMSGBOXES /CLOSEAPPLICATIONS /RELAUNCH=1`. Portable and stand-alone copies only link to the release page. The installer is per-user (`%LOCALAPPDATA%\Programs\Game Price Hunter`), and its `AppId` in `build\installer\GamePriceHunter.iss` must never change.
+
+### Update signature
+
+The app runs a downloaded installer only if it is signed with the release key, an ECDSA P-256 key whose public half is `ReleasePublicKey` in `src/GamePriceHunter.Core/Updates/UpdateSignature.cs`. The signature covers the installer's SHA-256 and the tag, so the installer of an older release can't pass for the latest one. If the signature is missing or wrong, the update banner says the update failed and links to the release page. Copies of 0.2.0 and older don't check signatures.
+
+- On a tag, the `Test and publish` step passes the `UPDATE_SIGNING_KEY` secret to `build\publish.ps1`. The script signs the installer with `gph sign` and checks the result against `ReleasePublicKey` with `gph verify`. Without the secret the tag build fails, so an unsigned release can't be drafted.
+- The key was created once with `.\build\new-signing-key.ps1`. The script puts the private key straight into the secret, so no copy exists anywhere else, and writes the public key into `UpdateSignature.cs`. If the secret is lost or leaked, run the script again with `-Force` and release a new version. Copies built with the old key can't install that version by themselves, so players download it from the release page once.
+- Anyone who can push to the repository can change the workflow and sign their own file with the secret. The signature protects against a replaced release file, not against a compromised GitHub account.
