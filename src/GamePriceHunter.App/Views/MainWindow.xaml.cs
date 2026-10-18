@@ -23,6 +23,7 @@ public partial class MainWindow : Window
         DataContext = viewModel;
         ThemeManager.Attach(this);
         ApplySavedBounds(services.Settings.Window);
+        WorkArea.KeepInside(this);
 
         viewModel.SettingsRequested += (_, _) => OpenSettings();
         Loaded += (_, _) => SearchBox.Focus();
@@ -45,7 +46,9 @@ public partial class MainWindow : Window
 
     private void ApplySavedBounds(WindowBounds? bounds)
     {
-        if (bounds is null || bounds.Width < MinWidth || bounds.Height < MinHeight)
+        // Smaller than MinWidth/MinHeight is fine: WorkArea lowers them on a small screen, and the window
+        // is never made smaller than they are.
+        if (bounds is null || bounds.Width <= 0 || bounds.Height <= 0)
             return;
 
         // Only restore if the window would be visible on the current monitor layout.

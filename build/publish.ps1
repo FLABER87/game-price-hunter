@@ -3,9 +3,10 @@
     Builds, tests and publishes Game Price Hunter as a single self-contained exe plus its installer.
 
 .DESCRIPTION
-    The exe goes to artifacts\publish\<runtime>, the installer (Inno Setup 6) to artifacts\installer.
-    Without -Version the version comes from Directory.Build.props. The installer is skipped with a
-    warning when Inno Setup 6 is not installed.
+    The exe goes to artifacts\publish\<runtime>, the installer (Inno Setup 7) to artifacts\installer.
+    Without -Version the version comes from Directory.Build.props. The installer is built with the
+    ISCC.exe given by -InnoSetupCompiler (CI passes the Inno Setup it installs), or else with an installed
+    Inno Setup 7.1 or later, and skipped with a warning when there is none.
 
     When UPDATE_SIGNING_KEY holds the release signing key (PEM), the installer is also signed for the
     in-app updater (GamePriceHunter-Setup.exe.sig, for the tag v<Version>), and the signature is checked
@@ -21,6 +22,8 @@ param(
     [ValidateSet('win-x64', 'win-arm64', 'win-x86')]
     [string]$Runtime = 'win-x64',
     [string]$Version,
+    [ValidateScript({ Test-Path -LiteralPath $_ -PathType Leaf })]
+    [string]$InnoSetupCompiler,
     [switch]$SkipTests,
     [switch]$SkipInstaller
 )
@@ -31,28 +34,36 @@ $command = Get-Command dotnet -ErrorAction SilentlyContinue
 $dotnet = if ($command) { $command.Source } else { 'C:\Program Files\dotnet\dotnet.exe' }
 $output = Join-Path $root "artifacts\publish\$Runtime"
 $installerOutput = Join-Path $root 'artifacts\installer'
+# A relative path means the caller's folder, not the repository root the script moves to.
+if ($InnoSetupCompiler) { $InnoSetupCompiler = (Resolve-Path -LiteralPath $InnoSetupCompiler).ProviderPath }
 
 # Taken out of the environment at once, so that the tests and the build never see the signing key.
 $signingKey = $env:UPDATE_SIGNING_KEY
 Remove-Item Env:UPDATE_SIGNING_KEY -ErrorAction SilentlyContinue
 
+# Inno Setup 7 installs next to Inno Setup 6, whose ISCC may come first on PATH, so every candidate is
+# asked for its version. --version is new in 7.1, the oldest version the installer script accepts.
 function Find-InnoSetupCompiler {
-    $command = Get-Command ISCC.exe -ErrorAction SilentlyContinue
-    if ($command) { return $command.Source }
-
+    $ErrorActionPreference = 'Continue'
     $candidates = @(
-        "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe",
-        "$env:ProgramFiles\Inno Setup 6\ISCC.exe",
-        "$env:LOCALAPPDATA\Programs\Inno Setup 6\ISCC.exe"
+        "$env:ProgramFiles\Inno Setup 7\ISCC.exe",
+        "${env:ProgramFiles(x86)}\Inno Setup 7\ISCC.exe",
+        "$env:LOCALAPPDATA\Programs\Inno Setup 7\ISCC.exe"
     )
     foreach ($key in @(
-            'HKCU:\Software\Microsoft\Windows\CurrentVersion\Uninstall\Inno Setup 6_is1',
-            'HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\Inno Setup 6_is1',
-            'HKLM:\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Inno Setup 6_is1')) {
+            'HKCU:\Software\Microsoft\Windows\CurrentVersion\Uninstall\Inno Setup 7_is1',
+            'HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\Inno Setup 7_is1',
+            'HKLM:\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Inno Setup 7_is1')) {
         $location = (Get-ItemProperty $key -ErrorAction SilentlyContinue).InstallLocation
         if ($location) { $candidates += Join-Path $location 'ISCC.exe' }
     }
-    return $candidates | Where-Object { $_ -and (Test-Path $_) } | Select-Object -First 1
+    $command = Get-Command ISCC.exe -ErrorAction SilentlyContinue
+    if ($command) { $candidates += $command.Source }
+
+    foreach ($candidate in $candidates | Where-Object { $_ -and (Test-Path $_) }) {
+        $version = & $candidate --version 2>$null | Select-Object -First 1
+        if ($LASTEXITCODE -eq 0 -and $version -match '^(\d+\.\d+)\.' -and [version]$Matches[1] -ge [version]'7.1') { return $candidate }
+    }
 }
 
 Push-Location $root
@@ -76,7 +87,7 @@ try {
     Write-Host "Published $exe ($size MB, v$Version)" -ForegroundColor Green
 
     if (-not $SkipInstaller) {
-        $iscc = Find-InnoSetupCompiler
+        $iscc = if ($InnoSetupCompiler) { $InnoSetupCompiler } else { Find-InnoSetupCompiler }
         if ($iscc) {
             $arch = $Runtime.Substring(4)
             & $iscc /Q "/DAppVersion=$Version" "/DArch=$arch" "/DPublishDir=$output" "/O$installerOutput" build\installer\GamePriceHunter.iss
@@ -104,7 +115,7 @@ try {
             }
         }
         else {
-            Write-Warning "Inno Setup 6 was not found, so the installer was skipped. Install it with: winget install --id JRSoftware.InnoSetup -e"
+            Write-Warning "Inno Setup 7.1 or later was not found, so the installer was skipped. Install it with: winget install --id JRSoftware.InnoSetup.7 -e"
         }
     }
 }
