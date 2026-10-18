@@ -8,11 +8,13 @@ using GamePriceHunter.Core.Net;
 using GamePriceHunter.Core.Providers;
 using GamePriceHunter.Core.Search;
 using GamePriceHunter.Core.Settings;
+using GamePriceHunter.Core.Updates;
 
 // Diagnostics tool: runs the same search pipeline as the app and prints what each store returned.
 //   gph search "witcher 3" [--country SK] [--currency EUR] [--providers steam,gog] [--top 40] [--details]
 //   gph health [query]        exit code 1 when any provider fails
 //   gph providers
+//   gph update                the latest release, as the app's update check sees it
 Console.OutputEncoding = Encoding.UTF8;
 CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
 
@@ -21,6 +23,7 @@ if (args.Length == 0 || args[0] is "-h" or "--help")
     Console.WriteLine("Usage: gph search <query> [--country XX] [--currency XXX] [--providers id1,id2] [--top N] [--details]");
     Console.WriteLine("       gph health [query]");
     Console.WriteLine("       gph providers");
+    Console.WriteLine("       gph update");
     return 0;
 }
 
@@ -32,6 +35,14 @@ if (command == "providers")
 {
     foreach (var provider in providers)
         Console.WriteLine($"{provider.Info.Id,-14} {provider.Info.Name,-22} {provider.Info.Kind,-12} {(provider.Info.EnabledByDefault ? "on" : "off")}");
+    return 0;
+}
+
+if (command == "update")
+{
+    using var updateHttp = UpdateChecker.CreateHttpClient("GamePriceHunter-Cli");
+    var latest = await new UpdateChecker(updateHttp).GetLatestReleaseAsync();
+    Console.WriteLine(latest is null ? "No release published." : $"Latest release {latest.Tag} ({latest.Version})\n  {latest.PageUrl}\n  {latest.InstallerUrl}");
     return 0;
 }
 

@@ -180,7 +180,18 @@
                     <StackPanel>
                         <TextBlock Text="{loc:Loc Settings_About}" Style="{StaticResource SectionTitle}" />
                         <TextBlock Text="{Binding VersionText}" FontWeight="SemiBold" />
-                        <TextBlock Style="{StaticResource FieldHint}">
+                        <TextBlock Text="{Binding Update.StatusText}" Style="{StaticResource FieldHint}"
+                                   Visibility="{Binding Update.StatusText, Converter={StaticResource NotEmptyToVisibility}}" />
+                        <WrapPanel Margin="0,12,0,0">
+                            <Button Content="{loc:Loc Update_Check}" Command="{Binding Update.CheckCommand}" Margin="0,0,8,6" />
+                            <Button Content="{Binding Update.PrimaryText}" Command="{Binding Update.PrimaryCommand}" Style="{StaticResource AccentButton}"
+                                    Margin="0,0,8,6" Visibility="{Binding Update.IsOfferVisible, Converter={StaticResource BoolToVisibility}}" />
+                            <Button Content="{Binding Update.ReleasePageText}" Command="{Binding Update.OpenReleasePageCommand}" Style="{StaticResource GhostButton}"
+                                    Margin="0,0,8,6" Visibility="{Binding Update.IsOfferVisible, Converter={StaticResource BoolToVisibility}}" />
+                        </WrapPanel>
+                        <CheckBox Style="{StaticResource Switch}" IsChecked="{Binding CheckForUpdates}" Content="{loc:Loc Update_CheckAutomatically}"
+                                  Margin="0,6,0,0" />
+                        <TextBlock Style="{StaticResource FieldHint}" Margin="0,14,0,0">
                             <Run Text="{loc:Loc About_DataLocation}" /> <Run Text="{Binding DataLocationText, Mode=OneWay}" />
                         </TextBlock>
                         <WrapPanel Margin="0,12,0,0">

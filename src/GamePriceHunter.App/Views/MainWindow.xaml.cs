@@ -66,7 +66,7 @@ public partial class MainWindow : Window
 
     private void OpenSettings()
     {
-        var settingsViewModel = new SettingsViewModel(_services);
+        var settingsViewModel = new SettingsViewModel(_services, _viewModel.Update);
         var dialog = new SettingsWindow(settingsViewModel) { Owner = this };
         if (dialog.ShowDialog() != true)
             return;

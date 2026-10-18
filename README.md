@@ -12,7 +12,10 @@ Find the cheapest price for any PC game. Type a title, or just part of it, and y
 
 ## Download
 
-Get `GamePriceHunter.exe` from the [latest release](../../releases/latest) and run it. No installation needed.
+From the [latest release](../../releases/latest):
+
+- **GamePriceHunter-Setup.exe** installs the app and keeps it up to date. No administrator rights needed.
+- **GamePriceHunter.exe** is the portable version: just run it. It tells you when a new version is out.
 
 Requires Windows 10 or 11 (64-bit).
 

@@ -125,6 +125,20 @@
   <data name="Settings_OpenLogs" xml:space="preserve"><value>Open logs</value></data>
   <data name="Settings_ClearCache" xml:space="preserve"><value>Clear cache</value></data>
   <data name="Settings_CacheCleared" xml:space="preserve"><value>Cache cleared ({0} images removed).</value></data>
+  <data name="Update_Available" xml:space="preserve"><value>Game Price Hunter {0} is available.</value></data>
+  <data name="Update_Install" xml:space="preserve"><value>Update now</value></data>
+  <data name="Update_Download" xml:space="preserve"><value>Download</value></data>
+  <data name="Update_WhatsNew" xml:space="preserve"><value>What&apos;s new</value></data>
+  <data name="Update_ReleasePage" xml:space="preserve"><value>Open download page</value></data>
+  <data name="Update_Later" xml:space="preserve"><value>Later</value></data>
+  <data name="Update_Downloading" xml:space="preserve"><value>Downloading the update… {0}%</value></data>
+  <data name="Update_Installing" xml:space="preserve"><value>Installing the update. Game Price Hunter will restart in a moment.</value></data>
+  <data name="Update_InstallFailed" xml:space="preserve"><value>The update couldn&apos;t be installed automatically. Try again, or download it from the download page.</value></data>
+  <data name="Update_Check" xml:space="preserve"><value>Check for updates</value></data>
+  <data name="Update_Checking" xml:space="preserve"><value>Checking for updates…</value></data>
+  <data name="Update_UpToDate" xml:space="preserve"><value>You have the latest version.</value></data>
+  <data name="Update_CheckFailed" xml:space="preserve"><value>Couldn&apos;t check for updates. Check your internet connection and try again.</value></data>
+  <data name="Update_CheckAutomatically" xml:space="preserve"><value>Check for updates automatically</value></data>
   <data name="Common_Cancel" xml:space="preserve"><value>Cancel</value></data>
   <data name="Common_Save" xml:space="preserve"><value>Save</value></data>
 </root>

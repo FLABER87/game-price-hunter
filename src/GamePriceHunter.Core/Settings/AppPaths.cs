@@ -29,6 +29,9 @@ public sealed class AppPaths
 
     public string LogDirectory => Path.Combine(CacheDirectory, "logs");
 
+    /// <summary>Where downloaded installers wait to be run; emptied on the next start.</summary>
+    public static string UpdateDownloadDirectory => Path.Combine(Path.GetTempPath(), AppFolderName + "-Update");
+
     public static AppPaths Resolve()
     {
         var baseDirectory = AppContext.BaseDirectory;

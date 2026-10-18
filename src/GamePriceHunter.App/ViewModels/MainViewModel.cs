@@ -43,6 +43,7 @@ public sealed class MainViewModel : ObservableObject
     public MainViewModel(AppServices services)
     {
         _services = services;
+        Update = new UpdateViewModel(services);
         Providers = new ObservableCollection<ProviderViewModel>(
             services.Search.Providers.Select(p => new ProviderViewModel(p.Info, services.Settings.IsProviderEnabled(p.Info), OnProviderToggled)));
         SortOptions = new ObservableCollection<SortOption>(BuildSortOptions());
@@ -78,6 +79,8 @@ public sealed class MainViewModel : ObservableObject
     }
 
     public event EventHandler? SettingsRequested;
+
+    public UpdateViewModel Update { get; }
 
     public RangeObservableCollection<OfferViewModel> Offers { get; } = [];
 
@@ -272,6 +275,8 @@ public sealed class MainViewModel : ObservableObject
         OnPropertyChanged(nameof(RatesText));
         OnPropertyChanged(nameof(AreRatesStale));
         OnPropertyChanged(nameof(SummaryText));
+
+        await Update.CheckOnStartupAsync();
     }
 
     /// <summary>Shows recent searches when the search box is focused and empty.</summary>

@@ -9,6 +9,7 @@ using GamePriceHunter.Core.Net;
 using GamePriceHunter.Core.Providers;
 using GamePriceHunter.Core.Search;
 using GamePriceHunter.Core.Settings;
+using GamePriceHunter.Core.Updates;
 
 namespace GamePriceHunter.App.Services;
 
@@ -16,6 +17,7 @@ namespace GamePriceHunter.App.Services;
 public sealed class AppServices : IDisposable
 {
     private readonly System.Windows.Threading.DispatcherTimer _saveTimer;
+    private readonly HttpClient _updateHttp;
 
     private AppServices(AppPaths paths, FileLogger logger, SettingsStore store, AppSettings settings, HttpClient http)
     {
@@ -28,6 +30,9 @@ public sealed class AppServices : IDisposable
         RegionDetector = new RegionDetector(http, logger);
         Search = new SearchService(ProviderCatalog.CreateAll(http), logger);
         Suggestions = new SuggestionService(http);
+        _updateHttp = UpdateChecker.CreateHttpClient($"GamePriceHunter/{Version} (+{UpdateChecker.RepositoryUrl})");
+        Updates = new UpdateChecker(_updateHttp);
+        CanInstallUpdates = !paths.IsPortable && UpdateChecker.IsInstalledCopy(AppContext.BaseDirectory);
 
         _saveTimer = new System.Windows.Threading.DispatcherTimer { Interval = TimeSpan.FromMilliseconds(600) };
         _saveTimer.Tick += (_, _) =>
@@ -59,6 +64,14 @@ public sealed class AppServices : IDisposable
     public SearchService Search { get; }
 
     public SuggestionService Suggestions { get; }
+
+    public UpdateChecker Updates { get; }
+
+    /// <summary>
+    /// True for copies installed by the setup, which can download and run the next installer.
+    /// Portable and stand-alone copies only point the user to the release page.
+    /// </summary>
+    public bool CanInstallUpdates { get; }
 
     /// <summary>Region detected at startup (before any user override).</summary>
     public DetectedRegion? DetectedRegion { get; set; }
@@ -127,6 +140,7 @@ public sealed class AppServices : IDisposable
     {
         SaveSettingsNow();
         Http.Dispose();
+        _updateHttp.Dispose();
         (Logger as IDisposable)?.Dispose();
     }
 }

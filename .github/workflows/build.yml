@@ -1,0 +1,84 @@
+# Builds and tests every push and pull request, and turns a pushed vX.Y.Z tag into a draft release
+# with the exe and the installer. "Build and test" is the check main requires before merging.
+name: Build
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build and test
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Build all projects
+        run: dotnet build GamePriceHunter.slnx --nologo
+
+      # Tests, the single-file exe and the installer (Inno Setup is preinstalled on the runner).
+      - name: Test and publish
+        run: |
+          $version = if ($env:GITHUB_REF_TYPE -eq 'tag') { $env:GITHUB_REF_NAME.TrimStart('v') } else { '' }
+          ./build/publish.ps1 -Version $version
+          if (-not (Test-Path artifacts/installer/GamePriceHunter-Setup.exe)) { throw 'The installer was not built.' }
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: GamePriceHunter
+          path: |
+            artifacts/publish/win-x64/GamePriceHunter.exe
+            artifacts/installer/GamePriceHunter-Setup.exe
+          if-no-files-found: error
+          retention-days: 14
+
+  release:
+    name: Draft release
+    if: github.ref_type == 'tag'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+
+      # checkout leaves a lightweight copy of the tag; fetch the real one to read its message.
+      - name: Fetch the tag
+        run: git fetch --force origin "refs/tags/${GITHUB_REF_NAME}:refs/tags/${GITHUB_REF_NAME}"
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: GamePriceHunter
+          path: dist
+
+      # The message of an annotated tag becomes the release notes; publish the draft on GitHub after a look.
+      - name: Create the draft release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          files=(dist/installer/GamePriceHunter-Setup.exe dist/publish/win-x64/GamePriceHunter.exe)
+          if gh release view "$TAG" > /dev/null 2>&1; then
+            gh release upload "$TAG" "${files[@]}" --clobber
+          else
+            if [ "$(git cat-file -t "$TAG")" = tag ]; then
+              git tag -l --format='%(contents:subject)%0a%0a%(contents:body)' "$TAG" > notes.md
+            else
+              : > notes.md
+            fi
+            gh release create "$TAG" "${files[@]}" --draft --verify-tag --title "Game Price Hunter ${TAG#v}" --notes-file notes.md
+          fi
