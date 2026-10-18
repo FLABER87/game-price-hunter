@@ -2,6 +2,11 @@
 
 Find the cheapest price for any PC game. Type a title, or just part of it, and you get prices from 25+ stores in one list, converted to your currency.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/screenshot-dark.png">
+  <img alt="Game Price Hunter showing Cyberpunk 2077 prices from Steam, GOG and key shops, with discounts and the best price marked" src="docs/images/screenshot-light.png">
+</picture>
+
 ## Features
 
 - **Official stores, key shops and marketplaces in one search:** Steam, GOG, Fanatical, Epic, Humble, Green Man Gaming, Instant Gaming, Eneba, K4G, Plati, GGSEL, Driffle and many more.
