@@ -80,9 +80,22 @@ Compression=lzma2/max
 SolidCompression=yes
 ShowLanguageDialog=no
 
+; The app's languages (Loc.Languages), all with official translations that ship with Inno Setup. Setup picks
+; the one of the Windows display language, as the app does, and English when there is none.
 [Languages]
 Name: "en"; MessagesFile: "compiler:Default.isl"
+Name: "de"; MessagesFile: "compiler:Languages\German.isl"
+Name: "es"; MessagesFile: "compiler:Languages\Spanish.isl"
+Name: "fr"; MessagesFile: "compiler:Languages\French.isl"
+Name: "it"; MessagesFile: "compiler:Languages\Italian.isl"
+Name: "pl"; MessagesFile: "compiler:Languages\Polish.isl"
+Name: "ptbr"; MessagesFile: "compiler:Languages\BrazilianPortuguese.isl"
+Name: "tr"; MessagesFile: "compiler:Languages\Turkish.isl"
 Name: "ru"; MessagesFile: "compiler:Languages\Russian.isl"
+Name: "uk"; MessagesFile: "compiler:Languages\Ukrainian.isl"
+Name: "zhhans"; MessagesFile: "compiler:Languages\ChineseSimplified.isl"
+Name: "ja"; MessagesFile: "compiler:Languages\Japanese.isl"
+Name: "ko"; MessagesFile: "compiler:Languages\Korean.isl"
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked

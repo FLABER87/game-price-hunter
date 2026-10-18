@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="App_Title" xml:space="preserve"><value>Game Price Hunter</value></data>
+  <data name="App_TitleWithVersion" xml:space="preserve"><value>Game Price Hunter {0}</value></data>
+  <data name="Search_Placeholder" xml:space="preserve"><value>Busca un juego, p. ej. &quot;witcher 3&quot; o &quot;hollow knight&quot;</value></data>
+  <data name="Search_Clear" xml:space="preserve"><value>Borrar</value></data>
+  <data name="Search_Button" xml:space="preserve"><value>Buscar</value></data>
+  <data name="Search_Stop" xml:space="preserve"><value>Detener</value></data>
+  <data name="Filter_Placeholder" xml:space="preserve"><value>Filtrar resultados</value></data>
+  <data name="Sort_Label" xml:space="preserve"><value>Ordenar resultados</value></data>
+  <data name="Sort_PriceLowToHigh" xml:space="preserve"><value>Precio: menor a mayor</value></data>
+  <data name="Sort_PriceHighToLow" xml:space="preserve"><value>Precio: mayor a menor</value></data>
+  <data name="Sort_BestMatch" xml:space="preserve"><value>Relevancia</value></data>
+  <data name="Sort_Discount" xml:space="preserve"><value>Mayor descuento</value></data>
+  <data name="Sort_Store" xml:space="preserve"><value>Tienda</value></data>
+  <data name="Sort_Title" xml:space="preserve"><value>Título</value></data>
+  <data name="Filter_Official" xml:space="preserve"><value>Tiendas oficiales</value></data>
+  <data name="Filter_OfficialTooltip" xml:space="preserve"><value>Tiendas como Steam, GOG o Fanatical, autorizadas por los editores.</value></data>
+  <data name="Filter_KeyShops" xml:space="preserve"><value>Tiendas de claves</value></data>
+  <data name="Filter_KeyShopsTooltip" xml:space="preserve"><value>Tiendas que revenden claves de juegos.</value></data>
+  <data name="Filter_Marketplaces" xml:space="preserve"><value>Marketplaces</value></data>
+  <data name="Filter_MarketplacesTooltip" xml:space="preserve"><value>Plataformas donde vendedores independientes publican claves. Revisa la valoración del vendedor antes de comprar.</value></data>
+  <data name="Filter_Games" xml:space="preserve"><value>Juegos</value></data>
+  <data name="Filter_Dlc" xml:space="preserve"><value>DLC</value></data>
+  <data name="Filter_Bundles" xml:space="preserve"><value>Paquetes</value></data>
+  <data name="Filter_Other" xml:space="preserve"><value>Otros</value></data>
+  <data name="Filter_OtherTooltip" xml:space="preserve"><value>Cuentas, tarjetas de regalo, claves aleatorias y otros artículos que no son el juego en sí.</value></data>
+  <data name="Filter_Consoles" xml:space="preserve"><value>Claves de consola</value></data>
+  <data name="Filter_ConsolesTooltip" xml:space="preserve"><value>Muestra claves de Xbox, PlayStation y Nintendo.</value></data>
+  <data name="Filter_HideRegionLocked" xml:space="preserve"><value>Sin bloqueo regional</value></data>
+  <data name="Filter_RegionTooltip" xml:space="preserve"><value>Oculta las claves bloqueadas para una región distinta de la tuya.</value></data>
+  <data name="Stores_Header" xml:space="preserve"><value>TIENDAS</value></data>
+  <data name="Stores_All" xml:space="preserve"><value>Todas</value></data>
+  <data name="Stores_None" xml:space="preserve"><value>Ninguna</value></data>
+  <data name="Results_Label" xml:space="preserve"><value>Resultados de la búsqueda</value></data>
+  <data name="Welcome_Title" xml:space="preserve"><value>Encuentra el mejor precio para cualquier juego</value></data>
+  <data name="Welcome_Text" xml:space="preserve"><value>Escribe el título de un juego, o parte de él, y Game Price Hunter consulta a la vez tiendas oficiales, tiendas de claves y marketplaces.</value></data>
+  <data name="Welcome_Hint" xml:space="preserve"><value>Ctrl+F activa el cuadro de búsqueda. Haz doble clic en un resultado o presiona Intro para abrirlo en el navegador.</value></data>
+  <data name="Empty_NothingTitle" xml:space="preserve"><value>No se encontró nada para &quot;{0}&quot;</value></data>
+  <data name="Empty_NothingText" xml:space="preserve"><value>Revisa la ortografía, prueba con menos palabras o activa más tiendas en la barra lateral.</value></data>
+  <data name="Empty_FilteredTitle" xml:space="preserve"><value>Los filtros ocultan todas las ofertas</value></data>
+  <data name="Empty_FilteredText" xml:space="preserve"><value>Se encontraron {0} ofertas, pero los filtros actuales las ocultan.</value></data>
+  <data name="Empty_FilteredText_one" xml:space="preserve"><value>Se encontró {0} oferta, pero los filtros actuales la ocultan.</value></data>
+  <data name="Empty_ResetFilters" xml:space="preserve"><value>Restablecer filtros</value></data>
+  <data name="Summary_Ready" xml:space="preserve"><value>Listo para buscar en {0} tiendas</value></data>
+  <data name="Summary_Ready_one" xml:space="preserve"><value>Listo para buscar en {0} tienda</value></data>
+  <data name="Summary_Searching" xml:space="preserve"><value>Buscando… {0} de {1} tiendas listas</value></data>
+  <data name="Summary_Searching_one" xml:space="preserve"><value>Buscando… {0} de {1} tienda lista</value></data>
+  <data name="Summary_Done" xml:space="preserve"><value>{0} {1} en {2:0.0} s</value></data>
+  <data name="Summary_Offers" xml:space="preserve"><value>{0} ofertas</value></data>
+  <data name="Summary_Offers_one" xml:space="preserve"><value>{0} oferta</value></data>
+  <data name="Summary_FromStores" xml:space="preserve"><value>de {0} tiendas</value></data>
+  <data name="Summary_FromStores_one" xml:space="preserve"><value>de {0} tienda</value></data>
+  <data name="Summary_Hidden" xml:space="preserve"><value> · ocultas por filtros: {0}</value></data>
+  <data name="Region_SourceIp" xml:space="preserve"><value>Región detectada a partir de tu conexión a internet. Haz clic para cambiarla.</value></data>
+  <data name="Region_SourceWindows" xml:space="preserve"><value>Región tomada de la configuración de Windows (no se pudo detectar en línea). Haz clic para cambiarla.</value></data>
+  <data name="Region_SourceManual" xml:space="preserve"><value>Región elegida en Configuración. Haz clic para cambiarla.</value></data>
+  <data name="Region_SourceDetecting" xml:space="preserve"><value>Detectando tu región…</value></data>
+  <data name="Region_Compatible" xml:space="preserve"><value>Región de la clave: {0}. Debería activarse en tu región.</value></data>
+  <data name="Region_Incompatible" xml:space="preserve"><value>Región de la clave: {0}. Probablemente NO se activará en tu región.</value></data>
+  <data name="Region_Unknown" xml:space="preserve"><value>Región de la clave: {0}. Consulta las restricciones de activación en la página de la tienda.</value></data>
+  <data name="Region_Global" xml:space="preserve"><value>Global</value></data>
+  <data name="Region_Asia" xml:space="preserve"><value>Asia</value></data>
+  <data name="Rates_None" xml:space="preserve"><value>Tipos de cambio no disponibles: los precios se muestran en la moneda de cada tienda</value></data>
+  <data name="Rates_Info" xml:space="preserve"><value>Tipos de cambio: {0}, actualizados {1}</value></data>
+  <data name="Time_JustNow" xml:space="preserve"><value>hace un momento</value></data>
+  <data name="Time_HoursAgo" xml:space="preserve"><value>hace {0} h</value></data>
+  <data name="Time_DaysAgo" xml:space="preserve"><value>hace {0} días</value></data>
+  <data name="Time_DaysAgo_one" xml:space="preserve"><value>hace {0} día</value></data>
+  <data name="Menu_Open" xml:space="preserve"><value>Abrir en el navegador</value></data>
+  <data name="Menu_CopyLink" xml:space="preserve"><value>Copiar enlace</value></data>
+  <data name="Menu_CopyTitle" xml:space="preserve"><value>Copiar título</value></data>
+  <data name="Menu_SearchTitle" xml:space="preserve"><value>Buscar este título</value></data>
+  <data name="Offer_Seller" xml:space="preserve"><value>Vendedor:</value></data>
+  <data name="Offer_BestPrice" xml:space="preserve"><value>MEJOR PRECIO</value></data>
+  <data name="Offer_OriginalPriceTooltip" xml:space="preserve"><value>Precio en la moneda de la tienda</value></data>
+  <data name="Offer_OpenTooltip" xml:space="preserve"><value>Abrir en el navegador</value></data>
+  <data name="Provider_RetryTooltip" xml:space="preserve"><value>Esta tienda no respondió. Haz clic para volver a intentarlo.</value></data>
+  <data name="Provider_Searching" xml:space="preserve"><value>Buscando…</value></data>
+  <data name="Provider_Found" xml:space="preserve"><value>{0} ofertas en {1:0.0} s</value></data>
+  <data name="Provider_Found_one" xml:space="preserve"><value>{0} oferta en {1:0.0} s</value></data>
+  <data name="Provider_Blocked" xml:space="preserve"><value>La tienda rechazó la solicitud (protección contra bots o límite de peticiones). Vuelve a intentarlo más tarde.</value></data>
+  <data name="Provider_TimedOut" xml:space="preserve"><value>La tienda no respondió a tiempo.</value></data>
+  <data name="Provider_Failed" xml:space="preserve"><value>Error en la búsqueda: {0}</value></data>
+  <data name="Provider_NeedsApiKey" xml:space="preserve"><value>Para usar esta fuente, necesitas una clave de API de {0} en Configuración.</value></data>
+  <data name="Kind_Official" xml:space="preserve"><value>Tienda oficial</value></data>
+  <data name="Kind_KeyShop" xml:space="preserve"><value>Tienda de claves</value></data>
+  <data name="Kind_Marketplace" xml:space="preserve"><value>Marketplace</value></data>
+  <data name="Kind_Aggregator" xml:space="preserve"><value>Comparador de precios</value></data>
+  <data name="Note_Marketplace" xml:space="preserve"><value>Marketplace: precios de vendedores independientes.</value></data>
+  <data name="Note_RussianStore" xml:space="preserve"><value>Tienda rusa: las claves y los regalos suelen ser para Rusia y la CEI.</value></data>
+  <data name="Note_CheapShark" xml:space="preserve"><value>Epic, Humble, GMG, IndieGala, WinGameStore y más. Precios de EE. UU. en USD.</value></data>
+  <data name="Note_IsThereAnyDeal" xml:space="preserve"><value>Precios regionales de más de 50 tiendas autorizadas. Requiere una clave de API gratuita.</value></data>
+  <data name="Platform_Steam" xml:space="preserve"><value>Steam</value></data>
+  <data name="Platform_Gog" xml:space="preserve"><value>GOG</value></data>
+  <data name="Platform_Epic" xml:space="preserve"><value>Epic</value></data>
+  <data name="Platform_Ubisoft" xml:space="preserve"><value>Ubisoft</value></data>
+  <data name="Platform_Ea" xml:space="preserve"><value>EA app</value></data>
+  <data name="Platform_BattleNet" xml:space="preserve"><value>Battle.net</value></data>
+  <data name="Platform_Rockstar" xml:space="preserve"><value>Rockstar</value></data>
+  <data name="Platform_Xbox" xml:space="preserve"><value>Xbox</value></data>
+  <data name="Platform_PlayStation" xml:space="preserve"><value>PlayStation</value></data>
+  <data name="Platform_Nintendo" xml:space="preserve"><value>Nintendo</value></data>
+  <data name="Platform_DrmFree" xml:space="preserve"><value>Sin DRM</value></data>
+  <data name="Platform_Other" xml:space="preserve"><value>Otra</value></data>
+  <data name="Type_Dlc" xml:space="preserve"><value>DLC</value></data>
+  <data name="Type_Bundle" xml:space="preserve"><value>Paquete</value></data>
+  <data name="Type_Other" xml:space="preserve"><value>Otro</value></data>
+  <data name="Error_Unexpected" xml:space="preserve"><value>Algo salió mal: {0}</value></data>
+  <data name="Settings_Title" xml:space="preserve"><value>Configuración</value></data>
+  <data name="Settings_General" xml:space="preserve"><value>General</value></data>
+  <data name="Settings_Language" xml:space="preserve"><value>Idioma</value></data>
+  <data name="Settings_Theme" xml:space="preserve"><value>Tema</value></data>
+  <data name="Theme_System" xml:space="preserve"><value>Usar la configuración de Windows</value></data>
+  <data name="Theme_Dark" xml:space="preserve"><value>Oscuro</value></data>
+  <data name="Theme_Light" xml:space="preserve"><value>Claro</value></data>
+  <data name="Settings_Region" xml:space="preserve"><value>Región y moneda</value></data>
+  <data name="Settings_Country" xml:space="preserve"><value>País</value></data>
+  <data name="Settings_Currency" xml:space="preserve"><value>Mostrar precios en</value></data>
+  <data name="Settings_Auto" xml:space="preserve"><value>Automático</value></data>
+  <data name="Settings_AutoValue" xml:space="preserve"><value>Automático ({0})</value></data>
+  <data name="Settings_RegionHint" xml:space="preserve"><value>Las tiendas muestran precios regionales y las claves pueden tener bloqueo regional, así que el país importa. Automático usa el país de tu conexión a internet.</value></data>
+  <data name="Settings_Search" xml:space="preserve"><value>Búsqueda</value></data>
+  <data name="Settings_MatchMode" xml:space="preserve"><value>Coincidencia</value></data>
+  <data name="Match_AllWords" xml:space="preserve"><value>Todas las palabras (títulos parciales)</value></data>
+  <data name="Match_Exact" xml:space="preserve"><value>Título exacto</value></data>
+  <data name="Settings_MaxResults" xml:space="preserve"><value>Resultados por tienda</value></data>
+  <data name="Settings_Timeout" xml:space="preserve"><value>Tiempo de espera</value></data>
+  <data name="Settings_TimeoutValue" xml:space="preserve"><value>{0} s</value></data>
+  <data name="Settings_Stores" xml:space="preserve"><value>Tiendas</value></data>
+  <data name="Settings_ApiKeyPlaceholder" xml:space="preserve"><value>Clave de API</value></data>
+  <data name="Settings_GetApiKey" xml:space="preserve"><value>Obtener clave gratis</value></data>
+  <data name="Settings_About" xml:space="preserve"><value>Acerca de</value></data>
+  <data name="About_Version" xml:space="preserve"><value>Game Price Hunter {0}</value></data>
+  <data name="About_DataLocation" xml:space="preserve"><value>Carpeta de datos:</value></data>
+  <data name="About_Portable" xml:space="preserve"><value>Modo portátil (junto al programa)</value></data>
+  <data name="About_Disclaimer" xml:space="preserve"><value>Los precios provienen de los sitios web públicos de las tiendas y pueden cambiar en cualquier momento. Comprueba siempre el precio final, la región y el vendedor en la página de la tienda antes de comprar.</value></data>
+  <data name="Settings_OpenDataFolder" xml:space="preserve"><value>Abrir carpeta de datos</value></data>
+  <data name="Settings_OpenLogs" xml:space="preserve"><value>Abrir registros</value></data>
+  <data name="Settings_ClearCache" xml:space="preserve"><value>Borrar caché</value></data>
+  <data name="Settings_CacheCleared" xml:space="preserve"><value>Caché borrada ({0} imágenes eliminadas).</value></data>
+  <data name="Settings_CacheCleared_one" xml:space="preserve"><value>Caché borrada ({0} imagen eliminada).</value></data>
+  <data name="Update_Available" xml:space="preserve"><value>Game Price Hunter {0} ya está disponible.</value></data>
+  <data name="Update_Install" xml:space="preserve"><value>Actualizar ahora</value></data>
+  <data name="Update_Download" xml:space="preserve"><value>Descargar</value></data>
+  <data name="Update_WhatsNew" xml:space="preserve"><value>Novedades</value></data>
+  <data name="Update_ReleasePage" xml:space="preserve"><value>Abrir página de descarga</value></data>
+  <data name="Update_Later" xml:space="preserve"><value>Más tarde</value></data>
+  <data name="Update_Downloading" xml:space="preserve"><value>Descargando la actualización… {0}</value></data>
+  <data name="Update_Installing" xml:space="preserve"><value>Instalando la actualización. Game Price Hunter se reiniciará en un momento.</value></data>
+  <data name="Update_InstallFailed" xml:space="preserve"><value>No se pudo instalar la actualización automáticamente. Inténtalo de nuevo o descárgala desde la página de descarga.</value></data>
+  <data name="Update_Check" xml:space="preserve"><value>Buscar actualizaciones</value></data>
+  <data name="Update_Checking" xml:space="preserve"><value>Buscando actualizaciones…</value></data>
+  <data name="Update_UpToDate" xml:space="preserve"><value>Tienes la versión más reciente.</value></data>
+  <data name="Update_CheckFailed" xml:space="preserve"><value>No se pudo comprobar si hay actualizaciones. Revisa tu conexión a internet y vuelve a intentarlo.</value></data>
+  <data name="Update_CheckAutomatically" xml:space="preserve"><value>Buscar actualizaciones automáticamente</value></data>
+  <data name="Common_Cancel" xml:space="preserve"><value>Cancelar</value></data>
+  <data name="Common_Save" xml:space="preserve"><value>Guardar</value></data>
+  <data name="Edit_Cut" xml:space="preserve"><value>Cortar</value></data>
+  <data name="Edit_Copy" xml:space="preserve"><value>Copiar</value></data>
+  <data name="Edit_Paste" xml:space="preserve"><value>Pegar</value></data>
+  <data name="Edit_SelectAll" xml:space="preserve"><value>Seleccionar todo</value></data>
+</root>

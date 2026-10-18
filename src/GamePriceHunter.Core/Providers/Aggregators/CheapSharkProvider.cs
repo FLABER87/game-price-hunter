@@ -54,7 +54,7 @@ public sealed class CheapSharkProvider(HttpClient http) : StoreProvider(http)
     public override ProviderInfo Info { get; } = new("cheapshark", "CheapShark", StoreKind.Official, "https://www.cheapshark.com/")
     {
         IsAggregator = true,
-        Note = "Epic, Humble, GMG, IndieGala, WinGameStore and more. US prices in USD.",
+        Note = ProviderNote.CheapShark,
     };
 
     public override async Task<IReadOnlyList<Offer>> SearchAsync(SearchContext context, CancellationToken cancellationToken)

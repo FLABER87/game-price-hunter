@@ -175,19 +175,19 @@ public sealed class MainViewModel : ObservableObject
 
     public string EmptyTitle => _all.Count > 0 ? Loc.T("Empty_FilteredTitle") : Loc.F("Empty_NothingTitle", _lastQuery);
 
-    public string EmptyText => _all.Count > 0 ? Loc.F("Empty_FilteredText", _all.Count) : Loc.T("Empty_NothingText");
+    public string EmptyText => _all.Count > 0 ? Loc.P("Empty_FilteredText", _all.Count) : Loc.T("Empty_NothingText");
 
     public string SummaryText
     {
         get
         {
             if (!HasSearched)
-                return Loc.F("Summary_Ready", Providers.Count(p => p.IsEnabled));
+                return Loc.P("Summary_Ready", Providers.Count(p => p.IsEnabled));
             if (IsSearching)
-                return Loc.F("Summary_Searching", _completedProviders, _totalProviders);
+                return Loc.P("Summary_Searching", _totalProviders, _completedProviders, _totalProviders);
 
             var stores = Offers.Select(o => o.StoreName).Distinct(StringComparer.OrdinalIgnoreCase).Count();
-            var text = Loc.F("Summary_Done", Offers.Count, stores, _lastElapsed.TotalSeconds);
+            var text = Loc.F("Summary_Done", Loc.P("Summary_Offers", Offers.Count), Loc.P("Summary_FromStores", stores), _lastElapsed.TotalSeconds);
             return HasHiddenOffers ? text + Loc.F("Summary_Hidden", _all.Count - Offers.Count) : text;
         }
     }
@@ -221,7 +221,7 @@ public sealed class MainViewModel : ObservableObject
         get
         {
             var region = _services.EffectiveRegion;
-            return $"{Countries.DisplayName(region.CountryCode)} · {_services.DisplayCurrency}";
+            return $"{Countries.DisplayName(region.CountryCode, Loc.Instance.Culture)} · {_services.DisplayCurrency}";
         }
     }
 
@@ -250,7 +250,7 @@ public sealed class MainViewModel : ObservableObject
             var age = DateTimeOffset.UtcNow - rates.Timestamp;
             var when = age.TotalHours < 1 ? Loc.T("Time_JustNow")
                 : age.TotalHours < 48 ? Loc.F("Time_HoursAgo", (int)age.TotalHours)
-                : Loc.F("Time_DaysAgo", (int)age.TotalDays);
+                : Loc.P("Time_DaysAgo", (int)age.TotalDays);
             return Loc.F("Rates_Info", rates.Source, when);
         }
     }
@@ -512,8 +512,9 @@ public sealed class MainViewModel : ObservableObject
 
         var filter = QuickFilter.Trim();
         return filter.Length == 0
-            || offer.Title.Contains(filter, StringComparison.CurrentCultureIgnoreCase)
-            || offer.StoreName.Contains(filter, StringComparison.CurrentCultureIgnoreCase);
+            // Not the current culture: in Turkish "i" and "I" are different letters, and titles are mostly English.
+            || offer.Title.Contains(filter, StringComparison.InvariantCultureIgnoreCase)
+            || offer.StoreName.Contains(filter, StringComparison.InvariantCultureIgnoreCase);
     }
 
     private int Compare(OfferViewModel a, OfferViewModel b)
@@ -645,6 +646,7 @@ public sealed class MainViewModel : ObservableObject
             offer.RefreshTexts();
             offer.UpdatePrice(_services.Currency, _services.DisplayCurrency);
         }
+        OnPropertyChanged(nameof(RegionText));
         OnPropertyChanged(nameof(RegionTooltip));
         OnPropertyChanged(nameof(RatesText));
         OnPropertyChanged(nameof(WindowTitle));
@@ -673,13 +675,13 @@ public sealed class MainViewModel : ObservableObject
 
             Suggestions.Clear();
             foreach (var history in _services.Settings.SearchHistory
-                         .Where(h => h.Contains(query, StringComparison.CurrentCultureIgnoreCase) && !string.Equals(h, query, StringComparison.CurrentCultureIgnoreCase))
+                         .Where(h => h.Contains(query, StringComparison.InvariantCultureIgnoreCase) && !string.Equals(h, query, StringComparison.InvariantCultureIgnoreCase))
                          .Take(3))
             {
                 Suggestions.Add(new SuggestionViewModel(history, null, null, isHistory: true));
             }
             foreach (var item in items.Take(8))
-                Suggestions.Add(new SuggestionViewModel(item.Title, item.ImageUrl, item.PriceText, isHistory: false));
+                Suggestions.Add(new SuggestionViewModel(item.Title, item.ImageUrl, item.Price, isHistory: false));
 
             IsSuggestionsOpen = Suggestions.Count > 0;
         }
@@ -705,6 +707,7 @@ public sealed class MainViewModel : ObservableObject
         {
             _services.Logger.Error("Region detection failed.", ex);
         }
+        Loc.Instance.SetCountry(_services.FormatCountry);
         OnPropertyChanged(nameof(RegionText));
         OnPropertyChanged(nameof(RegionTooltip));
     }

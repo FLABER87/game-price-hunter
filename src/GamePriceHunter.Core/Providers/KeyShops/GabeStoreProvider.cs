@@ -12,7 +12,7 @@ public sealed class GabeStoreProvider(HttpClient http) : StoreProvider(http)
     private readonly SemaphoreSlim _currencyLock = new(1, 1);
     private string? _sessionCurrency;
 
-    public override ProviderInfo Info { get; } = new("gabestore", "GabeStore", StoreKind.KeyShop, "https://gabestore.ru/") { Note = RegionalNotes.Russia };
+    public override ProviderInfo Info { get; } = new("gabestore", "GabeStore", StoreKind.KeyShop, "https://gabestore.ru/") { Note = ProviderNote.RussianStore };
 
     public override async Task<IReadOnlyList<Offer>> SearchAsync(SearchContext context, CancellationToken cancellationToken)
     {

@@ -24,7 +24,10 @@ public sealed class SettingsStore(string path, IAppLogger logger)
             {
                 var settings = JsonSerializer.Deserialize<AppSettings>(File.ReadAllText(path), JsonOptions);
                 if (settings is not null)
+                {
+                    settings.Upgrade();
                     return settings;
+                }
             }
         }
         catch (Exception ex) when (ex is JsonException or IOException or UnauthorizedAccessException)

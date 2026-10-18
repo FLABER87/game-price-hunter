@@ -1,5 +1,6 @@
 using GamePriceHunter.App.Infrastructure;
 using GamePriceHunter.App.Localization;
+using GamePriceHunter.Core.Currency;
 using GamePriceHunter.Core.Models;
 
 namespace GamePriceHunter.App.ViewModels;
@@ -74,20 +75,25 @@ public sealed class ProviderViewModel : ObservableObject
     {
         get
         {
-            var header = Info.Note is null ? Info.Name : $"{Info.Name}\n{Info.Note}";
+            var note = NoteText(Info);
+            var header = note is null ? Info.Name : $"{Info.Name}\n{note}";
             var line = Status switch
             {
                 ProviderStatus.Running => Loc.T("Provider_Searching"),
-                ProviderStatus.Succeeded => Loc.F("Provider_Found", OfferCount, _elapsed.TotalSeconds),
+                ProviderStatus.Succeeded => Loc.P("Provider_Found", OfferCount, OfferCount, _elapsed.TotalSeconds),
                 ProviderStatus.Blocked => Loc.T("Provider_Blocked"),
                 ProviderStatus.TimedOut => Loc.T("Provider_TimedOut"),
                 ProviderStatus.Failed => Loc.F("Provider_Failed", _error),
+                ProviderStatus.Skipped when Info.RequiresApiKey => Loc.F("Provider_NeedsApiKey", Info.Name),
                 ProviderStatus.Skipped => _error,
                 _ => null,
             };
             return line is null ? header : $"{header}\n\n{line}";
         }
     }
+
+    /// <summary>The store's note in the UI language, or null.</summary>
+    public static string? NoteText(ProviderInfo info) => info.Note == ProviderNote.None ? null : Loc.T($"Note_{info.Note}");
 
     public void SetRunning()
     {
@@ -128,13 +134,13 @@ public sealed class ProviderViewModel : ObservableObject
     }
 }
 
-public sealed class SuggestionViewModel(string title, string? imageUrl, string? priceText, bool isHistory)
+public sealed class SuggestionViewModel(string title, string? imageUrl, Money? price, bool isHistory)
 {
     public string Title { get; } = title;
 
     public string? ImageUrl { get; } = imageUrl;
 
-    public string? PriceText { get; } = priceText;
+    public string? PriceText { get; } = price is { } money ? MoneyFormatter.Format(money, Loc.Instance.FormatCulture) : null;
 
     public bool IsHistory { get; } = isHistory;
 }

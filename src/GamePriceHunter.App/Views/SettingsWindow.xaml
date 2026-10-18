@@ -10,6 +10,7 @@
         d:DataContext="{d:DesignInstance Type=vm:SettingsViewModel}"
         Style="{StaticResource AppWindow}"
         Title="{loc:Loc Settings_Title}"
+        Language="{Binding XmlLanguage, Source={x:Static loc:Loc.Instance}}"
         Width="720" Height="680" MinWidth="560" MinHeight="460"
         WindowStartupLocation="CenterOwner" ShowInTaskbar="False" ResizeMode="CanResizeWithGrip">
 
@@ -114,8 +115,8 @@
                             <ComboBox Grid.Row="2" Grid.Column="1" ItemsSource="{Binding MaxResultsChoices}" SelectedItem="{Binding MaxResults}" DisplayMemberPath="Name" />
                             <TextBlock Grid.Row="4" Text="{loc:Loc Settings_Timeout}" Style="{StaticResource FieldLabel}" />
                             <DockPanel Grid.Row="4" Grid.Column="1">
-                                <TextBlock DockPanel.Dock="Right" Width="44" TextAlignment="Right" VerticalAlignment="Center"
-                                           Text="{Binding TimeoutSeconds, StringFormat={}{0} s}" />
+                                <TextBlock DockPanel.Dock="Right" MinWidth="44" Margin="8,0,0,0" TextAlignment="Right" VerticalAlignment="Center"
+                                           Text="{Binding TimeoutText}" />
                                 <Slider Minimum="5" Maximum="60" TickFrequency="5" IsSnapToTickEnabled="True" VerticalAlignment="Center"
                                         Value="{Binding TimeoutSeconds}" AutomationProperties.Name="{loc:Loc Settings_Timeout}" />
                             </DockPanel>

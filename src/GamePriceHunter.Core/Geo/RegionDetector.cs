@@ -1,5 +1,6 @@
 using System.Globalization;
 using GamePriceHunter.Core.Diagnostics;
+using GamePriceHunter.Core.Globalization;
 using GamePriceHunter.Core.Models;
 
 namespace GamePriceHunter.Core.Geo;
@@ -99,8 +100,11 @@ public static class Countries
 
     public static IReadOnlyList<RegionInfo> List => All.Value;
 
-    public static string DisplayName(string countryCode)
+    /// <summary>The country's name in the language of <paramref name="uiCulture"/>, English if Windows has none.</summary>
+    public static string DisplayName(string countryCode, CultureInfo uiCulture)
     {
+        if (IcuNames.Country(countryCode, uiCulture.Name) is { Length: > 0 } name)
+            return name;
         try
         {
             return new RegionInfo(countryCode).EnglishName;
@@ -109,5 +113,15 @@ public static class Countries
         {
             return countryCode;
         }
+    }
+
+    /// <summary>Every country with its name in the language of <paramref name="uiCulture"/>, in that language's alphabetical order.</summary>
+    public static IReadOnlyList<(string Code, string Name)> Choices(CultureInfo uiCulture)
+    {
+        var comparer = StringComparer.Create(uiCulture, ignoreCase: true);
+        return List
+            .Select(r => (Code: r.TwoLetterISORegionName, Name: DisplayName(r.TwoLetterISORegionName, uiCulture)))
+            .OrderBy(c => c.Name, comparer)
+            .ToList();
     }
 }

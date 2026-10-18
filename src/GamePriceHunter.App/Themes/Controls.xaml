@@ -1,6 +1,7 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:infra="clr-namespace:GamePriceHunter.App.Infrastructure">
+                    xmlns:infra="clr-namespace:GamePriceHunter.App.Infrastructure"
+                    xmlns:loc="clr-namespace:GamePriceHunter.App.Localization">
 
     <!-- Fonts: Segoe Fluent Icons ships with Windows 11, MDL2 Assets is the Windows 10 fallback. -->
     <FontFamily x:Key="Font.Ui">Segoe UI Variable Text, Segoe UI</FontFamily>
@@ -329,8 +330,23 @@
         </Setter>
     </Style>
 
+    <!-- Edit menu of text boxes in the UI language; WPF's own one only knows the languages its translations ship in. -->
+    <!-- One menu serves every text box, so each command goes to the box it was opened on, not to the focused one. -->
+    <ContextMenu x:Key="TextBoxMenu">
+        <MenuItem Command="ApplicationCommands.Cut" Header="{loc:Loc Edit_Cut}"
+                  CommandTarget="{Binding PlacementTarget, RelativeSource={RelativeSource AncestorType=ContextMenu}}" />
+        <MenuItem Command="ApplicationCommands.Copy" Header="{loc:Loc Edit_Copy}"
+                  CommandTarget="{Binding PlacementTarget, RelativeSource={RelativeSource AncestorType=ContextMenu}}" />
+        <MenuItem Command="ApplicationCommands.Paste" Header="{loc:Loc Edit_Paste}"
+                  CommandTarget="{Binding PlacementTarget, RelativeSource={RelativeSource AncestorType=ContextMenu}}" />
+        <Separator />
+        <MenuItem Command="ApplicationCommands.SelectAll" Header="{loc:Loc Edit_SelectAll}"
+                  CommandTarget="{Binding PlacementTarget, RelativeSource={RelativeSource AncestorType=ContextMenu}}" />
+    </ContextMenu>
+
     <!-- TextBox with placeholder (infra:TextBoxHelper.Placeholder). -->
     <Style TargetType="TextBox">
+        <Setter Property="ContextMenu" Value="{StaticResource TextBoxMenu}" />
         <Setter Property="Background" Value="{DynamicResource Brush.Input}" />
         <Setter Property="Foreground" Value="{DynamicResource Brush.Text}" />
         <Setter Property="BorderBrush" Value="{DynamicResource Brush.Border}" />
@@ -570,7 +586,9 @@
     </Style>
 
     <!-- ToolTip -->
+    <!-- Popups are outside the window's element tree, so they get the UI language (glyph shapes of CJK text) here. -->
     <Style TargetType="ToolTip">
+        <Setter Property="Language" Value="{Binding XmlLanguage, Source={x:Static loc:Loc.Instance}}" />
         <Setter Property="Foreground" Value="{DynamicResource Brush.Text}" />
         <Setter Property="FontSize" Value="12" />
         <Setter Property="HasDropShadow" Value="False" />
@@ -594,6 +612,7 @@
 
     <!-- Context menus -->
     <Style TargetType="ContextMenu">
+        <Setter Property="Language" Value="{Binding XmlLanguage, Source={x:Static loc:Loc.Instance}}" />
         <Setter Property="Foreground" Value="{DynamicResource Brush.Text}" />
         <Setter Property="FontFamily" Value="{StaticResource Font.Ui}" />
         <Setter Property="FontSize" Value="13" />

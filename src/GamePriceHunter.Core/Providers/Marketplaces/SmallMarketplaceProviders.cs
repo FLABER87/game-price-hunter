@@ -51,7 +51,7 @@ public sealed class DifmarkProvider(HttpClient http) : StoreProvider(http)
 
     public override ProviderInfo Info { get; } = new("difmark", "Difmark", StoreKind.Marketplace, "https://difmark.com/")
     {
-        Note = "Marketplace: prices from independent sellers",
+        Note = ProviderNote.Marketplace,
     };
 
     public override async Task<IReadOnlyList<Offer>> SearchAsync(SearchContext context, CancellationToken cancellationToken)

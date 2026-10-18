@@ -8,6 +8,7 @@ Find the cheapest price for any PC game. Type a title, or just part of it, and y
 - **Your region is detected automatically**, so you see local prices in your currency.
 - **Region-locked keys are flagged**, and you can hide keys that won't activate in your country.
 - **Filters** for DLC, bundles and console keys, plus sorting by price, discount or best match.
+- **In your language:** English, Deutsch, Español, Français, Italiano, Polski, Português (Brasil), Türkçe, Русский, Українська, 简体中文, 日本語 and 한국어. Prices are written the way your country writes them.
 - Dark and light themes.
 
 ## Download

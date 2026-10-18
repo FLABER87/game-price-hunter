@@ -51,22 +51,30 @@ public sealed class OfferViewModel : ObservableObject
 
     public string? TypeText => Offer.Type is OfferType.Dlc or OfferType.Bundle or OfferType.Other ? Loc.T($"Type_{Offer.Type}") : null;
 
-    public string? RegionText => Offer.Region;
+    /// <summary>The key region: codes as they are ("EU/CIS"), the words "Global" and "Asia" translated.</summary>
+    public string? RegionText => Offer.Region is { } region
+        ? string.Join("/", region.Split('/').Select(part => part switch
+        {
+            "Global" => Loc.T("Region_Global"),
+            "Asia" => Loc.T("Region_Asia"),
+            _ => part,
+        }))
+        : null;
 
     public RegionCompatibility RegionCompatibility => Offer.RegionCompatibility;
 
     public string RegionTooltip => Offer.RegionCompatibility switch
     {
-        RegionCompatibility.Compatible => Loc.F("Region_Compatible", Offer.Region),
-        RegionCompatibility.Incompatible => Loc.F("Region_Incompatible", Offer.Region),
-        _ => Loc.F("Region_Unknown", Offer.Region),
+        RegionCompatibility.Compatible => Loc.F("Region_Compatible", RegionText),
+        RegionCompatibility.Incompatible => Loc.F("Region_Incompatible", RegionText),
+        _ => Loc.F("Region_Unknown", RegionText),
     };
 
     public string? Seller => Offer.Seller;
 
     public int? DiscountPercent => Offer.DiscountPercent;
 
-    public string? DiscountText => Offer.DiscountPercent is { } percent ? $"−{percent}%" : null;
+    public string? DiscountText => Offer.DiscountPercent is { } percent ? MoneyFormatter.Discount(percent, Loc.Instance.FormatCulture) : null;
 
     public double Relevance => Offer.Relevance;
 
@@ -102,15 +110,16 @@ public sealed class OfferViewModel : ObservableObject
     {
         var converted = currency.Convert(Offer.Price, displayCurrency);
         SortPrice = converted?.Amount;
-        PriceText = MoneyFormatter.Format(converted ?? Offer.Price, Loc.Instance.Culture);
+        var culture = Loc.Instance.FormatCulture;
+        PriceText = MoneyFormatter.Format(converted ?? Offer.Price, culture);
         OriginalPriceText = converted is not null && !string.Equals(Offer.Price.Currency, displayCurrency, StringComparison.OrdinalIgnoreCase)
-            ? MoneyFormatter.Format(Offer.Price, Loc.Instance.Culture)
+            ? MoneyFormatter.Format(Offer.Price, culture)
             : null;
 
         if (Offer.RegularPrice is { } regular && Offer.DiscountPercent is not null)
         {
             var regularConverted = converted is null ? regular : currency.Convert(regular, displayCurrency) ?? regular;
-            RegularPriceText = MoneyFormatter.Format(regularConverted, Loc.Instance.Culture);
+            RegularPriceText = MoneyFormatter.Format(regularConverted, culture);
         }
         else
         {
@@ -124,7 +133,9 @@ public sealed class OfferViewModel : ObservableObject
         OnPropertyChanged(nameof(KindText));
         OnPropertyChanged(nameof(PlatformText));
         OnPropertyChanged(nameof(TypeText));
+        OnPropertyChanged(nameof(RegionText));
         OnPropertyChanged(nameof(RegionTooltip));
+        OnPropertyChanged(nameof(DiscountText));
     }
 }
 

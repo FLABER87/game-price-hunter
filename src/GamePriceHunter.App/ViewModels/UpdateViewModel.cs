@@ -8,6 +8,7 @@ using System.Windows.Input;
 using GamePriceHunter.App.Infrastructure;
 using GamePriceHunter.App.Localization;
 using GamePriceHunter.App.Services;
+using GamePriceHunter.Core.Currency;
 using GamePriceHunter.Core.Diagnostics;
 using GamePriceHunter.Core.Settings;
 using GamePriceHunter.Core.Updates;
@@ -102,7 +103,7 @@ public sealed class UpdateViewModel : ObservableObject
 
     public string BannerText => State switch
     {
-        UpdateState.Downloading => Loc.F("Update_Downloading", (int)ProgressPercent),
+        UpdateState.Downloading => Loc.F("Update_Downloading", MoneyFormatter.Percent(Math.Floor(ProgressPercent) / 100, Loc.Instance.FormatCulture)),
         UpdateState.Installing => Loc.T("Update_Installing"),
         UpdateState.InstallFailed => Loc.T("Update_InstallFailed"),
         _ => Loc.F("Update_Available", _release?.Tag.TrimStart('v', 'V')),

@@ -15,7 +15,7 @@ public sealed class EnebaProvider(HttpClient http) : StoreProvider(http)
 
     public override ProviderInfo Info { get; } = new("eneba", "Eneba", StoreKind.Marketplace, "https://www.eneba.com/")
     {
-        Note = "Marketplace: prices from independent sellers",
+        Note = ProviderNote.Marketplace,
     };
 
     public override async Task<IReadOnlyList<Offer>> SearchAsync(SearchContext context, CancellationToken cancellationToken)

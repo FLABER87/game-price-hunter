@@ -17,7 +17,7 @@ public sealed class GgselProvider(HttpClient http) : StoreProvider(http)
 
     public override ProviderInfo Info { get; } = new("ggsel", "GGSEL", StoreKind.Marketplace, "https://ggsel.net/")
     {
-        Note = "Marketplace: prices from independent sellers",
+        Note = ProviderNote.Marketplace,
     };
 
     public override async Task<IReadOnlyList<Offer>> SearchAsync(SearchContext context, CancellationToken cancellationToken)

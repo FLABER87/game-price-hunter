@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="App_Title" xml:space="preserve"><value>Game Price Hunter</value></data>
+  <data name="App_TitleWithVersion" xml:space="preserve"><value>Game Price Hunter {0}</value></data>
+  <data name="Search_Placeholder" xml:space="preserve"><value>Поиск игры, например «witcher 3» или «hollow knight»</value></data>
+  <data name="Search_Clear" xml:space="preserve"><value>Очистить</value></data>
+  <data name="Search_Button" xml:space="preserve"><value>Найти</value></data>
+  <data name="Search_Stop" xml:space="preserve"><value>Стоп</value></data>
+  <data name="Filter_Placeholder" xml:space="preserve"><value>Фильтр результатов</value></data>
+  <data name="Sort_Label" xml:space="preserve"><value>Сортировка результатов</value></data>
+  <data name="Sort_PriceLowToHigh" xml:space="preserve"><value>По возрастанию цены</value></data>
+  <data name="Sort_PriceHighToLow" xml:space="preserve"><value>По убыванию цены</value></data>
+  <data name="Sort_BestMatch" xml:space="preserve"><value>По релевантности</value></data>
+  <data name="Sort_Discount" xml:space="preserve"><value>По размеру скидки</value></data>
+  <data name="Sort_Store" xml:space="preserve"><value>По магазину</value></data>
+  <data name="Sort_Title" xml:space="preserve"><value>По названию</value></data>
+  <data name="Filter_Official" xml:space="preserve"><value>Официальные магазины</value></data>
+  <data name="Filter_OfficialTooltip" xml:space="preserve"><value>Авторизованные издателями магазины, например Steam, GOG или Fanatical.</value></data>
+  <data name="Filter_KeyShops" xml:space="preserve"><value>Магазины ключей</value></data>
+  <data name="Filter_KeyShopsTooltip" xml:space="preserve"><value>Магазины, перепродающие игровые ключи.</value></data>
+  <data name="Filter_Marketplaces" xml:space="preserve"><value>Маркетплейсы</value></data>
+  <data name="Filter_MarketplacesTooltip" xml:space="preserve"><value>Площадки, на которых ключи выставляют независимые продавцы. Перед покупкой проверяйте рейтинг продавца.</value></data>
+  <data name="Filter_Games" xml:space="preserve"><value>Игры</value></data>
+  <data name="Filter_Dlc" xml:space="preserve"><value>DLC</value></data>
+  <data name="Filter_Bundles" xml:space="preserve"><value>Наборы</value></data>
+  <data name="Filter_Other" xml:space="preserve"><value>Другое</value></data>
+  <data name="Filter_OtherTooltip" xml:space="preserve"><value>Аккаунты, подарочные карты, случайные ключи и другие товары, кроме самой игры.</value></data>
+  <data name="Filter_Consoles" xml:space="preserve"><value>Консольные ключи</value></data>
+  <data name="Filter_ConsolesTooltip" xml:space="preserve"><value>Показывать ключи для Xbox, PlayStation и Nintendo.</value></data>
+  <data name="Filter_HideRegionLocked" xml:space="preserve"><value>Скрыть чужие регионы</value></data>
+  <data name="Filter_RegionTooltip" xml:space="preserve"><value>Скрывать ключи, привязанные не к вашему региону.</value></data>
+  <data name="Stores_Header" xml:space="preserve"><value>МАГАЗИНЫ</value></data>
+  <data name="Stores_All" xml:space="preserve"><value>Все</value></data>
+  <data name="Stores_None" xml:space="preserve"><value>Ни одного</value></data>
+  <data name="Results_Label" xml:space="preserve"><value>Результаты поиска</value></data>
+  <data name="Welcome_Title" xml:space="preserve"><value>Найдите лучшую цену на любую игру</value></data>
+  <data name="Welcome_Text" xml:space="preserve"><value>Введите название игры или его часть, и Game Price Hunter сразу проверит официальные магазины, магазины ключей и маркетплейсы.</value></data>
+  <data name="Welcome_Hint" xml:space="preserve"><value>Ctrl+F — перейти к строке поиска. Чтобы открыть результат в браузере, дважды щелкните его или нажмите Enter.</value></data>
+  <data name="Empty_NothingTitle" xml:space="preserve"><value>По запросу «{0}» ничего не найдено</value></data>
+  <data name="Empty_NothingText" xml:space="preserve"><value>Проверьте написание, сократите запрос или включите больше магазинов на боковой панели.</value></data>
+  <data name="Empty_FilteredTitle" xml:space="preserve"><value>Все предложения скрыты фильтрами</value></data>
+  <data name="Empty_FilteredText" xml:space="preserve"><value>Найдено {0} предложений, но текущие фильтры их скрывают.</value></data>
+  <data name="Empty_FilteredText_one" xml:space="preserve"><value>Найдено {0} предложение, но текущие фильтры его скрывают.</value></data>
+  <data name="Empty_FilteredText_few" xml:space="preserve"><value>Найдено {0} предложения, но текущие фильтры их скрывают.</value></data>
+  <data name="Empty_FilteredText_many" xml:space="preserve"><value>Найдено {0} предложений, но текущие фильтры их скрывают.</value></data>
+  <data name="Empty_ResetFilters" xml:space="preserve"><value>Сбросить фильтры</value></data>
+  <data name="Summary_Ready" xml:space="preserve"><value>Готово к поиску в {0} магазинах</value></data>
+  <data name="Summary_Ready_one" xml:space="preserve"><value>Готово к поиску в {0} магазине</value></data>
+  <data name="Summary_Ready_few" xml:space="preserve"><value>Готово к поиску в {0} магазинах</value></data>
+  <data name="Summary_Ready_many" xml:space="preserve"><value>Готово к поиску в {0} магазинах</value></data>
+  <data name="Summary_Searching" xml:space="preserve"><value>Поиск… готово {0} из {1} магазинов</value></data>
+  <data name="Summary_Searching_one" xml:space="preserve"><value>Поиск… готово {0} из {1} магазина</value></data>
+  <data name="Summary_Searching_few" xml:space="preserve"><value>Поиск… готово {0} из {1} магазинов</value></data>
+  <data name="Summary_Searching_many" xml:space="preserve"><value>Поиск… готово {0} из {1} магазинов</value></data>
+  <data name="Summary_Done" xml:space="preserve"><value>{0} {1} за {2:0.0} с</value></data>
+  <data name="Summary_Offers" xml:space="preserve"><value>{0} предложений</value></data>
+  <data name="Summary_Offers_one" xml:space="preserve"><value>{0} предложение</value></data>
+  <data name="Summary_Offers_few" xml:space="preserve"><value>{0} предложения</value></data>
+  <data name="Summary_Offers_many" xml:space="preserve"><value>{0} предложений</value></data>
+  <data name="Summary_FromStores" xml:space="preserve"><value>из {0} магазинов</value></data>
+  <data name="Summary_FromStores_one" xml:space="preserve"><value>из {0} магазина</value></data>
+  <data name="Summary_FromStores_few" xml:space="preserve"><value>из {0} магазинов</value></data>
+  <data name="Summary_FromStores_many" xml:space="preserve"><value>из {0} магазинов</value></data>
+  <data name="Summary_Hidden" xml:space="preserve"><value> · скрыто фильтрами: {0}</value></data>
+  <data name="Region_SourceIp" xml:space="preserve"><value>Регион определен по вашему интернет-подключению. Нажмите, чтобы изменить.</value></data>
+  <data name="Region_SourceWindows" xml:space="preserve"><value>Регион взят из настроек Windows (не удалось определить его через интернет). Нажмите, чтобы изменить.</value></data>
+  <data name="Region_SourceManual" xml:space="preserve"><value>Регион выбран в настройках. Нажмите, чтобы изменить.</value></data>
+  <data name="Region_SourceDetecting" xml:space="preserve"><value>Определение региона…</value></data>
+  <data name="Region_Compatible" xml:space="preserve"><value>Регион ключа: {0}. Должен активироваться в вашем регионе.</value></data>
+  <data name="Region_Incompatible" xml:space="preserve"><value>Регион ключа: {0}. Скорее всего, НЕ активируется в вашем регионе.</value></data>
+  <data name="Region_Unknown" xml:space="preserve"><value>Регион ключа: {0}. Ограничения активации уточняйте на странице магазина.</value></data>
+  <data name="Region_Global" xml:space="preserve"><value>Весь мир</value></data>
+  <data name="Region_Asia" xml:space="preserve"><value>Азия</value></data>
+  <data name="Rates_None" xml:space="preserve"><value>Курсы валют недоступны: цены показаны в валютах магазинов</value></data>
+  <data name="Rates_Info" xml:space="preserve"><value>Курсы валют: {0}, обновлены {1}</value></data>
+  <data name="Time_JustNow" xml:space="preserve"><value>только что</value></data>
+  <data name="Time_HoursAgo" xml:space="preserve"><value>{0} ч назад</value></data>
+  <data name="Time_DaysAgo" xml:space="preserve"><value>{0} дней назад</value></data>
+  <data name="Time_DaysAgo_one" xml:space="preserve"><value>{0} день назад</value></data>
+  <data name="Time_DaysAgo_few" xml:space="preserve"><value>{0} дня назад</value></data>
+  <data name="Time_DaysAgo_many" xml:space="preserve"><value>{0} дней назад</value></data>
+  <data name="Menu_Open" xml:space="preserve"><value>Открыть в браузере</value></data>
+  <data name="Menu_CopyLink" xml:space="preserve"><value>Копировать ссылку</value></data>
+  <data name="Menu_CopyTitle" xml:space="preserve"><value>Копировать название</value></data>
+  <data name="Menu_SearchTitle" xml:space="preserve"><value>Искать по этому названию</value></data>
+  <data name="Offer_Seller" xml:space="preserve"><value>Продавец:</value></data>
+  <data name="Offer_BestPrice" xml:space="preserve"><value>ЛУЧШАЯ ЦЕНА</value></data>
+  <data name="Offer_OriginalPriceTooltip" xml:space="preserve"><value>Цена в валюте магазина</value></data>
+  <data name="Offer_OpenTooltip" xml:space="preserve"><value>Открыть в браузере</value></data>
+  <data name="Provider_RetryTooltip" xml:space="preserve"><value>Магазин не ответил. Нажмите, чтобы повторить попытку.</value></data>
+  <data name="Provider_Searching" xml:space="preserve"><value>Поиск…</value></data>
+  <data name="Provider_Found" xml:space="preserve"><value>{0} предложений за {1:0.0} с</value></data>
+  <data name="Provider_Found_one" xml:space="preserve"><value>{0} предложение за {1:0.0} с</value></data>
+  <data name="Provider_Found_few" xml:space="preserve"><value>{0} предложения за {1:0.0} с</value></data>
+  <data name="Provider_Found_many" xml:space="preserve"><value>{0} предложений за {1:0.0} с</value></data>
+  <data name="Provider_Blocked" xml:space="preserve"><value>Магазин отклонил запрос (защита от ботов или лимит запросов). Попробуйте позже.</value></data>
+  <data name="Provider_TimedOut" xml:space="preserve"><value>Магазин не ответил вовремя.</value></data>
+  <data name="Provider_Failed" xml:space="preserve"><value>Ошибка поиска: {0}</value></data>
+  <data name="Provider_NeedsApiKey" xml:space="preserve"><value>Чтобы использовать этот источник, добавьте API-ключ {0} в настройках.</value></data>
+  <data name="Kind_Official" xml:space="preserve"><value>Официальный магазин</value></data>
+  <data name="Kind_KeyShop" xml:space="preserve"><value>Магазин ключей</value></data>
+  <data name="Kind_Marketplace" xml:space="preserve"><value>Маркетплейс</value></data>
+  <data name="Kind_Aggregator" xml:space="preserve"><value>Агрегатор цен</value></data>
+  <data name="Note_Marketplace" xml:space="preserve"><value>Маркетплейс: цены от независимых продавцов.</value></data>
+  <data name="Note_RussianStore" xml:space="preserve"><value>Российский магазин: ключи и гифты обычно для России и СНГ.</value></data>
+  <data name="Note_CheapShark" xml:space="preserve"><value>Epic, Humble, GMG, IndieGala, WinGameStore и другие. Цены для США в USD.</value></data>
+  <data name="Note_IsThereAnyDeal" xml:space="preserve"><value>Региональные цены из 50+ авторизованных магазинов. Нужен бесплатный API-ключ.</value></data>
+  <data name="Platform_Steam" xml:space="preserve"><value>Steam</value></data>
+  <data name="Platform_Gog" xml:space="preserve"><value>GOG</value></data>
+  <data name="Platform_Epic" xml:space="preserve"><value>Epic</value></data>
+  <data name="Platform_Ubisoft" xml:space="preserve"><value>Ubisoft</value></data>
+  <data name="Platform_Ea" xml:space="preserve"><value>EA app</value></data>
+  <data name="Platform_BattleNet" xml:space="preserve"><value>Battle.net</value></data>
+  <data name="Platform_Rockstar" xml:space="preserve"><value>Rockstar</value></data>
+  <data name="Platform_Xbox" xml:space="preserve"><value>Xbox</value></data>
+  <data name="Platform_PlayStation" xml:space="preserve"><value>PlayStation</value></data>
+  <data name="Platform_Nintendo" xml:space="preserve"><value>Nintendo</value></data>
+  <data name="Platform_DrmFree" xml:space="preserve"><value>Без DRM</value></data>
+  <data name="Platform_Other" xml:space="preserve"><value>Другое</value></data>
+  <data name="Type_Dlc" xml:space="preserve"><value>DLC</value></data>
+  <data name="Type_Bundle" xml:space="preserve"><value>Набор</value></data>
+  <data name="Type_Other" xml:space="preserve"><value>Другое</value></data>
+  <data name="Error_Unexpected" xml:space="preserve"><value>Что-то пошло не так: {0}</value></data>
+  <data name="Settings_Title" xml:space="preserve"><value>Настройки</value></data>
+  <data name="Settings_General" xml:space="preserve"><value>Общие</value></data>
+  <data name="Settings_Language" xml:space="preserve"><value>Язык</value></data>
+  <data name="Settings_Theme" xml:space="preserve"><value>Тема</value></data>
+  <data name="Theme_System" xml:space="preserve"><value>Как в Windows</value></data>
+  <data name="Theme_Dark" xml:space="preserve"><value>Темная</value></data>
+  <data name="Theme_Light" xml:space="preserve"><value>Светлая</value></data>
+  <data name="Settings_Region" xml:space="preserve"><value>Регион и валюта</value></data>
+  <data name="Settings_Country" xml:space="preserve"><value>Страна</value></data>
+  <data name="Settings_Currency" xml:space="preserve"><value>Показывать цены в</value></data>
+  <data name="Settings_Auto" xml:space="preserve"><value>Автоматически</value></data>
+  <data name="Settings_AutoValue" xml:space="preserve"><value>Автоматически ({0})</value></data>
+  <data name="Settings_RegionHint" xml:space="preserve"><value>Магазины показывают региональные цены, а ключи бывают привязаны к региону, поэтому страна важна. В режиме «Автоматически» используется страна вашего интернет-подключения.</value></data>
+  <data name="Settings_Search" xml:space="preserve"><value>Поиск</value></data>
+  <data name="Settings_MatchMode" xml:space="preserve"><value>Совпадение названия</value></data>
+  <data name="Match_AllWords" xml:space="preserve"><value>Все слова (часть названия)</value></data>
+  <data name="Match_Exact" xml:space="preserve"><value>Точное название</value></data>
+  <data name="Settings_MaxResults" xml:space="preserve"><value>Результатов на магазин</value></data>
+  <data name="Settings_Timeout" xml:space="preserve"><value>Тайм-аут магазина</value></data>
+  <data name="Settings_TimeoutValue" xml:space="preserve"><value>{0} с</value></data>
+  <data name="Settings_Stores" xml:space="preserve"><value>Магазины</value></data>
+  <data name="Settings_ApiKeyPlaceholder" xml:space="preserve"><value>API-ключ</value></data>
+  <data name="Settings_GetApiKey" xml:space="preserve"><value>Получить ключ</value></data>
+  <data name="Settings_About" xml:space="preserve"><value>О программе</value></data>
+  <data name="About_Version" xml:space="preserve"><value>Game Price Hunter {0}</value></data>
+  <data name="About_DataLocation" xml:space="preserve"><value>Папка данных:</value></data>
+  <data name="About_Portable" xml:space="preserve"><value>Портативный режим (рядом с программой)</value></data>
+  <data name="About_Disclaimer" xml:space="preserve"><value>Цены берутся с общедоступных сайтов магазинов и могут измениться в любой момент. Перед покупкой всегда проверяйте итоговую цену, регион и продавца на странице магазина.</value></data>
+  <data name="Settings_OpenDataFolder" xml:space="preserve"><value>Открыть папку данных</value></data>
+  <data name="Settings_OpenLogs" xml:space="preserve"><value>Открыть журналы</value></data>
+  <data name="Settings_ClearCache" xml:space="preserve"><value>Очистить кэш</value></data>
+  <data name="Settings_CacheCleared" xml:space="preserve"><value>Кэш очищен (удалено {0} изображений).</value></data>
+  <data name="Settings_CacheCleared_one" xml:space="preserve"><value>Кэш очищен (удалено {0} изображение).</value></data>
+  <data name="Settings_CacheCleared_few" xml:space="preserve"><value>Кэш очищен (удалено {0} изображения).</value></data>
+  <data name="Settings_CacheCleared_many" xml:space="preserve"><value>Кэш очищен (удалено {0} изображений).</value></data>
+  <data name="Update_Available" xml:space="preserve"><value>Доступна версия Game Price Hunter {0}.</value></data>
+  <data name="Update_Install" xml:space="preserve"><value>Обновить</value></data>
+  <data name="Update_Download" xml:space="preserve"><value>Скачать</value></data>
+  <data name="Update_WhatsNew" xml:space="preserve"><value>Что нового</value></data>
+  <data name="Update_ReleasePage" xml:space="preserve"><value>Страница загрузки</value></data>
+  <data name="Update_Later" xml:space="preserve"><value>Позже</value></data>
+  <data name="Update_Downloading" xml:space="preserve"><value>Загрузка обновления… {0}</value></data>
+  <data name="Update_Installing" xml:space="preserve"><value>Устанавливается обновление. Game Price Hunter сейчас перезапустится.</value></data>
+  <data name="Update_InstallFailed" xml:space="preserve"><value>Не удалось автоматически установить обновление. Повторите попытку или скачайте его со страницы загрузки.</value></data>
+  <data name="Update_Check" xml:space="preserve"><value>Проверить обновления</value></data>
+  <data name="Update_Checking" xml:space="preserve"><value>Проверка обновлений…</value></data>
+  <data name="Update_UpToDate" xml:space="preserve"><value>У вас последняя версия.</value></data>
+  <data name="Update_CheckFailed" xml:space="preserve"><value>Не удалось проверить обновления. Проверьте подключение к интернету и повторите попытку.</value></data>
+  <data name="Update_CheckAutomatically" xml:space="preserve"><value>Автоматически проверять обновления</value></data>
+  <data name="Common_Cancel" xml:space="preserve"><value>Отмена</value></data>
+  <data name="Common_Save" xml:space="preserve"><value>Сохранить</value></data>
+  <data name="Edit_Cut" xml:space="preserve"><value>Вырезать</value></data>
+  <data name="Edit_Copy" xml:space="preserve"><value>Копировать</value></data>
+  <data name="Edit_Paste" xml:space="preserve"><value>Вставить</value></data>
+  <data name="Edit_SelectAll" xml:space="preserve"><value>Выделить все</value></data>
+</root>

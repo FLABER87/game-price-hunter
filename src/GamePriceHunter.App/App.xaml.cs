@@ -34,7 +34,7 @@ public partial class App : Application
         };
 
         _services = AppServices.Create();
-        Loc.Instance.SetLanguage(_services.Settings.Language);
+        Loc.Instance.SetLanguage(_services.Settings.Language, _services.FormatCountry);
         ThemeManager.Apply(_services.Settings.Theme);
 
         var viewModel = new MainViewModel(_services);

@@ -1,11 +1,10 @@
 using System.Text.Json;
-using GamePriceHunter.Core.Currency;
 using GamePriceHunter.Core.Models;
 using GamePriceHunter.Core.Text;
 
 namespace GamePriceHunter.Core.Search;
 
-public sealed record GameSuggestion(string Title, string? ImageUrl, string? PriceText);
+public sealed record GameSuggestion(string Title, string? ImageUrl, Money? Price);
 
 /// <summary>Type-ahead game titles from the Steam store search API.</summary>
 public sealed class SuggestionService(HttpClient http)
@@ -26,9 +25,9 @@ public sealed class SuggestionService(HttpClient http)
             if (item.Str("name") is not { Length: > 0 } name)
                 continue;
 
-            string? price = null;
-            if (item.Dec("price.final") is { } final && item.Str("price.currency") is { } currency)
-                price = final == 0 ? null : MoneyFormatter.Format(Money.Of(final / 100m, currency));
+            Money? price = null;
+            if (item.Dec("price.final") is { } final and not 0 && item.Str("price.currency") is { } currency)
+                price = Money.Of(final / 100m, currency);
 
             suggestions.Add(new GameSuggestion(name, item.Str("tiny_image"), price));
         }

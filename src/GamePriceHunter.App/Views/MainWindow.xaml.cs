@@ -76,8 +76,7 @@ public partial class MainWindow : Window
 
         var regionChanged = settingsViewModel.Save();
         ThemeManager.Apply(_services.Settings.Theme);
-        if (!string.Equals(Loc.Instance.Culture.Name, _services.Settings.Language, StringComparison.OrdinalIgnoreCase))
-            Loc.Instance.SetLanguage(_services.Settings.Language);
+        Loc.Instance.SetLanguage(_services.Settings.Language, _services.FormatCountry);
         _viewModel.OnSettingsChanged(regionChanged);
     }
 
