@@ -82,14 +82,22 @@ public class UpdateCheckerTests
     }
 
     [Fact]
-    public void IsCheckDue_limits_checks_to_once_a_day()
+    public void Settings_from_versions_that_checked_once_a_day_still_load()
     {
-        var now = new DateTimeOffset(2026, 10, 18, 12, 0, 0, TimeSpan.Zero);
+        var path = Path.Combine(Path.GetTempPath(), $"gph-settings-{Guid.NewGuid():N}.json");
+        try
+        {
+            File.WriteAllText(path, """{ "Version": 2, "CheckForUpdates": true, "LastUpdateCheck": "2026-10-18T18:13:03.5567675+00:00", "LatestReleaseTag": "v0.3.0" }""");
 
-        Assert.True(UpdateChecker.IsCheckDue(null, now));
-        Assert.False(UpdateChecker.IsCheckDue(now.AddHours(-23), now));
-        Assert.True(UpdateChecker.IsCheckDue(now.AddHours(-24), now));
-        Assert.True(UpdateChecker.IsCheckDue(now.AddDays(3), now), "A check time in the future means the clock changed.");
+            var settings = new Settings.SettingsStore(path, Diagnostics.NullLogger.Instance).Load();
+
+            Assert.True(settings.CheckForUpdates);
+            Assert.Equal("v0.3.0", settings.LatestReleaseTag);
+        }
+        finally
+        {
+            File.Delete(path);
+        }
     }
 
     [Fact]

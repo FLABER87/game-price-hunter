@@ -140,11 +140,14 @@ public sealed class UpdateViewModel : ObservableObject
         }
     }
 
-    /// <summary>Startup check: at most once a day and silent unless there is something new.</summary>
+    /// <summary>
+    /// Startup check, silent unless there is something new. It runs on every start: it is one request
+    /// to the github.com redirect, not to the rate-limited API.
+    /// </summary>
     public async Task CheckOnStartupAsync()
     {
         _ = DeleteOldDownloadsAsync();
-        if (_services.Settings.CheckForUpdates && UpdateChecker.IsCheckDue(_services.Settings.LastUpdateCheck, DateTimeOffset.UtcNow))
+        if (_services.Settings.CheckForUpdates)
             await CheckAsync(manual: false);
     }
 
@@ -161,7 +164,6 @@ public sealed class UpdateViewModel : ObservableObject
         try
         {
             var latest = await _services.Updates.GetLatestReleaseAsync();
-            _services.Settings.LastUpdateCheck = DateTimeOffset.UtcNow;
             _services.Settings.LatestReleaseTag = latest?.Tag;
             _services.SaveSettingsSoon();
 
