@@ -185,10 +185,11 @@ public class CultureIndependenceTests
     [InlineData("fr-FR")]
     public void Parses_and_matches_alike_in_every_culture(string culture)
     {
-        var expected = Run();
         var (current, currentUi) = (CultureInfo.CurrentCulture, CultureInfo.CurrentUICulture);
         try
         {
+            CultureInfo.CurrentCulture = CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
+            var expected = Run();
             CultureInfo.CurrentCulture = CultureInfo.CurrentUICulture = CultureInfo.GetCultureInfo(culture);
             Assert.Equal(expected, Run());
             Assert.True(new TitleMatcher("witcher").Score("THE WITCHER 3: WILD HUNT") > 0);
@@ -198,9 +199,10 @@ public class CultureIndependenceTests
             (CultureInfo.CurrentCulture, CultureInfo.CurrentUICulture) = (current, currentUi);
         }
 
-        static List<string> Run() =>
+        // Values, not text: Money.ToString itself follows the current culture.
+        static List<object?> Run() =>
         [
-            .. Prices.Select(p => PriceParser.TryParse(p, "EUR", out var money) ? money.ToString() : "-"),
+            .. Prices.Select(p => PriceParser.TryParse(p, "EUR", out var money) ? (object)money : null),
             TextNormalizer.Normalize("ISTANBUL Kids: İzmir"),
         ];
     }
