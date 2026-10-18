@@ -21,6 +21,7 @@ dotnet run --project src/GamePriceHunter.Cli -- update   # latest release, as th
 - **Languages:** copy `src/GamePriceHunter.App/Localization/Strings.resx` to `Strings.<culture>.resx`, then add the culture to `Loc.Languages` and `SatelliteResourceLanguages`.
 - **Portable mode:** an empty `portable` file next to the exe keeps all data in `Data\`.
 - **Not used:** Epic, Humble, GMG and GameBillet reject the .NET client and come through CheapShark/IsThereAnyDeal instead. Kinguin, G2A, Gamivo, HRK and CDKeys are behind bot protection.
+- **Rate limits:** Eneba answers a burst of searches (about six in a few seconds) with a Cloudflare challenge (HTTP 429). It shows as Blocked and clears after a short wait, so don't run the CLI against it in a tight loop.
 
 ## CI
 

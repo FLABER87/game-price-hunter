@@ -146,6 +146,26 @@ public class ProviderParsingTests
         AssertWellFormed(new EnebaProvider(Http).Parse(Fixture("eneba_search.html"), "EUR"), "EUR");
 
     [Fact]
+    public void Eneba_page_without_search_state_is_named_in_the_error()
+    {
+        var error = Assert.Throws<InvalidDataException>(() =>
+            new EnebaProvider(Http).Parse("<html><head><title>Games &amp; More</title></head><body></body></html>", "EUR"));
+        Assert.Contains("\"Games & More\"", error.Message);
+    }
+
+    [Fact]
+    public async Task Eneba_retries_once_when_the_page_has_no_search_state()
+    {
+        var pages = new Queue<string>(["<html><head><title>Eneba</title></head><body></body></html>", Fixture("eneba_search.html")]);
+        var handler = new StubHandler(_ => new HttpResponseMessage(System.Net.HttpStatusCode.OK) { Content = new StringContent(pages.Dequeue()) });
+
+        var offers = await new EnebaProvider(new HttpClient(handler)).SearchAsync(new SearchContext("witcher", new UserRegion("SK", "EUR")), CancellationToken.None);
+
+        AssertWellFormed(offers, "EUR");
+        Assert.Empty(pages);
+    }
+
+    [Fact]
     public void InstantGaming_embedded_results() =>
         AssertWellFormed(new InstantGamingProvider(Http).Parse(Fixture("instantgaming_search.html")), "EUR");
 
