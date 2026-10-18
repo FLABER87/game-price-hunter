@@ -2,6 +2,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
+using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Input;
 using GamePriceHunter.App.Infrastructure;
@@ -27,7 +28,8 @@ public enum UpdateState
 
 /// <summary>
 /// Update offer shared by the main-window banner and Settings → About. Installed copies download the
-/// new installer, run it silently and exit; portable and stand-alone copies only open the release page.
+/// new installer, check its signature, run it silently and exit; portable and stand-alone copies only
+/// open the release page.
 /// </summary>
 public sealed class UpdateViewModel : ObservableObject
 {
@@ -208,16 +210,18 @@ public sealed class UpdateViewModel : ObservableObject
         try
         {
             var target = Path.Combine(AppPaths.UpdateDownloadDirectory, $"GamePriceHunter-Setup-{release.Version.ToString(3)}.exe");
-            installer = await InstallerDownloader.DownloadAsync(_services.Http, release.InstallerUrl, target, new Progress<double>(p => Progress = p), cts.Token);
+            // Returns only once the installer matches the release's signature; a missing or wrong one throws InvalidDataException.
+            installer = await InstallerDownloader.DownloadAsync(_services.Http, release, target, new Progress<double>(p => Progress = p), cts.Token);
         }
         catch (OperationCanceledException) when (_downloadCancelled)
         {
             State = UpdateState.Available;
             return;
         }
-        catch (Exception ex) when (ex is HttpRequestException or IOException or InvalidDataException or UnauthorizedAccessException or OperationCanceledException)
+        catch (Exception ex) when (ex is HttpRequestException or IOException or InvalidDataException or UnauthorizedAccessException
+                                       or OperationCanceledException or CryptographicException)
         {
-            _services.Logger.Error($"Could not download {release.InstallerUrl}.", ex);
+            _services.Logger.Error($"Could not download or verify {release.InstallerUrl}.", ex);
             State = UpdateState.InstallFailed;
             return;
         }
