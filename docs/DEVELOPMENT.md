@@ -26,7 +26,7 @@ dotnet run --project src/GamePriceHunter.Cli -- update   # latest release, as th
 
 ## CI
 
-The `Build` workflow builds and tests every push and pull request. It uploads the exe and the installer as an artifact. `main` requires its `Build and test` check. Pull requests from this repository's branches merge automatically (squash) once the check passes, and their branch is deleted. Open a pull request as a draft to hold it back.
+The `Build` workflow builds and tests every push and pull request. It uploads the exe and the installer as an artifact. `main` requires its `Build and test` check. Once it passes, the workflow's `Merge` job squash-merges pull requests from this repository's branches and deletes the branch. Open a pull request as a draft to hold it back; marking it ready for review builds it again and merges it. A merge made by the workflow doesn't start a build of `main`, since GitHub doesn't run workflows for changes made with the workflow token.
 
 ## Release
 

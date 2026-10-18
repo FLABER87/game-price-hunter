@@ -1,5 +1,6 @@
-# Builds and tests every push and pull request, and turns a pushed vX.Y.Z tag into a draft release
-# with the exe, the installer and the installer's signature for the in-app updater.
+# Builds and tests every push and pull request, squash-merges pull requests from this repository's
+# branches once they pass, and turns a pushed vX.Y.Z tag into a draft release with the exe, the
+# installer and the installer's signature for the in-app updater.
 # "Build and test" is the check main requires before merging.
 name: Build
 
@@ -8,6 +9,8 @@ on:
     branches: [main]
     tags: ['v*']
   pull_request:
+    # ready_for_review: a draft marked ready is built again and then merged.
+    types: [opened, synchronize, reopened, ready_for_review]
   workflow_dispatch:
 
 concurrency:
@@ -53,6 +56,26 @@ jobs:
             artifacts/installer/GamePriceHunter-Setup.exe.sig
           if-no-files-found: error
           retention-days: 14
+
+  # Merges here rather than through GitHub's auto-merge: pull requests auto-merged with the workflow
+  # token kept their branches, the repository's "delete head branches" setting notwithstanding. Drafts
+  # and pull requests from forks are left alone. The head commit must still be the one that was tested.
+  merge:
+    name: Merge
+    if: github.event_name == 'pull_request' && !github.event.pull_request.draft && github.event.pull_request.head.repo.full_name == github.repository
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Squash-merge and delete the branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        # --repo: no checkout here, so gh deletes only the branch on GitHub.
+        run: gh pr merge "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --squash --delete-branch --match-head-commit "$HEAD_SHA"
 
   release:
     name: Draft release
