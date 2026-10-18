@@ -64,7 +64,9 @@ ArchitecturesAllowed={#ArchAllowed}
 #if Arch != "x86"
 ArchitecturesInstallIn64BitMode={#ArchAllowed}
 #endif
-MinVersion=10.0
+; The oldest Windows .NET 10 runs on: Windows 10 1607. Newer features (Windows 11 corners, snap layouts,
+; caption colors, ICU names) are optional and fall back on their own.
+MinVersion=10.0.14393
 
 ; Restart Manager closes a running copy that holds the files; the app restarts itself via /RELAUNCH.
 CloseApplications=yes

@@ -164,4 +164,8 @@
   <data name="Edit_Copy" xml:space="preserve"><value>Copy</value></data>
   <data name="Edit_Paste" xml:space="preserve"><value>Paste</value></data>
   <data name="Edit_SelectAll" xml:space="preserve"><value>Select all</value></data>
+  <data name="Window_Minimize" xml:space="preserve"><value>Minimize</value><comment>Title bar buttons, as Windows itself names them.</comment></data>
+  <data name="Window_Maximize" xml:space="preserve"><value>Maximize</value></data>
+  <data name="Window_Restore" xml:space="preserve"><value>Restore Down</value></data>
+  <data name="Window_Close" xml:space="preserve"><value>Close</value></data>
 </root>

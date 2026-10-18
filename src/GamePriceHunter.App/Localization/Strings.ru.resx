@@ -180,4 +180,8 @@
   <data name="Edit_Copy" xml:space="preserve"><value>Копировать</value></data>
   <data name="Edit_Paste" xml:space="preserve"><value>Вставить</value></data>
   <data name="Edit_SelectAll" xml:space="preserve"><value>Выделить все</value></data>
+  <data name="Window_Minimize" xml:space="preserve"><value>Свернуть</value></data>
+  <data name="Window_Maximize" xml:space="preserve"><value>Развернуть</value></data>
+  <data name="Window_Restore" xml:space="preserve"><value>Свернуть в окно</value></data>
+  <data name="Window_Close" xml:space="preserve"><value>Закрыть</value></data>
 </root>

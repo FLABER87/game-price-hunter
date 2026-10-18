@@ -18,7 +18,7 @@ From the [latest release](../../releases/latest):
 - **GamePriceHunter-Setup.exe** installs the app and keeps it up to date. No administrator rights needed.
 - **GamePriceHunter.exe** is the portable version: just run it. It tells you when a new version is out.
 
-Requires Windows 10 or 11 (64-bit).
+Requires Windows 11 or Windows 10 version 1607 or later (64-bit).
 
 ## Good to know
 

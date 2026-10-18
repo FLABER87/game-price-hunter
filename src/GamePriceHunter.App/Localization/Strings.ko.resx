@@ -156,4 +156,8 @@
   <data name="Edit_Copy" xml:space="preserve"><value>복사</value></data>
   <data name="Edit_Paste" xml:space="preserve"><value>붙여넣기</value></data>
   <data name="Edit_SelectAll" xml:space="preserve"><value>모두 선택</value></data>
+  <data name="Window_Minimize" xml:space="preserve"><value>최소화</value></data>
+  <data name="Window_Maximize" xml:space="preserve"><value>최대화</value></data>
+  <data name="Window_Restore" xml:space="preserve"><value>이전 크기로 복원</value></data>
+  <data name="Window_Close" xml:space="preserve"><value>닫기</value></data>
 </root>

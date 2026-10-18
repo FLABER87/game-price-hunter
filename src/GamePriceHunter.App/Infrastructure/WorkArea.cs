@@ -51,6 +51,26 @@ public static partial class WorkArea
         SetWindowPlacement(handle, ref placement);
     }
 
+    /// <summary>
+    /// How far the window reaches past the work area of its monitor, in device-independent pixels. A maximized
+    /// window is the work area plus its resize frame on each side, and a window that draws its own title bar
+    /// draws over that frame too.
+    /// </summary>
+    public static Thickness Overhang(Window window)
+    {
+        var handle = new WindowInteropHelper(window).Handle;
+        var info = new MonitorInfo { cbSize = Marshal.SizeOf<MonitorInfo>() };
+        if (handle == IntPtr.Zero || !GetMonitorInfo(MonitorFromWindow(handle, MonitorDefaultToNearest), ref info) || !GetWindowRect(handle, out var bounds))
+            return default;
+
+        var dpi = VisualTreeHelper.GetDpi(window);
+        return new Thickness(
+            Math.Max(0, info.rcWork.Left - bounds.Left) / dpi.DpiScaleX,
+            Math.Max(0, info.rcWork.Top - bounds.Top) / dpi.DpiScaleY,
+            Math.Max(0, bounds.Right - info.rcWork.Right) / dpi.DpiScaleX,
+            Math.Max(0, bounds.Bottom - info.rcWork.Bottom) / dpi.DpiScaleY);
+    }
+
     private const int MonitorDefaultToNearest = 2;
     private const int SwHide = 0;
 
@@ -96,6 +116,10 @@ public static partial class WorkArea
     [LibraryImport("user32.dll", EntryPoint = "GetMonitorInfoW")]
     [return: MarshalAs(UnmanagedType.Bool)]
     private static partial bool GetMonitorInfo(IntPtr monitor, ref MonitorInfo info);
+
+    [LibraryImport("user32.dll")]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    private static partial bool GetWindowRect(IntPtr hwnd, out NativeRect rect);
 
     [LibraryImport("user32.dll")]
     [return: MarshalAs(UnmanagedType.Bool)]

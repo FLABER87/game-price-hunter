@@ -21,6 +21,7 @@ public partial class MainWindow : Window
         _viewModel = viewModel;
         _services = services;
         DataContext = viewModel;
+        TitleBar.Attach(this, Header, MaximizeButton);
         ThemeManager.Attach(this);
         ApplySavedBounds(services.Settings.Window);
         WorkArea.KeepInside(this);
@@ -100,6 +101,18 @@ public partial class MainWindow : Window
             e.Handled = true;
         }
     }
+
+    private void OnMinimizeClick(object sender, RoutedEventArgs e) => SystemCommands.MinimizeWindow(this);
+
+    private void OnMaximizeClick(object sender, RoutedEventArgs e)
+    {
+        if (WindowState == WindowState.Maximized)
+            SystemCommands.RestoreWindow(this);
+        else
+            SystemCommands.MaximizeWindow(this);
+    }
+
+    private void OnCloseClick(object sender, RoutedEventArgs e) => SystemCommands.CloseWindow(this);
 
     private void OnSearchBoxFocused(object sender, KeyboardFocusChangedEventArgs e) => _viewModel.ShowHistory();
 
