@@ -11,6 +11,7 @@ namespace GamePriceHunter.Core.Currency;
 public sealed class CurrencyService
 {
     private static readonly TimeSpan MaxAge = TimeSpan.FromHours(12);
+    private static readonly TimeSpan RetryDelay = TimeSpan.FromMinutes(30);
     private static readonly JsonSerializerOptions JsonOptions = new() { WriteIndented = true };
 
     private readonly HttpClient _http;
@@ -19,6 +20,10 @@ public sealed class CurrencyService
     private readonly IReadOnlyList<IExchangeRateSource> _sources;
     private readonly SemaphoreSlim _refreshLock = new(1, 1);
     private volatile ExchangeRates? _current;
+
+    // Guarded by _refreshLock.
+    private DateTime _fetchedAt = DateTime.MinValue;
+    private DateTime _lastAttempt = DateTime.MinValue;
 
     public CurrencyService(HttpClient http, string cachePath, IAppLogger logger, IReadOnlyList<IExchangeRateSource>? sources = null)
     {
@@ -37,10 +42,38 @@ public sealed class CurrencyService
     /// <summary>Loads cached rates and refreshes them when older than 12 hours.</summary>
     public async Task InitializeAsync(CancellationToken cancellationToken = default)
     {
-        LoadCache();
-        var fetchedAt = File.Exists(_cachePath) ? File.GetLastWriteTimeUtc(_cachePath) : DateTime.MinValue;
-        if (_current is null || DateTime.UtcNow - fetchedAt > MaxAge)
-            await RefreshAsync(cancellationToken).ConfigureAwait(false);
+        await _refreshLock.WaitAsync(cancellationToken).ConfigureAwait(false);
+        try
+        {
+            if (LoadCache())
+                _fetchedAt = File.GetLastWriteTimeUtc(_cachePath);
+        }
+        finally
+        {
+            _refreshLock.Release();
+        }
+        await RefreshIfDueAsync(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// Refreshes rates fetched more than 12 hours ago, so a long-running app keeps converting with
+    /// current ones. After a failed attempt the sources are left alone for a while.
+    /// </summary>
+    public async Task RefreshIfDueAsync(CancellationToken cancellationToken = default)
+    {
+        await _refreshLock.WaitAsync(cancellationToken).ConfigureAwait(false);
+        try
+        {
+            var now = DateTime.UtcNow;
+            if ((_current is not null && now - _fetchedAt <= MaxAge) || now - _lastAttempt < RetryDelay)
+                return;
+            _lastAttempt = now;
+            await RefreshCoreAsync(cancellationToken).ConfigureAwait(false);
+        }
+        finally
+        {
+            _refreshLock.Release();
+        }
     }
 
     public async Task<bool> RefreshAsync(CancellationToken cancellationToken = default)
@@ -48,33 +81,39 @@ public sealed class CurrencyService
         await _refreshLock.WaitAsync(cancellationToken).ConfigureAwait(false);
         try
         {
-            foreach (var source in _sources)
-            {
-                try
-                {
-                    using var timeout = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
-                    timeout.CancelAfter(TimeSpan.FromSeconds(10));
-                    var rates = await source.FetchAsync(_http, timeout.Token).ConfigureAwait(false);
-                    if (rates.Rates.Count < 5)
-                        throw new InvalidDataException("Too few rates.");
-
-                    _current = rates;
-                    SaveCache(rates);
-                    _logger.Info($"Exchange rates updated from {source.Name} ({rates.Rates.Count} currencies).");
-                    RatesChanged?.Invoke(this, EventArgs.Empty);
-                    return true;
-                }
-                catch (Exception ex) when (ex is not OperationCanceledException || !cancellationToken.IsCancellationRequested)
-                {
-                    _logger.Warn($"Exchange rate source {source.Name} failed: {ex.Message}");
-                }
-            }
-            return false;
+            return await RefreshCoreAsync(cancellationToken).ConfigureAwait(false);
         }
         finally
         {
             _refreshLock.Release();
         }
+    }
+
+    private async Task<bool> RefreshCoreAsync(CancellationToken cancellationToken)
+    {
+        foreach (var source in _sources)
+        {
+            try
+            {
+                using var timeout = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+                timeout.CancelAfter(TimeSpan.FromSeconds(10));
+                var rates = await source.FetchAsync(_http, timeout.Token).ConfigureAwait(false);
+                if (rates.Rates.Count < 5)
+                    throw new InvalidDataException("Too few rates.");
+
+                _current = rates;
+                _fetchedAt = DateTime.UtcNow;
+                SaveCache(rates);
+                _logger.Info($"Exchange rates updated from {source.Name} ({rates.Rates.Count} currencies).");
+                RatesChanged?.Invoke(this, EventArgs.Empty);
+                return true;
+            }
+            catch (Exception ex) when (ex is not OperationCanceledException || !cancellationToken.IsCancellationRequested)
+            {
+                _logger.Warn($"Exchange rate source {source.Name} failed: {ex.Message}");
+            }
+        }
+        return false;
     }
 
     /// <summary>Converts money into <paramref name="currency"/>; null when rates are missing.</summary>
@@ -86,19 +125,22 @@ public sealed class CurrencyService
         return amount is null ? null : new Money(amount.Value, currency.ToUpperInvariant());
     }
 
-    private void LoadCache()
+    private bool LoadCache()
     {
         try
         {
             if (!File.Exists(_cachePath))
-                return;
+                return false;
             var rates = JsonSerializer.Deserialize<ExchangeRates>(File.ReadAllText(_cachePath), JsonOptions);
-            if (rates is { Rates.Count: > 0 })
-                _current = rates;
+            if (rates is not { Rates.Count: > 0 })
+                return false;
+            _current = rates;
+            return true;
         }
         catch (Exception ex) when (ex is IOException or JsonException or UnauthorizedAccessException)
         {
             _logger.Warn($"Could not read the exchange rate cache: {ex.Message}");
+            return false;
         }
     }
 

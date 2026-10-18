@@ -106,6 +106,7 @@ public sealed class SearchService
             {
                 raw = await provider.SearchAsync(context, timeout.Token).ConfigureAwait(false);
                 _cache[cacheKey] = (DateTime.UtcNow, raw);
+                RemoveExpired();
             }
 
             var offers = Refine(raw, matcher, context);
@@ -134,6 +135,18 @@ public sealed class SearchService
         {
             _logger.Error($"{info.Name}: search failed.", ex);
             return new ProviderSearchResult(info, ProviderStatus.Failed, [], stopwatch.Elapsed, ex.Message);
+        }
+    }
+
+    /// <summary>Drops expired results, which otherwise stay in memory for the whole session.</summary>
+    private void RemoveExpired()
+    {
+        var now = DateTime.UtcNow;
+        foreach (var entry in _cache)
+        {
+            // Removes this exact entry only, not one another search has just stored under the same key.
+            if (now - entry.Value.Time >= CacheLifetime)
+                _cache.TryRemove(entry);
         }
     }
 

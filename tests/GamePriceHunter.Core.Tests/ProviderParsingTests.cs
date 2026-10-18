@@ -1,5 +1,7 @@
+using System.Net;
 using System.Text.Json;
 using GamePriceHunter.Core.Models;
+using GamePriceHunter.Core.Providers;
 using GamePriceHunter.Core.Providers.Aggregators;
 using GamePriceHunter.Core.Providers.KeyShops;
 using GamePriceHunter.Core.Providers.Marketplaces;
@@ -185,4 +187,63 @@ public class ProviderParsingTests
     [Fact]
     public void Difmark_cards() =>
         AssertWellFormed(new DifmarkProvider(Http).Parse(Fixture("difmark_search.html")), null);
+
+    [Theory]
+    [InlineData("2,99€", "USD", "EUR")]
+    [InlineData("$9.99", "USD", "USD")]
+    [InlineData("$9.99 USD", "ARS", "USD")]
+    [InlineData("US$ 9.99", "ARS", "USD")]
+    [InlineData("$9.99", "CAD", null)]
+    [InlineData("CDN$ 12.99", "CAD", null)]
+    [InlineData("CDN$ 12.99", "USD", null)]
+    [InlineData("HK$ 99", "USD", null)]
+    [InlineData("S$9.99", "USD", null)]
+    [InlineData("¥ 1,980", "JPY", "JPY")]
+    [InlineData("¥ 98", "CNY", null)]
+    [InlineData("CN¥ 98", "JPY", null)]
+    [InlineData("99 kr", "NOK", "NOK")]
+    public void Steam_page_currency_without_the_api(string priceText, string regionCurrency, string? expected) =>
+        Assert.Equal(expected, SteamProvider.CurrencyFromText(priceText, regionCurrency));
+}
+
+/// <summary>Steam asks two endpoints at once; one failing must not discard the other's offers.</summary>
+public class SteamEndpointTests
+{
+    private static readonly UserRegion Region = new("SK", "EUR");
+
+    private static SteamProvider Provider(HttpStatusCode api, HttpStatusCode page) => new(new HttpClient(new StubHandler(request =>
+    {
+        var isApi = request.RequestUri!.AbsolutePath.StartsWith("/api/storesearch", StringComparison.Ordinal);
+        var status = isApi ? api : page;
+        if (status != HttpStatusCode.OK)
+            return new HttpResponseMessage(status);
+        var fixture = Path.Combine(AppContext.BaseDirectory, "Fixtures", isApi ? "steam_storesearch.json" : "steam_search_infinite.json");
+        return new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(File.ReadAllText(fixture)) };
+    })));
+
+    private static Task<IReadOnlyList<Offer>> Search(HttpStatusCode api, HttpStatusCode page) =>
+        Provider(api, page).SearchAsync(new SearchContext("hollow knight", Region), CancellationToken.None);
+
+    [Fact]
+    public async Task Keeps_api_offers_when_the_page_is_blocked()
+    {
+        var offers = await Search(HttpStatusCode.OK, HttpStatusCode.Forbidden);
+        Assert.NotEmpty(offers);
+        Assert.All(offers, o => Assert.Matches(@"/app/\d+/$", o.Url));
+    }
+
+    [Fact]
+    public async Task Keeps_page_offers_when_the_api_fails()
+    {
+        var offers = await Search(HttpStatusCode.NotFound, HttpStatusCode.OK);
+        Assert.NotEmpty(offers);
+        Assert.All(offers, o => Assert.Equal("EUR", o.Price.Currency));
+    }
+
+    [Fact]
+    public async Task Reports_the_api_error_when_both_fail()
+    {
+        await Assert.ThrowsAsync<HttpRequestException>(() => Search(HttpStatusCode.NotFound, HttpStatusCode.Forbidden));
+        await Assert.ThrowsAsync<ProviderBlockedException>(() => Search(HttpStatusCode.Forbidden, HttpStatusCode.NotFound));
+    }
 }

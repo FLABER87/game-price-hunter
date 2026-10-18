@@ -8,6 +8,11 @@ namespace GamePriceHunter.Core.Providers.Official;
 /// Fanatical. The site hands out a short-lived Algolia search key (region filter built in),
 /// which is cached until shortly before it expires.
 /// </summary>
+/// <remarks>
+/// The key's region comes from Fanatical's own geo-IP, not from the app's country setting, and
+/// Fanatical checks the same IP at checkout: results are what the store sells to this connection.
+/// Only the price currency follows the app's region.
+/// </remarks>
 public sealed class FanaticalProvider(HttpClient http) : StoreProvider(http)
 {
     private const string AlgoliaAppId = "W2M9492DDV";
