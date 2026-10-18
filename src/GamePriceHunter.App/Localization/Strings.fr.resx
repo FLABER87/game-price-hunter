@@ -10,6 +10,7 @@
   <data name="Search_Clear" xml:space="preserve"><value>Effacer</value></data>
   <data name="Search_Button" xml:space="preserve"><value>Rechercher</value></data>
   <data name="Search_Stop" xml:space="preserve"><value>Arrêter</value></data>
+  <data name="Suggestion_Free" xml:space="preserve"><value>Gratuit</value></data>
   <data name="Filter_Placeholder" xml:space="preserve"><value>Filtrer les résultats</value></data>
   <data name="Sort_Label" xml:space="preserve"><value>Trier les résultats</value></data>
   <data name="Sort_PriceLowToHigh" xml:space="preserve"><value>Prix croissant</value></data>

@@ -12,11 +12,22 @@ public sealed class GogProvider(HttpClient http) : StoreProvider(http)
 
     public override async Task<IReadOnlyList<Offer>> SearchAsync(SearchContext context, CancellationToken cancellationToken)
     {
+        var currency = context.Region.CurrencyCode;
+        var (offers, products) = await QueryAsync(context, currency, cancellationToken).ConfigureAwait(false);
+        // For most currencies GOG doesn't sell in it answers in dollars, but for a few (JPY, BYN) it
+        // lists the games without any price: ask in dollars then.
+        if (offers.Count == 0 && products > 0 && !string.Equals(currency, "USD", StringComparison.OrdinalIgnoreCase))
+            (offers, _) = await QueryAsync(context, "USD", cancellationToken).ConfigureAwait(false);
+        return offers;
+    }
+
+    private async Task<(IReadOnlyList<Offer> Offers, int Products)> QueryAsync(SearchContext context, string currency, CancellationToken cancellationToken)
+    {
         var limit = Math.Clamp(context.MaxResults, 10, 100);
         var url = $"https://catalog.gog.com/v1/catalog?query=like:{Encode(context.Query)}&limit={limit}&page=1" +
-                  $"&countryCode={context.Region.CountryCode}&currencyCode={context.Region.CurrencyCode}&locale=en-US&order=desc:score";
+                  $"&countryCode={context.Region.CountryCode}&currencyCode={currency}&locale=en-US&order=desc:score";
         using var doc = await GetJsonAsync(url, cancellationToken).ConfigureAwait(false);
-        return Parse(doc.RootElement);
+        return (Parse(doc.RootElement), doc.RootElement.Arr("products").Count());
     }
 
     internal IReadOnlyList<Offer> Parse(JsonElement root)

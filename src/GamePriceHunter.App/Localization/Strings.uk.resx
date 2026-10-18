@@ -10,6 +10,7 @@
   <data name="Search_Clear" xml:space="preserve"><value>Очистити</value></data>
   <data name="Search_Button" xml:space="preserve"><value>Знайти</value></data>
   <data name="Search_Stop" xml:space="preserve"><value>Стоп</value></data>
+  <data name="Suggestion_Free" xml:space="preserve"><value>Безкоштовно</value></data>
   <data name="Filter_Placeholder" xml:space="preserve"><value>Фільтр результатів</value></data>
   <data name="Sort_Label" xml:space="preserve"><value>Сортування результатів</value></data>
   <data name="Sort_PriceLowToHigh" xml:space="preserve"><value>За зростанням ціни</value></data>
