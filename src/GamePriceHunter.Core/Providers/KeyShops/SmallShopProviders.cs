@@ -10,7 +10,7 @@ public sealed class IgroMagazProvider(HttpClient http) : StoreProvider(http)
 {
     private const string Host = "https://www.igromagaz.ru";
 
-    public override ProviderInfo Info { get; } = new("igromagaz", "IgroMagaz", StoreKind.KeyShop, "https://www.igromagaz.ru/") { Note = RegionalNotes.Russia };
+    public override ProviderInfo Info { get; } = new("igromagaz", "IgroMagaz", StoreKind.KeyShop, "https://www.igromagaz.ru/") { Note = ProviderNote.RussianStore };
 
     public override async Task<IReadOnlyList<Offer>> SearchAsync(SearchContext context, CancellationToken cancellationToken)
     {
@@ -48,7 +48,7 @@ public sealed class GamazavrProvider(HttpClient http) : StoreProvider(http)
 {
     private const string Host = "https://gamazavr.ru";
 
-    public override ProviderInfo Info { get; } = new("gamazavr", "Gamazavr", StoreKind.KeyShop, "https://gamazavr.ru/") { Note = RegionalNotes.Russia };
+    public override ProviderInfo Info { get; } = new("gamazavr", "Gamazavr", StoreKind.KeyShop, "https://gamazavr.ru/") { Note = ProviderNote.RussianStore };
 
     public override async Task<IReadOnlyList<Offer>> SearchAsync(SearchContext context, CancellationToken cancellationToken)
     {
@@ -81,7 +81,7 @@ public sealed class SteamkeyProvider(HttpClient http) : StoreProvider(http)
 {
     private const string Host = "https://steamkey.com";
 
-    public override ProviderInfo Info { get; } = new("steamkey", "Steamkey", StoreKind.KeyShop, "https://steamkey.com/") { Note = RegionalNotes.Russia };
+    public override ProviderInfo Info { get; } = new("steamkey", "Steamkey", StoreKind.KeyShop, "https://steamkey.com/") { Note = ProviderNote.RussianStore };
 
     public override async Task<IReadOnlyList<Offer>> SearchAsync(SearchContext context, CancellationToken cancellationToken)
     {
@@ -130,7 +130,7 @@ public sealed class IgroShopProvider(HttpClient http) : StoreProvider(http)
     private readonly SemaphoreSlim _keyLock = new(1, 1);
     private string? _apiKey;
 
-    public override ProviderInfo Info { get; } = new("igroshop", "IgroShop", StoreKind.KeyShop, "https://www.igroshop.com/") { Note = RegionalNotes.Russia };
+    public override ProviderInfo Info { get; } = new("igroshop", "IgroShop", StoreKind.KeyShop, "https://www.igroshop.com/") { Note = ProviderNote.RussianStore };
 
     public override async Task<IReadOnlyList<Offer>> SearchAsync(SearchContext context, CancellationToken cancellationToken)
     {

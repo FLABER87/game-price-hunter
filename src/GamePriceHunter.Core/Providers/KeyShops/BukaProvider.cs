@@ -10,7 +10,7 @@ public sealed class BukaProvider(HttpClient http) : StoreProvider(http)
     private const string Host = "https://shop.buka.ru";
     private const int WindowsGamesArea = 2002;
 
-    public override ProviderInfo Info { get; } = new("buka", "Buka", StoreKind.Official, "https://shop.buka.ru/") { Note = RegionalNotes.Russia };
+    public override ProviderInfo Info { get; } = new("buka", "Buka", StoreKind.Official, "https://shop.buka.ru/") { Note = ProviderNote.RussianStore };
 
     public override async Task<IReadOnlyList<Offer>> SearchAsync(SearchContext context, CancellationToken cancellationToken)
     {

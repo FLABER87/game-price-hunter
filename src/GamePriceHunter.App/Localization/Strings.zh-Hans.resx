@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="App_Title" xml:space="preserve"><value>Game Price Hunter</value></data>
+  <data name="App_TitleWithVersion" xml:space="preserve"><value>Game Price Hunter {0}</value></data>
+  <data name="Search_Placeholder" xml:space="preserve"><value>搜索游戏，例如“witcher 3”或“hollow knight”</value></data>
+  <data name="Search_Clear" xml:space="preserve"><value>清除</value></data>
+  <data name="Search_Button" xml:space="preserve"><value>搜索</value></data>
+  <data name="Search_Stop" xml:space="preserve"><value>停止</value></data>
+  <data name="Filter_Placeholder" xml:space="preserve"><value>筛选结果</value></data>
+  <data name="Sort_Label" xml:space="preserve"><value>结果排序</value></data>
+  <data name="Sort_PriceLowToHigh" xml:space="preserve"><value>价格从低到高</value></data>
+  <data name="Sort_PriceHighToLow" xml:space="preserve"><value>价格从高到低</value></data>
+  <data name="Sort_BestMatch" xml:space="preserve"><value>最佳匹配</value></data>
+  <data name="Sort_Discount" xml:space="preserve"><value>折扣最大</value></data>
+  <data name="Sort_Store" xml:space="preserve"><value>商店</value></data>
+  <data name="Sort_Title" xml:space="preserve"><value>名称</value></data>
+  <data name="Filter_Official" xml:space="preserve"><value>官方商店</value></data>
+  <data name="Filter_OfficialTooltip" xml:space="preserve"><value>经发行商授权的商店，例如 Steam、GOG 或 Fanatical。</value></data>
+  <data name="Filter_KeyShops" xml:space="preserve"><value>激活码商店</value></data>
+  <data name="Filter_KeyShopsTooltip" xml:space="preserve"><value>转售游戏激活码的商店。</value></data>
+  <data name="Filter_Marketplaces" xml:space="preserve"><value>交易平台</value></data>
+  <data name="Filter_MarketplacesTooltip" xml:space="preserve"><value>由独立卖家上架激活码的平台。购买前请查看卖家评价。</value></data>
+  <data name="Filter_Games" xml:space="preserve"><value>游戏</value></data>
+  <data name="Filter_Dlc" xml:space="preserve"><value>DLC</value></data>
+  <data name="Filter_Bundles" xml:space="preserve"><value>捆绑包</value></data>
+  <data name="Filter_Other" xml:space="preserve"><value>其他</value></data>
+  <data name="Filter_OtherTooltip" xml:space="preserve"><value>账号、礼品卡、随机激活码等非游戏本体的商品。</value></data>
+  <data name="Filter_Consoles" xml:space="preserve"><value>主机激活码</value></data>
+  <data name="Filter_ConsolesTooltip" xml:space="preserve"><value>显示 Xbox、PlayStation 和 Nintendo 平台的激活码。</value></data>
+  <data name="Filter_HideRegionLocked" xml:space="preserve"><value>隐藏锁区激活码</value></data>
+  <data name="Filter_RegionTooltip" xml:space="preserve"><value>隐藏仅限其他地区使用、在您所在地区无法激活的激活码。</value></data>
+  <data name="Stores_Header" xml:space="preserve"><value>商店</value></data>
+  <data name="Stores_All" xml:space="preserve"><value>全选</value></data>
+  <data name="Stores_None" xml:space="preserve"><value>全不选</value></data>
+  <data name="Results_Label" xml:space="preserve"><value>搜索结果</value></data>
+  <data name="Welcome_Title" xml:space="preserve"><value>查找任意游戏的最低价</value></data>
+  <data name="Welcome_Text" xml:space="preserve"><value>输入游戏名称或部分名称，Game Price Hunter 即可同时查询官方商店、激活码商店和交易平台。</value></data>
+  <data name="Welcome_Hint" xml:space="preserve"><value>按 Ctrl+F 可定位到搜索框。双击结果或按 Enter 键即可在浏览器中打开。</value></data>
+  <data name="Empty_NothingTitle" xml:space="preserve"><value>未找到“{0}”的结果</value></data>
+  <data name="Empty_NothingText" xml:space="preserve"><value>请检查拼写、减少关键词，或在侧边栏中启用更多商店。</value></data>
+  <data name="Empty_FilteredTitle" xml:space="preserve"><value>所有报价均已被筛选条件隐藏</value></data>
+  <data name="Empty_FilteredText" xml:space="preserve"><value>找到 {0} 个报价，但均被当前筛选条件隐藏。</value></data>
+  <data name="Empty_ResetFilters" xml:space="preserve"><value>重置筛选</value></data>
+  <data name="Summary_Ready" xml:space="preserve"><value>可搜索 {0} 家商店</value></data>
+  <data name="Summary_Searching" xml:space="preserve"><value>正在搜索…已完成 {0}/{1} 家商店</value></data>
+  <data name="Summary_Done" xml:space="preserve"><value>{1}找到 {0}，用时 {2:0.0} 秒</value></data>
+  <data name="Summary_Offers" xml:space="preserve"><value>{0} 个报价</value></data>
+  <data name="Summary_FromStores" xml:space="preserve"><value>在 {0} 家商店中</value></data>
+  <data name="Summary_Hidden" xml:space="preserve"><value> · {0} 个已被筛选隐藏</value></data>
+  <data name="Region_SourceIp" xml:space="preserve"><value>已根据您的网络连接检测到地区。点击可更改。</value></data>
+  <data name="Region_SourceWindows" xml:space="preserve"><value>地区取自 Windows 设置（无法在线检测）。点击可更改。</value></data>
+  <data name="Region_SourceManual" xml:space="preserve"><value>地区已在设置中选择。点击可更改。</value></data>
+  <data name="Region_SourceDetecting" xml:space="preserve"><value>正在检测您所在的地区…</value></data>
+  <data name="Region_Compatible" xml:space="preserve"><value>激活码地区：{0}。应该可以在您所在的地区激活。</value></data>
+  <data name="Region_Incompatible" xml:space="preserve"><value>激活码地区：{0}。很可能无法在您所在的地区激活。</value></data>
+  <data name="Region_Unknown" xml:space="preserve"><value>激活码地区：{0}。请在商店页面查看激活限制。</value></data>
+  <data name="Region_Global" xml:space="preserve"><value>全球</value></data>
+  <data name="Region_Asia" xml:space="preserve"><value>亚洲</value></data>
+  <data name="Rates_None" xml:space="preserve"><value>无法获取汇率：价格以各商店的货币显示</value></data>
+  <data name="Rates_Info" xml:space="preserve"><value>汇率：{0}，{1}更新</value></data>
+  <data name="Time_JustNow" xml:space="preserve"><value>刚刚</value></data>
+  <data name="Time_HoursAgo" xml:space="preserve"><value>{0} 小时前</value></data>
+  <data name="Time_DaysAgo" xml:space="preserve"><value>{0} 天前</value></data>
+  <data name="Menu_Open" xml:space="preserve"><value>在浏览器中打开</value></data>
+  <data name="Menu_CopyLink" xml:space="preserve"><value>复制链接</value></data>
+  <data name="Menu_CopyTitle" xml:space="preserve"><value>复制名称</value></data>
+  <data name="Menu_SearchTitle" xml:space="preserve"><value>以此名称搜索</value></data>
+  <data name="Offer_Seller" xml:space="preserve"><value>卖家：</value></data>
+  <data name="Offer_BestPrice" xml:space="preserve"><value>最低价</value></data>
+  <data name="Offer_OriginalPriceTooltip" xml:space="preserve"><value>以商店自身货币显示的价格</value></data>
+  <data name="Offer_OpenTooltip" xml:space="preserve"><value>在浏览器中打开</value></data>
+  <data name="Provider_RetryTooltip" xml:space="preserve"><value>此商店未响应。点击重试。</value></data>
+  <data name="Provider_Searching" xml:space="preserve"><value>正在搜索…</value></data>
+  <data name="Provider_Found" xml:space="preserve"><value>{0} 个报价（{1:0.0} 秒）</value></data>
+  <data name="Provider_Blocked" xml:space="preserve"><value>商店拒绝了请求（反机器人保护或频率限制）。请稍后重试。</value></data>
+  <data name="Provider_TimedOut" xml:space="preserve"><value>商店响应超时。</value></data>
+  <data name="Provider_Failed" xml:space="preserve"><value>搜索失败：{0}</value></data>
+  <data name="Provider_NeedsApiKey" xml:space="preserve"><value>请在设置中添加 {0} API 密钥以使用此数据源。</value></data>
+  <data name="Kind_Official" xml:space="preserve"><value>官方商店</value></data>
+  <data name="Kind_KeyShop" xml:space="preserve"><value>激活码商店</value></data>
+  <data name="Kind_Marketplace" xml:space="preserve"><value>交易平台</value></data>
+  <data name="Kind_Aggregator" xml:space="preserve"><value>比价网站</value></data>
+  <data name="Note_Marketplace" xml:space="preserve"><value>交易平台：价格来自独立卖家。</value></data>
+  <data name="Note_RussianStore" xml:space="preserve"><value>俄罗斯商店：激活码和礼物通常仅限俄罗斯及独联体地区使用。</value></data>
+  <data name="Note_CheapShark" xml:space="preserve"><value>包括 Epic、Humble、GMG、IndieGala、WinGameStore 等。显示美国区美元价格。</value></data>
+  <data name="Note_IsThereAnyDeal" xml:space="preserve"><value>来自 50 多家授权商店的地区价格。需要免费的 API 密钥。</value></data>
+  <data name="Platform_Steam" xml:space="preserve"><value>Steam</value></data>
+  <data name="Platform_Gog" xml:space="preserve"><value>GOG</value></data>
+  <data name="Platform_Epic" xml:space="preserve"><value>Epic</value></data>
+  <data name="Platform_Ubisoft" xml:space="preserve"><value>Ubisoft</value></data>
+  <data name="Platform_Ea" xml:space="preserve"><value>EA app</value></data>
+  <data name="Platform_BattleNet" xml:space="preserve"><value>Battle.net</value></data>
+  <data name="Platform_Rockstar" xml:space="preserve"><value>Rockstar</value></data>
+  <data name="Platform_Xbox" xml:space="preserve"><value>Xbox</value></data>
+  <data name="Platform_PlayStation" xml:space="preserve"><value>PlayStation</value></data>
+  <data name="Platform_Nintendo" xml:space="preserve"><value>Nintendo</value></data>
+  <data name="Platform_DrmFree" xml:space="preserve"><value>无 DRM</value></data>
+  <data name="Platform_Other" xml:space="preserve"><value>其他</value></data>
+  <data name="Type_Dlc" xml:space="preserve"><value>DLC</value></data>
+  <data name="Type_Bundle" xml:space="preserve"><value>捆绑包</value></data>
+  <data name="Type_Other" xml:space="preserve"><value>其他</value></data>
+  <data name="Error_Unexpected" xml:space="preserve"><value>发生错误：{0}</value></data>
+  <data name="Settings_Title" xml:space="preserve"><value>设置</value></data>
+  <data name="Settings_General" xml:space="preserve"><value>常规</value></data>
+  <data name="Settings_Language" xml:space="preserve"><value>语言</value></data>
+  <data name="Settings_Theme" xml:space="preserve"><value>主题</value></data>
+  <data name="Theme_System" xml:space="preserve"><value>跟随 Windows 设置</value></data>
+  <data name="Theme_Dark" xml:space="preserve"><value>深色</value></data>
+  <data name="Theme_Light" xml:space="preserve"><value>浅色</value></data>
+  <data name="Settings_Region" xml:space="preserve"><value>地区和货币</value></data>
+  <data name="Settings_Country" xml:space="preserve"><value>国家/地区</value></data>
+  <data name="Settings_Currency" xml:space="preserve"><value>显示货币</value></data>
+  <data name="Settings_Auto" xml:space="preserve"><value>自动</value></data>
+  <data name="Settings_AutoValue" xml:space="preserve"><value>自动（{0}）</value></data>
+  <data name="Settings_RegionHint" xml:space="preserve"><value>商店会显示地区价格，激活码也可能锁区，因此国家/地区设置很重要。“自动”将使用您网络连接所在的国家/地区。</value></data>
+  <data name="Settings_Search" xml:space="preserve"><value>搜索</value></data>
+  <data name="Settings_MatchMode" xml:space="preserve"><value>名称匹配</value></data>
+  <data name="Match_AllWords" xml:space="preserve"><value>包含所有词（部分名称）</value></data>
+  <data name="Match_Exact" xml:space="preserve"><value>名称完全一致</value></data>
+  <data name="Settings_MaxResults" xml:space="preserve"><value>每家商店结果数</value></data>
+  <data name="Settings_Timeout" xml:space="preserve"><value>商店超时</value></data>
+  <data name="Settings_TimeoutValue" xml:space="preserve"><value>{0} 秒</value></data>
+  <data name="Settings_Stores" xml:space="preserve"><value>商店</value></data>
+  <data name="Settings_ApiKeyPlaceholder" xml:space="preserve"><value>API 密钥</value></data>
+  <data name="Settings_GetApiKey" xml:space="preserve"><value>获取免费密钥</value></data>
+  <data name="Settings_About" xml:space="preserve"><value>关于</value></data>
+  <data name="About_Version" xml:space="preserve"><value>Game Price Hunter {0}</value></data>
+  <data name="About_DataLocation" xml:space="preserve"><value>数据文件夹：</value></data>
+  <data name="About_Portable" xml:space="preserve"><value>便携模式（与程序位于同一文件夹）</value></data>
+  <data name="About_Disclaimer" xml:space="preserve"><value>价格来自各商店的公开网站，可能随时变动。购买前请务必在商店页面上确认最终价格、地区和卖家。</value></data>
+  <data name="Settings_OpenDataFolder" xml:space="preserve"><value>打开数据文件夹</value></data>
+  <data name="Settings_OpenLogs" xml:space="preserve"><value>打开日志</value></data>
+  <data name="Settings_ClearCache" xml:space="preserve"><value>清除缓存</value></data>
+  <data name="Settings_CacheCleared" xml:space="preserve"><value>缓存已清除（已删除 {0} 张图片）。</value></data>
+  <data name="Update_Available" xml:space="preserve"><value>Game Price Hunter {0} 现已发布。</value></data>
+  <data name="Update_Install" xml:space="preserve"><value>立即更新</value></data>
+  <data name="Update_Download" xml:space="preserve"><value>下载</value></data>
+  <data name="Update_WhatsNew" xml:space="preserve"><value>更新内容</value></data>
+  <data name="Update_ReleasePage" xml:space="preserve"><value>打开下载页面</value></data>
+  <data name="Update_Later" xml:space="preserve"><value>稍后</value></data>
+  <data name="Update_Downloading" xml:space="preserve"><value>正在下载更新…{0}</value></data>
+  <data name="Update_Installing" xml:space="preserve"><value>正在安装更新。Game Price Hunter 即将重新启动。</value></data>
+  <data name="Update_InstallFailed" xml:space="preserve"><value>无法自动安装更新。请重试，或从下载页面下载。</value></data>
+  <data name="Update_Check" xml:space="preserve"><value>检查更新</value></data>
+  <data name="Update_Checking" xml:space="preserve"><value>正在检查更新…</value></data>
+  <data name="Update_UpToDate" xml:space="preserve"><value>已是最新版本。</value></data>
+  <data name="Update_CheckFailed" xml:space="preserve"><value>无法检查更新。请检查网络连接后重试。</value></data>
+  <data name="Update_CheckAutomatically" xml:space="preserve"><value>自动检查更新</value></data>
+  <data name="Common_Cancel" xml:space="preserve"><value>取消</value></data>
+  <data name="Common_Save" xml:space="preserve"><value>保存</value></data>
+  <data name="Edit_Cut" xml:space="preserve"><value>剪切</value></data>
+  <data name="Edit_Copy" xml:space="preserve"><value>复制</value></data>
+  <data name="Edit_Paste" xml:space="preserve"><value>粘贴</value></data>
+  <data name="Edit_SelectAll" xml:space="preserve"><value>全选</value></data>
+</root>

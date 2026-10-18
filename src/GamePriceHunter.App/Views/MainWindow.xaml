@@ -11,6 +11,7 @@
         d:DataContext="{d:DesignInstance Type=vm:MainViewModel}"
         Style="{StaticResource AppWindow}"
         Title="{Binding WindowTitle}"
+        Language="{Binding XmlLanguage, Source={x:Static loc:Loc.Instance}}"
         Icon="/Assets/AppIcon.ico"
         Width="1280" Height="820" MinWidth="980" MinHeight="600"
         WindowStartupLocation="CenterScreen">
@@ -416,7 +417,8 @@
         <!-- ===== Content ===== -->
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="268" />
+                <!-- Wide enough for "Официальный магазин" / "Boutique officielle" next to the offer count. -->
+                <ColumnDefinition Width="290" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 

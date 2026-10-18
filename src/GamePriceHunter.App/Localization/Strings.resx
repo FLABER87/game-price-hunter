@@ -4,8 +4,8 @@
   <resheader name="version"><value>2.0</value></resheader>
   <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
-  <data name="App_Title" xml:space="preserve"><value>Game Price Hunter</value></data>
-  <data name="App_TitleWithVersion" xml:space="preserve"><value>Game Price Hunter {0}</value></data>
+  <data name="App_Title" xml:space="preserve"><value>Game Price Hunter</value><comment>Product name: never translate.</comment></data>
+  <data name="App_TitleWithVersion" xml:space="preserve"><value>Game Price Hunter {0}</value><comment>Product name: never translate. {0} = version.</comment></data>
   <data name="Search_Placeholder" xml:space="preserve"><value>Search for a game, e.g. &quot;witcher 3&quot; or &quot;hollow knight&quot;</value></data>
   <data name="Search_Clear" xml:space="preserve"><value>Clear</value></data>
   <data name="Search_Button" xml:space="preserve"><value>Search</value></data>
@@ -33,52 +33,68 @@
   <data name="Filter_ConsolesTooltip" xml:space="preserve"><value>Show keys for Xbox, PlayStation and Nintendo.</value></data>
   <data name="Filter_HideRegionLocked" xml:space="preserve"><value>Hide region-locked</value></data>
   <data name="Filter_RegionTooltip" xml:space="preserve"><value>Hide keys that are locked to a region other than yours.</value></data>
-  <data name="Stores_Header" xml:space="preserve"><value>STORES</value></data>
+  <data name="Stores_Header" xml:space="preserve"><value>STORES</value><comment>Sidebar heading, written in capitals where the script has them.</comment></data>
   <data name="Stores_All" xml:space="preserve"><value>All</value></data>
   <data name="Stores_None" xml:space="preserve"><value>None</value></data>
   <data name="Results_Label" xml:space="preserve"><value>Search results</value></data>
   <data name="Welcome_Title" xml:space="preserve"><value>Find the best price for any game</value></data>
   <data name="Welcome_Text" xml:space="preserve"><value>Type a game title, or part of it, and Game Price Hunter checks official stores, key shops and marketplaces at once.</value></data>
-  <data name="Welcome_Hint" xml:space="preserve"><value>Ctrl+F focuses the search box. Double-click a result or press Enter to open it in your browser.</value></data>
+  <data name="Welcome_Hint" xml:space="preserve"><value>Ctrl+F focuses the search box. Double-click a result or press Enter to open it in your browser.</value><comment>Use the key names printed on keyboards in this language (German: Strg, Eingabetaste).</comment></data>
   <data name="Empty_NothingTitle" xml:space="preserve"><value>Nothing found for &quot;{0}&quot;</value></data>
   <data name="Empty_NothingText" xml:space="preserve"><value>Check the spelling, try fewer words, or turn on more stores in the sidebar.</value></data>
   <data name="Empty_FilteredTitle" xml:space="preserve"><value>All offers are hidden by filters</value></data>
-  <data name="Empty_FilteredText" xml:space="preserve"><value>{0} offers were found, but the current filters hide them.</value></data>
+  <data name="Empty_FilteredText" xml:space="preserve"><value>{0} offers were found, but the current filters hide them.</value><comment>Plural: also _one (and _few, _many where the language has them). {0} = number of offers.</comment></data>
+  <data name="Empty_FilteredText_one" xml:space="preserve"><value>{0} offer was found, but the current filters hide it.</value></data>
   <data name="Empty_ResetFilters" xml:space="preserve"><value>Reset filters</value></data>
-  <data name="Summary_Ready" xml:space="preserve"><value>Ready to search {0} stores</value></data>
-  <data name="Summary_Searching" xml:space="preserve"><value>Searching… {0} of {1} stores done</value></data>
-  <data name="Summary_Done" xml:space="preserve"><value>{0} offers from {1} stores in {2:0.0} s</value></data>
-  <data name="Summary_Hidden" xml:space="preserve"><value> · {0} hidden by filters</value></data>
+  <data name="Summary_Ready" xml:space="preserve"><value>Ready to search {0} stores</value><comment>Plural. {0} = number of stores.</comment></data>
+  <data name="Summary_Ready_one" xml:space="preserve"><value>Ready to search {0} store</value></data>
+  <data name="Summary_Searching" xml:space="preserve"><value>Searching… {0} of {1} stores done</value><comment>Plural by {1}, the number of stores searched. {0} = stores that answered.</comment></data>
+  <data name="Summary_Searching_one" xml:space="preserve"><value>Searching… {0} of {1} store done</value></data>
+  <data name="Summary_Done" xml:space="preserve"><value>{0} {1} in {2:0.0} s</value><comment>After a search. {0} = Summary_Offers, {1} = Summary_FromStores, {2} = seconds; "s" is the unit symbol.</comment></data>
+  <data name="Summary_Offers" xml:space="preserve"><value>{0} offers</value><comment>Plural; part of Summary_Done.</comment></data>
+  <data name="Summary_Offers_one" xml:space="preserve"><value>{0} offer</value></data>
+  <data name="Summary_FromStores" xml:space="preserve"><value>from {0} stores</value><comment>Plural; part of Summary_Done.</comment></data>
+  <data name="Summary_FromStores_one" xml:space="preserve"><value>from {0} store</value></data>
+  <data name="Summary_Hidden" xml:space="preserve"><value> · {0} hidden by filters</value><comment>Appended to Summary_Done after a middle dot. {0} = number of offers; write it so it needs no plural forms.</comment></data>
   <data name="Region_SourceIp" xml:space="preserve"><value>Region detected from your internet connection. Click to change.</value></data>
   <data name="Region_SourceWindows" xml:space="preserve"><value>Region taken from Windows settings (could not detect it online). Click to change.</value></data>
   <data name="Region_SourceManual" xml:space="preserve"><value>Region chosen in Settings. Click to change.</value></data>
   <data name="Region_SourceDetecting" xml:space="preserve"><value>Detecting your region…</value></data>
-  <data name="Region_Compatible" xml:space="preserve"><value>Key region: {0}. Should activate in your region.</value></data>
+  <data name="Region_Compatible" xml:space="preserve"><value>Key region: {0}. Should activate in your region.</value><comment>{0} = region tag: Region_Global, Region_Asia or codes like EU, RU/CIS.</comment></data>
   <data name="Region_Incompatible" xml:space="preserve"><value>Key region: {0}. Likely will NOT activate in your region.</value></data>
   <data name="Region_Unknown" xml:space="preserve"><value>Key region: {0}. Check the store page for activation restrictions.</value></data>
+  <data name="Region_Global" xml:space="preserve"><value>Global</value><comment>Region tag of keys that activate in every country.</comment></data>
+  <data name="Region_Asia" xml:space="preserve"><value>Asia</value><comment>Region tag of keys for Asian countries.</comment></data>
   <data name="Rates_None" xml:space="preserve"><value>Exchange rates unavailable: prices are shown in store currencies</value></data>
-  <data name="Rates_Info" xml:space="preserve"><value>Exchange rates: {0}, updated {1}</value></data>
+  <data name="Rates_Info" xml:space="preserve"><value>Exchange rates: {0}, updated {1}</value><comment>{0} = data source name, {1} = Time_JustNow, Time_HoursAgo or Time_DaysAgo.</comment></data>
   <data name="Time_JustNow" xml:space="preserve"><value>just now</value></data>
-  <data name="Time_HoursAgo" xml:space="preserve"><value>{0} h ago</value></data>
-  <data name="Time_DaysAgo" xml:space="preserve"><value>{0} days ago</value></data>
+  <data name="Time_HoursAgo" xml:space="preserve"><value>{0} h ago</value><comment>{0} = whole hours; "h" is the unit symbol.</comment></data>
+  <data name="Time_DaysAgo" xml:space="preserve"><value>{0} days ago</value><comment>Plural. Exchange rates were updated {0} days ago.</comment></data>
+  <data name="Time_DaysAgo_one" xml:space="preserve"><value>{0} day ago</value></data>
   <data name="Menu_Open" xml:space="preserve"><value>Open in browser</value></data>
   <data name="Menu_CopyLink" xml:space="preserve"><value>Copy link</value></data>
   <data name="Menu_CopyTitle" xml:space="preserve"><value>Copy title</value></data>
   <data name="Menu_SearchTitle" xml:space="preserve"><value>Search for this title</value></data>
   <data name="Offer_Seller" xml:space="preserve"><value>Seller:</value></data>
-  <data name="Offer_BestPrice" xml:space="preserve"><value>BEST PRICE</value></data>
+  <data name="Offer_BestPrice" xml:space="preserve"><value>BEST PRICE</value><comment>Badge, written in capitals where the script has them.</comment></data>
   <data name="Offer_OriginalPriceTooltip" xml:space="preserve"><value>Price in the store&apos;s own currency</value></data>
   <data name="Offer_OpenTooltip" xml:space="preserve"><value>Open in browser</value></data>
   <data name="Provider_RetryTooltip" xml:space="preserve"><value>This store did not answer. Click to try again.</value></data>
   <data name="Provider_Searching" xml:space="preserve"><value>Searching…</value></data>
-  <data name="Provider_Found" xml:space="preserve"><value>{0} offers in {1:0.0} s</value></data>
+  <data name="Provider_Found" xml:space="preserve"><value>{0} offers in {1:0.0} s</value><comment>Plural by {0}. {1} = seconds.</comment></data>
+  <data name="Provider_Found_one" xml:space="preserve"><value>{0} offer in {1:0.0} s</value></data>
   <data name="Provider_Blocked" xml:space="preserve"><value>The store refused the request (bot protection or rate limit). Try again later.</value></data>
   <data name="Provider_TimedOut" xml:space="preserve"><value>The store did not answer in time.</value></data>
-  <data name="Provider_Failed" xml:space="preserve"><value>Search failed: {0}</value></data>
+  <data name="Provider_Failed" xml:space="preserve"><value>Search failed: {0}</value><comment>{0} = technical error message, usually in English.</comment></data>
+  <data name="Provider_NeedsApiKey" xml:space="preserve"><value>Add an {0} API key in Settings to use this source.</value><comment>{0} = store name (IsThereAnyDeal).</comment></data>
   <data name="Kind_Official" xml:space="preserve"><value>Official store</value></data>
   <data name="Kind_KeyShop" xml:space="preserve"><value>Key shop</value></data>
   <data name="Kind_Marketplace" xml:space="preserve"><value>Marketplace</value></data>
   <data name="Kind_Aggregator" xml:space="preserve"><value>Price aggregator</value></data>
+  <data name="Note_Marketplace" xml:space="preserve"><value>Marketplace: prices from independent sellers.</value></data>
+  <data name="Note_RussianStore" xml:space="preserve"><value>Russian store: keys and gifts are usually for Russia and the CIS.</value></data>
+  <data name="Note_CheapShark" xml:space="preserve"><value>Epic, Humble, GMG, IndieGala, WinGameStore and more. US prices in USD.</value><comment>Store names stay as they are.</comment></data>
+  <data name="Note_IsThereAnyDeal" xml:space="preserve"><value>Regional prices from 50+ authorized stores. Requires a free API key.</value></data>
   <data name="Platform_Steam" xml:space="preserve"><value>Steam</value></data>
   <data name="Platform_Gog" xml:space="preserve"><value>GOG</value></data>
   <data name="Platform_Epic" xml:space="preserve"><value>Epic</value></data>
@@ -106,7 +122,7 @@
   <data name="Settings_Country" xml:space="preserve"><value>Country</value></data>
   <data name="Settings_Currency" xml:space="preserve"><value>Show prices in</value></data>
   <data name="Settings_Auto" xml:space="preserve"><value>Automatic</value></data>
-  <data name="Settings_AutoValue" xml:space="preserve"><value>Automatic ({0})</value></data>
+  <data name="Settings_AutoValue" xml:space="preserve"><value>Automatic ({0})</value><comment>{0} = the value picked automatically: a language, country or currency code.</comment></data>
   <data name="Settings_RegionHint" xml:space="preserve"><value>Stores show regional prices and keys can be region-locked, so the country matters. Automatic uses the country of your internet connection.</value></data>
   <data name="Settings_Search" xml:space="preserve"><value>Search</value></data>
   <data name="Settings_MatchMode" xml:space="preserve"><value>Title matching</value></data>
@@ -114,25 +130,27 @@
   <data name="Match_Exact" xml:space="preserve"><value>Exact title</value></data>
   <data name="Settings_MaxResults" xml:space="preserve"><value>Results per store</value></data>
   <data name="Settings_Timeout" xml:space="preserve"><value>Store timeout</value></data>
+  <data name="Settings_TimeoutValue" xml:space="preserve"><value>{0} s</value><comment>{0} = seconds; "s" is the unit symbol.</comment></data>
   <data name="Settings_Stores" xml:space="preserve"><value>Stores</value></data>
   <data name="Settings_ApiKeyPlaceholder" xml:space="preserve"><value>API key</value></data>
   <data name="Settings_GetApiKey" xml:space="preserve"><value>Get a free key</value></data>
   <data name="Settings_About" xml:space="preserve"><value>About</value></data>
-  <data name="About_Version" xml:space="preserve"><value>Game Price Hunter {0}</value></data>
+  <data name="About_Version" xml:space="preserve"><value>Game Price Hunter {0}</value><comment>Product name: never translate. {0} = version.</comment></data>
   <data name="About_DataLocation" xml:space="preserve"><value>Data folder:</value></data>
   <data name="About_Portable" xml:space="preserve"><value>Portable mode (next to the program)</value></data>
   <data name="About_Disclaimer" xml:space="preserve"><value>Prices come from the stores&apos; public websites and may change at any time. Always check the final price, region and seller on the store page before buying.</value></data>
   <data name="Settings_OpenDataFolder" xml:space="preserve"><value>Open data folder</value></data>
   <data name="Settings_OpenLogs" xml:space="preserve"><value>Open logs</value></data>
   <data name="Settings_ClearCache" xml:space="preserve"><value>Clear cache</value></data>
-  <data name="Settings_CacheCleared" xml:space="preserve"><value>Cache cleared ({0} images removed).</value></data>
-  <data name="Update_Available" xml:space="preserve"><value>Game Price Hunter {0} is available.</value></data>
+  <data name="Settings_CacheCleared" xml:space="preserve"><value>Cache cleared ({0} images removed).</value><comment>Plural. {0} = number of images.</comment></data>
+  <data name="Settings_CacheCleared_one" xml:space="preserve"><value>Cache cleared ({0} image removed).</value></data>
+  <data name="Update_Available" xml:space="preserve"><value>Game Price Hunter {0} is available.</value><comment>{0} = version.</comment></data>
   <data name="Update_Install" xml:space="preserve"><value>Update now</value></data>
   <data name="Update_Download" xml:space="preserve"><value>Download</value></data>
   <data name="Update_WhatsNew" xml:space="preserve"><value>What&apos;s new</value></data>
   <data name="Update_ReleasePage" xml:space="preserve"><value>Open download page</value></data>
   <data name="Update_Later" xml:space="preserve"><value>Later</value></data>
-  <data name="Update_Downloading" xml:space="preserve"><value>Downloading the update… {0}%</value></data>
+  <data name="Update_Downloading" xml:space="preserve"><value>Downloading the update… {0}</value><comment>{0} = percentage with the % sign, e.g. "45%".</comment></data>
   <data name="Update_Installing" xml:space="preserve"><value>Installing the update. Game Price Hunter will restart in a moment.</value></data>
   <data name="Update_InstallFailed" xml:space="preserve"><value>The update couldn&apos;t be installed automatically. Try again, or download it from the download page.</value></data>
   <data name="Update_Check" xml:space="preserve"><value>Check for updates</value></data>
@@ -142,4 +160,8 @@
   <data name="Update_CheckAutomatically" xml:space="preserve"><value>Check for updates automatically</value></data>
   <data name="Common_Cancel" xml:space="preserve"><value>Cancel</value></data>
   <data name="Common_Save" xml:space="preserve"><value>Save</value></data>
+  <data name="Edit_Cut" xml:space="preserve"><value>Cut</value><comment>Text box context menu.</comment></data>
+  <data name="Edit_Copy" xml:space="preserve"><value>Copy</value></data>
+  <data name="Edit_Paste" xml:space="preserve"><value>Paste</value></data>
+  <data name="Edit_SelectAll" xml:space="preserve"><value>Select all</value></data>
 </root>

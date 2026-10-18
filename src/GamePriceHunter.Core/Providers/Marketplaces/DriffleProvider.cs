@@ -9,7 +9,7 @@ public sealed class DriffleProvider(HttpClient http) : StoreProvider(http)
 {
     public override ProviderInfo Info { get; } = new("driffle", "Driffle", StoreKind.Marketplace, "https://driffle.com/")
     {
-        Note = "Marketplace: prices from independent sellers",
+        Note = ProviderNote.Marketplace,
     };
 
     public override async Task<IReadOnlyList<Offer>> SearchAsync(SearchContext context, CancellationToken cancellationToken)

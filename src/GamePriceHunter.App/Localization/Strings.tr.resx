@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="App_Title" xml:space="preserve"><value>Game Price Hunter</value></data>
+  <data name="App_TitleWithVersion" xml:space="preserve"><value>Game Price Hunter {0}</value></data>
+  <data name="Search_Placeholder" xml:space="preserve"><value>Bir oyun arayın, ör. &quot;witcher 3&quot; veya &quot;hollow knight&quot;</value></data>
+  <data name="Search_Clear" xml:space="preserve"><value>Temizle</value></data>
+  <data name="Search_Button" xml:space="preserve"><value>Ara</value></data>
+  <data name="Search_Stop" xml:space="preserve"><value>Durdur</value></data>
+  <data name="Filter_Placeholder" xml:space="preserve"><value>Sonuçları filtrele</value></data>
+  <data name="Sort_Label" xml:space="preserve"><value>Sonuçları sırala</value></data>
+  <data name="Sort_PriceLowToHigh" xml:space="preserve"><value>En düşük fiyat</value></data>
+  <data name="Sort_PriceHighToLow" xml:space="preserve"><value>En yüksek fiyat</value></data>
+  <data name="Sort_BestMatch" xml:space="preserve"><value>En iyi eşleşme</value></data>
+  <data name="Sort_Discount" xml:space="preserve"><value>En yüksek indirim</value></data>
+  <data name="Sort_Store" xml:space="preserve"><value>Mağaza</value></data>
+  <data name="Sort_Title" xml:space="preserve"><value>Ad</value></data>
+  <data name="Filter_Official" xml:space="preserve"><value>Resmî mağazalar</value></data>
+  <data name="Filter_OfficialTooltip" xml:space="preserve"><value>Steam, GOG veya Fanatical gibi yayıncıların yetkilendirdiği mağazalar.</value></data>
+  <data name="Filter_KeyShops" xml:space="preserve"><value>Anahtar mağazaları</value></data>
+  <data name="Filter_KeyShopsTooltip" xml:space="preserve"><value>Oyun anahtarlarını yeniden satan mağazalar.</value></data>
+  <data name="Filter_Marketplaces" xml:space="preserve"><value>Pazar yerleri</value></data>
+  <data name="Filter_MarketplacesTooltip" xml:space="preserve"><value>Bağımsız satıcıların anahtar sattığı platformlar. Satın almadan önce satıcı puanlarını kontrol edin.</value></data>
+  <data name="Filter_Games" xml:space="preserve"><value>Oyunlar</value></data>
+  <data name="Filter_Dlc" xml:space="preserve"><value>DLC</value></data>
+  <data name="Filter_Bundles" xml:space="preserve"><value>Paketler</value></data>
+  <data name="Filter_Other" xml:space="preserve"><value>Diğer</value></data>
+  <data name="Filter_OtherTooltip" xml:space="preserve"><value>Hesaplar, hediye kartları, rastgele anahtarlar ve oyunun kendisi olmayan diğer ürünler.</value></data>
+  <data name="Filter_Consoles" xml:space="preserve"><value>Konsol anahtarları</value></data>
+  <data name="Filter_ConsolesTooltip" xml:space="preserve"><value>Xbox, PlayStation ve Nintendo anahtarlarını gösterir.</value></data>
+  <data name="Filter_HideRegionLocked" xml:space="preserve"><value>Bölge kilitlileri gizle</value></data>
+  <data name="Filter_RegionTooltip" xml:space="preserve"><value>Sizinkinden farklı bir bölgeye kilitli anahtarları gizler.</value></data>
+  <data name="Stores_Header" xml:space="preserve"><value>MAĞAZALAR</value></data>
+  <data name="Stores_All" xml:space="preserve"><value>Tümü</value></data>
+  <data name="Stores_None" xml:space="preserve"><value>Hiçbiri</value></data>
+  <data name="Results_Label" xml:space="preserve"><value>Arama sonuçları</value></data>
+  <data name="Welcome_Title" xml:space="preserve"><value>Her oyun için en iyi fiyatı bulun</value></data>
+  <data name="Welcome_Text" xml:space="preserve"><value>Bir oyunun adını ya da bir kısmını yazın; Game Price Hunter resmî mağazaları, anahtar mağazalarını ve pazar yerlerini aynı anda tarar.</value></data>
+  <data name="Welcome_Hint" xml:space="preserve"><value>Ctrl+F ile arama kutusuna geçin. Bir sonucu tarayıcıda açmak için çift tıklayın veya Enter&apos;a basın.</value></data>
+  <data name="Empty_NothingTitle" xml:space="preserve"><value>&quot;{0}&quot; için sonuç bulunamadı</value></data>
+  <data name="Empty_NothingText" xml:space="preserve"><value>Yazımı kontrol edin, daha az kelime deneyin veya kenar çubuğunda daha fazla mağaza seçin.</value></data>
+  <data name="Empty_FilteredTitle" xml:space="preserve"><value>Filtreler tüm teklifleri gizliyor</value></data>
+  <data name="Empty_FilteredText" xml:space="preserve"><value>{0} teklif bulundu ancak etkin filtreler bunları gizliyor.</value></data>
+  <data name="Empty_FilteredText_one" xml:space="preserve"><value>{0} teklif bulundu ancak etkin filtreler bunu gizliyor.</value></data>
+  <data name="Empty_ResetFilters" xml:space="preserve"><value>Filtreleri sıfırla</value></data>
+  <data name="Summary_Ready" xml:space="preserve"><value>{0} mağazada aramaya hazır</value></data>
+  <data name="Summary_Ready_one" xml:space="preserve"><value>{0} mağazada aramaya hazır</value></data>
+  <data name="Summary_Searching" xml:space="preserve"><value>Aranıyor… {0}/{1} mağaza tamamlandı</value></data>
+  <data name="Summary_Searching_one" xml:space="preserve"><value>Aranıyor… {0}/{1} mağaza tamamlandı</value></data>
+  <data name="Summary_Done" xml:space="preserve"><value>{1} {0} ({2:0.0} sn)</value></data>
+  <data name="Summary_Offers" xml:space="preserve"><value>{0} teklif</value></data>
+  <data name="Summary_Offers_one" xml:space="preserve"><value>{0} teklif</value></data>
+  <data name="Summary_FromStores" xml:space="preserve"><value>{0} mağazadan</value></data>
+  <data name="Summary_FromStores_one" xml:space="preserve"><value>{0} mağazadan</value></data>
+  <data name="Summary_Hidden" xml:space="preserve"><value> · filtrelerle gizlenen: {0}</value></data>
+  <data name="Region_SourceIp" xml:space="preserve"><value>Bölge internet bağlantınızdan algılandı. Değiştirmek için tıklayın.</value></data>
+  <data name="Region_SourceWindows" xml:space="preserve"><value>Bölge Windows ayarlarından alındı (çevrimiçi algılanamadı). Değiştirmek için tıklayın.</value></data>
+  <data name="Region_SourceManual" xml:space="preserve"><value>Bölge Ayarlar&apos;da seçildi. Değiştirmek için tıklayın.</value></data>
+  <data name="Region_SourceDetecting" xml:space="preserve"><value>Bölgeniz algılanıyor…</value></data>
+  <data name="Region_Compatible" xml:space="preserve"><value>Anahtar bölgesi: {0}. Bölgenizde etkinleşmesi beklenir.</value></data>
+  <data name="Region_Incompatible" xml:space="preserve"><value>Anahtar bölgesi: {0}. Büyük olasılıkla bölgenizde ETKİNLEŞMEZ.</value></data>
+  <data name="Region_Unknown" xml:space="preserve"><value>Anahtar bölgesi: {0}. Etkinleştirme kısıtlamaları için mağaza sayfasına bakın.</value></data>
+  <data name="Region_Global" xml:space="preserve"><value>Global</value></data>
+  <data name="Region_Asia" xml:space="preserve"><value>Asya</value></data>
+  <data name="Rates_None" xml:space="preserve"><value>Döviz kurları alınamadı: fiyatlar mağazaların para biriminde gösteriliyor</value></data>
+  <data name="Rates_Info" xml:space="preserve"><value>Döviz kurları: {0}, {1} güncellendi</value></data>
+  <data name="Time_JustNow" xml:space="preserve"><value>az önce</value></data>
+  <data name="Time_HoursAgo" xml:space="preserve"><value>{0} sa önce</value></data>
+  <data name="Time_DaysAgo" xml:space="preserve"><value>{0} gün önce</value></data>
+  <data name="Time_DaysAgo_one" xml:space="preserve"><value>{0} gün önce</value></data>
+  <data name="Menu_Open" xml:space="preserve"><value>Tarayıcıda aç</value></data>
+  <data name="Menu_CopyLink" xml:space="preserve"><value>Bağlantıyı kopyala</value></data>
+  <data name="Menu_CopyTitle" xml:space="preserve"><value>Adı kopyala</value></data>
+  <data name="Menu_SearchTitle" xml:space="preserve"><value>Bu adı ara</value></data>
+  <data name="Offer_Seller" xml:space="preserve"><value>Satıcı:</value></data>
+  <data name="Offer_BestPrice" xml:space="preserve"><value>EN İYİ FİYAT</value></data>
+  <data name="Offer_OriginalPriceTooltip" xml:space="preserve"><value>Mağazanın kendi para birimindeki fiyat</value></data>
+  <data name="Offer_OpenTooltip" xml:space="preserve"><value>Tarayıcıda aç</value></data>
+  <data name="Provider_RetryTooltip" xml:space="preserve"><value>Bu mağaza yanıt vermedi. Yeniden denemek için tıklayın.</value></data>
+  <data name="Provider_Searching" xml:space="preserve"><value>Aranıyor…</value></data>
+  <data name="Provider_Found" xml:space="preserve"><value>{0} teklif ({1:0.0} sn)</value></data>
+  <data name="Provider_Found_one" xml:space="preserve"><value>{0} teklif ({1:0.0} sn)</value></data>
+  <data name="Provider_Blocked" xml:space="preserve"><value>Mağaza isteği reddetti (bot koruması veya istek sınırı). Daha sonra yeniden deneyin.</value></data>
+  <data name="Provider_TimedOut" xml:space="preserve"><value>Mağaza zamanında yanıt vermedi.</value></data>
+  <data name="Provider_Failed" xml:space="preserve"><value>Arama başarısız: {0}</value></data>
+  <data name="Provider_NeedsApiKey" xml:space="preserve"><value>Bu kaynağı kullanmak için Ayarlar&apos;da bir {0} API anahtarı ekleyin.</value></data>
+  <data name="Kind_Official" xml:space="preserve"><value>Resmî mağaza</value></data>
+  <data name="Kind_KeyShop" xml:space="preserve"><value>Anahtar mağazası</value></data>
+  <data name="Kind_Marketplace" xml:space="preserve"><value>Pazar yeri</value></data>
+  <data name="Kind_Aggregator" xml:space="preserve"><value>Fiyat karşılaştırma</value></data>
+  <data name="Note_Marketplace" xml:space="preserve"><value>Pazar yeri: bağımsız satıcıların fiyatları.</value></data>
+  <data name="Note_RussianStore" xml:space="preserve"><value>Rus mağazası: anahtarlar ve hediyeler genellikle Rusya ve BDT içindir.</value></data>
+  <data name="Note_CheapShark" xml:space="preserve"><value>Epic, Humble, GMG, IndieGala, WinGameStore ve daha fazlası. USD cinsinden ABD fiyatları.</value></data>
+  <data name="Note_IsThereAnyDeal" xml:space="preserve"><value>50&apos;den fazla yetkili mağazadan bölgesel fiyatlar. Ücretsiz bir API anahtarı gerekir.</value></data>
+  <data name="Platform_Steam" xml:space="preserve"><value>Steam</value></data>
+  <data name="Platform_Gog" xml:space="preserve"><value>GOG</value></data>
+  <data name="Platform_Epic" xml:space="preserve"><value>Epic</value></data>
+  <data name="Platform_Ubisoft" xml:space="preserve"><value>Ubisoft</value></data>
+  <data name="Platform_Ea" xml:space="preserve"><value>EA app</value></data>
+  <data name="Platform_BattleNet" xml:space="preserve"><value>Battle.net</value></data>
+  <data name="Platform_Rockstar" xml:space="preserve"><value>Rockstar</value></data>
+  <data name="Platform_Xbox" xml:space="preserve"><value>Xbox</value></data>
+  <data name="Platform_PlayStation" xml:space="preserve"><value>PlayStation</value></data>
+  <data name="Platform_Nintendo" xml:space="preserve"><value>Nintendo</value></data>
+  <data name="Platform_DrmFree" xml:space="preserve"><value>DRM&apos;siz</value></data>
+  <data name="Platform_Other" xml:space="preserve"><value>Diğer</value></data>
+  <data name="Type_Dlc" xml:space="preserve"><value>DLC</value></data>
+  <data name="Type_Bundle" xml:space="preserve"><value>Paket</value></data>
+  <data name="Type_Other" xml:space="preserve"><value>Diğer</value></data>
+  <data name="Error_Unexpected" xml:space="preserve"><value>Bir sorun oluştu: {0}</value></data>
+  <data name="Settings_Title" xml:space="preserve"><value>Ayarlar</value></data>
+  <data name="Settings_General" xml:space="preserve"><value>Genel</value></data>
+  <data name="Settings_Language" xml:space="preserve"><value>Dil</value></data>
+  <data name="Settings_Theme" xml:space="preserve"><value>Tema</value></data>
+  <data name="Theme_System" xml:space="preserve"><value>Windows ayarını kullan</value></data>
+  <data name="Theme_Dark" xml:space="preserve"><value>Koyu</value></data>
+  <data name="Theme_Light" xml:space="preserve"><value>Açık</value></data>
+  <data name="Settings_Region" xml:space="preserve"><value>Bölge ve para birimi</value></data>
+  <data name="Settings_Country" xml:space="preserve"><value>Ülke</value></data>
+  <data name="Settings_Currency" xml:space="preserve"><value>Fiyat para birimi</value></data>
+  <data name="Settings_Auto" xml:space="preserve"><value>Otomatik</value></data>
+  <data name="Settings_AutoValue" xml:space="preserve"><value>Otomatik ({0})</value></data>
+  <data name="Settings_RegionHint" xml:space="preserve"><value>Mağazalar bölgesel fiyatlar gösterir ve anahtarlar bölge kilitli olabilir; bu yüzden ülke önemlidir. Otomatik, internet bağlantınızın ülkesini kullanır.</value></data>
+  <data name="Settings_Search" xml:space="preserve"><value>Arama</value></data>
+  <data name="Settings_MatchMode" xml:space="preserve"><value>Ad eşleştirme</value></data>
+  <data name="Match_AllWords" xml:space="preserve"><value>Tüm kelimeler (kısmi adlar)</value></data>
+  <data name="Match_Exact" xml:space="preserve"><value>Tam ad</value></data>
+  <data name="Settings_MaxResults" xml:space="preserve"><value>Mağaza başına sonuç</value></data>
+  <data name="Settings_Timeout" xml:space="preserve"><value>Zaman aşımı</value></data>
+  <data name="Settings_TimeoutValue" xml:space="preserve"><value>{0} sn</value></data>
+  <data name="Settings_Stores" xml:space="preserve"><value>Mağazalar</value></data>
+  <data name="Settings_ApiKeyPlaceholder" xml:space="preserve"><value>API anahtarı</value></data>
+  <data name="Settings_GetApiKey" xml:space="preserve"><value>Ücretsiz anahtar al</value></data>
+  <data name="Settings_About" xml:space="preserve"><value>Hakkında</value></data>
+  <data name="About_Version" xml:space="preserve"><value>Game Price Hunter {0}</value></data>
+  <data name="About_DataLocation" xml:space="preserve"><value>Veri klasörü:</value></data>
+  <data name="About_Portable" xml:space="preserve"><value>Taşınabilir mod (programın yanında)</value></data>
+  <data name="About_Disclaimer" xml:space="preserve"><value>Fiyatlar mağazaların herkese açık web sitelerinden alınır ve her an değişebilir. Satın almadan önce son fiyatı, bölgeyi ve satıcıyı mağaza sayfasında mutlaka kontrol edin.</value></data>
+  <data name="Settings_OpenDataFolder" xml:space="preserve"><value>Veri klasörünü aç</value></data>
+  <data name="Settings_OpenLogs" xml:space="preserve"><value>Günlükleri aç</value></data>
+  <data name="Settings_ClearCache" xml:space="preserve"><value>Önbelleği temizle</value></data>
+  <data name="Settings_CacheCleared" xml:space="preserve"><value>Önbellek temizlendi ({0} görsel silindi).</value></data>
+  <data name="Settings_CacheCleared_one" xml:space="preserve"><value>Önbellek temizlendi ({0} görsel silindi).</value></data>
+  <data name="Update_Available" xml:space="preserve"><value>Game Price Hunter {0} kullanıma sunuldu.</value></data>
+  <data name="Update_Install" xml:space="preserve"><value>Şimdi güncelle</value></data>
+  <data name="Update_Download" xml:space="preserve"><value>İndir</value></data>
+  <data name="Update_WhatsNew" xml:space="preserve"><value>Yenilikler</value></data>
+  <data name="Update_ReleasePage" xml:space="preserve"><value>İndirme sayfasını aç</value></data>
+  <data name="Update_Later" xml:space="preserve"><value>Daha sonra</value></data>
+  <data name="Update_Downloading" xml:space="preserve"><value>Güncelleme indiriliyor… {0}</value></data>
+  <data name="Update_Installing" xml:space="preserve"><value>Güncelleme yükleniyor. Game Price Hunter birazdan yeniden başlayacak.</value></data>
+  <data name="Update_InstallFailed" xml:space="preserve"><value>Güncelleme otomatik olarak yüklenemedi. Yeniden deneyin veya indirme sayfasından indirin.</value></data>
+  <data name="Update_Check" xml:space="preserve"><value>Güncellemeleri denetle</value></data>
+  <data name="Update_Checking" xml:space="preserve"><value>Güncellemeler denetleniyor…</value></data>
+  <data name="Update_UpToDate" xml:space="preserve"><value>En son sürümü kullanıyorsunuz.</value></data>
+  <data name="Update_CheckFailed" xml:space="preserve"><value>Güncellemeler denetlenemedi. İnternet bağlantınızı kontrol edip yeniden deneyin.</value></data>
+  <data name="Update_CheckAutomatically" xml:space="preserve"><value>Güncellemeleri otomatik denetle</value></data>
+  <data name="Common_Cancel" xml:space="preserve"><value>İptal</value></data>
+  <data name="Common_Save" xml:space="preserve"><value>Kaydet</value></data>
+  <data name="Edit_Cut" xml:space="preserve"><value>Kes</value></data>
+  <data name="Edit_Copy" xml:space="preserve"><value>Kopyala</value></data>
+  <data name="Edit_Paste" xml:space="preserve"><value>Yapıştır</value></data>
+  <data name="Edit_SelectAll" xml:space="preserve"><value>Tümünü seç</value></data>
+</root>

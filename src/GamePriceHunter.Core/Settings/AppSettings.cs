@@ -50,12 +50,12 @@ public sealed class WindowBounds
 /// <summary>User settings persisted as JSON.</summary>
 public sealed class AppSettings
 {
-    public const int CurrentVersion = 1;
+    public const int CurrentVersion = 2;
 
     public int Version { get; set; } = CurrentVersion;
 
-    /// <summary>UI culture name ("en"); empty means "follow Windows".</summary>
-    public string Language { get; set; } = "en";
+    /// <summary>UI culture name ("en", "pt-BR"); empty means "follow Windows".</summary>
+    public string Language { get; set; } = string.Empty;
 
     public AppTheme Theme { get; set; } = AppTheme.System;
 
@@ -95,6 +95,15 @@ public sealed class AppSettings
 
     /// <summary>Tag of the newest release seen by the last check ("v1.2.0"), so an update offer survives restarts.</summary>
     public string? LatestReleaseTag { get; set; }
+
+    /// <summary>Brings settings saved by an older version up to date.</summary>
+    public void Upgrade()
+    {
+        // Version 1 had English only and saved it for everyone, so "en" was nobody's choice.
+        if (Version < 2 && string.Equals(Language, "en", StringComparison.OrdinalIgnoreCase))
+            Language = string.Empty;
+        Version = CurrentVersion;
+    }
 
     public bool IsProviderEnabled(ProviderInfo provider) =>
         provider.EnabledByDefault

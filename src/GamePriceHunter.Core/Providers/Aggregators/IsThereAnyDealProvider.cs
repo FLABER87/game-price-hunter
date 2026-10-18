@@ -24,7 +24,7 @@ public sealed class IsThereAnyDealProvider(HttpClient http) : StoreProvider(http
         IsAggregator = true,
         RequiresApiKey = true,
         EnabledByDefault = false,
-        Note = "Regional prices from 50+ authorized stores. Requires a free API key.",
+        Note = ProviderNote.IsThereAnyDeal,
     };
 
     public override async Task<IReadOnlyList<Offer>> SearchAsync(SearchContext context, CancellationToken cancellationToken)

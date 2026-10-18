@@ -11,7 +11,7 @@ public sealed class K4GProvider(HttpClient http) : StoreProvider(http)
 
     public override ProviderInfo Info { get; } = new("k4g", "K4G", StoreKind.Marketplace, "https://k4g.com/")
     {
-        Note = "Marketplace: prices from independent sellers",
+        Note = ProviderNote.Marketplace,
     };
 
     public override async Task<IReadOnlyList<Offer>> SearchAsync(SearchContext context, CancellationToken cancellationToken)

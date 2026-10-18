@@ -9,7 +9,7 @@ public sealed class SteamBuyProvider(HttpClient http) : StoreProvider(http)
 {
     private const string Host = "https://steambuy.com";
 
-    public override ProviderInfo Info { get; } = new("steambuy", "SteamBuy", StoreKind.KeyShop, "https://steambuy.com/") { Note = RegionalNotes.Russia };
+    public override ProviderInfo Info { get; } = new("steambuy", "SteamBuy", StoreKind.KeyShop, "https://steambuy.com/") { Note = ProviderNote.RussianStore };
 
     public override async Task<IReadOnlyList<Offer>> SearchAsync(SearchContext context, CancellationToken cancellationToken)
     {

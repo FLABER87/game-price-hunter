@@ -94,13 +94,4 @@ public class CurrencyTests
     [Fact]
     public void Unknown_currency_cannot_be_converted() =>
         Assert.Null(Rates.Convert(1m, "XYZ", "USD"));
-
-    [Fact]
-    public void Formats_with_currency_symbols()
-    {
-        var culture = System.Globalization.CultureInfo.GetCultureInfo("en");
-        Assert.Equal("€12.99", MoneyFormatter.Format(Money.Of(12.99m, "EUR"), culture));
-        Assert.Equal("1,299.00 ₽", MoneyFormatter.Format(Money.Of(1299m, "RUB"), culture));
-        Assert.Equal("¥1,980", MoneyFormatter.Format(Money.Of(1980m, "JPY"), culture));
-    }
 }

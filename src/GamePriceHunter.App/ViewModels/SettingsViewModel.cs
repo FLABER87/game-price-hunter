@@ -33,8 +33,9 @@ public sealed class SettingsViewModel : ObservableObject
         Update = update;
         var settings = services.Settings;
 
-        Languages = Loc.Languages.Select(l => new Choice<string>(l.Code, l.NativeName)).ToList();
-        _language = Languages.FirstOrDefault(l => l.Value == settings.Language) ?? Languages[0];
+        var ui = Loc.Instance.Culture;
+        Languages = [new Choice<string>(string.Empty, Loc.F("Settings_AutoValue", Loc.WindowsLanguage.NativeName)), .. Loc.Languages.Select(l => new Choice<string>(l.Code, l.NativeName))];
+        _language = Languages.FirstOrDefault(l => string.Equals(l.Value, settings.Language, StringComparison.OrdinalIgnoreCase)) ?? Languages[0];
 
         Themes =
         [
@@ -45,12 +46,12 @@ public sealed class SettingsViewModel : ObservableObject
         _theme = Themes.First(t => t.Value == settings.Theme);
 
         var detected = services.DetectedRegion?.Region;
-        var autoCountry = detected is null ? Loc.T("Settings_Auto") : Loc.F("Settings_AutoValue", Core.Geo.Countries.DisplayName(detected.CountryCode));
-        Countries = [new Choice<string?>(null, autoCountry), .. Core.Geo.Countries.List.Select(r => new Choice<string?>(r.TwoLetterISORegionName, r.EnglishName))];
+        var autoCountry = detected is null ? Loc.T("Settings_Auto") : Loc.F("Settings_AutoValue", Core.Geo.Countries.DisplayName(detected.CountryCode, ui));
+        Countries = [new Choice<string?>(null, autoCountry), .. Core.Geo.Countries.Choices(ui).Select(c => new Choice<string?>(c.Code, c.Name))];
         _country = Countries.FirstOrDefault(c => c.Value == settings.CountryOverride) ?? Countries[0];
 
         var rates = services.Currency.Current;
-        var currencies = MoneyFormatter.KnownCurrencies().Where(c => rates is null || rates.Supports(c.Code));
+        var currencies = MoneyFormatter.KnownCurrencies(ui).Where(c => rates is null || rates.Supports(c.Code));
         Currencies = [new Choice<string?>(null, Loc.F("Settings_AutoValue", services.EffectiveRegion.CurrencyCode)), .. currencies.Select(c => new Choice<string?>(c.Code, $"{c.Code} — {c.Name}"))];
         _currency = Currencies.FirstOrDefault(c => c.Value == settings.CurrencyOverride) ?? Currencies[0];
 
@@ -63,7 +64,7 @@ public sealed class SettingsViewModel : ObservableObject
 
         int[] maxResultsOptions = [20, 40, 60, 100, 200];
         var maxResults = maxResultsOptions.OrderBy(v => Math.Abs(v - settings.MaxResultsPerProvider)).First();
-        MaxResultsChoices = maxResultsOptions.Select(v => new Choice<int>(v, v.ToString(Loc.Instance.Culture))).ToList();
+        MaxResultsChoices = maxResultsOptions.Select(v => new Choice<int>(v, v.ToString(Loc.Instance.FormatCulture))).ToList();
         _maxResults = MaxResultsChoices.First(c => c.Value == maxResults);
 
         _timeoutSeconds = Math.Clamp(settings.ProviderTimeoutSeconds, 5, 60);
@@ -104,8 +105,14 @@ public sealed class SettingsViewModel : ObservableObject
     public int TimeoutSeconds
     {
         get => _timeoutSeconds;
-        set => Set(ref _timeoutSeconds, Math.Clamp(value, 5, 60));
+        set
+        {
+            if (Set(ref _timeoutSeconds, Math.Clamp(value, 5, 60)))
+                OnPropertyChanged(nameof(TimeoutText));
+        }
     }
+
+    public string TimeoutText => Loc.F("Settings_TimeoutValue", TimeoutSeconds);
 
     public bool CheckForUpdates
     {
@@ -170,7 +177,7 @@ public sealed class SettingsViewModel : ObservableObject
         {
             _services.Logger.Log(Core.Diagnostics.LogLevel.Warning, "Could not clear the image cache.", ex);
         }
-        CacheMessage = Loc.F("Settings_CacheCleared", removed);
+        CacheMessage = Loc.P("Settings_CacheCleared", removed);
     }
 }
 
@@ -183,7 +190,7 @@ public sealed class ProviderSettingViewModel(ProviderInfo info, bool isEnabled, 
 
     public string Name => Info.Name;
 
-    public string? Note => Info.Note;
+    public string? Note => ProviderViewModel.NoteText(Info);
 
     public string KindText => Info.IsAggregator ? Loc.T("Kind_Aggregator") : Loc.T($"Kind_{Info.Kind}");
 

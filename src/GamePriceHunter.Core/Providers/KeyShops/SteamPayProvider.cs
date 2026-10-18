@@ -9,7 +9,7 @@ public sealed class SteamPayProvider(HttpClient http) : StoreProvider(http)
 {
     private const string Host = "https://steampay.com";
 
-    public override ProviderInfo Info { get; } = new("steampay", "SteamPay", StoreKind.KeyShop, "https://steampay.com/") { Note = RegionalNotes.Russia };
+    public override ProviderInfo Info { get; } = new("steampay", "SteamPay", StoreKind.KeyShop, "https://steampay.com/") { Note = ProviderNote.RussianStore };
 
     public override async Task<IReadOnlyList<Offer>> SearchAsync(SearchContext context, CancellationToken cancellationToken)
     {

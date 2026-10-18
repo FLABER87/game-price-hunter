@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Net.Http;
 using System.Reflection;
 using GamePriceHunter.App.Infrastructure;
@@ -112,6 +113,15 @@ public sealed class AppServices : IDisposable
             return DetectedRegion?.Region ?? UserRegion.Default;
         }
     }
+
+    /// <summary>
+    /// The country that picks the number format (Loc.FormatCulture): the search region once it is known,
+    /// the Windows one until then.
+    /// </summary>
+    public string FormatCountry =>
+        Settings.CountryOverride is not null || DetectedRegion is not null
+            ? EffectiveRegion.CountryCode
+            : RegionInfo.CurrentRegion.TwoLetterISORegionName;
 
     public string DisplayCurrency
     {

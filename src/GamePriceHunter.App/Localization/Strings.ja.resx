@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="App_Title" xml:space="preserve"><value>Game Price Hunter</value></data>
+  <data name="App_TitleWithVersion" xml:space="preserve"><value>Game Price Hunter {0}</value></data>
+  <data name="Search_Placeholder" xml:space="preserve"><value>ゲームを検索（例：「witcher 3」「hollow knight」）</value></data>
+  <data name="Search_Clear" xml:space="preserve"><value>クリア</value></data>
+  <data name="Search_Button" xml:space="preserve"><value>検索</value></data>
+  <data name="Search_Stop" xml:space="preserve"><value>停止</value></data>
+  <data name="Filter_Placeholder" xml:space="preserve"><value>結果を絞り込み</value></data>
+  <data name="Sort_Label" xml:space="preserve"><value>結果の並べ替え</value></data>
+  <data name="Sort_PriceLowToHigh" xml:space="preserve"><value>価格の安い順</value></data>
+  <data name="Sort_PriceHighToLow" xml:space="preserve"><value>価格の高い順</value></data>
+  <data name="Sort_BestMatch" xml:space="preserve"><value>関連度順</value></data>
+  <data name="Sort_Discount" xml:space="preserve"><value>割引率の高い順</value></data>
+  <data name="Sort_Store" xml:space="preserve"><value>ストア</value></data>
+  <data name="Sort_Title" xml:space="preserve"><value>タイトル</value></data>
+  <data name="Filter_Official" xml:space="preserve"><value>公式ストア</value></data>
+  <data name="Filter_OfficialTooltip" xml:space="preserve"><value>Steam、GOG、Fanatical など、パブリッシャー公認のストアです。</value></data>
+  <data name="Filter_KeyShops" xml:space="preserve"><value>キーショップ</value></data>
+  <data name="Filter_KeyShopsTooltip" xml:space="preserve"><value>ゲームキーを再販売しているショップです。</value></data>
+  <data name="Filter_Marketplaces" xml:space="preserve"><value>マーケットプレイス</value></data>
+  <data name="Filter_MarketplacesTooltip" xml:space="preserve"><value>独立した販売者がキーを出品するプラットフォームです。購入前に販売者の評価を確認してください。</value></data>
+  <data name="Filter_Games" xml:space="preserve"><value>ゲーム</value></data>
+  <data name="Filter_Dlc" xml:space="preserve"><value>DLC</value></data>
+  <data name="Filter_Bundles" xml:space="preserve"><value>バンドル</value></data>
+  <data name="Filter_Other" xml:space="preserve"><value>その他</value></data>
+  <data name="Filter_OtherTooltip" xml:space="preserve"><value>アカウント、ギフトカード、ランダムキーなど、ゲーム本体ではない商品です。</value></data>
+  <data name="Filter_Consoles" xml:space="preserve"><value>コンソール用キー</value></data>
+  <data name="Filter_ConsolesTooltip" xml:space="preserve"><value>Xbox、PlayStation、Nintendo 向けのキーを表示します。</value></data>
+  <data name="Filter_HideRegionLocked" xml:space="preserve"><value>他地域のキーを非表示</value></data>
+  <data name="Filter_RegionTooltip" xml:space="preserve"><value>お住まいの地域では有効化できない、リージョン制限付きのキーを非表示にします。</value></data>
+  <data name="Stores_Header" xml:space="preserve"><value>ストア</value></data>
+  <data name="Stores_All" xml:space="preserve"><value>全選択</value></data>
+  <data name="Stores_None" xml:space="preserve"><value>全解除</value></data>
+  <data name="Results_Label" xml:space="preserve"><value>検索結果</value></data>
+  <data name="Welcome_Title" xml:space="preserve"><value>あらゆるゲームの最安値を見つけましょう</value></data>
+  <data name="Welcome_Text" xml:space="preserve"><value>ゲームのタイトル（またはその一部）を入力すると、Game Price Hunter が公式ストア、キーショップ、マーケットプレイスを一度に検索します。</value></data>
+  <data name="Welcome_Hint" xml:space="preserve"><value>Ctrl+F で検索ボックスに移動します。結果をダブルクリックするか Enter キーを押すと、ブラウザーで開きます。</value></data>
+  <data name="Empty_NothingTitle" xml:space="preserve"><value>「{0}」は見つかりませんでした</value></data>
+  <data name="Empty_NothingText" xml:space="preserve"><value>つづりを確認する、キーワードを減らす、サイドバーで有効にするストアを増やす、などをお試しください。</value></data>
+  <data name="Empty_FilteredTitle" xml:space="preserve"><value>すべての結果がフィルターで非表示になっています</value></data>
+  <data name="Empty_FilteredText" xml:space="preserve"><value>{0} 件見つかりましたが、現在のフィルターですべて非表示になっています。</value></data>
+  <data name="Empty_ResetFilters" xml:space="preserve"><value>フィルターをリセット</value></data>
+  <data name="Summary_Ready" xml:space="preserve"><value>{0} 店舗を検索できます</value></data>
+  <data name="Summary_Searching" xml:space="preserve"><value>検索中…{0}/{1} 店舗完了</value></data>
+  <data name="Summary_Done" xml:space="preserve"><value>{1} {0}見つかりました（{2:0.0} 秒）</value></data>
+  <data name="Summary_Offers" xml:space="preserve"><value>{0} 件</value></data>
+  <data name="Summary_FromStores" xml:space="preserve"><value>{0} 店舗から</value></data>
+  <data name="Summary_Hidden" xml:space="preserve"><value> · うち {0} 件はフィルターで非表示</value></data>
+  <data name="Region_SourceIp" xml:space="preserve"><value>インターネット接続から地域を検出しました。クリックして変更できます。</value></data>
+  <data name="Region_SourceWindows" xml:space="preserve"><value>Windows の設定から地域を取得しました（オンラインでは検出できませんでした）。クリックして変更できます。</value></data>
+  <data name="Region_SourceManual" xml:space="preserve"><value>設定で選択した地域です。クリックして変更できます。</value></data>
+  <data name="Region_SourceDetecting" xml:space="preserve"><value>地域を検出しています…</value></data>
+  <data name="Region_Compatible" xml:space="preserve"><value>キーの対応地域：{0}。お住まいの地域で有効化できるはずです。</value></data>
+  <data name="Region_Incompatible" xml:space="preserve"><value>キーの対応地域：{0}。お住まいの地域では有効化できない可能性が高いです。</value></data>
+  <data name="Region_Unknown" xml:space="preserve"><value>キーの対応地域：{0}。有効化の制限についてはストアのページで確認してください。</value></data>
+  <data name="Region_Global" xml:space="preserve"><value>全世界</value></data>
+  <data name="Region_Asia" xml:space="preserve"><value>アジア</value></data>
+  <data name="Rates_None" xml:space="preserve"><value>為替レートを取得できないため、各ストアの通貨で価格を表示しています</value></data>
+  <data name="Rates_Info" xml:space="preserve"><value>為替レート：{0}（更新：{1}）</value></data>
+  <data name="Time_JustNow" xml:space="preserve"><value>たった今</value></data>
+  <data name="Time_HoursAgo" xml:space="preserve"><value>{0} 時間前</value></data>
+  <data name="Time_DaysAgo" xml:space="preserve"><value>{0} 日前</value></data>
+  <data name="Menu_Open" xml:space="preserve"><value>ブラウザーで開く</value></data>
+  <data name="Menu_CopyLink" xml:space="preserve"><value>リンクをコピー</value></data>
+  <data name="Menu_CopyTitle" xml:space="preserve"><value>タイトルをコピー</value></data>
+  <data name="Menu_SearchTitle" xml:space="preserve"><value>このタイトルで検索</value></data>
+  <data name="Offer_Seller" xml:space="preserve"><value>販売者：</value></data>
+  <data name="Offer_BestPrice" xml:space="preserve"><value>最安値</value></data>
+  <data name="Offer_OriginalPriceTooltip" xml:space="preserve"><value>ストアの通貨での価格</value></data>
+  <data name="Offer_OpenTooltip" xml:space="preserve"><value>ブラウザーで開く</value></data>
+  <data name="Provider_RetryTooltip" xml:space="preserve"><value>このストアから応答がありませんでした。クリックすると再試行します。</value></data>
+  <data name="Provider_Searching" xml:space="preserve"><value>検索中…</value></data>
+  <data name="Provider_Found" xml:space="preserve"><value>{0} 件（{1:0.0} 秒）</value></data>
+  <data name="Provider_Blocked" xml:space="preserve"><value>ストアにリクエストを拒否されました（ボット対策またはレート制限）。しばらくしてからもう一度お試しください。</value></data>
+  <data name="Provider_TimedOut" xml:space="preserve"><value>ストアから時間内に応答がありませんでした。</value></data>
+  <data name="Provider_Failed" xml:space="preserve"><value>検索に失敗しました：{0}</value></data>
+  <data name="Provider_NeedsApiKey" xml:space="preserve"><value>このソースを使用するには、設定で {0} の API キーを追加してください。</value></data>
+  <data name="Kind_Official" xml:space="preserve"><value>公式ストア</value></data>
+  <data name="Kind_KeyShop" xml:space="preserve"><value>キーショップ</value></data>
+  <data name="Kind_Marketplace" xml:space="preserve"><value>マーケットプレイス</value></data>
+  <data name="Kind_Aggregator" xml:space="preserve"><value>価格比較サイト</value></data>
+  <data name="Note_Marketplace" xml:space="preserve"><value>マーケットプレイス：各販売者が設定した価格です。</value></data>
+  <data name="Note_RussianStore" xml:space="preserve"><value>ロシアのストア：キーやギフトは通常、ロシアおよび CIS 諸国向けです。</value></data>
+  <data name="Note_CheapShark" xml:space="preserve"><value>Epic、Humble、GMG、IndieGala、WinGameStore などに対応しています。価格は米国向け（USD）です。</value></data>
+  <data name="Note_IsThereAnyDeal" xml:space="preserve"><value>50 以上の公認ストアの地域別価格です。無料の API キーが必要です。</value></data>
+  <data name="Platform_Steam" xml:space="preserve"><value>Steam</value></data>
+  <data name="Platform_Gog" xml:space="preserve"><value>GOG</value></data>
+  <data name="Platform_Epic" xml:space="preserve"><value>Epic</value></data>
+  <data name="Platform_Ubisoft" xml:space="preserve"><value>Ubisoft</value></data>
+  <data name="Platform_Ea" xml:space="preserve"><value>EA app</value></data>
+  <data name="Platform_BattleNet" xml:space="preserve"><value>Battle.net</value></data>
+  <data name="Platform_Rockstar" xml:space="preserve"><value>Rockstar</value></data>
+  <data name="Platform_Xbox" xml:space="preserve"><value>Xbox</value></data>
+  <data name="Platform_PlayStation" xml:space="preserve"><value>PlayStation</value></data>
+  <data name="Platform_Nintendo" xml:space="preserve"><value>Nintendo</value></data>
+  <data name="Platform_DrmFree" xml:space="preserve"><value>DRM フリー</value></data>
+  <data name="Platform_Other" xml:space="preserve"><value>その他</value></data>
+  <data name="Type_Dlc" xml:space="preserve"><value>DLC</value></data>
+  <data name="Type_Bundle" xml:space="preserve"><value>バンドル</value></data>
+  <data name="Type_Other" xml:space="preserve"><value>その他</value></data>
+  <data name="Error_Unexpected" xml:space="preserve"><value>問題が発生しました：{0}</value></data>
+  <data name="Settings_Title" xml:space="preserve"><value>設定</value></data>
+  <data name="Settings_General" xml:space="preserve"><value>全般</value></data>
+  <data name="Settings_Language" xml:space="preserve"><value>言語</value></data>
+  <data name="Settings_Theme" xml:space="preserve"><value>テーマ</value></data>
+  <data name="Theme_System" xml:space="preserve"><value>Windows の設定を使用</value></data>
+  <data name="Theme_Dark" xml:space="preserve"><value>ダーク</value></data>
+  <data name="Theme_Light" xml:space="preserve"><value>ライト</value></data>
+  <data name="Settings_Region" xml:space="preserve"><value>地域と通貨</value></data>
+  <data name="Settings_Country" xml:space="preserve"><value>国/地域</value></data>
+  <data name="Settings_Currency" xml:space="preserve"><value>表示通貨</value></data>
+  <data name="Settings_Auto" xml:space="preserve"><value>自動</value></data>
+  <data name="Settings_AutoValue" xml:space="preserve"><value>自動（{0}）</value></data>
+  <data name="Settings_RegionHint" xml:space="preserve"><value>ストアは地域ごとに価格が異なり、キーにはリージョン制限がある場合もあるため、国/地域の設定は重要です。「自動」では、インターネット接続元の国/地域を使用します。</value></data>
+  <data name="Settings_Search" xml:space="preserve"><value>検索</value></data>
+  <data name="Settings_MatchMode" xml:space="preserve"><value>タイトルの照合</value></data>
+  <data name="Match_AllWords" xml:space="preserve"><value>すべての単語（部分一致）</value></data>
+  <data name="Match_Exact" xml:space="preserve"><value>完全一致</value></data>
+  <data name="Settings_MaxResults" xml:space="preserve"><value>ストアごとの結果数</value></data>
+  <data name="Settings_Timeout" xml:space="preserve"><value>ストアのタイムアウト</value></data>
+  <data name="Settings_TimeoutValue" xml:space="preserve"><value>{0} 秒</value></data>
+  <data name="Settings_Stores" xml:space="preserve"><value>ストア</value></data>
+  <data name="Settings_ApiKeyPlaceholder" xml:space="preserve"><value>API キー</value></data>
+  <data name="Settings_GetApiKey" xml:space="preserve"><value>無料のキーを取得</value></data>
+  <data name="Settings_About" xml:space="preserve"><value>バージョン情報</value></data>
+  <data name="About_Version" xml:space="preserve"><value>Game Price Hunter {0}</value></data>
+  <data name="About_DataLocation" xml:space="preserve"><value>データフォルダー：</value></data>
+  <data name="About_Portable" xml:space="preserve"><value>ポータブルモード（プログラムと同じ場所）</value></data>
+  <data name="About_Disclaimer" xml:space="preserve"><value>価格は各ストアの公開 Web サイトから取得しており、随時変更される場合があります。購入前に必ずストアのページで最終価格、地域、販売者を確認してください。</value></data>
+  <data name="Settings_OpenDataFolder" xml:space="preserve"><value>データフォルダーを開く</value></data>
+  <data name="Settings_OpenLogs" xml:space="preserve"><value>ログを開く</value></data>
+  <data name="Settings_ClearCache" xml:space="preserve"><value>キャッシュをクリア</value></data>
+  <data name="Settings_CacheCleared" xml:space="preserve"><value>キャッシュをクリアしました（画像 {0} 枚を削除）。</value></data>
+  <data name="Update_Available" xml:space="preserve"><value>Game Price Hunter {0} が利用可能です。</value></data>
+  <data name="Update_Install" xml:space="preserve"><value>今すぐ更新</value></data>
+  <data name="Update_Download" xml:space="preserve"><value>ダウンロード</value></data>
+  <data name="Update_WhatsNew" xml:space="preserve"><value>更新内容</value></data>
+  <data name="Update_ReleasePage" xml:space="preserve"><value>ダウンロードページを開く</value></data>
+  <data name="Update_Later" xml:space="preserve"><value>後で</value></data>
+  <data name="Update_Downloading" xml:space="preserve"><value>アップデートをダウンロードしています…{0}</value></data>
+  <data name="Update_Installing" xml:space="preserve"><value>アップデートをインストールしています。まもなく Game Price Hunter が再起動します。</value></data>
+  <data name="Update_InstallFailed" xml:space="preserve"><value>アップデートを自動でインストールできませんでした。もう一度お試しいただくか、ダウンロードページからダウンロードしてください。</value></data>
+  <data name="Update_Check" xml:space="preserve"><value>アップデートを確認</value></data>
+  <data name="Update_Checking" xml:space="preserve"><value>アップデートを確認しています…</value></data>
+  <data name="Update_UpToDate" xml:space="preserve"><value>最新バージョンです。</value></data>
+  <data name="Update_CheckFailed" xml:space="preserve"><value>アップデートを確認できませんでした。インターネット接続を確認して、もう一度お試しください。</value></data>
+  <data name="Update_CheckAutomatically" xml:space="preserve"><value>アップデートを自動的に確認する</value></data>
+  <data name="Common_Cancel" xml:space="preserve"><value>キャンセル</value></data>
+  <data name="Common_Save" xml:space="preserve"><value>保存</value></data>
+  <data name="Edit_Cut" xml:space="preserve"><value>切り取り</value></data>
+  <data name="Edit_Copy" xml:space="preserve"><value>コピー</value></data>
+  <data name="Edit_Paste" xml:space="preserve"><value>貼り付け</value></data>
+  <data name="Edit_SelectAll" xml:space="preserve"><value>すべて選択</value></data>
+</root>

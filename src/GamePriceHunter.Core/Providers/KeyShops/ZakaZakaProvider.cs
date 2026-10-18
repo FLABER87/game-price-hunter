@@ -8,7 +8,7 @@ public sealed class ZakaZakaProvider(HttpClient http) : StoreProvider(http)
 {
     private const string Host = "https://zaka-zaka.com";
 
-    public override ProviderInfo Info { get; } = new("zakazaka", "Zaka-Zaka", StoreKind.KeyShop, "https://zaka-zaka.com/") { Note = RegionalNotes.Russia };
+    public override ProviderInfo Info { get; } = new("zakazaka", "Zaka-Zaka", StoreKind.KeyShop, "https://zaka-zaka.com/") { Note = ProviderNote.RussianStore };
 
     public override async Task<IReadOnlyList<Offer>> SearchAsync(SearchContext context, CancellationToken cancellationToken)
     {
