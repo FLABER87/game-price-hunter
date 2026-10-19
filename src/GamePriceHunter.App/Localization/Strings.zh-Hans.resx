@@ -71,6 +71,10 @@
   <data name="Menu_CopyTitle" xml:space="preserve"><value>复制名称</value></data>
   <data name="Menu_SearchTitle" xml:space="preserve"><value>以此名称搜索</value></data>
   <data name="Offer_Seller" xml:space="preserve"><value>卖家：</value></data>
+  <data name="Offer_SellerRatingOutOf" xml:space="preserve"><value>卖家评分：{0}（满分 {1}）</value></data>
+  <data name="Offer_SellerRatingPoints" xml:space="preserve"><value>卖家在 {0} 上的评分，以积分计，无上限</value></data>
+  <data name="Offer_Sales" xml:space="preserve"><value>已售 {0}</value></data>
+  <data name="Offer_SalesTooltip" xml:space="preserve"><value>此商品的售出次数</value></data>
   <data name="Offer_BestPrice" xml:space="preserve"><value>最低价</value></data>
   <data name="Offer_OriginalPriceTooltip" xml:space="preserve"><value>以商店自身货币显示的价格</value></data>
   <data name="Offer_OpenTooltip" xml:space="preserve"><value>在浏览器中打开</value></data>

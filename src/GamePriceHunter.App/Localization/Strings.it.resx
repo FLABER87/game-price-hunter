@@ -77,6 +77,10 @@
   <data name="Menu_CopyTitle" xml:space="preserve"><value>Copia titolo</value></data>
   <data name="Menu_SearchTitle" xml:space="preserve"><value>Cerca questo titolo</value></data>
   <data name="Offer_Seller" xml:space="preserve"><value>Venditore:</value></data>
+  <data name="Offer_SellerRatingOutOf" xml:space="preserve"><value>Valutazione del venditore: {0} su {1}</value></data>
+  <data name="Offer_SellerRatingPoints" xml:space="preserve"><value>Valutazione del venditore su {0}, in punti senza limite massimo</value></data>
+  <data name="Offer_Sales" xml:space="preserve"><value>Vendite: {0}</value></data>
+  <data name="Offer_SalesTooltip" xml:space="preserve"><value>Quante volte è stato venduto questo articolo</value></data>
   <data name="Offer_BestPrice" xml:space="preserve"><value>MIGLIOR PREZZO</value></data>
   <data name="Offer_OriginalPriceTooltip" xml:space="preserve"><value>Prezzo nella valuta del negozio</value></data>
   <data name="Offer_OpenTooltip" xml:space="preserve"><value>Apri nel browser</value></data>

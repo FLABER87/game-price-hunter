@@ -85,6 +85,8 @@ public sealed class PlatiProvider(HttpClient http) : StoreProvider(http)
                 RegularPrice = before > amount ? Money.Of(Math.Round(before.Value, 2), currency) : null,
                 ImageUrl = $"https://digiseller2.mycdn.ink/imgwebp.ashx?id_d={id}&w=328&h=328",
                 Seller = item.Str("seller_name"),
+                SellerRating = SellerPoints(item.Dec("seller_rating")),
+                Sales = ShownSales(item.Long("total_sales"), item.Long("hide_total_sales")),
             });
         }
         return offers;
@@ -117,6 +119,8 @@ public sealed class PlatiProvider(HttpClient http) : StoreProvider(http)
             {
                 ImageUrl = string.IsNullOrEmpty(image) ? null : Absolute(Info.HomeUrl, image),
                 Seller = item.Str("seller_name"),
+                SellerRating = SellerPoints(item.Dec("seller_rating")),
+                Sales = ShownSales(item.Long("numsold"), item.Long("numsold_hidden")),
             });
         }
         return offers;
@@ -135,6 +139,21 @@ public sealed class PlatiProvider(HttpClient http) : StoreProvider(http)
             first ??= value;
         }
         return first ?? item.Str("name");
+    }
+
+    /// <summary>Plati rates sellers in open-ended points (it shows them rounded: "4 344").</summary>
+    private static SellerRating? SellerPoints(decimal? points) => points > 0 ? new SellerRating(points.Value, null) : null;
+
+    /// <summary>
+    /// The sales count as Plati shows it: nothing below 10 (Plati says "fewer than 10") or when the
+    /// seller hides it (cap -1), and the seller's cap as "100+" once sales reach it. Below the cap
+    /// Plati shows the real count; the cataloguer reports 0 then, which leaves nothing to show.
+    /// </summary>
+    internal static SalesCount? ShownSales(long? sold, long? cap)
+    {
+        if (cap < 0 || sold is not >= 10)
+            return null;
+        return cap > 0 && sold >= cap ? new SalesCount(cap.Value, AtLeast: true) : new SalesCount(sold.Value, AtLeast: false);
     }
 
     private static string ProductUrl(string? slug, string id) =>

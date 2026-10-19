@@ -77,6 +77,10 @@
   <data name="Menu_CopyTitle" xml:space="preserve"><value>Copy title</value></data>
   <data name="Menu_SearchTitle" xml:space="preserve"><value>Search for this title</value></data>
   <data name="Offer_Seller" xml:space="preserve"><value>Seller:</value></data>
+  <data name="Offer_SellerRatingOutOf" xml:space="preserve"><value>Seller rating: {0} out of {1}</value><comment>{0} = rating, like 4.9; {1} = top of the scale, like 5.</comment></data>
+  <data name="Offer_SellerRatingPoints" xml:space="preserve"><value>Seller rating on {0}, in points with no upper limit</value><comment>{0} = marketplace name, like Plati.market.</comment></data>
+  <data name="Offer_Sales" xml:space="preserve"><value>{0} sold</value><comment>{0} = how many times the item sold: a number, or a number with a plus ("100+"). Not a plural key: write it so the number can stand alone, like "Sold: {0}".</comment></data>
+  <data name="Offer_SalesTooltip" xml:space="preserve"><value>How many times this item has been sold</value></data>
   <data name="Offer_BestPrice" xml:space="preserve"><value>BEST PRICE</value><comment>Badge, written in capitals where the script has them.</comment></data>
   <data name="Offer_OriginalPriceTooltip" xml:space="preserve"><value>Price in the store&apos;s own currency</value></data>
   <data name="Offer_OpenTooltip" xml:space="preserve"><value>Open in browser</value></data>
