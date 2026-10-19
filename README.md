@@ -1,5 +1,8 @@
 # Game Price Hunter
 
+[![Build](https://github.com/FLABER87/game-price-hunter/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/FLABER87/game-price-hunter/actions/workflows/build.yml?query=branch%3Amain)
+[![License: MIT](https://img.shields.io/github/license/FLABER87/game-price-hunter)](LICENSE)
+
 Find the cheapest price for any PC game, and see which games stores are giving away for free right now. Type a title, or just part of it, and you get prices from 25+ stores in one list, converted to your currency.
 
 <picture>
@@ -42,3 +45,7 @@ Requires Windows 11 or Windows 10 version 1607 or later (64-bit).
 - Keys from Russian stores are usually for Russia/CIS.
 - Prices are taken from the stores' websites and may change. The store page always has the final price.
 - Some giveaway data comes from [GamerPower](https://www.gamerpower.com/). Giveaways found by GamerPower and CheapShark aren't checked for your region.
+
+## License
+
+Game Price Hunter is free and open source under the [MIT License](LICENSE).
