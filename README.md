@@ -10,6 +10,7 @@ Find the cheapest price for any PC game. Type a title, or just part of it, and y
 ## Features
 
 - **Official stores, key shops and marketplaces in one search:** Steam, GOG, Fanatical, Epic, Humble, Green Man Gaming, Instant Gaming, Eneba, K4G, Plati, GGSEL, Driffle and many more.
+- **Free games right now:** what Epic, Steam, IndieGala, itch.io and other stores are giving away, with the time left to claim it. Next week's Epic games too.
 - **Your region is detected automatically**, so you see local prices in your currency.
 - **Region-locked keys are flagged**, and you can hide keys that won't activate in your country.
 - **Seller rating and sales count** on Plati and GGSEL offers, so you can tell an established seller from a newcomer.
@@ -31,3 +32,4 @@ Requires Windows 11 or Windows 10 version 1607 or later (64-bit).
 - Marketplace offers come from independent sellers. Check the seller and the key region before buying.
 - Keys from Russian stores are usually for Russia/CIS.
 - Prices are taken from the stores' websites and may change. The store page always has the final price.
+- Some giveaway data comes from [GamerPower](https://www.gamerpower.com/).

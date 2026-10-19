@@ -173,4 +173,41 @@
   <data name="Window_Maximize" xml:space="preserve"><value>Ekranı Kapla</value></data>
   <data name="Window_Restore" xml:space="preserve"><value>Önceki Boyutuna Getir</value></data>
   <data name="Window_Close" xml:space="preserve"><value>Kapat</value></data>
+  <data name="Mode_Prices" xml:space="preserve"><value>Fiyatlar</value></data>
+  <data name="Mode_Giveaways" xml:space="preserve"><value>Ücretsiz</value></data>
+  <data name="Giveaways_Sources" xml:space="preserve"><value>KAYNAKLAR</value></data>
+  <data name="Giveaways_Attribution" xml:space="preserve"><value>Verilerin bir kısmı GamerPower.com’dan alınır</value></data>
+  <data name="Giveaways_Summary" xml:space="preserve"><value>Şu an ücretsiz: {0}</value></data>
+  <data name="Giveaways_Updated" xml:space="preserve"><value>güncellendi: {0}</value></data>
+  <data name="Giveaways_Refresh" xml:space="preserve"><value>Yenile</value></data>
+  <data name="Giveaways_Loading" xml:space="preserve"><value>Ücretsiz oyunlar aranıyor…</value></data>
+  <data name="Giveaways_Upcoming" xml:space="preserve"><value>Yakında</value></data>
+  <data name="Giveaways_EmptyTitle" xml:space="preserve"><value>Şu anda ücretsiz dağıtılan bir şey yok</value></data>
+  <data name="Giveaways_EmptyText" xml:space="preserve"><value>Mağazalar her hafta oyun dağıtıyor. Daha sonra tekrar bakın.</value></data>
+  <data name="Giveaways_HiddenText" xml:space="preserve"><value>{0} ücretsiz teklif filtrelerle gizlendi.</value></data>
+  <data name="Giveaways_HiddenText_one" xml:space="preserve"><value>{0} ücretsiz teklif filtrelerle gizlendi.</value></data>
+  <data name="Giveaways_FailedTitle" xml:space="preserve"><value>Ücretsiz teklifler yüklenemedi</value></data>
+  <data name="Giveaways_FailedText" xml:space="preserve"><value>İnternet bağlantınızı kontrol edip tekrar deneyin.</value></data>
+  <data name="Giveaways_Retry" xml:space="preserve"><value>Tekrar dene</value></data>
+  <data name="Giveaways_SourceFound" xml:space="preserve"><value>{0} ücretsiz teklif ({1:0.0} sn)</value></data>
+  <data name="Giveaways_SourceFound_one" xml:space="preserve"><value>{0} ücretsiz teklif ({1:0.0} sn)</value></data>
+  <data name="Giveaway_Free" xml:space="preserve"><value>Ücretsiz</value></data>
+  <data name="Giveaway_EndsIn" xml:space="preserve"><value>{0} içinde bitiyor</value></data>
+  <data name="Giveaway_Until" xml:space="preserve"><value>{0} tarihine kadar</value></data>
+  <data name="Giveaway_Starts" xml:space="preserve"><value>{0} itibarıyla</value></data>
+  <data name="Giveaway_NoEnd" xml:space="preserve"><value>Bitiş tarihi yok</value></data>
+  <data name="Giveaway_Beta" xml:space="preserve"><value>Beta</value></data>
+  <data name="Giveaway_FoundBy" xml:space="preserve"><value>Bulan: {0}</value></data>
+  <data name="Giveaway_RegionUnchecked" xml:space="preserve"><value>Bölgenizdeki kullanılabilirlik kontrol edilmez</value></data>
+  <data name="Giveaway_OpenTooltip" xml:space="preserve"><value>Teklif sayfasını aç</value></data>
+  <data name="Time_MinutesAgo" xml:space="preserve"><value>{0} dk önce</value></data>
+  <data name="Time_DaysHours" xml:space="preserve"><value>{0} g {1} sa</value></data>
+  <data name="Time_HoursMinutes" xml:space="preserve"><value>{0} sa {1} dk</value></data>
+  <data name="Time_Minutes" xml:space="preserve"><value>{0} dk</value></data>
+  <data name="Filter_DlcAndItems" xml:space="preserve"><value>DLC ve eşyalar</value></data>
+  <data name="Filter_Betas" xml:space="preserve"><value>Betalar ve oyun testleri</value></data>
+  <data name="Welcome_FreeNow" xml:space="preserve"><value>Şu an ücretsiz</value></data>
+  <data name="Welcome_AllGiveaways" xml:space="preserve"><value>Tüm ücretsiz teklifler</value></data>
+  <data name="Note_GamerPower" xml:space="preserve"><value>IndieGala, itch.io, Alienware Arena ve diğer siteler. Bölgenizdeki kullanılabilirlik kontrol edilmez.</value></data>
+  <data name="Kind_GiveawayAggregator" xml:space="preserve"><value>Ücretsiz teklif toplayıcı</value></data>
 </root>

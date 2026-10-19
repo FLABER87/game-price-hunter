@@ -173,4 +173,41 @@
   <data name="Window_Maximize" xml:space="preserve"><value>Maximize</value></data>
   <data name="Window_Restore" xml:space="preserve"><value>Restore Down</value></data>
   <data name="Window_Close" xml:space="preserve"><value>Close</value></data>
+  <data name="Mode_Prices" xml:space="preserve"><value>Prices</value><comment>Switch above the sidebar: the price search.</comment></data>
+  <data name="Mode_Giveaways" xml:space="preserve"><value>Giveaways</value><comment>Switch above the sidebar: games that stores give away for free for a limited time. Keep it short.</comment></data>
+  <data name="Giveaways_Sources" xml:space="preserve"><value>SOURCES</value><comment>Sidebar heading, written in capitals where the script has them.</comment></data>
+  <data name="Giveaways_Attribution" xml:space="preserve"><value>Some giveaway data by GamerPower.com</value><comment>Link to GamerPower.com, which its terms require. Keep "GamerPower.com" as it is.</comment></data>
+  <data name="Giveaways_Summary" xml:space="preserve"><value>Free right now: {0}</value></data>
+  <data name="Giveaways_Updated" xml:space="preserve"><value>updated {0}</value><comment>{0} is a time like "5 min ago" or "just now".</comment></data>
+  <data name="Giveaways_Refresh" xml:space="preserve"><value>Refresh</value></data>
+  <data name="Giveaways_Loading" xml:space="preserve"><value>Looking for giveaways…</value></data>
+  <data name="Giveaways_Upcoming" xml:space="preserve"><value>Coming soon</value></data>
+  <data name="Giveaways_EmptyTitle" xml:space="preserve"><value>Nothing is given away right now</value></data>
+  <data name="Giveaways_EmptyText" xml:space="preserve"><value>Stores give games away every week. Check back later.</value></data>
+  <data name="Giveaways_HiddenText" xml:space="preserve"><value>{0} giveaways are hidden by the filters.</value></data>
+  <data name="Giveaways_HiddenText_one" xml:space="preserve"><value>{0} giveaway is hidden by the filters.</value></data>
+  <data name="Giveaways_FailedTitle" xml:space="preserve"><value>Couldn’t load giveaways</value></data>
+  <data name="Giveaways_FailedText" xml:space="preserve"><value>Check your internet connection and try again.</value></data>
+  <data name="Giveaways_Retry" xml:space="preserve"><value>Try again</value></data>
+  <data name="Giveaways_SourceFound" xml:space="preserve"><value>{0} giveaways in {1:0.0} s</value></data>
+  <data name="Giveaways_SourceFound_one" xml:space="preserve"><value>{0} giveaway in {1:0.0} s</value></data>
+  <data name="Giveaway_Free" xml:space="preserve"><value>Free</value></data>
+  <data name="Giveaway_EndsIn" xml:space="preserve"><value>Ends in {0}</value><comment>{0} is a duration like "2 d 5 h".</comment></data>
+  <data name="Giveaway_Until" xml:space="preserve"><value>Until {0}</value><comment>{0} is a day and month: "October 22".</comment></data>
+  <data name="Giveaway_Starts" xml:space="preserve"><value>Starts {0}</value><comment>{0} is a day, month and time: "October 22, 17:00".</comment></data>
+  <data name="Giveaway_NoEnd" xml:space="preserve"><value>No end date</value></data>
+  <data name="Giveaway_Beta" xml:space="preserve"><value>Beta</value></data>
+  <data name="Giveaway_FoundBy" xml:space="preserve"><value>Found by {0}</value><comment>{0} lists sources: "Epic Games Store, CheapShark".</comment></data>
+  <data name="Giveaway_RegionUnchecked" xml:space="preserve"><value>Availability in your region isn’t checked</value></data>
+  <data name="Giveaway_OpenTooltip" xml:space="preserve"><value>Open the giveaway page</value></data>
+  <data name="Time_MinutesAgo" xml:space="preserve"><value>{0} min ago</value></data>
+  <data name="Time_DaysHours" xml:space="preserve"><value>{0} d {1} h</value><comment>Short duration: days and hours.</comment></data>
+  <data name="Time_HoursMinutes" xml:space="preserve"><value>{0} h {1} min</value></data>
+  <data name="Time_Minutes" xml:space="preserve"><value>{0} min</value></data>
+  <data name="Filter_DlcAndItems" xml:space="preserve"><value>DLC and items</value></data>
+  <data name="Filter_Betas" xml:space="preserve"><value>Betas and playtests</value></data>
+  <data name="Welcome_FreeNow" xml:space="preserve"><value>Free right now</value></data>
+  <data name="Welcome_AllGiveaways" xml:space="preserve"><value>All giveaways</value></data>
+  <data name="Note_GamerPower" xml:space="preserve"><value>IndieGala, itch.io, Alienware Arena and other sites. Availability in your region isn’t checked.</value></data>
+  <data name="Kind_GiveawayAggregator" xml:space="preserve"><value>Giveaway aggregator</value><comment>Under GamerPower and CheapShark in the giveaway sources list.</comment></data>
 </root>

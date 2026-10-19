@@ -189,4 +189,45 @@
   <data name="Window_Maximize" xml:space="preserve"><value>Maksymalizuj</value></data>
   <data name="Window_Restore" xml:space="preserve"><value>Przywróć w dół</value></data>
   <data name="Window_Close" xml:space="preserve"><value>Zamknij</value></data>
+  <data name="Mode_Prices" xml:space="preserve"><value>Ceny</value></data>
+  <data name="Mode_Giveaways" xml:space="preserve"><value>Za darmo</value></data>
+  <data name="Giveaways_Sources" xml:space="preserve"><value>ŹRÓDŁA</value></data>
+  <data name="Giveaways_Attribution" xml:space="preserve"><value>Część danych pochodzi z GamerPower.com</value></data>
+  <data name="Giveaways_Summary" xml:space="preserve"><value>Teraz za darmo: {0}</value></data>
+  <data name="Giveaways_Updated" xml:space="preserve"><value>zaktualizowano {0}</value></data>
+  <data name="Giveaways_Refresh" xml:space="preserve"><value>Odśwież</value></data>
+  <data name="Giveaways_Loading" xml:space="preserve"><value>Szukam darmowych gier…</value></data>
+  <data name="Giveaways_Upcoming" xml:space="preserve"><value>Wkrótce</value></data>
+  <data name="Giveaways_EmptyTitle" xml:space="preserve"><value>Teraz nic nie jest rozdawane</value></data>
+  <data name="Giveaways_EmptyText" xml:space="preserve"><value>Sklepy rozdają gry co tydzień. Zajrzyj później.</value></data>
+  <data name="Giveaways_HiddenText" xml:space="preserve"><value>{0} darmowych ofert jest ukrytych przez filtry.</value></data>
+  <data name="Giveaways_HiddenText_one" xml:space="preserve"><value>{0} darmowa oferta jest ukryta przez filtry.</value></data>
+  <data name="Giveaways_HiddenText_few" xml:space="preserve"><value>{0} darmowe oferty są ukryte przez filtry.</value></data>
+  <data name="Giveaways_HiddenText_many" xml:space="preserve"><value>{0} darmowych ofert jest ukrytych przez filtry.</value></data>
+  <data name="Giveaways_FailedTitle" xml:space="preserve"><value>Nie udało się wczytać darmowych ofert</value></data>
+  <data name="Giveaways_FailedText" xml:space="preserve"><value>Sprawdź połączenie z internetem i spróbuj ponownie.</value></data>
+  <data name="Giveaways_Retry" xml:space="preserve"><value>Spróbuj ponownie</value></data>
+  <data name="Giveaways_SourceFound" xml:space="preserve"><value>{0} darmowych ofert w {1:0.0} s</value></data>
+  <data name="Giveaways_SourceFound_one" xml:space="preserve"><value>{0} darmowa oferta w {1:0.0} s</value></data>
+  <data name="Giveaways_SourceFound_few" xml:space="preserve"><value>{0} darmowe oferty w {1:0.0} s</value></data>
+  <data name="Giveaways_SourceFound_many" xml:space="preserve"><value>{0} darmowych ofert w {1:0.0} s</value></data>
+  <data name="Giveaway_Free" xml:space="preserve"><value>Za darmo</value></data>
+  <data name="Giveaway_EndsIn" xml:space="preserve"><value>Kończy się za {0}</value></data>
+  <data name="Giveaway_Until" xml:space="preserve"><value>Do {0}</value></data>
+  <data name="Giveaway_Starts" xml:space="preserve"><value>Od {0}</value></data>
+  <data name="Giveaway_NoEnd" xml:space="preserve"><value>Bez daty końca</value></data>
+  <data name="Giveaway_Beta" xml:space="preserve"><value>Beta</value></data>
+  <data name="Giveaway_FoundBy" xml:space="preserve"><value>Znalezione przez: {0}</value></data>
+  <data name="Giveaway_RegionUnchecked" xml:space="preserve"><value>Dostępność w Twoim regionie nie jest sprawdzana</value></data>
+  <data name="Giveaway_OpenTooltip" xml:space="preserve"><value>Otwórz stronę oferty</value></data>
+  <data name="Time_MinutesAgo" xml:space="preserve"><value>{0} min temu</value></data>
+  <data name="Time_DaysHours" xml:space="preserve"><value>{0} d. {1} godz.</value></data>
+  <data name="Time_HoursMinutes" xml:space="preserve"><value>{0} godz. {1} min</value></data>
+  <data name="Time_Minutes" xml:space="preserve"><value>{0} min</value></data>
+  <data name="Filter_DlcAndItems" xml:space="preserve"><value>DLC i przedmioty</value></data>
+  <data name="Filter_Betas" xml:space="preserve"><value>Bety i playtesty</value></data>
+  <data name="Welcome_FreeNow" xml:space="preserve"><value>Teraz za darmo</value></data>
+  <data name="Welcome_AllGiveaways" xml:space="preserve"><value>Wszystkie darmowe oferty</value></data>
+  <data name="Note_GamerPower" xml:space="preserve"><value>IndieGala, itch.io, Alienware Arena i inne serwisy. Dostępność w Twoim regionie nie jest sprawdzana.</value></data>
+  <data name="Kind_GiveawayAggregator" xml:space="preserve"><value>Agregator darmowych ofert</value></data>
 </root>

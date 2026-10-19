@@ -165,4 +165,39 @@
   <data name="Window_Maximize" xml:space="preserve"><value>最大化</value></data>
   <data name="Window_Restore" xml:space="preserve"><value>向下还原</value></data>
   <data name="Window_Close" xml:space="preserve"><value>关闭</value></data>
+  <data name="Mode_Prices" xml:space="preserve"><value>价格</value></data>
+  <data name="Mode_Giveaways" xml:space="preserve"><value>免费领取</value></data>
+  <data name="Giveaways_Sources" xml:space="preserve"><value>来源</value></data>
+  <data name="Giveaways_Attribution" xml:space="preserve"><value>部分数据来自 GamerPower.com</value></data>
+  <data name="Giveaways_Summary" xml:space="preserve"><value>当前免费：{0}</value></data>
+  <data name="Giveaways_Updated" xml:space="preserve"><value>更新于 {0}</value></data>
+  <data name="Giveaways_Refresh" xml:space="preserve"><value>刷新</value></data>
+  <data name="Giveaways_Loading" xml:space="preserve"><value>正在查找免费游戏…</value></data>
+  <data name="Giveaways_Upcoming" xml:space="preserve"><value>即将开始</value></data>
+  <data name="Giveaways_EmptyTitle" xml:space="preserve"><value>目前没有免费领取的内容</value></data>
+  <data name="Giveaways_EmptyText" xml:space="preserve"><value>商店每周都会免费赠送游戏，请稍后再来看看。</value></data>
+  <data name="Giveaways_HiddenText" xml:space="preserve"><value>有 {0} 项免费内容被筛选条件隐藏。</value></data>
+  <data name="Giveaways_FailedTitle" xml:space="preserve"><value>无法加载免费游戏</value></data>
+  <data name="Giveaways_FailedText" xml:space="preserve"><value>请检查网络连接后重试。</value></data>
+  <data name="Giveaways_Retry" xml:space="preserve"><value>重试</value></data>
+  <data name="Giveaways_SourceFound" xml:space="preserve"><value>{0} 项免费内容（{1:0.0} 秒）</value></data>
+  <data name="Giveaway_Free" xml:space="preserve"><value>免费</value></data>
+  <data name="Giveaway_EndsIn" xml:space="preserve"><value>剩余 {0}</value></data>
+  <data name="Giveaway_Until" xml:space="preserve"><value>截至 {0}</value></data>
+  <data name="Giveaway_Starts" xml:space="preserve"><value>{0} 开始</value></data>
+  <data name="Giveaway_NoEnd" xml:space="preserve"><value>无截止日期</value></data>
+  <data name="Giveaway_Beta" xml:space="preserve"><value>测试版</value></data>
+  <data name="Giveaway_FoundBy" xml:space="preserve"><value>来源：{0}</value></data>
+  <data name="Giveaway_RegionUnchecked" xml:space="preserve"><value>未检查你所在地区是否可领取</value></data>
+  <data name="Giveaway_OpenTooltip" xml:space="preserve"><value>打开领取页面</value></data>
+  <data name="Time_MinutesAgo" xml:space="preserve"><value>{0} 分钟前</value></data>
+  <data name="Time_DaysHours" xml:space="preserve"><value>{0} 天 {1} 小时</value></data>
+  <data name="Time_HoursMinutes" xml:space="preserve"><value>{0} 小时 {1} 分钟</value></data>
+  <data name="Time_Minutes" xml:space="preserve"><value>{0} 分钟</value></data>
+  <data name="Filter_DlcAndItems" xml:space="preserve"><value>DLC 和道具</value></data>
+  <data name="Filter_Betas" xml:space="preserve"><value>测试版和试玩</value></data>
+  <data name="Welcome_FreeNow" xml:space="preserve"><value>当前免费</value></data>
+  <data name="Welcome_AllGiveaways" xml:space="preserve"><value>全部免费游戏</value></data>
+  <data name="Note_GamerPower" xml:space="preserve"><value>包括 IndieGala、itch.io、Alienware Arena 等网站。不检查你所在地区是否可领取。</value></data>
+  <data name="Kind_GiveawayAggregator" xml:space="preserve"><value>免费游戏汇总</value></data>
 </root>

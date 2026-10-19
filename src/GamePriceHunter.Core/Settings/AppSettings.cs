@@ -38,6 +38,17 @@ public sealed class ResultFilters
     public bool HideIncompatibleRegions { get; set; }
 }
 
+/// <summary>Which giveaways the giveaway list shows.</summary>
+public sealed class GiveawayFilters
+{
+    public bool ShowGames { get; set; } = true;
+
+    /// <summary>DLC and in-game items.</summary>
+    public bool ShowDlc { get; set; }
+
+    public bool ShowBetas { get; set; }
+}
+
 public sealed class WindowBounds
 {
     public double Left { get; set; }
@@ -80,6 +91,8 @@ public sealed class AppSettings
     public SortMode SortMode { get; set; } = SortMode.BestMatch;
 
     public ResultFilters Filters { get; set; } = new();
+
+    public GiveawayFilters GiveawayFilters { get; set; } = new();
 
     /// <summary>Provider API keys, encrypted for the current Windows user.</summary>
     public Dictionary<string, string> ProtectedApiKeys { get; set; } = [];

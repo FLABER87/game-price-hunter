@@ -173,4 +173,41 @@
   <data name="Window_Maximize" xml:space="preserve"><value>Agrandir</value></data>
   <data name="Window_Restore" xml:space="preserve"><value>Niveau inférieur</value></data>
   <data name="Window_Close" xml:space="preserve"><value>Fermer</value></data>
+  <data name="Mode_Prices" xml:space="preserve"><value>Prix</value></data>
+  <data name="Mode_Giveaways" xml:space="preserve"><value>Gratuits</value></data>
+  <data name="Giveaways_Sources" xml:space="preserve"><value>SOURCES</value></data>
+  <data name="Giveaways_Attribution" xml:space="preserve"><value>Une partie des données provient de GamerPower.com</value></data>
+  <data name="Giveaways_Summary" xml:space="preserve"><value>Gratuits en ce moment : {0}</value></data>
+  <data name="Giveaways_Updated" xml:space="preserve"><value>mis à jour {0}</value></data>
+  <data name="Giveaways_Refresh" xml:space="preserve"><value>Actualiser</value></data>
+  <data name="Giveaways_Loading" xml:space="preserve"><value>Recherche des jeux gratuits…</value></data>
+  <data name="Giveaways_Upcoming" xml:space="preserve"><value>Bientôt</value></data>
+  <data name="Giveaways_EmptyTitle" xml:space="preserve"><value>Rien n’est offert pour le moment</value></data>
+  <data name="Giveaways_EmptyText" xml:space="preserve"><value>Les boutiques offrent des jeux chaque semaine. Revenez plus tard.</value></data>
+  <data name="Giveaways_HiddenText" xml:space="preserve"><value>{0} offres gratuites sont masquées par les filtres.</value></data>
+  <data name="Giveaways_HiddenText_one" xml:space="preserve"><value>{0} offre gratuite est masquée par les filtres.</value></data>
+  <data name="Giveaways_FailedTitle" xml:space="preserve"><value>Impossible de charger les offres gratuites</value></data>
+  <data name="Giveaways_FailedText" xml:space="preserve"><value>Vérifiez votre connexion Internet et réessayez.</value></data>
+  <data name="Giveaways_Retry" xml:space="preserve"><value>Réessayer</value></data>
+  <data name="Giveaways_SourceFound" xml:space="preserve"><value>{0} offres gratuites en {1:0.0} s</value></data>
+  <data name="Giveaways_SourceFound_one" xml:space="preserve"><value>{0} offre gratuite en {1:0.0} s</value></data>
+  <data name="Giveaway_Free" xml:space="preserve"><value>Gratuit</value></data>
+  <data name="Giveaway_EndsIn" xml:space="preserve"><value>Se termine dans {0}</value></data>
+  <data name="Giveaway_Until" xml:space="preserve"><value>Jusqu’au {0}</value></data>
+  <data name="Giveaway_Starts" xml:space="preserve"><value>À partir du {0}</value></data>
+  <data name="Giveaway_NoEnd" xml:space="preserve"><value>Sans date de fin</value></data>
+  <data name="Giveaway_Beta" xml:space="preserve"><value>Bêta</value></data>
+  <data name="Giveaway_FoundBy" xml:space="preserve"><value>Trouvé par {0}</value></data>
+  <data name="Giveaway_RegionUnchecked" xml:space="preserve"><value>Disponibilité dans votre région non vérifiée</value></data>
+  <data name="Giveaway_OpenTooltip" xml:space="preserve"><value>Ouvrir la page de l’offre</value></data>
+  <data name="Time_MinutesAgo" xml:space="preserve"><value>il y a {0} min</value></data>
+  <data name="Time_DaysHours" xml:space="preserve"><value>{0} j {1} h</value></data>
+  <data name="Time_HoursMinutes" xml:space="preserve"><value>{0} h {1} min</value></data>
+  <data name="Time_Minutes" xml:space="preserve"><value>{0} min</value></data>
+  <data name="Filter_DlcAndItems" xml:space="preserve"><value>DLC et objets</value></data>
+  <data name="Filter_Betas" xml:space="preserve"><value>Bêtas et playtests</value></data>
+  <data name="Welcome_FreeNow" xml:space="preserve"><value>Gratuits en ce moment</value></data>
+  <data name="Welcome_AllGiveaways" xml:space="preserve"><value>Toutes les offres gratuites</value></data>
+  <data name="Note_GamerPower" xml:space="preserve"><value>IndieGala, itch.io, Alienware Arena et d’autres sites. La disponibilité dans votre région n’est pas vérifiée.</value></data>
+  <data name="Kind_GiveawayAggregator" xml:space="preserve"><value>Agrégateur d’offres gratuites</value></data>
 </root>

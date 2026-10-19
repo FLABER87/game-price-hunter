@@ -93,6 +93,12 @@ public partial class MainWindow : Window
             _viewModel.ShowHistory();
             e.Handled = true;
         }
+        else if (e.Key == Key.F5 && _viewModel.IsGiveawaysMode)
+        {
+            if (_viewModel.Giveaways.RefreshCommand.CanExecute(null))
+                _viewModel.Giveaways.RefreshCommand.Execute(null);
+            e.Handled = true;
+        }
         else if (e.Key == Key.F5 && _viewModel.SearchCommand.CanExecute(null))
         {
             _viewModel.SearchCommand.Execute(null);
@@ -209,4 +215,30 @@ public partial class MainWindow : Window
     private void OnCopyTitleClick(object sender, RoutedEventArgs e) => _viewModel.CopyTitleCommand.Execute(OfferFrom(sender));
 
     private void OnSearchTitleClick(object sender, RoutedEventArgs e) => _viewModel.SearchTitleCommand.Execute(OfferFrom(sender));
+
+    private void OnGiveawaysKeyDown(object sender, KeyEventArgs e)
+    {
+        if ((sender as ListBox)?.SelectedItem is not GiveawayViewModel giveaway)
+            return;
+        if (e.Key == Key.Enter)
+        {
+            _viewModel.Giveaways.OpenCommand.Execute(giveaway);
+            e.Handled = true;
+        }
+        else if (e.Key == Key.C && (Keyboard.Modifiers & ModifierKeys.Control) != 0)
+        {
+            _viewModel.Giveaways.CopyLinkCommand.Execute(giveaway);
+            e.Handled = true;
+        }
+    }
+
+    private static GiveawayViewModel? GiveawayFrom(object sender) => (sender as FrameworkElement)?.DataContext as GiveawayViewModel;
+
+    private void OnOpenGiveawayClick(object sender, RoutedEventArgs e) => _viewModel.Giveaways.OpenCommand.Execute(GiveawayFrom(sender));
+
+    private void OnCopyGiveawayLinkClick(object sender, RoutedEventArgs e) => _viewModel.Giveaways.CopyLinkCommand.Execute(GiveawayFrom(sender));
+
+    private void OnCopyGiveawayTitleClick(object sender, RoutedEventArgs e) => _viewModel.Giveaways.CopyTitleCommand.Execute(GiveawayFrom(sender));
+
+    private void OnSearchGiveawayTitleClick(object sender, RoutedEventArgs e) => _viewModel.SearchTitleCommand.Execute(GiveawayFrom(sender));
 }

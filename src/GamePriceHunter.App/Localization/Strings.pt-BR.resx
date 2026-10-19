@@ -173,4 +173,41 @@
   <data name="Window_Maximize" xml:space="preserve"><value>Maximizar</value></data>
   <data name="Window_Restore" xml:space="preserve"><value>Restaurar Tamanho</value></data>
   <data name="Window_Close" xml:space="preserve"><value>Fechar</value></data>
+  <data name="Mode_Prices" xml:space="preserve"><value>Preços</value></data>
+  <data name="Mode_Giveaways" xml:space="preserve"><value>Grátis</value></data>
+  <data name="Giveaways_Sources" xml:space="preserve"><value>FONTES</value></data>
+  <data name="Giveaways_Attribution" xml:space="preserve"><value>Parte dos dados vem do GamerPower.com</value></data>
+  <data name="Giveaways_Summary" xml:space="preserve"><value>Grátis agora: {0}</value></data>
+  <data name="Giveaways_Updated" xml:space="preserve"><value>atualizado {0}</value></data>
+  <data name="Giveaways_Refresh" xml:space="preserve"><value>Atualizar</value></data>
+  <data name="Giveaways_Loading" xml:space="preserve"><value>Procurando jogos grátis…</value></data>
+  <data name="Giveaways_Upcoming" xml:space="preserve"><value>Em breve</value></data>
+  <data name="Giveaways_EmptyTitle" xml:space="preserve"><value>Nada está sendo distribuído agora</value></data>
+  <data name="Giveaways_EmptyText" xml:space="preserve"><value>As lojas distribuem jogos toda semana. Volte mais tarde.</value></data>
+  <data name="Giveaways_HiddenText" xml:space="preserve"><value>{0} ofertas grátis estão ocultas pelos filtros.</value></data>
+  <data name="Giveaways_HiddenText_one" xml:space="preserve"><value>{0} oferta grátis está oculta pelos filtros.</value></data>
+  <data name="Giveaways_FailedTitle" xml:space="preserve"><value>Não foi possível carregar as ofertas grátis</value></data>
+  <data name="Giveaways_FailedText" xml:space="preserve"><value>Verifique sua conexão com a internet e tente novamente.</value></data>
+  <data name="Giveaways_Retry" xml:space="preserve"><value>Tentar novamente</value></data>
+  <data name="Giveaways_SourceFound" xml:space="preserve"><value>{0} ofertas grátis em {1:0.0} s</value></data>
+  <data name="Giveaways_SourceFound_one" xml:space="preserve"><value>{0} oferta grátis em {1:0.0} s</value></data>
+  <data name="Giveaway_Free" xml:space="preserve"><value>Grátis</value></data>
+  <data name="Giveaway_EndsIn" xml:space="preserve"><value>Termina em {0}</value></data>
+  <data name="Giveaway_Until" xml:space="preserve"><value>Até {0}</value></data>
+  <data name="Giveaway_Starts" xml:space="preserve"><value>A partir de {0}</value></data>
+  <data name="Giveaway_NoEnd" xml:space="preserve"><value>Sem data de término</value></data>
+  <data name="Giveaway_Beta" xml:space="preserve"><value>Beta</value></data>
+  <data name="Giveaway_FoundBy" xml:space="preserve"><value>Encontrado por {0}</value></data>
+  <data name="Giveaway_RegionUnchecked" xml:space="preserve"><value>A disponibilidade na sua região não é verificada</value></data>
+  <data name="Giveaway_OpenTooltip" xml:space="preserve"><value>Abrir a página da oferta</value></data>
+  <data name="Time_MinutesAgo" xml:space="preserve"><value>há {0} min</value></data>
+  <data name="Time_DaysHours" xml:space="preserve"><value>{0} d {1} h</value></data>
+  <data name="Time_HoursMinutes" xml:space="preserve"><value>{0} h {1} min</value></data>
+  <data name="Time_Minutes" xml:space="preserve"><value>{0} min</value></data>
+  <data name="Filter_DlcAndItems" xml:space="preserve"><value>DLC e itens</value></data>
+  <data name="Filter_Betas" xml:space="preserve"><value>Betas e playtests</value></data>
+  <data name="Welcome_FreeNow" xml:space="preserve"><value>Grátis agora</value></data>
+  <data name="Welcome_AllGiveaways" xml:space="preserve"><value>Todas as ofertas grátis</value></data>
+  <data name="Note_GamerPower" xml:space="preserve"><value>IndieGala, itch.io, Alienware Arena e outros sites. A disponibilidade na sua região não é verificada.</value></data>
+  <data name="Kind_GiveawayAggregator" xml:space="preserve"><value>Agregador de ofertas grátis</value></data>
 </root>

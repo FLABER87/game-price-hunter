@@ -5,6 +5,7 @@ using GamePriceHunter.App.Infrastructure;
 using GamePriceHunter.Core.Currency;
 using GamePriceHunter.Core.Diagnostics;
 using GamePriceHunter.Core.Geo;
+using GamePriceHunter.Core.Giveaways;
 using GamePriceHunter.Core.Models;
 using GamePriceHunter.Core.Net;
 using GamePriceHunter.Core.Providers;
@@ -31,6 +32,7 @@ public sealed class AppServices : IDisposable
         RegionDetector = new RegionDetector(http, logger);
         Search = new SearchService(ProviderCatalog.CreateAll(http), logger);
         Suggestions = new SuggestionService(http, logger);
+        Giveaways = new GiveawayService(GiveawayService.CreateSources(http), paths.GiveawaysCacheFile, logger);
         _updateHttp = UpdateChecker.CreateHttpClient($"GamePriceHunter/{Version} (+{UpdateChecker.RepositoryUrl})");
         Updates = new UpdateChecker(_updateHttp);
         CanInstallUpdates = !paths.IsPortable && UpdateChecker.IsInstalledCopy(AppContext.BaseDirectory);
@@ -65,6 +67,8 @@ public sealed class AppServices : IDisposable
     public SearchService Search { get; }
 
     public SuggestionService Suggestions { get; }
+
+    public GiveawayService Giveaways { get; }
 
     public UpdateChecker Updates { get; }
 

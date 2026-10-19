@@ -16,6 +16,9 @@ public enum ProviderNote
 
     /// <summary>IsThereAnyDeal: regional prices from 50+ stores, needs a free API key.</summary>
     IsThereAnyDeal,
+
+    /// <summary>GamerPower: giveaways on IndieGala, itch.io and other sites, regions not checked.</summary>
+    GamerPower,
 }
 
 /// <summary>Static description of a store provider.</summary>

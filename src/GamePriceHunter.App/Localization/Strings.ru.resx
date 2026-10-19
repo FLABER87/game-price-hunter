@@ -189,4 +189,45 @@
   <data name="Window_Maximize" xml:space="preserve"><value>Развернуть</value></data>
   <data name="Window_Restore" xml:space="preserve"><value>Свернуть в окно</value></data>
   <data name="Window_Close" xml:space="preserve"><value>Закрыть</value></data>
+  <data name="Mode_Prices" xml:space="preserve"><value>Цены</value></data>
+  <data name="Mode_Giveaways" xml:space="preserve"><value>Раздачи</value></data>
+  <data name="Giveaways_Sources" xml:space="preserve"><value>ИСТОЧНИКИ</value></data>
+  <data name="Giveaways_Attribution" xml:space="preserve"><value>Часть данных — от GamerPower.com</value></data>
+  <data name="Giveaways_Summary" xml:space="preserve"><value>Сейчас бесплатно: {0}</value></data>
+  <data name="Giveaways_Updated" xml:space="preserve"><value>обновлено {0}</value></data>
+  <data name="Giveaways_Refresh" xml:space="preserve"><value>Обновить</value></data>
+  <data name="Giveaways_Loading" xml:space="preserve"><value>Ищем раздачи…</value></data>
+  <data name="Giveaways_Upcoming" xml:space="preserve"><value>Скоро</value></data>
+  <data name="Giveaways_EmptyTitle" xml:space="preserve"><value>Сейчас ничего не раздают</value></data>
+  <data name="Giveaways_EmptyText" xml:space="preserve"><value>Магазины раздают игры каждую неделю. Загляните позже.</value></data>
+  <data name="Giveaways_HiddenText" xml:space="preserve"><value>{0} раздач скрыто фильтрами.</value></data>
+  <data name="Giveaways_HiddenText_one" xml:space="preserve"><value>{0} раздача скрыта фильтрами.</value></data>
+  <data name="Giveaways_HiddenText_few" xml:space="preserve"><value>{0} раздачи скрыты фильтрами.</value></data>
+  <data name="Giveaways_HiddenText_many" xml:space="preserve"><value>{0} раздач скрыто фильтрами.</value></data>
+  <data name="Giveaways_FailedTitle" xml:space="preserve"><value>Не удалось загрузить раздачи</value></data>
+  <data name="Giveaways_FailedText" xml:space="preserve"><value>Проверьте подключение к интернету и попробуйте ещё раз.</value></data>
+  <data name="Giveaways_Retry" xml:space="preserve"><value>Повторить</value></data>
+  <data name="Giveaways_SourceFound" xml:space="preserve"><value>{0} раздач за {1:0.0} с</value></data>
+  <data name="Giveaways_SourceFound_one" xml:space="preserve"><value>{0} раздача за {1:0.0} с</value></data>
+  <data name="Giveaways_SourceFound_few" xml:space="preserve"><value>{0} раздачи за {1:0.0} с</value></data>
+  <data name="Giveaways_SourceFound_many" xml:space="preserve"><value>{0} раздач за {1:0.0} с</value></data>
+  <data name="Giveaway_Free" xml:space="preserve"><value>Бесплатно</value></data>
+  <data name="Giveaway_EndsIn" xml:space="preserve"><value>Осталось {0}</value></data>
+  <data name="Giveaway_Until" xml:space="preserve"><value>До {0}</value></data>
+  <data name="Giveaway_Starts" xml:space="preserve"><value>С {0}</value></data>
+  <data name="Giveaway_NoEnd" xml:space="preserve"><value>Без срока</value></data>
+  <data name="Giveaway_Beta" xml:space="preserve"><value>Бета</value></data>
+  <data name="Giveaway_FoundBy" xml:space="preserve"><value>Найдено: {0}</value></data>
+  <data name="Giveaway_RegionUnchecked" xml:space="preserve"><value>Доступность в вашем регионе не проверяется</value></data>
+  <data name="Giveaway_OpenTooltip" xml:space="preserve"><value>Открыть страницу раздачи</value></data>
+  <data name="Time_MinutesAgo" xml:space="preserve"><value>{0} мин назад</value></data>
+  <data name="Time_DaysHours" xml:space="preserve"><value>{0} дн. {1} ч</value></data>
+  <data name="Time_HoursMinutes" xml:space="preserve"><value>{0} ч {1} мин</value></data>
+  <data name="Time_Minutes" xml:space="preserve"><value>{0} мин</value></data>
+  <data name="Filter_DlcAndItems" xml:space="preserve"><value>DLC и предметы</value></data>
+  <data name="Filter_Betas" xml:space="preserve"><value>Бета-тесты</value></data>
+  <data name="Welcome_FreeNow" xml:space="preserve"><value>Сейчас бесплатно</value></data>
+  <data name="Welcome_AllGiveaways" xml:space="preserve"><value>Все раздачи</value></data>
+  <data name="Note_GamerPower" xml:space="preserve"><value>IndieGala, itch.io, Alienware Arena и другие сайты. Доступность в вашем регионе не проверяется.</value></data>
+  <data name="Kind_GiveawayAggregator" xml:space="preserve"><value>Агрегатор раздач</value></data>
 </root>
