@@ -435,7 +435,7 @@
         <Setter Property="CaretBrush" Value="{DynamicResource Brush.Text}" />
         <Setter Property="SelectionBrush" Value="{DynamicResource Brush.Accent}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Padding" Value="10,7" />
+        <Setter Property="Padding" Value="10,14" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Template">
@@ -443,9 +443,13 @@
                 <ControlTemplate TargetType="TextBox">
                     <Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{StaticResource Radius.Control}">
-                        <Grid Margin="{TemplateBinding Padding}">
-                            <TextBlock x:Name="Placeholder" Margin="2,0,0,0" VerticalAlignment="Center" IsHitTestVisible="False"
-                                       Foreground="{DynamicResource Brush.TextTertiary}" Visibility="Collapsed" TextTrimming="CharacterEllipsis"
+                        <!-- TextBox itself hands its Padding to PART_ContentHost, so the template must not apply it a second time:
+                             the caret would start right of the placeholder. The placeholder takes the same Padding, plus the
+                             2px the text keeps from the edge of the content host. -->
+                        <Grid>
+                            <TextBlock x:Name="Placeholder" Margin="{TemplateBinding Padding}" Padding="2,0,0,0" VerticalAlignment="Center"
+                                       IsHitTestVisible="False" Foreground="{DynamicResource Brush.TextTertiary}" Visibility="Collapsed"
+                                       TextTrimming="CharacterEllipsis"
                                        Text="{Binding (infra:TextBoxHelper.Placeholder), RelativeSource={RelativeSource TemplatedParent}}" />
                             <ScrollViewer x:Name="PART_ContentHost" Focusable="False" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
