@@ -15,10 +15,12 @@ namespace GamePriceHunter.App.ViewModels;
 public sealed class GiveawaysViewModel : ObservableObject
 {
     private const int HighlightCount = 4;
+    private const int MatchCount = 3;
 
     private readonly AppServices _services;
     private readonly Dictionary<Giveaway, GiveawayViewModel> _items = new(ReferenceEqualityComparer.Instance);
     private GiveawayFeed? _feed;
+    private string? _searchQuery;
     private CancellationTokenSource? _refreshCts;
     private bool _isLoading;
     private int _gameCount;
@@ -47,6 +49,9 @@ public sealed class GiveawaysViewModel : ObservableObject
 
     /// <summary>The first running games, for the welcome screen.</summary>
     public RangeObservableCollection<GiveawayViewModel> Highlights { get; } = [];
+
+    /// <summary>Giveaways of the game searched for last, pinned above the search results.</summary>
+    public RangeObservableCollection<GiveawayViewModel> Matches { get; } = [];
 
     public ObservableCollection<GiveawaySourceViewModel> Sources { get; }
 
@@ -83,6 +88,8 @@ public sealed class GiveawaysViewModel : ObservableObject
     public bool HasGames => GameCount > 0;
 
     public bool AreHighlightsVisible => Highlights.Count > 0;
+
+    public bool HasMatches => Matches.Count > 0;
 
     public bool IsListVisible => Items.Count > 0 || Upcoming.Count > 0;
 
@@ -128,6 +135,17 @@ public sealed class GiveawaysViewModel : ObservableObject
 
     public void OnRegionChanged() => Fire(RefreshAsync(force: false));
 
+    /// <summary>
+    /// A search started: finds its game among the giveaways, now and whenever the list changes. The app can
+    /// stay on the price search for days, so a list that got old is refreshed too.
+    /// </summary>
+    public void SetSearch(string query)
+    {
+        _searchQuery = query;
+        Rebuild();
+        Fire(RefreshAsync(force: false));
+    }
+
     public void UpdatePrices()
     {
         foreach (var item in _items.Values)
@@ -165,6 +183,10 @@ public sealed class GiveawaysViewModel : ObservableObject
         var countryChanged = _feed is null || !string.Equals(_feed.CountryCode, region.CountryCode, StringComparison.OrdinalIgnoreCase);
         if (countryChanged)
         {
+            // A refresh still on its way for the previous country must not replace this one's list.
+            _refreshCts?.Cancel();
+            _refreshCts = null;
+            IsLoading = false;
             _feed = _services.Giveaways.LoadCached(region.CountryCode);
             ApplySourceResults();
             Rebuild();
@@ -226,11 +248,14 @@ public sealed class GiveawaysViewModel : ObservableObject
         Sync(Items, current.Where(Passes).ToList());
         Sync(Upcoming, upcoming.Where(Passes).ToList());
         Sync(Highlights, current.Where(g => g.Kind == GiveawayKind.Game).Take(HighlightCount).ToList());
+        Sync(Matches, _searchQuery is null
+            ? []
+            : GiveawayService.Matching(all, _searchQuery, now, _services.Settings.MatchMode).Where(Passes).Take(MatchCount).ToList());
         GameCount = current.Count(g => g.Kind == GiveawayKind.Game);
         _hiddenCount = current.Count + upcoming.Count - Items.Count - Upcoming.Count;
 
         // Forget giveaways that left every list, so the cache doesn't grow while the app stays open.
-        var shown = Items.Concat(Upcoming).Concat(Highlights).Select(i => i.Giveaway).ToHashSet<Giveaway>(ReferenceEqualityComparer.Instance);
+        var shown = Items.Concat(Upcoming).Concat(Highlights).Concat(Matches).Select(i => i.Giveaway).ToHashSet<Giveaway>(ReferenceEqualityComparer.Instance);
         foreach (var gone in _items.Keys.Where(g => !shown.Contains(g)).ToList())
             _items.Remove(gone);
         foreach (var item in _items.Values)
@@ -273,6 +298,7 @@ public sealed class GiveawaysViewModel : ObservableObject
     private void RaiseStateProperties()
     {
         OnPropertyChanged(nameof(AreHighlightsVisible));
+        OnPropertyChanged(nameof(HasMatches));
         OnPropertyChanged(nameof(IsListVisible));
         OnPropertyChanged(nameof(HasUpcoming));
         OnPropertyChanged(nameof(IsLoadingWithoutItems));

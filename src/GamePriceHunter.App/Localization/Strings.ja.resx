@@ -200,4 +200,6 @@
   <data name="Welcome_AllGiveaways" xml:space="preserve"><value>すべての無料配布</value></data>
   <data name="Note_GamerPower" xml:space="preserve"><value>IndieGala、itch.io、Alienware Arena などのサイトに対応しています。お住まいの地域で利用できるかは確認していません。</value></data>
   <data name="Kind_GiveawayAggregator" xml:space="preserve"><value>無料配布まとめサイト</value></data>
+  <data name="Giveaway_FreeOn" xml:space="preserve"><value>{0} で無料配布中</value></data>
+  <data name="Giveaway_SoonFreeOn" xml:space="preserve"><value>{0} で近日無料配布</value></data>
 </root>

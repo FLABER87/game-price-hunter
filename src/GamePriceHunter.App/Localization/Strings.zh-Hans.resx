@@ -200,4 +200,6 @@
   <data name="Welcome_AllGiveaways" xml:space="preserve"><value>全部免费游戏</value></data>
   <data name="Note_GamerPower" xml:space="preserve"><value>包括 IndieGala、itch.io、Alienware Arena 等网站。不检查你所在地区是否可领取。</value></data>
   <data name="Kind_GiveawayAggregator" xml:space="preserve"><value>免费游戏汇总</value></data>
+  <data name="Giveaway_FreeOn" xml:space="preserve"><value>{0} 免费领取</value></data>
+  <data name="Giveaway_SoonFreeOn" xml:space="preserve"><value>{0} 即将免费</value></data>
 </root>

@@ -210,4 +210,6 @@
   <data name="Welcome_AllGiveaways" xml:space="preserve"><value>Alle Gratis-Aktionen</value></data>
   <data name="Note_GamerPower" xml:space="preserve"><value>IndieGala, itch.io, Alienware Arena und weitere Seiten. Die Verfügbarkeit in Ihrer Region wird nicht geprüft.</value></data>
   <data name="Kind_GiveawayAggregator" xml:space="preserve"><value>Sammelt Gratis-Aktionen</value></data>
+  <data name="Giveaway_FreeOn" xml:space="preserve"><value>Kostenlos bei {0}</value></data>
+  <data name="Giveaway_SoonFreeOn" xml:space="preserve"><value>Bald kostenlos bei {0}</value></data>
 </root>

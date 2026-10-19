@@ -368,6 +368,8 @@ public sealed class MainViewModel : ObservableObject
 
         if (regionChanged)
             Giveaways.OnRegionChanged();
+        if (_lastQuery is not null)
+            Giveaways.SetSearch(_lastQuery);
         if (regionChanged && _lastQuery is not null)
             Fire(SearchForAsync(_lastQuery));
     }
@@ -409,6 +411,7 @@ public sealed class MainViewModel : ObservableObject
         _services.Settings.AddToHistory(query);
         _services.SaveSettingsSoon();
         _lastQuery = query;
+        Giveaways.SetSearch(query);
         _all.Clear();
         Offers.ReplaceAll([]);
         _totalProviders = 0;

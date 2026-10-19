@@ -210,4 +210,6 @@
   <data name="Welcome_AllGiveaways" xml:space="preserve"><value>Tüm ücretsiz teklifler</value></data>
   <data name="Note_GamerPower" xml:space="preserve"><value>IndieGala, itch.io, Alienware Arena ve diğer siteler. Bölgenizdeki kullanılabilirlik kontrol edilmez.</value></data>
   <data name="Kind_GiveawayAggregator" xml:space="preserve"><value>Ücretsiz teklif toplayıcı</value></data>
+  <data name="Giveaway_FreeOn" xml:space="preserve"><value>Ücretsiz: {0}</value></data>
+  <data name="Giveaway_SoonFreeOn" xml:space="preserve"><value>Yakında ücretsiz: {0}</value></data>
 </root>

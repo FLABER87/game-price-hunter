@@ -21,6 +21,9 @@ public sealed class GiveawayService
     /// <summary>A giveaway without an end listed longer ago is a permanent freebie rather than news.</summary>
     internal static readonly TimeSpan OpenEndedMaxAge = TimeSpan.FromDays(60);
 
+    // TitleMatcher's score of a title that starts with the query; titles that only contain it score lower.
+    private const double MinSearchRelevance = 0.7;
+
     // An end date without a time zone has passed everywhere a day later.
     private static readonly TimeSpan DateOnlyGrace = TimeSpan.FromDays(1);
 
@@ -69,6 +72,27 @@ public sealed class GiveawayService
     /// <summary>Announced giveaways that have not started yet, the nearest first.</summary>
     public static IReadOnlyList<Giveaway> Upcoming(IEnumerable<Giveaway> giveaways, DateTimeOffset now) =>
         giveaways.Where(g => g.StartsAt > now && !HasEnded(g, now)).OrderBy(g => g.StartsAt).ToList();
+
+    /// <summary>
+    /// Giveaways of the game searched for: titles that are the query or start with it ("Agent A: A puzzle in
+    /// disguise" for "agent a"), not ones that merely contain it. Running ones come before announced ones, as
+    /// they can be claimed now; within each, the best match first.
+    /// </summary>
+    public static IReadOnlyList<Giveaway> Matching(IEnumerable<Giveaway> giveaways, string query, DateTimeOffset now, MatchMode mode = MatchMode.AllWords)
+    {
+        var matcher = new TitleMatcher(query, mode);
+        if (matcher.IsEmpty)
+            return [];
+        var list = giveaways as IReadOnlyCollection<Giveaway> ?? giveaways.ToList();
+        return Ranked(Current(list, now)).Concat(Ranked(Upcoming(list, now))).ToList();
+
+        IEnumerable<Giveaway> Ranked(IEnumerable<Giveaway> candidates) =>
+            candidates
+                .Select(g => (Giveaway: g, Score: matcher.Score(g.Title)))
+                .Where(x => x.Score >= MinSearchRelevance)
+                .OrderByDescending(x => x.Score)
+                .Select(x => x.Giveaway);
+    }
 
     public static bool HasEnded(Giveaway giveaway, DateTimeOffset now) =>
         giveaway.EndsAt is { } ends && now >= (giveaway.EndsOnDateOnly ? ends + DateOnlyGrace : ends);
