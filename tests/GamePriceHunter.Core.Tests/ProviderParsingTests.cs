@@ -160,6 +160,40 @@ public class ProviderParsingTests
         Assert.All(catalog, o => Assert.StartsWith("https://plati.market/itm/", o.Url));
         Assert.All(catalog, o => Assert.False(string.IsNullOrEmpty(o.Seller)));
         AssertWellFormed(provider.ParseLegacy(Json("plati_search.json"), "EUR"), "EUR");
+        Assert.All(catalog, o => Assert.True(o.SellerRating is { Value: > 0, OutOf: null }, $"{o.Title}: rating {o.SellerRating}"));
+    }
+
+    [Fact]
+    public void Plati_seller_rating_and_sales_as_plati_shows_them()
+    {
+        var root = JsonDocument.Parse("""
+            {"content": {"items": [
+              {"product_id": 1, "name": "A", "price": 9.5, "currency": "USD", "seller_name": "LMAO_94", "seller_rating": 4343.6871, "total_sales": 6544},
+              {"product_id": 2, "name": "B", "price": 9.5, "currency": "USD", "seller_name": "New", "seller_rating": 0, "total_sales": 9},
+              {"product_id": 3, "name": "C", "price": 9.5, "currency": "USD", "seller_name": "Capped", "seller_rating": 32.29, "total_sales": 0, "hide_total_sales": 1000}
+            ]}}
+            """).RootElement;
+
+        var offers = new PlatiProvider(Http).Parse(root);
+
+        Assert.Equal(new SellerRating(4343.6871m, null), offers[0].SellerRating);
+        Assert.Equal(new SalesCount(6544, AtLeast: false), offers[0].Sales);
+        Assert.Null(offers[1].SellerRating);
+        Assert.Null(offers[1].Sales);
+        Assert.Null(offers[2].Sales);
+    }
+
+    [Theory]
+    [InlineData(6544L, null, 6544L, false)]
+    [InlineData(127L, 50L, 50L, true)]     // Plati: "Sold 50+"
+    [InlineData(183L, 1000L, 183L, false)] // below the cap Plati shows the real count
+    [InlineData(139L, -1L, null, false)]   // hidden
+    [InlineData(9L, null, null, false)]    // Plati: "Sold fewer than 10"
+    [InlineData(0L, 1000L, null, false)]
+    public void Plati_sales_count(long sold, long? cap, long? count, bool atLeast)
+    {
+        var sales = PlatiProvider.ShownSales(sold, cap);
+        Assert.Equal(count is null ? null : new SalesCount(count.Value, atLeast), sales);
     }
 
     [Fact]
@@ -240,6 +274,24 @@ public class ProviderParsingTests
     [Fact]
     public void Ggsel_goods() =>
         AssertWellFormed(new GgselProvider(Http).Parse(Json("ggsel_search.json"), "EUR"), null);
+
+    [Fact]
+    public void Ggsel_seller_stars_and_item_sales()
+    {
+        var root = JsonDocument.Parse("""
+            {"data": {"items": [
+              {"name": "A", "url": "a-1", "price_wmz": 9.68, "seller_name": "SteamGifts official", "rating": 4.9, "cnt_sell": 295},
+              {"name": "B", "url": "b-2", "price_wmz": 1.79, "seller_name": "Alexander993", "rating": 0, "cnt_sell": 0}
+            ]}}
+            """).RootElement;
+
+        var offers = new GgselProvider(Http).Parse(root, "USD");
+
+        Assert.Equal(new SellerRating(4.9m, 5), offers[0].SellerRating);
+        Assert.Equal(new SalesCount(295, AtLeast: false), offers[0].Sales);
+        Assert.Null(offers[1].SellerRating);
+        Assert.Null(offers[1].Sales);
+    }
 
     [Fact]
     public void GamersGate_catalog() =>

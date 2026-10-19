@@ -172,7 +172,15 @@ if (command == "search")
         var region2 = offer.Region is null ? "" : $" [{offer.Region}:{offer.RegionCompatibility}]";
         Console.WriteLine($"{price,12}{original,-14} {offer.StoreName,-18} {offer.Type,-7} {offer.Platform,-8} {offer.Title}{discount}{region2}");
         if (options.Details)
+        {
             Console.WriteLine($"{"",12} {offer.Url}  rel={offer.Relevance:0.00}  img={offer.ImageUrl}");
+            if (offer.Seller is not null)
+            {
+                var rating = offer.SellerRating is { } r ? $"  rating={r.Value:0.##}{(r.OutOf is { } max ? $"/{max:0.#}" : "")}" : "";
+                var sales = offer.Sales is { } s ? $"  sold={s.Count}{(s.AtLeast ? "+" : "")}" : "";
+                Console.WriteLine($"{"",12} seller={offer.Seller}{rating}{sales}");
+            }
+        }
     }
 }
 

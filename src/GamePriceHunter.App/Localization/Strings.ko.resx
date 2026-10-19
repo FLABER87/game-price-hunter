@@ -71,6 +71,10 @@
   <data name="Menu_CopyTitle" xml:space="preserve"><value>제목 복사</value></data>
   <data name="Menu_SearchTitle" xml:space="preserve"><value>이 제목으로 검색</value></data>
   <data name="Offer_Seller" xml:space="preserve"><value>판매자:</value></data>
+  <data name="Offer_SellerRatingOutOf" xml:space="preserve"><value>판매자 평점: {1}점 만점에 {0}점</value></data>
+  <data name="Offer_SellerRatingPoints" xml:space="preserve"><value>{0}의 판매자 평점(포인트, 상한 없음)</value></data>
+  <data name="Offer_Sales" xml:space="preserve"><value>판매 {0}</value></data>
+  <data name="Offer_SalesTooltip" xml:space="preserve"><value>이 상품이 판매된 횟수</value></data>
   <data name="Offer_BestPrice" xml:space="preserve"><value>최저가</value></data>
   <data name="Offer_OriginalPriceTooltip" xml:space="preserve"><value>스토어 자체 통화로 표시한 가격</value></data>
   <data name="Offer_OpenTooltip" xml:space="preserve"><value>브라우저에서 열기</value></data>

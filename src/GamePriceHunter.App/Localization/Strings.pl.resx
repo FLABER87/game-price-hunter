@@ -89,6 +89,10 @@
   <data name="Menu_CopyTitle" xml:space="preserve"><value>Kopiuj tytuł</value></data>
   <data name="Menu_SearchTitle" xml:space="preserve"><value>Szukaj tego tytułu</value></data>
   <data name="Offer_Seller" xml:space="preserve"><value>Sprzedawca:</value></data>
+  <data name="Offer_SellerRatingOutOf" xml:space="preserve"><value>Ocena sprzedawcy: {0} na {1}</value></data>
+  <data name="Offer_SellerRatingPoints" xml:space="preserve"><value>Ocena sprzedawcy na {0}, w punktach bez górnej granicy</value></data>
+  <data name="Offer_Sales" xml:space="preserve"><value>Sprzedano: {0}</value></data>
+  <data name="Offer_SalesTooltip" xml:space="preserve"><value>Ile razy sprzedano ten produkt</value></data>
   <data name="Offer_BestPrice" xml:space="preserve"><value>NAJTANIEJ</value></data>
   <data name="Offer_OriginalPriceTooltip" xml:space="preserve"><value>Cena w walucie sklepu</value></data>
   <data name="Offer_OpenTooltip" xml:space="preserve"><value>Otwórz w przeglądarce</value></data>

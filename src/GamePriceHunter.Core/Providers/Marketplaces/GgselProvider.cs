@@ -55,6 +55,9 @@ public sealed class GgselProvider(HttpClient http) : StoreProvider(http)
             {
                 ImageUrl = item.Str("image"),
                 Seller = item.Str("seller_name"),
+                // The seller's stars (0 until the first review) and this item's own sales.
+                SellerRating = item.Dec("rating") is { } rating && rating > 0 ? new SellerRating(rating, 5) : null,
+                Sales = item.Long("cnt_sell") is { } sold && sold > 0 ? new SalesCount(sold, AtLeast: false) : null,
                 Type = contentType switch
                 {
                     { } type when OtherContentTypes.Contains(type) => OfferType.Other,

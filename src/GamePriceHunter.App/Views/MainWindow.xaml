@@ -172,10 +172,20 @@
                                     <TextBlock Style="{StaticResource InheritedTagText}" Text="{Binding RegionText}" />
                                 </StackPanel>
                             </Border>
-                            <TextBlock Style="{StaticResource Text.Secondary}" VerticalAlignment="Center" FontSize="11"
+                            <TextBlock Style="{StaticResource Text.Secondary}" VerticalAlignment="Center" FontSize="11" Margin="0,0,10,0"
                                        Visibility="{Binding Seller, Converter={StaticResource NotEmptyToVisibility}}">
                                 <Run Text="{loc:Loc Offer_Seller}" /> <Run Text="{Binding Seller, Mode=OneWay}" />
                             </TextBlock>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,10,0" VerticalAlignment="Center" Background="Transparent"
+                                        ToolTip="{Binding SellerRatingTooltip}"
+                                        Visibility="{Binding SellerRatingText, Converter={StaticResource NotEmptyToVisibility}}">
+                                <TextBlock Style="{StaticResource Text.Icon}" Text="&#xE735;" FontSize="10" Margin="0,0,3,0"
+                                           Foreground="{DynamicResource Brush.Warning}" />
+                                <TextBlock Style="{StaticResource Text.Secondary}" FontSize="11" Text="{Binding SellerRatingText}" />
+                            </StackPanel>
+                            <TextBlock Style="{StaticResource Text.Secondary}" VerticalAlignment="Center" FontSize="11" Text="{Binding SalesText}"
+                                       ToolTip="{loc:Loc Offer_SalesTooltip}"
+                                       Visibility="{Binding SalesText, Converter={StaticResource NotEmptyToVisibility}}" />
                         </WrapPanel>
                     </StackPanel>
 

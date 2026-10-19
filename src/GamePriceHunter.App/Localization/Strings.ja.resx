@@ -71,6 +71,10 @@
   <data name="Menu_CopyTitle" xml:space="preserve"><value>タイトルをコピー</value></data>
   <data name="Menu_SearchTitle" xml:space="preserve"><value>このタイトルで検索</value></data>
   <data name="Offer_Seller" xml:space="preserve"><value>販売者：</value></data>
+  <data name="Offer_SellerRatingOutOf" xml:space="preserve"><value>販売者の評価：{0}（{1} 点満点）</value></data>
+  <data name="Offer_SellerRatingPoints" xml:space="preserve"><value>{0} での販売者の評価（ポイント制、上限なし）</value></data>
+  <data name="Offer_Sales" xml:space="preserve"><value>販売数 {0}</value></data>
+  <data name="Offer_SalesTooltip" xml:space="preserve"><value>この商品が売れた回数</value></data>
   <data name="Offer_BestPrice" xml:space="preserve"><value>最安値</value></data>
   <data name="Offer_OriginalPriceTooltip" xml:space="preserve"><value>ストアの通貨での価格</value></data>
   <data name="Offer_OpenTooltip" xml:space="preserve"><value>ブラウザーで開く</value></data>

@@ -36,6 +36,12 @@ public sealed record Offer
     /// <summary>Marketplace seller name.</summary>
     public string? Seller { get; init; }
 
+    /// <summary>The marketplace's rating of the seller.</summary>
+    public SellerRating? SellerRating { get; init; }
+
+    /// <summary>Times the item sold, when the store shows it.</summary>
+    public SalesCount? Sales { get; init; }
+
     /// <summary>Query relevance in 0..1, filled by the search service.</summary>
     public double Relevance { get; init; }
 

@@ -72,6 +72,23 @@ public sealed class OfferViewModel : ObservableObject
 
     public string? Seller => Offer.Seller;
 
+    /// <summary>The seller's rating as the marketplace writes it: stars with one decimal ("4.9"), Plati's points rounded ("4 344").</summary>
+    public string? SellerRatingText => Offer.SellerRating is { } rating
+        ? rating.OutOf is null
+            ? Math.Round(rating.Value, MidpointRounding.AwayFromZero).ToString("N0", Loc.Instance.FormatCulture)
+            : rating.Value.ToString("0.0", Loc.Instance.FormatCulture)
+        : null;
+
+    public string? SellerRatingTooltip => Offer.SellerRating is { } rating
+        ? rating.OutOf is { } outOf
+            ? Loc.F("Offer_SellerRatingOutOf", SellerRatingText, outOf.ToString("0.#", Loc.Instance.FormatCulture))
+            : Loc.F("Offer_SellerRatingPoints", Offer.StoreName)
+        : null;
+
+    public string? SalesText => Offer.Sales is { } sales
+        ? Loc.F("Offer_Sales", sales.Count.ToString("N0", Loc.Instance.FormatCulture) + (sales.AtLeast ? "+" : ""))
+        : null;
+
     public int? DiscountPercent => Offer.DiscountPercent;
 
     public string? DiscountText => Offer.DiscountPercent is { } percent ? MoneyFormatter.Discount(percent, Loc.Instance.FormatCulture) : null;
@@ -135,6 +152,9 @@ public sealed class OfferViewModel : ObservableObject
         OnPropertyChanged(nameof(TypeText));
         OnPropertyChanged(nameof(RegionText));
         OnPropertyChanged(nameof(RegionTooltip));
+        OnPropertyChanged(nameof(SellerRatingText));
+        OnPropertyChanged(nameof(SellerRatingTooltip));
+        OnPropertyChanged(nameof(SalesText));
         OnPropertyChanged(nameof(DiscountText));
     }
 }
