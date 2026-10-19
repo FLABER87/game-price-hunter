@@ -210,4 +210,6 @@
   <data name="Welcome_AllGiveaways" xml:space="preserve"><value>All giveaways</value></data>
   <data name="Note_GamerPower" xml:space="preserve"><value>IndieGala, itch.io, Alienware Arena and other sites. Availability in your region isn’t checked.</value></data>
   <data name="Kind_GiveawayAggregator" xml:space="preserve"><value>Giveaway aggregator</value><comment>Under GamerPower and CheapShark in the giveaway sources list.</comment></data>
+  <data name="Giveaway_FreeOn" xml:space="preserve"><value>Free on {0}</value><comment>Above the search results when the searched game is given away; {0} is a store name: "Steam", "Epic Games Store", "itch.io".</comment></data>
+  <data name="Giveaway_SoonFreeOn" xml:space="preserve"><value>Free on {0} soon</value></data>
 </root>

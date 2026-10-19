@@ -52,6 +52,16 @@ public class GiveawayTests
     }
 
     [Fact]
+    public void Epic_add_ons_link_to_their_own_page_not_the_base_game()
+    {
+        var elements = Json("epic_freegames.json").Arr("data.Catalog.searchStore.elements").ToList();
+        var addOn = elements.Single(e => e.Str("title") == "Lost Castle: The Old Ones Awaken");
+        Assert.Equal("https://store.epicgames.com/p/lost-castle-lost-castle-the-old-ones-awaken-db1545", EpicGiveawaySource.PageUrl(addOn));
+        var game = elements.Single(e => e.Str("title") == "Bad Cheese");
+        Assert.Equal("https://store.epicgames.com/p/bad-cheese-4256d9", EpicGiveawaySource.PageUrl(game));
+    }
+
+    [Fact]
     public void Steam_search_rows_give_the_app_ids()
     {
         var html = Json("steam_free_search.json").Str("results_html")!;
@@ -188,6 +198,52 @@ public class GiveawayTests
         Assert.Equal(
             new[] { "Home - A Unique Horror Adventure", "Sker Ritual" },
             GiveawayService.Upcoming(merged, CaptureTime).Select(g => g.Title).Order());
+    }
+
+    [Theory]
+    [InlineData("agent a", "Agent A: A puzzle in disguise")]
+    [InlineData("Bad Cheese", "Bad Cheese")]
+    [InlineData("sker ritual", "Sker Ritual")]
+    [InlineData("witcher 3", "The Witcher 3: Wild Hunt Remastered - Scarlet Crest Armor")]
+    public void Finds_the_giveaway_of_the_searched_game(string query, string title)
+    {
+        var merged = GiveawayService.Merge([Epic(), CheapShark(), GamerPower()]);
+        Assert.Equal(title, GiveawayService.Matching(merged, query, CaptureTime).First().Title);
+    }
+
+    [Theory]
+    [InlineData("puzzle")]
+    [InlineData("cheese bad edition")]
+    [InlineData("hollow knight")]
+    public void Titles_that_only_contain_the_query_are_not_the_searched_game(string query)
+    {
+        var merged = GiveawayService.Merge([Epic(), CheapShark(), GamerPower()]);
+        Assert.Empty(GiveawayService.Matching(merged, query, CaptureTime));
+    }
+
+    [Fact]
+    public void Exact_matching_wants_the_whole_title()
+    {
+        var merged = GiveawayService.Merge([Epic(), CheapShark(), GamerPower()]);
+        Assert.Empty(GiveawayService.Matching(merged, "agent a", CaptureTime, MatchMode.Exact));
+        Assert.Single(GiveawayService.Matching(merged, "Agent A: A puzzle in disguise", CaptureTime, MatchMode.Exact));
+    }
+
+    [Fact]
+    public void Running_giveaways_come_before_announced_ones()
+    {
+        Giveaway Make(string url, DateTimeOffset starts) => new()
+        {
+            SourceId = "epic", Title = "Some Game", StoreName = "Epic Games Store", Url = url, Platform = Platform.Epic,
+            StartsAt = starts, EndsAt = starts.AddDays(7),
+        };
+        var next = Make("https://example.com/next", CaptureTime.AddDays(3));
+        var now = Make("https://example.com/now", CaptureTime.AddDays(-1));
+        Assert.Equal(new[] { now.Url, next.Url }, GiveawayService.Matching([next, now], "some game", CaptureTime).Select(g => g.Url));
+
+        // Even when the announced one matches the query better.
+        var deluxe = now with { Title = "Some Game: Deluxe Edition" };
+        Assert.Equal(new[] { deluxe.Url, next.Url }, GiveawayService.Matching([next, deluxe], "some game", CaptureTime).Select(g => g.Url));
     }
 
     [Fact]

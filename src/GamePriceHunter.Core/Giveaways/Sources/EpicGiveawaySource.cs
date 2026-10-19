@@ -68,10 +68,14 @@ public sealed class EpicGiveawaySource(HttpClient http) : GiveawaySource(http)
         return giveaways;
     }
 
-    private static string PageUrl(JsonElement element)
+    /// <summary>
+    /// The offer's own page. An add-on has one under its offer mapping, while its catalog mapping points at
+    /// the base game, so the offer mappings come first.
+    /// </summary>
+    internal static string PageUrl(JsonElement element)
     {
-        var slug = element.Arr("catalogNs.mappings").Concat(element.Arr("offerMappings"))
-                       .Where(m => m.Str("pageType") == "productHome")
+        var slug = element.Arr("offerMappings").Where(m => m.Str("pageType") is "productHome" or "offer")
+                       .Concat(element.Arr("catalogNs.mappings").Where(m => m.Str("pageType") == "productHome"))
                        .Select(m => m.Str("pageSlug"))
                        .FirstOrDefault(s => !string.IsNullOrEmpty(s))
                    ?? element.Str("productSlug")?.Replace("/home", "", StringComparison.Ordinal);

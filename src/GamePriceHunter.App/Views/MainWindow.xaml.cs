@@ -30,6 +30,7 @@ public partial class MainWindow : Window
 
         viewModel.SettingsRequested += (_, _) => OpenSettings();
         Loaded += (_, _) => SearchBox.Focus();
+        ResultsList.AddHandler(ScrollViewer.ScrollChangedEvent, new ScrollChangedEventHandler(OnResultsScrollChanged));
         PreviewKeyDown += OnWindowPreviewKeyDown;
     }
 
@@ -204,6 +205,22 @@ public partial class MainWindow : Window
             _viewModel.CopyLinkCommand.Execute(selected);
             e.Handled = true;
         }
+    }
+
+    /// <summary>
+    /// Keeps the pinned giveaway row as wide as the result cards: they end at the list's padding, and also leave
+    /// room for the scroll bar while there is one. Raised on every change of the list's extent or viewport too.
+    /// </summary>
+    private void OnResultsScrollChanged(object sender, ScrollChangedEventArgs e)
+    {
+        if (e.OriginalSource is not ScrollViewer viewer)
+            return;
+        var scrollBar = viewer.ComputedVerticalScrollBarVisibility == Visibility.Visible
+            ? (viewer.Template.FindName("PART_VerticalScrollBar", viewer) as FrameworkElement)?.ActualWidth ?? 0
+            : 0;
+        var right = ResultsList.Padding.Right + scrollBar;
+        if (FreeMatches.Margin.Right != right)
+            FreeMatches.Margin = new Thickness(0, 0, right, 0);
     }
 
     private static OfferViewModel? OfferFrom(object sender) => (sender as FrameworkElement)?.DataContext as OfferViewModel;

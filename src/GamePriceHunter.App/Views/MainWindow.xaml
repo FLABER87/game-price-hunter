@@ -449,6 +449,76 @@
             </DataTemplate.Triggers>
         </DataTemplate>
 
+        <!-- The searched game is free right now, or soon: pinned above the results -->
+        <DataTemplate x:Key="FreeMatchTemplate" DataType="{x:Type vm:GiveawayViewModel}">
+            <Border x:Name="Row" Background="{DynamicResource Brush.SuccessSoft}" BorderBrush="{DynamicResource Brush.Success}" BorderThickness="1"
+                    CornerRadius="{StaticResource Radius.Card}" Padding="10,8" Margin="0,0,0,8" Cursor="Hand"
+                    ToolTip="{Binding Tooltip}" ToolTipService.InitialShowDelay="900">
+                <Border.InputBindings>
+                    <MouseBinding Gesture="LeftDoubleClick" CommandParameter="{Binding}"
+                                  Command="{Binding DataContext.OpenCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" />
+                </Border.InputBindings>
+                <Border.ContextMenu>
+                    <ContextMenu DataContext="{Binding PlacementTarget.DataContext, RelativeSource={RelativeSource Self}}">
+                        <MenuItem Header="{loc:Loc Menu_Open}" Click="OnOpenGiveawayClick">
+                            <MenuItem.Icon>
+                                <TextBlock Style="{StaticResource Text.Icon}" Text="&#xE8A7;" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="{loc:Loc Menu_CopyLink}" Click="OnCopyGiveawayLinkClick">
+                            <MenuItem.Icon>
+                                <TextBlock Style="{StaticResource Text.Icon}" Text="&#xE71B;" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="{loc:Loc Menu_CopyTitle}" Click="OnCopyGiveawayTitleClick">
+                            <MenuItem.Icon>
+                                <TextBlock Style="{StaticResource Text.Icon}" Text="&#xE8C8;" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </ContextMenu>
+                </Border.ContextMenu>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid Width="96" Height="54" Margin="0,0,14,0" VerticalAlignment="Center">
+                        <Border CornerRadius="5" Background="{DynamicResource Brush.Placeholder}">
+                            <TextBlock Style="{StaticResource Text.Icon}" Text="&#xF133;" FontSize="18" Foreground="{DynamicResource Brush.TextTertiary}" />
+                        </Border>
+                        <Image infra:ImageLoader.DecodeWidth="200" infra:ImageLoader.Url="{Binding ImageUrl}" Stretch="UniformToFill"
+                               RenderOptions.BitmapScalingMode="HighQuality" infra:RoundedClip.Radius="5" />
+                    </Grid>
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Style="{StaticResource Text.Icon}" Text="&#xF133;" FontSize="13" Margin="0,0,7,0" Foreground="{DynamicResource Brush.Success}" />
+                            <TextBlock Text="{Binding HeadlineText}" FontSize="13" FontWeight="SemiBold" Foreground="{DynamicResource Brush.Success}"
+                                       TextTrimming="CharacterEllipsis" />
+                        </StackPanel>
+                        <TextBlock Text="{Binding Title}" FontSize="14" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" Margin="0,3,0,0" />
+                        <StackPanel Orientation="Horizontal" Margin="0,3,0,0">
+                            <TextBlock x:Name="Time" Text="{Binding TimeText}" FontSize="12" Foreground="{DynamicResource Brush.TextSecondary}" />
+                            <TextBlock Text="{Binding WorthText}" FontSize="12" Foreground="{DynamicResource Brush.TextTertiary}" TextDecorations="Strikethrough"
+                                       Margin="10,0,0,0" Visibility="{Binding WorthText, Converter={StaticResource NotEmptyToVisibility}}" />
+                        </StackPanel>
+                    </StackPanel>
+                    <Button Grid.Column="2" Style="{StaticResource IconButton}" Content="&#xE8A7;" VerticalAlignment="Center" Margin="10,0,0,0"
+                            ToolTip="{loc:Loc Giveaway_OpenTooltip}" CommandParameter="{Binding}"
+                            Command="{Binding DataContext.OpenCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" />
+                </Grid>
+            </Border>
+            <DataTemplate.Triggers>
+                <Trigger SourceName="Row" Property="IsMouseOver" Value="True">
+                    <Setter TargetName="Row" Property="BorderThickness" Value="2" />
+                    <Setter TargetName="Row" Property="Padding" Value="9,7" />
+                </Trigger>
+                <DataTrigger Binding="{Binding IsEndingSoon}" Value="True">
+                    <Setter TargetName="Time" Property="Foreground" Value="{DynamicResource Brush.Warning}" />
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+
         <!-- Giveaway source row in the sidebar -->
         <DataTemplate x:Key="GiveawaySourceTemplate" DataType="{x:Type vm:GiveawaySourceViewModel}">
             <Border x:Name="Row" Background="Transparent" CornerRadius="6" Padding="6,5" Margin="0,1" ToolTip="{Binding StatusTooltip}">
@@ -743,7 +813,12 @@
         </Grid>
 
             <!-- Results -->
-            <Grid Grid.Row="1">
+            <DockPanel Grid.Row="1">
+            <!-- The right margin follows the list's padding and scroll bar (OnResultsScrollChanged), so the row lines up with the cards. -->
+            <ItemsControl x:Name="FreeMatches" DockPanel.Dock="Top" Margin="0,0,12,0" DataContext="{Binding Giveaways}" ItemsSource="{Binding Matches}"
+                          ItemTemplate="{StaticResource FreeMatchTemplate}" Focusable="False"
+                          Visibility="{Binding HasMatches, Converter={StaticResource BoolToVisibility}}" />
+            <Grid>
                 <ListBox x:Name="ResultsList" ItemsSource="{Binding Offers}" ItemTemplate="{StaticResource OfferTemplate}"
                          ItemContainerStyle="{StaticResource PlainListItem}" Padding="0,0,12,8"
                          VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling"
@@ -815,6 +890,7 @@
                             Visibility="{Binding HasHiddenOffers, Converter={StaticResource BoolToVisibility}}" />
                 </StackPanel>
             </Grid>
+            </DockPanel>
             </Grid>
 
             <!-- ===== Giveaways page ===== -->

@@ -200,4 +200,6 @@
   <data name="Welcome_AllGiveaways" xml:space="preserve"><value>모든 무료 배포</value></data>
   <data name="Note_GamerPower" xml:space="preserve"><value>IndieGala, itch.io, Alienware Arena 등의 사이트를 포함합니다. 지역 내 이용 가능 여부는 확인하지 않습니다.</value></data>
   <data name="Kind_GiveawayAggregator" xml:space="preserve"><value>무료 배포 모음 사이트</value></data>
+  <data name="Giveaway_FreeOn" xml:space="preserve"><value>{0}에서 무료</value></data>
+  <data name="Giveaway_SoonFreeOn" xml:space="preserve"><value>{0}에서 곧 무료</value></data>
 </root>

@@ -230,4 +230,6 @@
   <data name="Welcome_AllGiveaways" xml:space="preserve"><value>Усі роздачі</value></data>
   <data name="Note_GamerPower" xml:space="preserve"><value>IndieGala, itch.io, Alienware Arena та інші сайти. Доступність у вашому регіоні не перевіряється.</value></data>
   <data name="Kind_GiveawayAggregator" xml:space="preserve"><value>Агрегатор роздач</value></data>
+  <data name="Giveaway_FreeOn" xml:space="preserve"><value>Безкоштовно в {0}</value></data>
+  <data name="Giveaway_SoonFreeOn" xml:space="preserve"><value>Незабаром безкоштовно в {0}</value></data>
 </root>

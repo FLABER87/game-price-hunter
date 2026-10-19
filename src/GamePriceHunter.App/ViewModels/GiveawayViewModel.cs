@@ -15,6 +15,7 @@ public sealed class GiveawayViewModel : ObservableObject
     private string? _worthText;
     private string _timeText = string.Empty;
     private bool _isEndingSoon;
+    private bool _isUpcoming;
 
     public GiveawayViewModel(Giveaway giveaway, DateTimeOffset now, string sourceNames)
     {
@@ -70,6 +71,9 @@ public sealed class GiveawayViewModel : ObservableObject
         private set => Set(ref _timeText, value);
     }
 
+    /// <summary>"Free on Steam", or "Free on Steam soon" for an announced giveaway.</summary>
+    public string HeadlineText => Loc.F(_isUpcoming ? "Giveaway_SoonFreeOn" : "Giveaway_FreeOn", Giveaway.StoreName);
+
     /// <summary>Less than a day left.</summary>
     public bool IsEndingSoon
     {
@@ -99,6 +103,13 @@ public sealed class GiveawayViewModel : ObservableObject
     {
         var culture = Loc.Instance.FormatCulture;
         string Day(DateTime date) => date.ToString(culture.DateTimeFormat.MonthDayPattern, culture);
+
+        var upcoming = Giveaway.StartsAt > now;
+        if (upcoming != _isUpcoming)
+        {
+            _isUpcoming = upcoming;
+            OnPropertyChanged(nameof(HeadlineText));
+        }
 
         if (Giveaway.StartsAt is { } starts && starts > now)
         {
@@ -130,6 +141,7 @@ public sealed class GiveawayViewModel : ObservableObject
         OnPropertyChanged(nameof(KindText));
         OnPropertyChanged(nameof(PlatformText));
         OnPropertyChanged(nameof(Tooltip));
+        OnPropertyChanged(nameof(HeadlineText));
         RefreshTimes(now);
     }
 
