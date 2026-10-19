@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Threading;
 using GamePriceHunter.App.Infrastructure;
 using GamePriceHunter.App.Localization;
 using GamePriceHunter.App.Services;
@@ -14,6 +15,7 @@ public partial class MainWindow : Window
 {
     private readonly MainViewModel _viewModel;
     private readonly AppServices _services;
+    private bool _searchBoxPressed;
 
     public MainWindow(MainViewModel viewModel, AppServices services)
     {
@@ -88,6 +90,7 @@ public partial class MainWindow : Window
         {
             SearchBox.Focus();
             SearchBox.SelectAll();
+            _viewModel.ShowHistory();
             e.Handled = true;
         }
         else if (e.Key == Key.F5 && _viewModel.SearchCommand.CanExecute(null))
@@ -114,7 +117,22 @@ public partial class MainWindow : Window
 
     private void OnCloseClick(object sender, RoutedEventArgs e) => SystemCommands.CloseWindow(this);
 
-    private void OnSearchBoxFocused(object sender, KeyboardFocusChangedEventArgs e) => _viewModel.ShowHistory();
+    // The history opens on a click into the box or a key, never because the box got focus: the box is focused
+    // on start and again whenever the window is activated. It opens once the click is over, as a StaysOpen=False
+    // popup opened during the press is closed again by the TextBox capturing the mouse and by the release.
+    private void OnSearchBoxMouseDown(object sender, MouseButtonEventArgs e) => _searchBoxPressed = true;
+
+    private void OnSearchBoxMouseUp(object sender, MouseButtonEventArgs e)
+    {
+        if (!_searchBoxPressed)
+            return;
+        _searchBoxPressed = false;
+        Dispatcher.BeginInvoke(DispatcherPriority.Input, () =>
+        {
+            if (IsActive && SearchBox.IsKeyboardFocused)
+                _viewModel.ShowHistory();
+        });
+    }
 
     private void OnSearchBoxPreviewKeyDown(object sender, KeyEventArgs e)
     {
@@ -127,7 +145,9 @@ public partial class MainWindow : Window
                 e.Handled = true;
                 break;
             case Key.Down:
-                if (ResultsList.Items.Count > 0)
+                if (_viewModel.ShowHistory())
+                    e.Handled = true;
+                else if (ResultsList.Items.Count > 0)
                 {
                     ResultsList.SelectedIndex = Math.Max(0, ResultsList.SelectedIndex);
                     (ResultsList.ItemContainerGenerator.ContainerFromIndex(ResultsList.SelectedIndex) as UIElement)?.Focus();

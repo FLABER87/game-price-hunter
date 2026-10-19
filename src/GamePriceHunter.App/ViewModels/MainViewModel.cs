@@ -281,15 +281,19 @@ public sealed class MainViewModel : ObservableObject
         await Update.CheckOnStartupAsync();
     }
 
-    /// <summary>Shows recent searches when the search box is focused and empty.</summary>
-    public void ShowHistory()
+    /// <summary>Shows recent searches if the search box is empty; false if there is nothing to show.</summary>
+    public bool ShowHistory()
     {
         if (Query.Trim().Length > 0 || _services.Settings.SearchHistory.Count == 0)
-            return;
+            return false;
+        // A suggestion lookup still pending from text just deleted would close the history again.
+        _suggestTimer.Stop();
+        _suggestCts?.Cancel();
         Suggestions.Clear();
         foreach (var item in _services.Settings.SearchHistory.Take(8))
             Suggestions.Add(new SuggestionViewModel(item, null, null, isHistory: true));
         IsSuggestionsOpen = true;
+        return true;
     }
 
     public void CloseSuggestions()
