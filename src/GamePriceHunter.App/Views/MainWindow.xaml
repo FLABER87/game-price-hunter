@@ -340,7 +340,8 @@
                                          Text="{Binding Query, UpdateSourceTrigger=PropertyChanged}"
                                          infra:TextBoxHelper.Placeholder="{loc:Loc Search_Placeholder}"
                                          AutomationProperties.Name="{loc:Loc Search_Placeholder}"
-                                         PreviewKeyDown="OnSearchBoxPreviewKeyDown" GotKeyboardFocus="OnSearchBoxFocused" />
+                                         PreviewKeyDown="OnSearchBoxPreviewKeyDown"
+                                         PreviewMouseLeftButtonDown="OnSearchBoxMouseDown" PreviewMouseLeftButtonUp="OnSearchBoxMouseUp" />
                                 <Button Grid.Column="2" Style="{StaticResource IconButton}" Content="&#xE711;" FontSize="11" Width="30" Height="30"
                                         ToolTip="{loc:Loc Search_Clear}" Command="{Binding ClearQueryCommand}"
                                         Visibility="{Binding Query, Converter={StaticResource NotEmptyToVisibility}}" />
