@@ -35,6 +35,7 @@ public sealed class MainViewModel : ObservableObject
     private bool _isSearching;
     private bool _hasSearched;
     private bool _isSuggestionsOpen;
+    private bool _isGiveawaysMode;
     private int _completedProviders;
     private int _totalProviders;
     private TimeSpan _lastElapsed;
@@ -44,6 +45,7 @@ public sealed class MainViewModel : ObservableObject
     {
         _services = services;
         Update = new UpdateViewModel(services);
+        Giveaways = new GiveawaysViewModel(services);
         Providers = new ObservableCollection<ProviderViewModel>(
             services.Search.Providers.Select(p => new ProviderViewModel(p.Info, services.Settings.IsProviderEnabled(p.Info), OnProviderToggled)));
         SortOptions = new ObservableCollection<SortOption>(BuildSortOptions());
@@ -66,13 +68,18 @@ public sealed class MainViewModel : ObservableObject
         OpenOfferCommand = new RelayCommand(p => Shell.OpenUrl((p as OfferViewModel)?.Url));
         CopyLinkCommand = new RelayCommand(p => Shell.CopyText((p as OfferViewModel)?.Url));
         CopyTitleCommand = new RelayCommand(p => Shell.CopyText((p as OfferViewModel)?.Title));
-        SearchTitleCommand = new RelayCommand(p => { if (p is OfferViewModel o) Fire(SearchForAsync(TitleMatcher.CleanTitle(o.Title))); });
+        SearchTitleCommand = new RelayCommand(p =>
+        {
+            if (((p as OfferViewModel)?.Title ?? (p as GiveawayViewModel)?.Title) is { } title)
+                Fire(SearchForAsync(TitleMatcher.CleanTitle(title)));
+        });
         OpenStoreCommand = new RelayCommand(p => Shell.OpenUrl((p as ProviderViewModel)?.Info.HomeUrl));
         RetryProviderCommand = new AsyncRelayCommand(p => p is ProviderViewModel provider ? RetryProviderAsync(provider) : Task.CompletedTask);
         EnableAllProvidersCommand = new RelayCommand(() => SetAllProviders(true));
         DisableAllProvidersCommand = new RelayCommand(() => SetAllProviders(false));
         OpenSettingsCommand = new RelayCommand(() => SettingsRequested?.Invoke(this, EventArgs.Empty));
         ResetFiltersCommand = new RelayCommand(ResetFilters);
+        ShowGiveawaysCommand = new RelayCommand(() => IsGiveawaysMode = true);
 
         services.Currency.RatesChanged += (_, _) => Application.Current?.Dispatcher.BeginInvoke(OnRatesChanged);
         Loc.Instance.LanguageChanged += (_, _) => OnLanguageChanged();
@@ -81,6 +88,8 @@ public sealed class MainViewModel : ObservableObject
     public event EventHandler? SettingsRequested;
 
     public UpdateViewModel Update { get; }
+
+    public GiveawaysViewModel Giveaways { get; }
 
     public RangeObservableCollection<OfferViewModel> Offers { get; } = [];
 
@@ -104,6 +113,30 @@ public sealed class MainViewModel : ObservableObject
     public ICommand DisableAllProvidersCommand { get; }
     public ICommand OpenSettingsCommand { get; }
     public ICommand ResetFiltersCommand { get; }
+    public ICommand ShowGiveawaysCommand { get; }
+
+    /// <summary>The page shows giveaways instead of search results.</summary>
+    public bool IsGiveawaysMode
+    {
+        get => _isGiveawaysMode;
+        set
+        {
+            if (!Set(ref _isGiveawaysMode, value))
+                return;
+            OnPropertyChanged(nameof(IsPricesMode));
+            if (value)
+            {
+                CloseSuggestions();
+                Giveaways.EnsureFresh();
+            }
+        }
+    }
+
+    public bool IsPricesMode
+    {
+        get => !_isGiveawaysMode;
+        set => IsGiveawaysMode = !value;
+    }
 
     public string Query
     {
@@ -278,7 +311,24 @@ public sealed class MainViewModel : ObservableObject
         OnPropertyChanged(nameof(AreRatesStale));
         OnPropertyChanged(nameof(SummaryText));
 
+        var giveaways = StartGiveawaysAsync();
         await Update.CheckOnStartupAsync();
+        await giveaways;
+    }
+
+    private async Task StartGiveawaysAsync()
+    {
+        try
+        {
+            await Giveaways.StartAsync();
+        }
+        catch (OperationCanceledException)
+        {
+        }
+        catch (Exception ex)
+        {
+            _services.Logger.Error("Loading giveaways failed.", ex);
+        }
     }
 
     /// <summary>Shows recent searches if the search box is empty; false if there is nothing to show.</summary>
@@ -314,7 +364,10 @@ public sealed class MainViewModel : ObservableObject
         OnPropertyChanged(nameof(RegionText));
         OnPropertyChanged(nameof(RegionTooltip));
         RecalculatePrices();
+        Giveaways.UpdatePrices();
 
+        if (regionChanged)
+            Giveaways.OnRegionChanged();
         if (regionChanged && _lastQuery is not null)
             Fire(SearchForAsync(_lastQuery));
     }
@@ -349,6 +402,7 @@ public sealed class MainViewModel : ObservableObject
             return;
 
         CloseSuggestions();
+        IsGiveawaysMode = false;
         _searchCts?.Cancel();
         var cts = _searchCts = new CancellationTokenSource();
 
@@ -630,6 +684,7 @@ public sealed class MainViewModel : ObservableObject
     private void OnRatesChanged()
     {
         RecalculatePrices();
+        Giveaways.UpdatePrices();
         OnPropertyChanged(nameof(RatesText));
         OnPropertyChanged(nameof(AreRatesStale));
     }
@@ -654,6 +709,7 @@ public sealed class MainViewModel : ObservableObject
         OnPropertyChanged(nameof(RegionTooltip));
         OnPropertyChanged(nameof(RatesText));
         OnPropertyChanged(nameof(WindowTitle));
+        Giveaways.RefreshTexts();
         RaiseStateProperties();
     }
 

@@ -165,4 +165,39 @@
   <data name="Window_Maximize" xml:space="preserve"><value>最大化</value></data>
   <data name="Window_Restore" xml:space="preserve"><value>元に戻す (縮小)</value></data>
   <data name="Window_Close" xml:space="preserve"><value>閉じる</value></data>
+  <data name="Mode_Prices" xml:space="preserve"><value>価格</value></data>
+  <data name="Mode_Giveaways" xml:space="preserve"><value>無料配布</value></data>
+  <data name="Giveaways_Sources" xml:space="preserve"><value>情報源</value></data>
+  <data name="Giveaways_Attribution" xml:space="preserve"><value>一部のデータは GamerPower.com 提供</value></data>
+  <data name="Giveaways_Summary" xml:space="preserve"><value>現在無料：{0}</value></data>
+  <data name="Giveaways_Updated" xml:space="preserve"><value>{0}に更新</value></data>
+  <data name="Giveaways_Refresh" xml:space="preserve"><value>更新</value></data>
+  <data name="Giveaways_Loading" xml:space="preserve"><value>無料配布を探しています…</value></data>
+  <data name="Giveaways_Upcoming" xml:space="preserve"><value>近日配布</value></data>
+  <data name="Giveaways_EmptyTitle" xml:space="preserve"><value>現在、無料配布はありません</value></data>
+  <data name="Giveaways_EmptyText" xml:space="preserve"><value>ストアは毎週ゲームを無料配布しています。後でもう一度確認してください。</value></data>
+  <data name="Giveaways_HiddenText" xml:space="preserve"><value>{0} 件の無料配布がフィルターで非表示になっています。</value></data>
+  <data name="Giveaways_FailedTitle" xml:space="preserve"><value>無料配布を読み込めませんでした</value></data>
+  <data name="Giveaways_FailedText" xml:space="preserve"><value>インターネット接続を確認して、もう一度お試しください。</value></data>
+  <data name="Giveaways_Retry" xml:space="preserve"><value>再試行</value></data>
+  <data name="Giveaways_SourceFound" xml:space="preserve"><value>{0} 件（{1:0.0} 秒）</value></data>
+  <data name="Giveaway_Free" xml:space="preserve"><value>無料</value></data>
+  <data name="Giveaway_EndsIn" xml:space="preserve"><value>残り {0}</value></data>
+  <data name="Giveaway_Until" xml:space="preserve"><value>{0}まで</value></data>
+  <data name="Giveaway_Starts" xml:space="preserve"><value>{0}から</value></data>
+  <data name="Giveaway_NoEnd" xml:space="preserve"><value>期限なし</value></data>
+  <data name="Giveaway_Beta" xml:space="preserve"><value>ベータ</value></data>
+  <data name="Giveaway_FoundBy" xml:space="preserve"><value>情報源：{0}</value></data>
+  <data name="Giveaway_RegionUnchecked" xml:space="preserve"><value>お住まいの地域で利用できるかは確認していません</value></data>
+  <data name="Giveaway_OpenTooltip" xml:space="preserve"><value>配布ページを開く</value></data>
+  <data name="Time_MinutesAgo" xml:space="preserve"><value>{0} 分前</value></data>
+  <data name="Time_DaysHours" xml:space="preserve"><value>{0} 日 {1} 時間</value></data>
+  <data name="Time_HoursMinutes" xml:space="preserve"><value>{0} 時間 {1} 分</value></data>
+  <data name="Time_Minutes" xml:space="preserve"><value>{0} 分</value></data>
+  <data name="Filter_DlcAndItems" xml:space="preserve"><value>DLC とアイテム</value></data>
+  <data name="Filter_Betas" xml:space="preserve"><value>ベータとプレイテスト</value></data>
+  <data name="Welcome_FreeNow" xml:space="preserve"><value>現在無料</value></data>
+  <data name="Welcome_AllGiveaways" xml:space="preserve"><value>すべての無料配布</value></data>
+  <data name="Note_GamerPower" xml:space="preserve"><value>IndieGala、itch.io、Alienware Arena などのサイトに対応しています。お住まいの地域で利用できるかは確認していません。</value></data>
+  <data name="Kind_GiveawayAggregator" xml:space="preserve"><value>無料配布まとめサイト</value></data>
 </root>

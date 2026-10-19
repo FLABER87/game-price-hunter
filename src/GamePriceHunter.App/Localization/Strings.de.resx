@@ -173,4 +173,41 @@
   <data name="Window_Maximize" xml:space="preserve"><value>Maximieren</value></data>
   <data name="Window_Restore" xml:space="preserve"><value>Verkleinern</value></data>
   <data name="Window_Close" xml:space="preserve"><value>Schließen</value></data>
+  <data name="Mode_Prices" xml:space="preserve"><value>Preise</value></data>
+  <data name="Mode_Giveaways" xml:space="preserve"><value>Gratis</value></data>
+  <data name="Giveaways_Sources" xml:space="preserve"><value>QUELLEN</value></data>
+  <data name="Giveaways_Attribution" xml:space="preserve"><value>Ein Teil der Daten stammt von GamerPower.com</value></data>
+  <data name="Giveaways_Summary" xml:space="preserve"><value>Jetzt kostenlos: {0}</value></data>
+  <data name="Giveaways_Updated" xml:space="preserve"><value>aktualisiert {0}</value></data>
+  <data name="Giveaways_Refresh" xml:space="preserve"><value>Aktualisieren</value></data>
+  <data name="Giveaways_Loading" xml:space="preserve"><value>Gratis-Aktionen werden gesucht…</value></data>
+  <data name="Giveaways_Upcoming" xml:space="preserve"><value>Demnächst</value></data>
+  <data name="Giveaways_EmptyTitle" xml:space="preserve"><value>Gerade wird nichts verschenkt</value></data>
+  <data name="Giveaways_EmptyText" xml:space="preserve"><value>Shops verschenken jede Woche Spiele. Schauen Sie später wieder vorbei.</value></data>
+  <data name="Giveaways_HiddenText" xml:space="preserve"><value>{0} Gratis-Aktionen sind durch die Filter ausgeblendet.</value></data>
+  <data name="Giveaways_HiddenText_one" xml:space="preserve"><value>{0} Gratis-Aktion ist durch die Filter ausgeblendet.</value></data>
+  <data name="Giveaways_FailedTitle" xml:space="preserve"><value>Gratis-Aktionen konnten nicht geladen werden</value></data>
+  <data name="Giveaways_FailedText" xml:space="preserve"><value>Prüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.</value></data>
+  <data name="Giveaways_Retry" xml:space="preserve"><value>Erneut versuchen</value></data>
+  <data name="Giveaways_SourceFound" xml:space="preserve"><value>{0} Gratis-Aktionen in {1:0.0} s</value></data>
+  <data name="Giveaways_SourceFound_one" xml:space="preserve"><value>{0} Gratis-Aktion in {1:0.0} s</value></data>
+  <data name="Giveaway_Free" xml:space="preserve"><value>Kostenlos</value></data>
+  <data name="Giveaway_EndsIn" xml:space="preserve"><value>Endet in {0}</value></data>
+  <data name="Giveaway_Until" xml:space="preserve"><value>Bis {0}</value></data>
+  <data name="Giveaway_Starts" xml:space="preserve"><value>Ab {0}</value></data>
+  <data name="Giveaway_NoEnd" xml:space="preserve"><value>Ohne Enddatum</value></data>
+  <data name="Giveaway_Beta" xml:space="preserve"><value>Beta</value></data>
+  <data name="Giveaway_FoundBy" xml:space="preserve"><value>Gefunden von {0}</value></data>
+  <data name="Giveaway_RegionUnchecked" xml:space="preserve"><value>Verfügbarkeit in Ihrer Region nicht geprüft</value></data>
+  <data name="Giveaway_OpenTooltip" xml:space="preserve"><value>Aktionsseite öffnen</value></data>
+  <data name="Time_MinutesAgo" xml:space="preserve"><value>vor {0} Min.</value></data>
+  <data name="Time_DaysHours" xml:space="preserve"><value>{0} T. {1} Std.</value></data>
+  <data name="Time_HoursMinutes" xml:space="preserve"><value>{0} Std. {1} Min.</value></data>
+  <data name="Time_Minutes" xml:space="preserve"><value>{0} Min.</value></data>
+  <data name="Filter_DlcAndItems" xml:space="preserve"><value>DLC und Items</value></data>
+  <data name="Filter_Betas" xml:space="preserve"><value>Betas und Playtests</value></data>
+  <data name="Welcome_FreeNow" xml:space="preserve"><value>Jetzt kostenlos</value></data>
+  <data name="Welcome_AllGiveaways" xml:space="preserve"><value>Alle Gratis-Aktionen</value></data>
+  <data name="Note_GamerPower" xml:space="preserve"><value>IndieGala, itch.io, Alienware Arena und weitere Seiten. Die Verfügbarkeit in Ihrer Region wird nicht geprüft.</value></data>
+  <data name="Kind_GiveawayAggregator" xml:space="preserve"><value>Sammelt Gratis-Aktionen</value></data>
 </root>

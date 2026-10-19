@@ -5,6 +5,7 @@ using System.Text;
 using GamePriceHunter.Core.Currency;
 using GamePriceHunter.Core.Diagnostics;
 using GamePriceHunter.Core.Geo;
+using GamePriceHunter.Core.Giveaways;
 using GamePriceHunter.Core.Models;
 using GamePriceHunter.Core.Net;
 using GamePriceHunter.Core.Providers;
@@ -15,6 +16,7 @@ using GamePriceHunter.Core.Updates;
 // Diagnostics tool: runs the same search pipeline as the app and prints what each store returned.
 //   gph search "witcher 3" [--country SK] [--currency EUR] [--providers steam,gog] [--top 40] [--details]
 //   gph health [query]        exit code 1 when any provider fails
+//   gph giveaways [--country SK] [--currency EUR] [--details]   what is free to keep right now
 //   gph providers
 //   gph update                the latest release, as the app's update check sees it
 // Release signing (see build\publish.ps1 and build\new-signing-key.ps1):
@@ -30,6 +32,7 @@ if (args.Length == 0 || args[0] is "-h" or "--help")
 {
     Console.WriteLine("Usage: gph search <query> [--country XX] [--currency XXX] [--providers id1,id2] [--top N] [--details]");
     Console.WriteLine("       gph health [query]");
+    Console.WriteLine("       gph giveaways [--country XX] [--currency XXX] [--details]");
     Console.WriteLine("       gph providers");
     Console.WriteLine("       gph update");
     Console.WriteLine("       gph sign|verify <installer> --tag v1.2.3");
@@ -122,7 +125,7 @@ if (command is "sign" or "verify")
 }
 
 var options = ParseOptions(args.Skip(1).ToArray());
-var query = options.Query ?? (command == "health" ? "witcher" : null);
+var query = options.Query ?? (command switch { "health" => "witcher", "giveaways" => "", _ => null });
 if (query is null)
 {
     Console.Error.WriteLine("Missing query.");
@@ -139,6 +142,40 @@ await Task.WhenAll(regionTask, currency.InitializeAsync());
 var region = regionTask.Result.Region;
 var displayCurrency = options.Currency ?? region.CurrencyCode;
 Console.WriteLine($"Region {region.CountryCode}/{region.CurrencyCode} ({regionTask.Result.Source}); prices in {displayCurrency}; rates: {currency.Current?.Source ?? "none"}");
+
+if (command == "giveaways")
+{
+    var giveawayService = new GiveawayService(GiveawayService.CreateSources(http), null, logger);
+    var feed = await giveawayService.RefreshAsync(region, TimeSpan.FromSeconds(20));
+    foreach (var result in feed.Sources)
+    {
+        var name = giveawayService.Sources.First(s => s.Info.Id == result.SourceId).Info.Name;
+        var status = result.Status == ProviderStatus.Succeeded ? $"{result.Count,3}" : result.Status.ToString();
+        Console.WriteLine($"  {name,-22} {status,-12} {result.Elapsed.TotalMilliseconds,6:0} ms  {result.Error}");
+    }
+
+    var now = giveawayService.Now;
+    PrintGiveaways("Free now", GiveawayService.Current(feed.Giveaways, now));
+    PrintGiveaways("Coming soon", GiveawayService.Upcoming(feed.Giveaways, now));
+    return feed.Sources.Any(s => s.Status is ProviderStatus.Failed or ProviderStatus.Blocked or ProviderStatus.TimedOut) ? 1 : 0;
+
+    void PrintGiveaways(string header, IReadOnlyList<Giveaway> list)
+    {
+        Console.WriteLine();
+        Console.WriteLine($"{header}: {list.Count}");
+        foreach (var giveaway in list)
+        {
+            var worth = giveaway.Worth is { } w ? MoneyFormatter.Format(currency.Convert(w, displayCurrency) ?? w) : "?";
+            var when = giveaway.StartsAt > now ? $"from {giveaway.StartsAt:yyyy-MM-dd HH:mm}"
+                : giveaway.EndsAt is { } ends ? (giveaway.EndsOnDateOnly ? $"until {ends:yyyy-MM-dd}" : $"until {ends:yyyy-MM-dd HH:mm}")
+                : "no end";
+            var sources = string.Join("+", giveaway.OtherSourceIds.Prepend(giveaway.SourceId));
+            Console.WriteLine($"{worth,10} {when,-23} {giveaway.StoreName,-18} {giveaway.Kind,-5} {giveaway.Platform,-8} {giveaway.Title}  [{sources}{(giveaway.IsRegionChecked ? "" : ", region?")}]");
+            if (options.Details)
+                Console.WriteLine($"{"",10} {giveaway.Url}  img={giveaway.ImageUrl}");
+        }
+    }
+}
 
 var searchOptions = new SearchOptions
 {

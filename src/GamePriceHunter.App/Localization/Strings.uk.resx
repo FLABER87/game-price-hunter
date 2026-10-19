@@ -189,4 +189,45 @@
   <data name="Window_Maximize" xml:space="preserve"><value>Розгорнути</value></data>
   <data name="Window_Restore" xml:space="preserve"><value>Відновити</value></data>
   <data name="Window_Close" xml:space="preserve"><value>Закрити</value></data>
+  <data name="Mode_Prices" xml:space="preserve"><value>Ціни</value></data>
+  <data name="Mode_Giveaways" xml:space="preserve"><value>Роздачі</value></data>
+  <data name="Giveaways_Sources" xml:space="preserve"><value>ДЖЕРЕЛА</value></data>
+  <data name="Giveaways_Attribution" xml:space="preserve"><value>Частина даних — від GamerPower.com</value></data>
+  <data name="Giveaways_Summary" xml:space="preserve"><value>Зараз безкоштовно: {0}</value></data>
+  <data name="Giveaways_Updated" xml:space="preserve"><value>оновлено {0}</value></data>
+  <data name="Giveaways_Refresh" xml:space="preserve"><value>Оновити</value></data>
+  <data name="Giveaways_Loading" xml:space="preserve"><value>Шукаємо роздачі…</value></data>
+  <data name="Giveaways_Upcoming" xml:space="preserve"><value>Незабаром</value></data>
+  <data name="Giveaways_EmptyTitle" xml:space="preserve"><value>Зараз нічого не роздають</value></data>
+  <data name="Giveaways_EmptyText" xml:space="preserve"><value>Магазини роздають ігри щотижня. Загляньте пізніше.</value></data>
+  <data name="Giveaways_HiddenText" xml:space="preserve"><value>{0} роздач приховано фільтрами.</value></data>
+  <data name="Giveaways_HiddenText_one" xml:space="preserve"><value>{0} роздачу приховано фільтрами.</value></data>
+  <data name="Giveaways_HiddenText_few" xml:space="preserve"><value>{0} роздачі приховано фільтрами.</value></data>
+  <data name="Giveaways_HiddenText_many" xml:space="preserve"><value>{0} роздач приховано фільтрами.</value></data>
+  <data name="Giveaways_FailedTitle" xml:space="preserve"><value>Не вдалося завантажити роздачі</value></data>
+  <data name="Giveaways_FailedText" xml:space="preserve"><value>Перевірте підключення до інтернету й спробуйте ще раз.</value></data>
+  <data name="Giveaways_Retry" xml:space="preserve"><value>Повторити</value></data>
+  <data name="Giveaways_SourceFound" xml:space="preserve"><value>{0} роздач за {1:0.0} с</value></data>
+  <data name="Giveaways_SourceFound_one" xml:space="preserve"><value>{0} роздача за {1:0.0} с</value></data>
+  <data name="Giveaways_SourceFound_few" xml:space="preserve"><value>{0} роздачі за {1:0.0} с</value></data>
+  <data name="Giveaways_SourceFound_many" xml:space="preserve"><value>{0} роздач за {1:0.0} с</value></data>
+  <data name="Giveaway_Free" xml:space="preserve"><value>Безкоштовно</value></data>
+  <data name="Giveaway_EndsIn" xml:space="preserve"><value>Залишилося {0}</value></data>
+  <data name="Giveaway_Until" xml:space="preserve"><value>До {0}</value></data>
+  <data name="Giveaway_Starts" xml:space="preserve"><value>З {0}</value></data>
+  <data name="Giveaway_NoEnd" xml:space="preserve"><value>Без терміну</value></data>
+  <data name="Giveaway_Beta" xml:space="preserve"><value>Бета</value></data>
+  <data name="Giveaway_FoundBy" xml:space="preserve"><value>Знайдено: {0}</value></data>
+  <data name="Giveaway_RegionUnchecked" xml:space="preserve"><value>Доступність у вашому регіоні не перевіряється</value></data>
+  <data name="Giveaway_OpenTooltip" xml:space="preserve"><value>Відкрити сторінку роздачі</value></data>
+  <data name="Time_MinutesAgo" xml:space="preserve"><value>{0} хв тому</value></data>
+  <data name="Time_DaysHours" xml:space="preserve"><value>{0} дн. {1} год</value></data>
+  <data name="Time_HoursMinutes" xml:space="preserve"><value>{0} год {1} хв</value></data>
+  <data name="Time_Minutes" xml:space="preserve"><value>{0} хв</value></data>
+  <data name="Filter_DlcAndItems" xml:space="preserve"><value>DLC і предмети</value></data>
+  <data name="Filter_Betas" xml:space="preserve"><value>Бета-тести</value></data>
+  <data name="Welcome_FreeNow" xml:space="preserve"><value>Зараз безкоштовно</value></data>
+  <data name="Welcome_AllGiveaways" xml:space="preserve"><value>Усі роздачі</value></data>
+  <data name="Note_GamerPower" xml:space="preserve"><value>IndieGala, itch.io, Alienware Arena та інші сайти. Доступність у вашому регіоні не перевіряється.</value></data>
+  <data name="Kind_GiveawayAggregator" xml:space="preserve"><value>Агрегатор роздач</value></data>
 </root>

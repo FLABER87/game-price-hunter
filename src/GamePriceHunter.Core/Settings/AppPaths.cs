@@ -25,6 +25,8 @@ public sealed class AppPaths
 
     public string RatesCacheFile => Path.Combine(CacheDirectory, "exchange-rates.json");
 
+    public string GiveawaysCacheFile => Path.Combine(CacheDirectory, "giveaways.json");
+
     public string ImageCacheDirectory => Path.Combine(CacheDirectory, "images");
 
     public string LogDirectory => Path.Combine(CacheDirectory, "logs");

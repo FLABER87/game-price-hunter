@@ -306,6 +306,187 @@
                 </DataTrigger>
             </DataTemplate.Triggers>
         </DataTemplate>
+        <!-- Prices / Giveaways switch above the sidebar -->
+        <Style x:Key="ModeTab" TargetType="RadioButton">
+            <Setter Property="Foreground" Value="{DynamicResource Brush.TextSecondary}" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusRing}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border x:Name="Bd" Background="Transparent" BorderBrush="Transparent" BorderThickness="1" CornerRadius="7" Padding="8,6">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="{DynamicResource Brush.Text}" />
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="{DynamicResource Brush.Surface}" />
+                                <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource Brush.Border}" />
+                                <Setter Property="Foreground" Value="{DynamicResource Brush.Text}" />
+                                <Setter Property="FontWeight" Value="SemiBold" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- A list inside an outer ScrollViewer: without a scroller of its own, the mouse wheel reaches the outer one. -->
+        <Style x:Key="BareListBox" TargetType="ListBox" BasedOn="{StaticResource {x:Type ListBox}}">
+            <Setter Property="ItemContainerStyle" Value="{StaticResource PlainListItem}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBox">
+                        <ItemsPresenter />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Giveaway card -->
+        <DataTemplate x:Key="GiveawayTemplate" DataType="{x:Type vm:GiveawayViewModel}">
+            <Border x:Name="Card" Background="{DynamicResource Brush.Surface}" BorderBrush="{DynamicResource Brush.Border}" BorderThickness="1"
+                    CornerRadius="{StaticResource Radius.Card}" Padding="8" Margin="0,0,10,10" Cursor="Hand"
+                    ToolTip="{Binding Tooltip}" ToolTipService.InitialShowDelay="900">
+                <Border.InputBindings>
+                    <MouseBinding Gesture="LeftDoubleClick" CommandParameter="{Binding}"
+                                  Command="{Binding DataContext.OpenCommand, RelativeSource={RelativeSource AncestorType=ListBox}}" />
+                </Border.InputBindings>
+                <Border.ContextMenu>
+                    <ContextMenu DataContext="{Binding PlacementTarget.DataContext, RelativeSource={RelativeSource Self}}">
+                        <MenuItem Header="{loc:Loc Menu_Open}" Click="OnOpenGiveawayClick">
+                            <MenuItem.Icon>
+                                <TextBlock Style="{StaticResource Text.Icon}" Text="&#xE8A7;" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="{loc:Loc Menu_CopyLink}" Click="OnCopyGiveawayLinkClick">
+                            <MenuItem.Icon>
+                                <TextBlock Style="{StaticResource Text.Icon}" Text="&#xE71B;" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="{loc:Loc Menu_CopyTitle}" Click="OnCopyGiveawayTitleClick">
+                            <MenuItem.Icon>
+                                <TextBlock Style="{StaticResource Text.Icon}" Text="&#xE8C8;" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <Separator />
+                        <MenuItem Header="{loc:Loc Menu_SearchTitle}" Click="OnSearchGiveawayTitleClick">
+                            <MenuItem.Icon>
+                                <TextBlock Style="{StaticResource Text.Icon}" Text="&#xE721;" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </ContextMenu>
+                </Border.ContextMenu>
+
+                <StackPanel>
+                    <!-- Cover with placeholder -->
+                    <Grid Height="112">
+                        <Border CornerRadius="6" Background="{DynamicResource Brush.Placeholder}">
+                            <TextBlock Style="{StaticResource Text.Icon}" Text="&#xF133;" FontSize="26" Foreground="{DynamicResource Brush.TextTertiary}" />
+                        </Border>
+                        <Image infra:ImageLoader.DecodeWidth="440" infra:ImageLoader.Url="{Binding ImageUrl}" Stretch="UniformToFill"
+                               RenderOptions.BitmapScalingMode="HighQuality" infra:RoundedClip.Radius="6" />
+                    </Grid>
+
+                    <TextBlock Text="{Binding Title}" FontSize="13" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" Margin="2,9,2,0" />
+
+                    <!-- Store and tags -->
+                    <DockPanel Margin="2,5,2,0">
+                        <Grid DockPanel.Dock="Left" Width="14" Height="14" Margin="0,0,6,0">
+                            <Border CornerRadius="3" Background="{DynamicResource Brush.SurfaceAlt}">
+                                <TextBlock Text="{Binding StoreInitial}" FontSize="9" FontWeight="Bold" HorizontalAlignment="Center"
+                                           VerticalAlignment="Center" Foreground="{DynamicResource Brush.TextSecondary}" />
+                            </Border>
+                            <Image infra:ImageLoader.DecodeWidth="32" infra:ImageLoader.Url="{Binding StoreIconUrl}" RenderOptions.BitmapScalingMode="HighQuality" />
+                        </Grid>
+                        <Border DockPanel.Dock="Right" Style="{StaticResource Tag}" Margin="6,0,0,0" Visibility="{Binding PlatformText, Converter={StaticResource NotEmptyToVisibility}}">
+                            <TextBlock Style="{StaticResource TagText}" Text="{Binding PlatformText}" />
+                        </Border>
+                        <Border DockPanel.Dock="Right" Style="{StaticResource Tag}" Margin="6,0,0,0" Visibility="{Binding KindText, Converter={StaticResource NotEmptyToVisibility}}">
+                            <TextBlock Style="{StaticResource TagText}" Text="{Binding KindText}" />
+                        </Border>
+                        <TextBlock Text="{Binding StoreName}" FontSize="12" Foreground="{DynamicResource Brush.TextSecondary}" TextTrimming="CharacterEllipsis"
+                                   VerticalAlignment="Center" />
+                    </DockPanel>
+
+                    <!-- Free, usual price, time left -->
+                    <Grid Margin="2,9,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel VerticalAlignment="Center">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{loc:Loc Giveaway_Free}" FontFamily="{StaticResource Font.Display}" FontSize="15" FontWeight="SemiBold"
+                                           Foreground="{DynamicResource Brush.Success}" />
+                                <TextBlock Text="{Binding WorthText}" FontSize="11" Foreground="{DynamicResource Brush.TextTertiary}" TextDecorations="Strikethrough"
+                                           VerticalAlignment="Center" Margin="7,1,0,0"
+                                           Visibility="{Binding WorthText, Converter={StaticResource NotEmptyToVisibility}}" />
+                            </StackPanel>
+                            <TextBlock x:Name="Time" Text="{Binding TimeText}" FontSize="11" Foreground="{DynamicResource Brush.TextSecondary}"
+                                       TextTrimming="CharacterEllipsis" Margin="0,2,0,0" />
+                        </StackPanel>
+                        <Button Grid.Column="1" Style="{StaticResource IconButton}" Content="&#xE8A7;" VerticalAlignment="Center"
+                                ToolTip="{loc:Loc Giveaway_OpenTooltip}" CommandParameter="{Binding}"
+                                Command="{Binding DataContext.OpenCommand, RelativeSource={RelativeSource AncestorType=ListBox}}" />
+                    </Grid>
+                </StackPanel>
+            </Border>
+            <DataTemplate.Triggers>
+                <Trigger SourceName="Card" Property="IsMouseOver" Value="True">
+                    <Setter TargetName="Card" Property="Background" Value="{DynamicResource Brush.SurfaceAlt}" />
+                    <Setter TargetName="Card" Property="BorderBrush" Value="{DynamicResource Brush.BorderStrong}" />
+                </Trigger>
+                <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=ListBoxItem}}" Value="True">
+                    <Setter TargetName="Card" Property="BorderBrush" Value="{DynamicResource Brush.Accent}" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding IsEndingSoon}" Value="True">
+                    <Setter TargetName="Time" Property="Foreground" Value="{DynamicResource Brush.Warning}" />
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+
+        <!-- Giveaway source row in the sidebar -->
+        <DataTemplate x:Key="GiveawaySourceTemplate" DataType="{x:Type vm:GiveawaySourceViewModel}">
+            <Border x:Name="Row" Background="Transparent" CornerRadius="6" Padding="6,5" Margin="0,1" ToolTip="{Binding StatusTooltip}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid Width="20" Height="20" Margin="0,0,8,0">
+                        <Border CornerRadius="4" Background="{DynamicResource Brush.SurfaceAlt}">
+                            <TextBlock Text="{Binding Initial}" FontSize="10" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                       Foreground="{DynamicResource Brush.TextSecondary}" />
+                        </Border>
+                        <Image infra:ImageLoader.DecodeWidth="40" infra:ImageLoader.Url="{Binding IconUrl}" RenderOptions.BitmapScalingMode="HighQuality" />
+                    </Grid>
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                        <TextBlock Text="{Binding Name}" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" />
+                        <TextBlock Text="{Binding KindText}" Style="{StaticResource Text.Secondary}" FontSize="11" />
+                    </StackPanel>
+                    <Grid Grid.Column="2" VerticalAlignment="Center" Margin="6,0,0,0">
+                        <Control Style="{StaticResource Spinner}" Visibility="{Binding IsRunning, Converter={StaticResource BoolToVisibility}}" />
+                        <Border CornerRadius="9" MinWidth="24" Padding="6,1" Background="{DynamicResource Brush.SurfaceAlt}"
+                                Visibility="{Binding HasCount, Converter={StaticResource BoolToVisibility}}">
+                            <TextBlock Text="{Binding Count}" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Center"
+                                       Foreground="{DynamicResource Brush.TextSecondary}" />
+                        </Border>
+                        <TextBlock Style="{StaticResource Text.Icon}" Text="&#xE7BA;" FontSize="13" Foreground="{DynamicResource Brush.Warning}"
+                                   Visibility="{Binding IsProblem, Converter={StaticResource BoolToVisibility}}" />
+                    </Grid>
+                </Grid>
+            </Border>
+            <DataTemplate.Triggers>
+                <Trigger SourceName="Row" Property="IsMouseOver" Value="True">
+                    <Setter TargetName="Row" Property="Background" Value="{DynamicResource Brush.SurfaceAlt}" />
+                </Trigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
     </Window.Resources>
 
     <Grid>
@@ -443,9 +624,37 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
+            <DockPanel Margin="20,16,0,16">
+                <!-- Mode switch -->
+                <Border DockPanel.Dock="Top" Margin="0,0,0,10" Padding="3" CornerRadius="10" Background="{DynamicResource Brush.SurfaceAlt}"
+                        BorderBrush="{DynamicResource Brush.Border}" BorderThickness="1">
+                    <UniformGrid Columns="2">
+                        <RadioButton Style="{StaticResource ModeTab}" GroupName="Mode" IsChecked="{Binding IsPricesMode}"
+                                     AutomationProperties.Name="{loc:Loc Mode_Prices}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Style="{StaticResource Text.Icon}" Text="&#xE8EC;" FontSize="13" Margin="0,0,7,0" />
+                                <TextBlock Text="{loc:Loc Mode_Prices}" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </RadioButton>
+                        <RadioButton Style="{StaticResource ModeTab}" GroupName="Mode" IsChecked="{Binding IsGiveawaysMode}"
+                                     AutomationProperties.Name="{loc:Loc Mode_Giveaways}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Style="{StaticResource Text.Icon}" Text="&#xF133;" FontSize="13" Margin="0,0,7,0" />
+                                <TextBlock Text="{loc:Loc Mode_Giveaways}" VerticalAlignment="Center" />
+                                <Border CornerRadius="8" MinWidth="20" Padding="5,0" Margin="7,0,0,0" VerticalAlignment="Center" Background="{DynamicResource Brush.SuccessSoft}"
+                                        Visibility="{Binding Giveaways.HasGames, Converter={StaticResource BoolToVisibility}}">
+                                    <TextBlock Text="{Binding Giveaways.GameCount}" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Center"
+                                               Foreground="{DynamicResource Brush.Success}" />
+                                </Border>
+                            </StackPanel>
+                        </RadioButton>
+                    </UniformGrid>
+                </Border>
+
+                <Grid>
             <!-- Stores sidebar -->
-            <Border Margin="20,16,0,16" Background="{DynamicResource Brush.Panel}" BorderBrush="{DynamicResource Brush.Border}" BorderThickness="1"
-                    CornerRadius="{StaticResource Radius.Card}">
+            <Border Background="{DynamicResource Brush.Panel}" BorderBrush="{DynamicResource Brush.Border}" BorderThickness="1"
+                    CornerRadius="{StaticResource Radius.Card}" Visibility="{Binding IsPricesMode, Converter={StaticResource BoolToVisibility}}">
                 <DockPanel Margin="8,10,8,8">
                     <Grid DockPanel.Dock="Top" Margin="6,0,2,6">
                         <TextBlock Text="{loc:Loc Stores_Header}" Style="{StaticResource Text.Caption}" VerticalAlignment="Center" />
@@ -462,7 +671,27 @@
                 </DockPanel>
             </Border>
 
-            <Grid Grid.Column="1" Margin="16,0,8,0">
+            <!-- Giveaway sources sidebar -->
+            <Border Background="{DynamicResource Brush.Panel}" BorderBrush="{DynamicResource Brush.Border}" BorderThickness="1"
+                    CornerRadius="{StaticResource Radius.Card}" DataContext="{Binding Giveaways}"
+                    Visibility="{Binding DataContext.IsGiveawaysMode, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BoolToVisibility}}">
+                <DockPanel Margin="8,10,8,8">
+                    <TextBlock DockPanel.Dock="Top" Text="{loc:Loc Giveaways_Sources}" Style="{StaticResource Text.Caption}" Margin="6,0,2,8" />
+                    <!-- GamerPower's terms ask for a link back to them. -->
+                    <TextBlock DockPanel.Dock="Bottom" Margin="6,8,6,2" FontSize="11" TextWrapping="Wrap">
+                        <Hyperlink Command="{Binding OpenAttributionCommand}" ToolTip="https://www.gamerpower.com/">
+                            <Run Text="{loc:Loc Giveaways_Attribution}" />
+                        </Hyperlink>
+                    </TextBlock>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <ItemsControl ItemsSource="{Binding Sources}" ItemTemplate="{StaticResource GiveawaySourceTemplate}" Focusable="False" />
+                    </ScrollViewer>
+                </DockPanel>
+            </Border>
+                </Grid>
+            </DockPanel>
+
+            <Grid Grid.Column="1" Margin="16,0,8,0" Visibility="{Binding IsPricesMode, Converter={StaticResource BoolToVisibility}}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
@@ -522,15 +751,50 @@
                          KeyDown="OnResultsKeyDown" AutomationProperties.Name="{loc:Loc Results_Label}"
                          Visibility="{Binding AreResultsVisible, Converter={StaticResource BoolToVisibility}}" />
 
-                <!-- Welcome -->
-                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" MaxWidth="460" Margin="0,0,0,60"
+                <!-- Welcome, with the games free right now -->
+                <StackPanel VerticalAlignment="Center" Margin="0,0,12,16"
                             Visibility="{Binding IsWelcomeVisible, Converter={StaticResource BoolToVisibility}}">
-                    <Image Source="/Assets/Logo.png" Width="72" Height="72" Opacity="0.9" RenderOptions.BitmapScalingMode="HighQuality" />
-                    <TextBlock Text="{loc:Loc Welcome_Title}" Style="{StaticResource Text.Title}" HorizontalAlignment="Center" Margin="0,18,0,8" />
-                    <TextBlock Text="{loc:Loc Welcome_Text}" TextWrapping="Wrap" TextAlignment="Center" Foreground="{DynamicResource Brush.TextSecondary}"
-                               LineHeight="20" />
-                    <TextBlock Text="{loc:Loc Welcome_Hint}" TextWrapping="Wrap" TextAlignment="Center" Margin="0,14,0,0"
-                               Foreground="{DynamicResource Brush.TextTertiary}" FontSize="12" />
+                    <StackPanel HorizontalAlignment="Center" MaxWidth="460">
+                        <!-- The free games need the room on small screens; the header shows the logo anyway. -->
+                        <Image Source="/Assets/Logo.png" Width="72" Height="72" Opacity="0.9" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,0,0,18"
+                               Visibility="{Binding Giveaways.AreHighlightsVisible, Converter={StaticResource InverseBoolToVisibility}}" />
+                        <TextBlock Text="{loc:Loc Welcome_Title}" Style="{StaticResource Text.Title}" HorizontalAlignment="Center" Margin="0,0,0,8" />
+                        <TextBlock Text="{loc:Loc Welcome_Text}" TextWrapping="Wrap" TextAlignment="Center" Foreground="{DynamicResource Brush.TextSecondary}"
+                                   LineHeight="20" />
+                        <TextBlock Text="{loc:Loc Welcome_Hint}" TextWrapping="Wrap" TextAlignment="Center" Margin="0,14,0,0"
+                                   Foreground="{DynamicResource Brush.TextTertiary}" FontSize="12" />
+                    </StackPanel>
+
+                    <!-- The right margin of the last card is outside, so the cards line up with the text above. -->
+                    <StackPanel MaxWidth="906" Margin="0,24,-10,0" DataContext="{Binding Giveaways}"
+                                Visibility="{Binding AreHighlightsVisible, Converter={StaticResource BoolToVisibility}}">
+                        <DockPanel Margin="2,0,10,8">
+                            <Button DockPanel.Dock="Right" Style="{StaticResource GhostButton}" Padding="8,4"
+                                    Command="{Binding DataContext.ShowGiveawaysCommand, RelativeSource={RelativeSource AncestorType=Window}}">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{loc:Loc Welcome_AllGiveaways}" VerticalAlignment="Center" />
+                                    <TextBlock Style="{StaticResource Text.Icon}" Text="&#xE72A;" FontSize="11" Margin="7,1,0,0" />
+                                </StackPanel>
+                            </Button>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <TextBlock Style="{StaticResource Text.Icon}" Text="&#xF133;" FontSize="15" Margin="0,0,8,0" Foreground="{DynamicResource Brush.Success}" />
+                                <TextBlock Text="{loc:Loc Welcome_FreeNow}" Style="{StaticResource Text.Subtitle}" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </DockPanel>
+                        <ListBox Style="{StaticResource BareListBox}" ItemsSource="{Binding Highlights}" ItemTemplate="{StaticResource GiveawayTemplate}"
+                                 KeyDown="OnGiveawaysKeyDown" AutomationProperties.Name="{loc:Loc Welcome_FreeNow}">
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid Rows="1" />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                        </ListBox>
+                        <TextBlock HorizontalAlignment="Right" Margin="0,0,12,0" FontSize="11">
+                            <Hyperlink Command="{Binding OpenAttributionCommand}" ToolTip="https://www.gamerpower.com/">
+                                <Run Text="{loc:Loc Giveaways_Attribution}" />
+                            </Hyperlink>
+                        </TextBlock>
+                    </StackPanel>
                 </StackPanel>
 
                 <!-- Searching, nothing yet -->
@@ -551,6 +815,100 @@
                             Visibility="{Binding HasHiddenOffers, Converter={StaticResource BoolToVisibility}}" />
                 </StackPanel>
             </Grid>
+            </Grid>
+
+            <!-- ===== Giveaways page ===== -->
+            <Grid Grid.Column="1" Margin="16,0,8,0" DataContext="{Binding Giveaways}"
+                  Visibility="{Binding DataContext.IsGiveawaysMode, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BoolToVisibility}}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid Margin="0,16,12,12">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="{Binding SummaryText}" VerticalAlignment="Center" FontSize="13" Foreground="{DynamicResource Brush.TextSecondary}"
+                               TextTrimming="CharacterEllipsis" Margin="0,0,12,0" />
+                    <Button Grid.Column="1" Style="{StaticResource GhostButton}" Command="{Binding RefreshCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <Grid Width="14" Height="14" Margin="0,0,8,0">
+                                <TextBlock Style="{StaticResource Text.Icon}" Text="&#xE72C;" FontSize="13"
+                                           Visibility="{Binding IsLoading, Converter={StaticResource InverseBoolToVisibility}}" />
+                                <Control Style="{StaticResource Spinner}" Width="14" Height="14"
+                                         Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibility}}" />
+                            </Grid>
+                            <TextBlock Text="{loc:Loc Giveaways_Refresh}" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </Button>
+
+                    <WrapPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0,12,0,0">
+                        <ToggleButton Style="{StaticResource Chip}" IsChecked="{Binding ShowGames}" Content="{loc:Loc Filter_Games}" />
+                        <ToggleButton Style="{StaticResource Chip}" IsChecked="{Binding ShowDlc}" Content="{loc:Loc Filter_DlcAndItems}" />
+                        <ToggleButton Style="{StaticResource Chip}" IsChecked="{Binding ShowBetas}" Content="{loc:Loc Filter_Betas}" />
+                    </WrapPanel>
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="0,0,2,8" Focusable="False"
+                                  Visibility="{Binding IsListVisible, Converter={StaticResource BoolToVisibility}}">
+                        <StackPanel>
+                            <ListBox x:Name="GiveawaysList" Style="{StaticResource BareListBox}" ItemsSource="{Binding Items}"
+                                     ItemTemplate="{StaticResource GiveawayTemplate}" KeyDown="OnGiveawaysKeyDown"
+                                     AutomationProperties.Name="{loc:Loc Mode_Giveaways}">
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel ItemWidth="224" />
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+                            </ListBox>
+                            <StackPanel Visibility="{Binding HasUpcoming, Converter={StaticResource BoolToVisibility}}">
+                                <TextBlock Text="{loc:Loc Giveaways_Upcoming}" Style="{StaticResource Text.Subtitle}" Margin="2,6,0,10" />
+                                <ListBox Style="{StaticResource BareListBox}" ItemsSource="{Binding Upcoming}" ItemTemplate="{StaticResource GiveawayTemplate}"
+                                         KeyDown="OnGiveawaysKeyDown" AutomationProperties.Name="{loc:Loc Giveaways_Upcoming}">
+                                    <ListBox.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel ItemWidth="224" />
+                                        </ItemsPanelTemplate>
+                                    </ListBox.ItemsPanel>
+                                </ListBox>
+                            </StackPanel>
+                        </StackPanel>
+                    </ScrollViewer>
+
+                    <!-- Loading, nothing yet -->
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,60"
+                                Visibility="{Binding IsLoadingWithoutItems, Converter={StaticResource BoolToVisibility}}">
+                        <Control Style="{StaticResource Spinner}" Width="36" Height="36" />
+                        <TextBlock Text="{loc:Loc Giveaways_Loading}" Margin="0,16,0,0" HorizontalAlignment="Center" Foreground="{DynamicResource Brush.TextSecondary}" />
+                    </StackPanel>
+
+                    <!-- Nothing free, or all of it filtered out -->
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" MaxWidth="460" Margin="0,0,0,60"
+                                Visibility="{Binding IsEmptyVisible, Converter={StaticResource BoolToVisibility}}">
+                        <TextBlock Style="{StaticResource Text.Icon}" Text="&#xF133;" FontSize="40" Foreground="{DynamicResource Brush.TextTertiary}" />
+                        <TextBlock Text="{loc:Loc Giveaways_EmptyTitle}" Style="{StaticResource Text.Title}" FontSize="18" HorizontalAlignment="Center"
+                                   TextAlignment="Center" TextWrapping="Wrap" Margin="0,16,0,8" />
+                        <TextBlock Text="{Binding EmptyText}" TextWrapping="Wrap" TextAlignment="Center" Foreground="{DynamicResource Brush.TextSecondary}" />
+                    </StackPanel>
+
+                    <!-- No source answered -->
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" MaxWidth="460" Margin="0,0,0,60"
+                                Visibility="{Binding IsFailedVisible, Converter={StaticResource BoolToVisibility}}">
+                        <TextBlock Style="{StaticResource Text.Icon}" Text="&#xE7BA;" FontSize="40" Foreground="{DynamicResource Brush.TextTertiary}" />
+                        <TextBlock Text="{loc:Loc Giveaways_FailedTitle}" Style="{StaticResource Text.Title}" FontSize="18" HorizontalAlignment="Center"
+                                   TextAlignment="Center" TextWrapping="Wrap" Margin="0,16,0,8" />
+                        <TextBlock Text="{loc:Loc Giveaways_FailedText}" TextWrapping="Wrap" TextAlignment="Center" Foreground="{DynamicResource Brush.TextSecondary}" />
+                        <Button Content="{loc:Loc Giveaways_Retry}" HorizontalAlignment="Center" Margin="0,16,0,0" Command="{Binding RefreshCommand}" />
+                    </StackPanel>
+                </Grid>
             </Grid>
         </Grid>
 
