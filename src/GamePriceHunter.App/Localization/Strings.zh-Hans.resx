@@ -137,6 +137,8 @@
   <data name="About_DataLocation" xml:space="preserve"><value>数据文件夹：</value></data>
   <data name="About_Portable" xml:space="preserve"><value>便携模式（与程序位于同一文件夹）</value></data>
   <data name="About_Disclaimer" xml:space="preserve"><value>价格来自各商店的公开网站，可能随时变动。购买前请务必在商店页面上确认最终价格、地区和卖家。</value></data>
+  <data name="About_OpenSource" xml:space="preserve"><value>Free and open source.</value></data>
+  <data name="About_StarOnGitHub" xml:space="preserve"><value>Star it on GitHub</value></data>
   <data name="Settings_OpenDataFolder" xml:space="preserve"><value>打开数据文件夹</value></data>
   <data name="Settings_OpenLogs" xml:space="preserve"><value>打开日志</value></data>
   <data name="Settings_ClearCache" xml:space="preserve"><value>清除缓存</value></data>

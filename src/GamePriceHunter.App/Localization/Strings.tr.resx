@@ -144,6 +144,8 @@
   <data name="About_DataLocation" xml:space="preserve"><value>Veri klasörü:</value></data>
   <data name="About_Portable" xml:space="preserve"><value>Taşınabilir mod (programın yanında)</value></data>
   <data name="About_Disclaimer" xml:space="preserve"><value>Fiyatlar mağazaların herkese açık web sitelerinden alınır ve her an değişebilir. Satın almadan önce son fiyatı, bölgeyi ve satıcıyı mağaza sayfasında mutlaka kontrol edin.</value></data>
+  <data name="About_OpenSource" xml:space="preserve"><value>Free and open source.</value></data>
+  <data name="About_StarOnGitHub" xml:space="preserve"><value>Star it on GitHub</value></data>
   <data name="Settings_OpenDataFolder" xml:space="preserve"><value>Veri klasörünü aç</value></data>
   <data name="Settings_OpenLogs" xml:space="preserve"><value>Günlükleri aç</value></data>
   <data name="Settings_ClearCache" xml:space="preserve"><value>Önbelleği temizle</value></data>
