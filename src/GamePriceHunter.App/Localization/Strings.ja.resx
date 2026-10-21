@@ -137,6 +137,8 @@
   <data name="About_DataLocation" xml:space="preserve"><value>データフォルダー：</value></data>
   <data name="About_Portable" xml:space="preserve"><value>ポータブルモード（プログラムと同じ場所）</value></data>
   <data name="About_Disclaimer" xml:space="preserve"><value>価格は各ストアの公開 Web サイトから取得しており、随時変更される場合があります。購入前に必ずストアのページで最終価格、地域、販売者を確認してください。</value></data>
+  <data name="About_OpenSource" xml:space="preserve"><value>Free and open source.</value></data>
+  <data name="About_StarOnGitHub" xml:space="preserve"><value>Star it on GitHub</value></data>
   <data name="Settings_OpenDataFolder" xml:space="preserve"><value>データフォルダーを開く</value></data>
   <data name="Settings_OpenLogs" xml:space="preserve"><value>ログを開く</value></data>
   <data name="Settings_ClearCache" xml:space="preserve"><value>キャッシュをクリア</value></data>

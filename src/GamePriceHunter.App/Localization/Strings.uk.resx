@@ -158,6 +158,8 @@
   <data name="About_DataLocation" xml:space="preserve"><value>Папка даних:</value></data>
   <data name="About_Portable" xml:space="preserve"><value>Портативний режим (поруч із програмою)</value></data>
   <data name="About_Disclaimer" xml:space="preserve"><value>Ціни беруться із загальнодоступних сайтів магазинів і можуть змінитися будь-коли. Перед купівлею завжди перевіряйте остаточну ціну, регіон і продавця на сторінці магазину.</value></data>
+  <data name="About_OpenSource" xml:space="preserve"><value>Free and open source.</value></data>
+  <data name="About_StarOnGitHub" xml:space="preserve"><value>Star it on GitHub</value></data>
   <data name="Settings_OpenDataFolder" xml:space="preserve"><value>Відкрити папку даних</value></data>
   <data name="Settings_OpenLogs" xml:space="preserve"><value>Відкрити журнали</value></data>
   <data name="Settings_ClearCache" xml:space="preserve"><value>Очистити кеш</value></data>

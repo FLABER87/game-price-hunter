@@ -144,6 +144,8 @@
   <data name="About_DataLocation" xml:space="preserve"><value>Data folder:</value></data>
   <data name="About_Portable" xml:space="preserve"><value>Portable mode (next to the program)</value></data>
   <data name="About_Disclaimer" xml:space="preserve"><value>Prices come from the stores&apos; public websites and may change at any time. Always check the final price, region and seller on the store page before buying.</value></data>
+  <data name="About_OpenSource" xml:space="preserve"><value>Free and open source.</value><comment>English in every language: don&apos;t translate.</comment></data>
+  <data name="About_StarOnGitHub" xml:space="preserve"><value>Star it on GitHub</value><comment>English in every language: don&apos;t translate.</comment></data>
   <data name="Settings_OpenDataFolder" xml:space="preserve"><value>Open data folder</value></data>
   <data name="Settings_OpenLogs" xml:space="preserve"><value>Open logs</value></data>
   <data name="Settings_ClearCache" xml:space="preserve"><value>Clear cache</value></data>

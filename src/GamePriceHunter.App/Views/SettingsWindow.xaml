@@ -6,6 +6,7 @@
         xmlns:loc="clr-namespace:GamePriceHunter.App.Localization"
         xmlns:infra="clr-namespace:GamePriceHunter.App.Infrastructure"
         xmlns:vm="clr-namespace:GamePriceHunter.App.ViewModels"
+        xmlns:updates="clr-namespace:GamePriceHunter.Core.Updates;assembly=GamePriceHunter.Core"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance Type=vm:SettingsViewModel}"
         Style="{StaticResource AppWindow}"
@@ -129,6 +130,13 @@
                     <StackPanel>
                         <TextBlock Text="{loc:Loc Settings_About}" Style="{StaticResource SectionTitle}" />
                         <TextBlock Text="{Binding VersionText}" FontWeight="SemiBold" />
+                        <TextBlock Style="{StaticResource FieldHint}">
+                            <Run Text="{loc:Loc About_OpenSource}" />
+                            <Hyperlink Command="{Binding OpenLinkCommand}" CommandParameter="{x:Static updates:UpdateChecker.RepositoryUrl}"
+                                       ToolTip="{x:Static updates:UpdateChecker.RepositoryUrl}">
+                                <Run Text="&#x2605;" /> <Run Text="{loc:Loc About_StarOnGitHub}" />
+                            </Hyperlink>
+                        </TextBlock>
                         <TextBlock Text="{Binding Update.StatusText}" Style="{StaticResource FieldHint}"
                                    Visibility="{Binding Update.StatusText, Converter={StaticResource NotEmptyToVisibility}}" />
                         <WrapPanel Margin="0,12,0,0">

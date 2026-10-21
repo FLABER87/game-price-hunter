@@ -144,6 +144,8 @@
   <data name="About_DataLocation" xml:space="preserve"><value>Cartella dati:</value></data>
   <data name="About_Portable" xml:space="preserve"><value>Modalità portatile (nella cartella del programma)</value></data>
   <data name="About_Disclaimer" xml:space="preserve"><value>I prezzi provengono dai siti pubblici dei negozi e possono cambiare in qualsiasi momento. Prima di acquistare, controlla sempre il prezzo finale, la regione e il venditore nella pagina del negozio.</value></data>
+  <data name="About_OpenSource" xml:space="preserve"><value>Free and open source.</value></data>
+  <data name="About_StarOnGitHub" xml:space="preserve"><value>Star it on GitHub</value></data>
   <data name="Settings_OpenDataFolder" xml:space="preserve"><value>Apri cartella dati</value></data>
   <data name="Settings_OpenLogs" xml:space="preserve"><value>Apri log</value></data>
   <data name="Settings_ClearCache" xml:space="preserve"><value>Svuota cache</value></data>
