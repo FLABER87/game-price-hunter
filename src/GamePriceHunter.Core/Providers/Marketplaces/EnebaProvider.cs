@@ -12,16 +12,26 @@ public sealed class EnebaProvider(HttpClient http) : StoreProvider(http)
 {
     private const string Host = "https://www.eneba.com";
     private const string StateId = "__ALGOLIA_STATE__";
+    private const int PageSize = 20;
+
+    // Eneba answers HTTP 429 after about ten requests in ten seconds, so a search reads at most
+    // 3 pages even when the result limit asks for more.
+    private const int MaxEnebaPages = 3;
 
     public override ProviderInfo Info { get; } = new("eneba", "Eneba", StoreKind.Marketplace, "https://www.eneba.com/")
     {
         Note = ProviderNote.Marketplace,
     };
 
-    public override async Task<IReadOnlyList<Offer>> SearchAsync(SearchContext context, CancellationToken cancellationToken)
+    // One product is listed once per platform and region ("Steam Key EUROPE", "Xbox Live Key
+    // ARGENTINA"...), so even one game can fill the first page.
+    public override Task<IReadOnlyList<Offer>> SearchAsync(SearchContext context, CancellationToken cancellationToken) =>
+        ReadPagesAsync(context, PageSize, (page, token) => ReadPageAsync(context, page, token), cancellationToken, MaxEnebaPages);
+
+    private async Task<ResultPage> ReadPageAsync(SearchContext context, int page, CancellationToken cancellationToken)
     {
         var currency = context.Region.CurrencyCode;
-        var url = $"{Host}/store/all?text={Encode(context.Query)}&page=1&currency={Encode(currency)}";
+        var url = $"{Host}/store/all?text={Encode(context.Query)}&page={page}&currency={Encode(currency)}";
         var html = await GetStringAsync(url, cancellationToken).ConfigureAwait(false);
         if (Html.ScriptById(html, StateId) is null)
         {
@@ -30,11 +40,16 @@ public sealed class EnebaProvider(HttpClient http) : StoreProvider(http)
             await Task.Delay(500, cancellationToken).ConfigureAwait(false);
             html = await GetStringAsync(url, cancellationToken).ConfigureAwait(false);
         }
-        return Parse(html, currency);
+        var offers = Parse(html, currency, out var totalHits);
+        return new ResultPage(offers, page * PageSize < totalHits);
     }
 
-    internal IReadOnlyList<Offer> Parse(string html, string preferredCurrency)
+    internal IReadOnlyList<Offer> Parse(string html, string preferredCurrency) => Parse(html, preferredCurrency, out _);
+
+    /// <param name="totalHits">How many products the search found in all, on all pages.</param>
+    internal IReadOnlyList<Offer> Parse(string html, string preferredCurrency, out long totalHits)
     {
+        totalHits = 0;
         var state = Html.ScriptById(html, StateId);
         if (state is null)
         {
@@ -47,6 +62,7 @@ public sealed class EnebaProvider(HttpClient http) : StoreProvider(http)
         var offers = new List<Offer>();
         foreach (var response in doc.RootElement.Obj("responses"))
         {
+            totalHits = Math.Max(totalHits, response.Value.Long("results.0.nbHits") ?? 0);
             foreach (var hit in response.Value.Arr("results.0.hits"))
             {
                 var title = hit.Str("translations.en_US.name") ?? hit.Str("translations.en.name");

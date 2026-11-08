@@ -8,11 +8,12 @@ namespace GamePriceHunter.Core.Providers.Official;
 /// <summary>
 /// 2game: authorized key store (rebuilt on Next.js in late 2026, replacing a Shopify store) with a storefront per country
 /// ("/sk-sk", "/en-gb", "/ja-jp"...) priced in local currency. The search page carries its results
-/// (up to 24) and their prices as JSON in the page's React Server Components payload.
+/// (24 a page) and their prices as JSON in the page's React Server Components payload.
 /// </summary>
 public sealed partial class TwoGameProvider(HttpClient http) : StoreProvider(http)
 {
     private const string Host = "https://www.2game.com";
+    private const int PageSize = 24;
 
     /// <summary>
     /// Storefront path per country, from the sitemaps listed in robots.txt. Other countries get the
@@ -27,8 +28,12 @@ public sealed partial class TwoGameProvider(HttpClient http) : StoreProvider(htt
         if (!Markets.TryGetValue(context.Region.CountryCode, out var market))
             return [];
 
-        var html = await GetStringAsync($"{Host}/{market}/search?q={Encode(context.Query)}", cancellationToken).ConfigureAwait(false);
-        return Parse(html, market, DateTimeOffset.UtcNow);
+        return await ReadPagesAsync(context, PageSize, async (page, token) =>
+        {
+            var url = $"{Host}/{market}/search?q={Encode(context.Query)}" + (page > 1 ? $"&page={page}" : "");
+            var html = await GetStringAsync(url, token).ConfigureAwait(false);
+            return new ResultPage(Parse(html, market, DateTimeOffset.UtcNow), LinksNextPage(html));
+        }, cancellationToken).ConfigureAwait(false);
     }
 
     internal IReadOnlyList<Offer> Parse(string html, string market, DateTimeOffset now)

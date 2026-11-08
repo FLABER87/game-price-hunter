@@ -10,18 +10,23 @@ public sealed class BukaProvider(HttpClient http) : StoreProvider(http)
     private const string Host = "https://shop.buka.ru";
     private const int WindowsGamesArea = 2002;
 
+    // The site asks for 12 rows a page; the API gives up to 48 (a bigger pageSize also gets 48).
+    private const int PageSize = 48;
+
     public override ProviderInfo Info { get; } = new("buka", "Buka", StoreKind.Official, "https://shop.buka.ru/") { Note = ProviderNote.RussianStore };
 
-    public override async Task<IReadOnlyList<Offer>> SearchAsync(SearchContext context, CancellationToken cancellationToken)
-    {
-        var body = JsonSerializer.Serialize(new
+    public override Task<IReadOnlyList<Offer>> SearchAsync(SearchContext context, CancellationToken cancellationToken) =>
+        ReadPagesAsync(context, PageSize, async (page, token) =>
         {
-            pageIndex = 0,
-            filter = new { term = context.Query, area_id = WindowsGamesArea, channel = "WEB" },
-        });
-        using var doc = await PostJsonAsync($"{Host}/s/f/v3/search/get-page", body, cancellationToken).ConfigureAwait(false);
-        return Parse(doc.RootElement);
-    }
+            var body = JsonSerializer.Serialize(new
+            {
+                pageIndex = page - 1,
+                pageSize = PageSize,
+                filter = new { term = context.Query, area_id = WindowsGamesArea, channel = "WEB" },
+            });
+            using var doc = await PostJsonAsync($"{Host}/s/f/v3/search/get-page", body, token).ConfigureAwait(false);
+            return new ResultPage(Parse(doc.RootElement), doc.RootElement.Bool("page.hasNext") == true);
+        }, cancellationToken);
 
     internal IReadOnlyList<Offer> Parse(JsonElement root)
     {

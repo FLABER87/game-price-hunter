@@ -14,6 +14,9 @@ public sealed record SearchContext(string Query, UserRegion Region)
     /// <summary>Upper bound of offers a provider should return.</summary>
     public int MaxResults { get; init; } = 60;
 
+    /// <summary>How long the provider has for the whole search; result pages after the first stop at half of it.</summary>
+    public TimeSpan Timeout { get; init; } = TimeSpan.FromSeconds(20);
+
     /// <summary>Optional per-provider secrets (API keys) by provider id.</summary>
     public IReadOnlyDictionary<string, string> ApiKeys { get; init; } = new Dictionary<string, string>();
 }

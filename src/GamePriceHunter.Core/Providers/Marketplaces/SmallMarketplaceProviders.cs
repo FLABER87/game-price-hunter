@@ -59,22 +59,31 @@ public sealed class MmogaProvider(HttpClient http) : StoreProvider(http)
 public sealed class DifmarkProvider(HttpClient http) : StoreProvider(http)
 {
     private const string Host = "https://difmark.com";
+    private const string CardMarker = "one-item product-item";
+    private const int PageSize = 24;
 
     public override ProviderInfo Info { get; } = new("difmark", "Difmark", StoreKind.Marketplace, "https://difmark.com/")
     {
         Note = ProviderNote.Marketplace,
     };
 
-    public override async Task<IReadOnlyList<Offer>> SearchAsync(SearchContext context, CancellationToken cancellationToken)
-    {
-        var html = await GetStringAsync($"{Host}/en/products?name={Encode(context.Query)}&page=1", cancellationToken).ConfigureAwait(false);
-        return Parse(html);
-    }
+    public override Task<IReadOnlyList<Offer>> SearchAsync(SearchContext context, CancellationToken cancellationToken) =>
+        ReadPagesAsync(context, PageSize, async (page, token) =>
+        {
+            var html = await GetStringAsync($"{Host}/en/products?name={Encode(context.Query)}&page={page}", token).ConfigureAwait(false);
+            return new ResultPage(Parse(html), IsFullPage(html));
+        }, cancellationToken);
+
+    /// <summary>
+    /// The "show more" link stays on the last page too, so a full page of cards is the sign that
+    /// another one follows.
+    /// </summary>
+    internal static bool IsFullPage(string html) => Html.Blocks(html, CardMarker).Count() >= PageSize;
 
     internal IReadOnlyList<Offer> Parse(string html)
     {
         var offers = new List<Offer>();
-        foreach (var card in Html.Blocks(html, "one-item product-item"))
+        foreach (var card in Html.Blocks(html, CardMarker))
         {
             var url = Html.Match(card, @"href=""(/en/buy-[^""]+)""");
             var title = Html.Decode(Html.Match(card, @"data-text=""([^""]+)"""));

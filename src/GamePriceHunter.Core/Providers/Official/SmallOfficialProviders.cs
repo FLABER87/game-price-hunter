@@ -52,14 +52,19 @@ public sealed class VoiduProvider(HttpClient http) : StoreProvider(http)
 public sealed class YuplayProvider(HttpClient http) : StoreProvider(http)
 {
     private const string Host = "https://www.yuplay.com";
+    private const int PageSize = 24;
 
     public override ProviderInfo Info { get; } = new("yuplay", "Yuplay", StoreKind.Official, "https://www.yuplay.com/");
 
-    public override async Task<IReadOnlyList<Offer>> SearchAsync(SearchContext context, CancellationToken cancellationToken)
-    {
-        var html = await GetStringAsync($"{Host}/products/?search={Encode(context.Query)}", cancellationToken).ConfigureAwait(false);
-        return Parse(html);
-    }
+    // The site's own link to the next page drops the search ("/products/?page=2"), but the search
+    // with "&page=2" added works.
+    public override Task<IReadOnlyList<Offer>> SearchAsync(SearchContext context, CancellationToken cancellationToken) =>
+        ReadPagesAsync(context, PageSize, async (page, token) =>
+        {
+            var url = $"{Host}/products/?search={Encode(context.Query)}" + (page > 1 ? $"&page={page}" : "");
+            var html = await GetStringAsync(url, token).ConfigureAwait(false);
+            return new ResultPage(Parse(html), LinksNextPage(html));
+        }, cancellationToken);
 
     internal IReadOnlyList<Offer> Parse(string html)
     {
