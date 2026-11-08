@@ -1,115 +1,144 @@
-using System.Collections.Concurrent;
-using System.Net;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using GamePriceHunter.Core.Models;
 using GamePriceHunter.Core.Text;
 
 namespace GamePriceHunter.Core.Providers.Official;
 
 /// <summary>
-/// 2game: authorized key store on Shopify with per-country storefronts ("/en-sk", "/en-gb"...)
-/// priced in local currency. Search uses the storefront's predictive-search JSON (10 hits);
-/// the storefront currency is read once per market from a product's JSON.
+/// 2game: authorized key store (rebuilt on Next.js in late 2026, replacing a Shopify store) with a storefront per country
+/// ("/sk-sk", "/en-gb", "/ja-jp"...) priced in local currency. The search page carries its results
+/// (up to 24) and their prices as JSON in the page's React Server Components payload.
 /// </summary>
-public sealed class TwoGameProvider(HttpClient http) : StoreProvider(http)
+public sealed partial class TwoGameProvider(HttpClient http) : StoreProvider(http)
 {
     private const string Host = "https://www.2game.com";
 
-    /// <summary>Storefront path per country, from the site's hreflang links. The US store is the root.</summary>
+    /// <summary>
+    /// Storefront path per country, from the sitemaps listed in robots.txt. Other countries get the
+    /// "Rest of world" storefront (en-ww), which shows no prices.
+    /// </summary>
     private static readonly Dictionary<string, string> Markets = BuildMarkets();
-
-    private readonly ConcurrentDictionary<string, string> _currencies = new();
 
     public override ProviderInfo Info { get; } = new("2game", "2game", StoreKind.Official, "https://www.2game.com/");
 
     public override async Task<IReadOnlyList<Offer>> SearchAsync(SearchContext context, CancellationToken cancellationToken)
     {
-        var market = Markets.GetValueOrDefault(context.Region.CountryCode, string.Empty);
-        JsonDocument doc;
-        try
-        {
-            doc = await SuggestAsync(market, context.Query, cancellationToken).ConfigureAwait(false);
-        }
-        // A storefront that is gone (404), or one in a language Shopify's search does not support:
-        // ja-jp, th-th and zh-cn answer 417 "Unsupported buyer locale". The root (US) store still sells there.
-        catch (HttpRequestException ex) when ((ex.StatusCode is HttpStatusCode.NotFound or HttpStatusCode.ExpectationFailed) && market.Length > 0)
-        {
-            market = string.Empty;
-            doc = await SuggestAsync(market, context.Query, cancellationToken).ConfigureAwait(false);
-        }
+        if (!Markets.TryGetValue(context.Region.CountryCode, out var market))
+            return [];
 
-        using (doc)
-        {
-            var handle = doc.RootElement.Arr("resources.results.products").Select(p => p.Str("handle")).FirstOrDefault(h => h is not null);
-            if (handle is null)
-                return [];
-            var currency = await GetCurrencyAsync(market, handle, cancellationToken).ConfigureAwait(false);
-            return Parse(doc.RootElement, currency);
-        }
+        var html = await GetStringAsync($"{Host}/{market}/search?q={Encode(context.Query)}", cancellationToken).ConfigureAwait(false);
+        return Parse(html, market, DateTimeOffset.UtcNow);
     }
 
-    internal IReadOnlyList<Offer> Parse(JsonElement root, string currency)
+    internal IReadOnlyList<Offer> Parse(string html, string market, DateTimeOffset now)
     {
+        var payload = ServerPayload(html);
+        if (payload.Length == 0)
+            throw new InvalidDataException("2game search page has no Next.js data.");
+
         var offers = new List<Offer>();
-        foreach (var product in root.Arr("resources.results.products"))
+        // A search without results renders neither list.
+        using var hits = JsonAfter(payload, "hits", '[');
+        if (hits is null)
+            return offers;
+        using var prices = JsonAfter(payload, "prices", '{')
+            ?? throw new InvalidDataException("2game search results come without prices.");
+        // "Rest of world" answers {"status":"unpriced","reason":"STORE_NOT_PRICED"}.
+        if (prices.RootElement.Str("status") != "ok")
+            return offers;
+        var currency = prices.RootElement.Str("scope.currency")
+            ?? throw new InvalidDataException("2game storefront currency not found.");
+        var parents = prices.RootElement.Prop("parents");
+
+        foreach (var hit in hits.RootElement.EnumerateArray())
         {
-            var title = product.Str("title");
-            var url = product.Str("url");
-            var price = product.Dec("price");
-            if (string.IsNullOrWhiteSpace(title) || url is null || price is not > 0 || product.Bool("available") == false)
+            var id = hit.Str("id");
+            var slug = hit.Str("slug");
+            var title = hit.Str("title");
+            if (id is null || slug is null || string.IsNullOrWhiteSpace(title) || parents?.Prop(id) is not { } entry)
+                continue;
+            // Items that are not for sale say "unpublished" or "none".
+            if (entry.Str("status") != "priced" || CurrentPrice(entry, now) is not { } current)
                 continue;
 
-            // Drop the search tracking parameters ("?_pos=1&_psq=...").
-            var query = url.IndexOf('?');
-            if (query >= 0)
-                url = url[..query];
-
-            var compareAt = product.Dec("compare_at_price_max");
-            var handle = product.Str("handle") ?? string.Empty;
-            offers.Add(CreateOffer(Html.Decode(title), Absolute(Host, url), Money.Of(price.Value, currency)) with
+            var (price, compareAt) = current;
+            var platform = hit.Str("platform");
+            offers.Add(CreateOffer(title.Trim(), $"{Host}/{market}/product/{Uri.EscapeDataString(slug)}", Money.Of(price, currency)) with
             {
                 RegularPrice = compareAt > price ? Money.Of(compareAt.Value, currency) : null,
-                ImageUrl = product.Str("image") ?? product.Str("featured_image.url"),
-                Platform = PlatformFromHandle(handle),
-                Type = product.Str("type") is { } type && type.Contains("dlc", StringComparison.OrdinalIgnoreCase) ? OfferType.Dlc : OfferType.Unknown,
+                ImageUrl = hit.Str("wide.src") ?? hit.Str("card.src"),
+                // "Microsoft" keys are redeemed in the Microsoft Store, like the other Xbox keys.
+                Platform = string.Equals(platform, "Microsoft", StringComparison.OrdinalIgnoreCase) ? Platform.Xbox : OfferClassifier.ParsePlatform(platform),
+                Type = hit.Str("type") == "dlc" ? OfferType.Dlc : OfferType.Unknown,
             });
         }
         return offers;
     }
 
-    /// <summary>Handles end with the DRM: "glitchpunk-steam", "...-steam-key", "...-epic-games".</summary>
-    internal static Platform PlatformFromHandle(string handle)
+    /// <summary>
+    /// The cheapest variant's price at <paramref name="now"/>. Each variant lists price segments
+    /// over the next day ("from"/"until", Unix seconds), so a sale that ends today is a segment of its own.
+    /// </summary>
+    private static (decimal Price, decimal? CompareAt)? CurrentPrice(JsonElement entry, DateTimeOffset now)
     {
-        var parts = handle.Split('-', StringSplitOptions.RemoveEmptyEntries);
-        return parts.Length == 0 ? Platform.Unknown : OfferClassifier.DetectPlatform(string.Join(' ', parts.TakeLast(2)));
+        var seconds = now.ToUnixTimeSeconds();
+        (decimal Price, decimal? CompareAt)? best = null;
+        foreach (var choice in entry.Arr("choices"))
+        {
+            var segments = choice.Arr("segments").ToList();
+            if (segments.Count == 0)
+                continue;
+            var segment = segments.FirstOrDefault(s => s.Long("from") <= seconds && seconds < s.Long("until"));
+            if (segment.ValueKind == JsonValueKind.Undefined)
+                segment = segments[0];
+            if (segment.Dec("price") is decimal price && price > 0 && (best is null || price < best.Value.Price))
+                best = (price, segment.Dec("compareAt"));
+        }
+        return best;
     }
 
-    private Task<JsonDocument> SuggestAsync(string market, string query, CancellationToken cancellationToken) =>
-        GetJsonAsync($"{MarketBase(market)}/search/suggest.json?q={Encode(query)}&resources%5Btype%5D=product&resources%5Blimit%5D=10", cancellationToken);
-
-    private async Task<string> GetCurrencyAsync(string market, string handle, CancellationToken cancellationToken)
+    /// <summary>
+    /// Joins the page's React Server Components payload: the chunks of
+    /// <c>self.__next_f.push([1,"..."])</c>, each a JSON string literal.
+    /// </summary>
+    private static string ServerPayload(string html)
     {
-        if (_currencies.TryGetValue(market, out var cached))
-            return cached;
-
-        using var doc = await GetJsonAsync($"{MarketBase(market)}/products/{Uri.EscapeDataString(handle)}.json", cancellationToken).ConfigureAwait(false);
-        var currency = doc.RootElement.Str("product.variants.0.price_currency")
-            ?? throw new InvalidDataException("2game storefront currency not found.");
-        _currencies[market] = currency;
-        return currency;
+        var payload = new System.Text.StringBuilder();
+        foreach (Match match in PayloadChunkRegex().Matches(html))
+        {
+            using var chunk = JsonDocument.Parse(match.Groups[1].Value);
+            payload.Append(chunk.RootElement.GetString());
+        }
+        return payload.ToString();
     }
 
-    private static string MarketBase(string market) => market.Length == 0 ? Host : $"{Host}/{market}";
+    /// <summary>
+    /// The first <c>"property":[...]</c> (or <c>{...}</c>) in the payload; other occurrences of the
+    /// property may hold a "$12:props:..." reference to it instead.
+    /// </summary>
+    private static JsonDocument? JsonAfter(string payload, string property, char opening)
+    {
+        var marker = $"\"{property}\":";
+        var index = payload.IndexOf(marker + opening, StringComparison.Ordinal);
+        if (index < 0)
+            return null;
+        var json = Html.ExtractJson(payload[index..], marker);
+        return json is null ? null : JsonDocument.Parse(json);
+    }
 
     private static Dictionary<string, string> BuildMarkets()
     {
         var markets = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-        foreach (var country in "AE AU BG CA CL CO CR CY EE GB HK HR IE IL IN KR KZ LT LV MT MX MY NO NZ PE PH PL PT QA SA SG SI SK TW UY ZA BR".Split(' '))
-            markets[country] = "en-" + country.ToLowerInvariant();
-
-        // Countries whose storefront exists only in the local language.
-        foreach (var path in "de-at de-de el-gr es-es fi-fi fr-be fr-ch fr-lu fr-fr id-id it-it ja-jp nl-nl th-th vi-vn zh-cn".Split(' '))
-            markets[path[3..].ToUpperInvariant()] = path;
+        const string paths = "bg-bg cs-cz da-dk de-at de-de el-gr en-ae en-au en-ca en-ch en-cy en-gb en-hk en-ie en-il en-in en-kw en-kz " +
+            "en-lu en-mt en-nz en-ph en-qa en-sa en-sg en-us en-za es-cl es-co es-cr es-es es-mx es-pe es-uy et-ee fi-fi fr-be fr-fr " +
+            "hr-hr hu-hu id-id it-it ja-jp ko-kr lt-lt lv-lv ms-my nb-no nl-nl pl-pl pt-br pt-pt ro-ro sk-sk sl-si sv-se th-th uk-ua " +
+            "vi-vn zh-cn zh-tw";
+        foreach (var path in paths.Split(' '))
+            markets[path[3..]] = path;
         return markets;
     }
+
+    [GeneratedRegex(@"self\.__next_f\.push\(\[1,(""(?:[^""\\]|\\.)*"")\]\)")]
+    private static partial Regex PayloadChunkRegex();
 }
