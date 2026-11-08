@@ -21,14 +21,12 @@ public static class ProviderCatalog
         new TwoGameProvider(http),
         new VoiduProvider(http),
         new YuplayProvider(http),
-        new GamesplanetProvider(http),
 
         // Key shops (Russia / CIS)
         new SteamBuyProvider(http),
         new GabeStoreProvider(http),
         new ZakaZakaProvider(http),
         new SteamPayProvider(http),
-        new IgroMagazProvider(http),
         new GamazavrProvider(http),
         new SteamkeyProvider(http),
         new IgroShopProvider(http),

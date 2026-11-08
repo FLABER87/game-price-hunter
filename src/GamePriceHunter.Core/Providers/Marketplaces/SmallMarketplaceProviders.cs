@@ -3,37 +3,48 @@ using GamePriceHunter.Core.Text;
 
 namespace GamePriceHunter.Core.Providers.Marketplaces;
 
-/// <summary>MMOGA: German key shop (EUR); one server-rendered search page sorted by price.</summary>
+/// <summary>
+/// MMOGA: German key shop; one server-rendered search page. www.mmoga.com answers non-browser
+/// clients with a Cloudflare challenge, but MMOGA's national shops don't: UK users get
+/// mmoga.co.uk (GBP), everyone else mmoga.de (EUR).
+/// </summary>
 public sealed class MmogaProvider(HttpClient http) : StoreProvider(http)
 {
-    private const string Host = "https://www.mmoga.com";
-
     public override ProviderInfo Info { get; } = new("mmoga", "MMOGA", StoreKind.KeyShop, "https://www.mmoga.com/");
 
     public override async Task<IReadOnlyList<Offer>> SearchAsync(SearchContext context, CancellationToken cancellationToken)
     {
-        var html = await GetStringAsync($"{Host}/advanced_search.php?keywords={Encode(context.Query)}&sort_filter=price/asc", cancellationToken).ConfigureAwait(false);
-        return Parse(html);
+        var (host, currency) = PickShop(context.Region);
+        // The shop's own order, not price: the German shop matches loosely ("witcher" also finds
+        // "witch"), and sorted by price those cheap misses fill the first page.
+        var html = await GetStringAsync($"{host}/advanced_search.php?keywords={Encode(context.Query)}", cancellationToken).ConfigureAwait(false);
+        return Parse(html, host, currency);
     }
 
-    internal IReadOnlyList<Offer> Parse(string html)
+    internal static (string Host, string Currency) PickShop(UserRegion region) => region.CountryCode == "GB"
+        ? ("https://www.mmoga.co.uk", "GBP")
+        : ("https://www.mmoga.de", "EUR");
+
+    internal IReadOnlyList<Offer> Parse(string html, string host, string currency)
     {
         var offers = new List<Offer>();
         foreach (var block in Html.Blocks(html, "<div class=\"searchCont\">"))
         {
             var link = Html.Matches(block, @"itemCont"">\s*<a href=""(/[^""]+)"" title=""([^""]+)""").FirstOrDefault();
-            // Sold-out products have an empty price cell.
-            var price = Html.Matches(block, @"itemPrice"">\s*(?:<del>(.*?)</del>\s*<span[^>]*>)?\s*&euro;&nbsp;([\d.,]+)").FirstOrDefault();
-            if (link is null || price is null || !PriceParser.TryParseAmount(price.Groups[2].Value, out var amount) || amount <= 0)
+            // "&pound;&nbsp;22.26" on mmoga.co.uk, "26,99&nbsp;&euro;" on mmoga.de; a sale puts the old
+            // price in <del> first. Sold-out products have an empty price cell.
+            var cell = Html.Matches(block, @"itemPrice"">\s*(?:<del>(.*?)</del>\s*<span[^>]*>)?([^<]*\d[^<]*)").FirstOrDefault();
+            if (link is null || cell is null || !PriceParser.TryParse(Html.Decode(cell.Groups[2].Value), currency, out var price) || price.Amount <= 0)
                 continue;
 
             var path = link.Groups[1].Value;
-            var oldText = Html.Decode(price.Groups[1].Value);
             var image = Html.Match(block, @"data-background=""([^""]+)""");
-            offers.Add(CreateOffer(Html.Decode(link.Groups[2].Value), Absolute(Host, path), Money.Of(amount, "EUR")) with
+            offers.Add(CreateOffer(Html.Decode(link.Groups[2].Value), Absolute(host, path), price) with
             {
-                RegularPrice = PriceParser.TryParseAmount(oldText, out var regular) && regular > amount ? Money.Of(regular, "EUR") : null,
-                ImageUrl = image is null ? null : Absolute(Host, image),
+                RegularPrice = PriceParser.TryParseAmount(Html.Decode(cell.Groups[1].Value), out var regular) && regular > price.Amount
+                    ? Money.Of(regular, price.Currency)
+                    : null,
+                ImageUrl = image is null ? null : Absolute(host, image),
                 // The first path segment is the shop section: "GOG-Keys", "Steam-Games", "Xbox-Live"...
                 Platform = OfferClassifier.DetectPlatform(path.Split('/', StringSplitOptions.RemoveEmptyEntries)[0].Replace('-', ' ')),
                 // Game accounts from third-party sellers live under ".../Cyberpunk-2077-Unique-Accounts,...".

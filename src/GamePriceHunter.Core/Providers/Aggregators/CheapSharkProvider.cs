@@ -13,10 +13,10 @@ public sealed class CheapSharkProvider(HttpClient http) : StoreProvider(http)
 {
     /// <summary>
     /// CheapShark store ids already covered by direct regional providers: Steam, GOG, Fanatical,
-    /// GamersGate, Voidu, Gamesplanet and 2Game (Voidu and 2Game are inactive there).
-    /// Epic, Humble and GameBillet reject non-browser clients, so they come through here.
+    /// GamersGate, Voidu and 2Game (Voidu and 2Game are inactive there).
+    /// Epic, Humble, GameBillet and Gamesplanet reject non-browser clients, so they come through here.
     /// </summary>
-    private static readonly HashSet<string> CoveredStores = ["1", "7", "15", "2", "24", "27", "29"];
+    private static readonly HashSet<string> CoveredStores = ["1", "7", "15", "2", "24", "29"];
 
     public override ProviderInfo Info { get; } = new("cheapshark", "CheapShark", StoreKind.Official, "https://www.cheapshark.com/")
     {
