@@ -298,8 +298,58 @@ public class ProviderParsingTests
         AssertWellFormed(new GamersGateProvider(Http).Parse(Json("gamersgate_search.json")), null);
 
     [Fact]
-    public void TwoGame_suggestions() =>
-        AssertWellFormed(new TwoGameProvider(Http).Parse(Json("2game_suggest.json"), "EUR"), "EUR");
+    public void TwoGame_search_page()
+    {
+        // Captured while Abyssus was on sale; "Abyssus - Brine Edition" is listed twice, once not for sale.
+        var offers = new TwoGameProvider(Http).Parse(Fixture("2game_search.html"), "sk-sk", DateTimeOffset.FromUnixTimeSeconds(1794150000));
+
+        AssertWellFormed(offers, "EUR");
+        Assert.Equal(["Abyssus", "Abyssus - Brine Edition"], offers.Select(o => o.Title));
+        var sale = offers[0];
+        Assert.Equal("https://www.2game.com/sk-sk/product/abyssus-steam-key", sale.Url);
+        Assert.Equal(14.99m, sale.Price.Amount);
+        Assert.Equal(24.99m, sale.RegularPrice?.Amount);
+        Assert.Equal(Platform.Steam, sale.Platform);
+        Assert.StartsWith("https://media.2game.com/", sale.ImageUrl);
+        Assert.Null(offers[1].RegularPrice);
+    }
+
+    [Fact]
+    public void TwoGame_takes_the_price_in_effect_now()
+    {
+        // A sale that ends at 200, then the regular price; the payload arrives in two chunks.
+        var page = TwoGamePage(
+            """{"hits":[{"id":"p1","slug":"game-microsoft-key","title":"Game","platform":"Microsoft","type":"dlc"}],"prices":{"status":"ok","scope":{"currency":"USD"},"parents":{"p1":{"status":"priced","choices":[{"segments":[{"from":1""",
+            """00,"until":200,"price":"9.99","compareAt":"19.99"},{"from":200,"until":300,"price":"19.99","compareAt":null}]}]}}}}""");
+        var provider = new TwoGameProvider(Http);
+
+        var onSale = Assert.Single(provider.Parse(page, "en-us", DateTimeOffset.FromUnixTimeSeconds(150)));
+        Assert.Equal(Money.Of(9.99m, "USD"), onSale.Price);
+        Assert.Equal(Money.Of(19.99m, "USD"), onSale.RegularPrice);
+        Assert.Equal(Platform.Xbox, onSale.Platform);
+        Assert.Equal(OfferType.Dlc, onSale.Type);
+
+        var after = Assert.Single(provider.Parse(page, "en-us", DateTimeOffset.FromUnixTimeSeconds(250)));
+        Assert.Equal(19.99m, after.Price.Amount);
+        Assert.Null(after.RegularPrice);
+    }
+
+    [Fact]
+    public void TwoGame_pages_without_prices()
+    {
+        var provider = new TwoGameProvider(Http);
+        var now = DateTimeOffset.UtcNow;
+
+        // No results: the page renders neither the hits nor the prices.
+        Assert.Empty(provider.Parse(TwoGamePage("""25:["$","p",null,{"children":"No games found."}]"""), "sk-sk", now));
+        // The "Rest of world" storefront lists games without prices.
+        Assert.Empty(provider.Parse(TwoGamePage("""{"hits":[{"id":"p1","slug":"game-steam-key","title":"Game"}],"prices":{"status":"unpriced","store":"ROW","reason":"STORE_NOT_PRICED"}}"""), "en-ww", now));
+        // Not a Next.js page at all: the site changed again.
+        Assert.Throws<InvalidDataException>(() => provider.Parse("<html><body>Hello</body></html>", "sk-sk", now));
+    }
+
+    private static string TwoGamePage(params string[] chunks) =>
+        "<html><body>" + string.Concat(chunks.Select(chunk => $"<script>self.__next_f.push([1,{JsonSerializer.Serialize(chunk)}])</script>")) + "</body></html>";
 
     [Fact]
     public async Task Gog_asks_in_dollars_when_the_local_currency_comes_without_prices()
@@ -324,30 +374,23 @@ public class ProviderParsingTests
     }
 
     [Fact]
-    public async Task TwoGame_falls_back_to_the_root_store_when_the_local_one_cannot_search()
+    public async Task TwoGame_searches_the_storefront_of_the_users_country()
     {
         var requests = new List<string>();
         var handler = new StubHandler(request =>
         {
-            var path = request.RequestUri!.AbsolutePath;
-            requests.Add(path);
-            if (path.StartsWith("/ja-jp/", StringComparison.Ordinal))
-                return new HttpResponseMessage(HttpStatusCode.ExpectationFailed)
-                {
-                    Content = new StringContent("""{"status":417,"message":"Expectation Failed","description":"Unsupported buyer locale"}"""),
-                };
-            return new HttpResponseMessage(HttpStatusCode.OK)
-            {
-                Content = new StringContent(path.StartsWith("/products/", StringComparison.Ordinal)
-                    ? """{"product":{"variants":[{"price_currency":"USD"}]}}"""
-                    : Fixture("2game_suggest.json")),
-            };
+            requests.Add(request.RequestUri!.PathAndQuery);
+            return new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(Fixture("2game_search.html")) };
         });
+        var provider = new TwoGameProvider(new HttpClient(handler));
 
-        var offers = await new TwoGameProvider(new HttpClient(handler)).SearchAsync(new SearchContext("witcher", new UserRegion("JP", "JPY")), CancellationToken.None);
+        var offers = await provider.SearchAsync(new SearchContext("abyssus", new UserRegion("SK", "EUR")), CancellationToken.None);
+        AssertWellFormed(offers, "EUR");
+        Assert.Equal(["/sk-sk/search?q=abyssus"], requests);
 
-        AssertWellFormed(offers, "USD");
-        Assert.Equal(["/ja-jp/search/suggest.json", "/search/suggest.json"], requests.Take(2));
+        // Countries without a storefront get "Rest of world", which has no prices: nothing to ask.
+        Assert.Empty(await provider.SearchAsync(new SearchContext("abyssus", new UserRegion("RU", "RUB")), CancellationToken.None));
+        Assert.Single(requests);
     }
 
     [Fact]
