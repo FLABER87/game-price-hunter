@@ -61,6 +61,7 @@ public sealed class SearchService
         var context = new SearchContext(query, region)
         {
             MaxResults = options.MaxResultsPerProvider,
+            Timeout = options.ProviderTimeout,
             ApiKeys = options.ApiKeys,
         };
 

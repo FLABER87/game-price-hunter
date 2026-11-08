@@ -240,7 +240,11 @@ public class ProviderParsingTests
     public async Task Eneba_retries_once_when_the_page_has_no_search_state()
     {
         var pages = new Queue<string>(["<html><head><title>Eneba</title></head><body></body></html>", Fixture("eneba_search.html")]);
-        var handler = new StubHandler(_ => new HttpResponseMessage(System.Net.HttpStatusCode.OK) { Content = new StringContent(pages.Dequeue()) });
+        // Then the same page again as page 2, where the search stops: it brings nothing new.
+        var handler = new StubHandler(_ => new HttpResponseMessage(System.Net.HttpStatusCode.OK)
+        {
+            Content = new StringContent(pages.TryDequeue(out var page) ? page : Fixture("eneba_search.html")),
+        });
 
         var offers = await new EnebaProvider(new HttpClient(handler)).SearchAsync(new SearchContext("witcher", new UserRegion("SK", "EUR")), CancellationToken.None);
 
