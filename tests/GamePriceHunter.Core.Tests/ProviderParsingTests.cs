@@ -402,13 +402,56 @@ public class ProviderParsingTests
         // The captured page holds a single card, marked "Out of stock".
         Assert.Empty(new YuplayProvider(Http).Parse(Fixture("yuplay_search.html")));
 
-    [Fact]
-    public void Gamesplanet_rows() =>
-        AssertWellFormed(new GamesplanetProvider(Http).Parse(Fixture("gamesplanet_search.html"), "https://uk.gamesplanet.com", "GBP"), "GBP");
+    [Theory]
+    [InlineData("SK", "EUR", "GamesPlanet DE")]
+    [InlineData("FR", "EUR", "GamesPlanet FR")]
+    [InlineData("GB", "GBP", "GamesPlanet UK")]
+    [InlineData("CA", "CAD", "GamesPlanet US")]
+    [InlineData("PL", "PLN", "GamesPlanet UK")]
+    public void IsThereAnyDeal_keeps_one_GamesPlanet_shop(string country, string currency, string expectedShop)
+    {
+        (int Id, string Name)[] shops = [(61, "Steam"), (16, "Epic Game Store"), (26, "GamesPlanet UK"), (27, "GamesPlanet DE"), (28, "GamesPlanet FR"), (29, "GamesPlanet US")];
+        var deals = string.Join(",", shops.Select(s =>
+            $$"""{"shop":{"id":{{s.Id}},"name":"{{s.Name}}"},"price":{"amount":9.99,"currency":"EUR"},"regular":{"amount":19.99,"currency":"EUR"},"url":"https://itad.link/{{s.Id}}/"}"""));
+        using var doc = JsonDocument.Parse($$"""[{"id":"witcher-3","deals":[{{deals}}]}]""");
+        var games = new Dictionary<string, (string Title, string? Image, string? Type)> { ["witcher-3"] = ("The Witcher 3", null, "game") };
+
+        var offers = new IsThereAnyDealProvider(Http).Parse(doc.RootElement, games, new UserRegion(country, currency));
+
+        // Steam has its own provider; of GamesPlanet's four shops only the user's one is kept.
+        Assert.Equal(new[] { "Epic Game Store", expectedShop }, offers.Select(o => o.StoreName).Order());
+    }
 
     [Fact]
-    public void Mmoga_search_blocks() =>
-        AssertWellFormed(new MmogaProvider(Http).Parse(Fixture("mmoga_search.html")), "EUR");
+    public void Mmoga_german_shop_writes_the_euro_sign_after_the_number()
+    {
+        var offers = new MmogaProvider(Http).Parse(Fixture("mmoga_de_search.html"), "https://www.mmoga.de", "EUR");
+        AssertWellFormed(offers, "EUR");
+        // The fourth block (Blair Witch) is sold out.
+        Assert.Equal(3, offers.Count);
+        Assert.Equal(1.49m, offers[0].Price.Amount);
+        Assert.Equal(39.99m, offers[0].RegularPrice?.Amount);
+        Assert.All(offers, o => Assert.StartsWith("https://www.mmoga.de/", o.Url));
+    }
+
+    [Fact]
+    public void Mmoga_uk_shop_prices_in_pounds()
+    {
+        var offers = new MmogaProvider(Http).Parse(Fixture("mmoga_uk_search.html"), "https://www.mmoga.co.uk", "GBP");
+        AssertWellFormed(offers, "GBP");
+        // The first three blocks are sold out.
+        Assert.Equal(3, offers.Count);
+        Assert.Equal(22.26m, offers[0].Price.Amount);
+        Assert.Equal(42.33m, offers[0].RegularPrice?.Amount);
+        Assert.All(offers, o => Assert.StartsWith("https://www.mmoga.co.uk/", o.Url));
+    }
+
+    [Theory]
+    [InlineData("GB", "GBP", "https://www.mmoga.co.uk", "GBP")]
+    [InlineData("SK", "EUR", "https://www.mmoga.de", "EUR")]
+    [InlineData("US", "USD", "https://www.mmoga.de", "EUR")]
+    public void Mmoga_picks_the_national_shop(string country, string currency, string host, string shopCurrency) =>
+        Assert.Equal((host, shopCurrency), MmogaProvider.PickShop(new UserRegion(country, currency)));
 
     [Fact]
     public void Difmark_cards() =>

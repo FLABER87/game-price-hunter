@@ -13,11 +13,13 @@ public sealed class IsThereAnyDealProvider(HttpClient http) : StoreProvider(http
     public const string ProviderId = "itad";
     private const string Api = "https://api.isthereanydeal.com";
 
-    /// <summary>
-    /// ITAD shop ids of stores that have direct regional providers: Steam, GOG, Fanatical,
-    /// GamersGate and the four GamesPlanet shops (UK, DE, FR, US).
-    /// </summary>
-    private static readonly HashSet<long> CoveredShops = [61, 35, 6, 24, 26, 27, 28, 29];
+    /// <summary>ITAD shop ids of stores that have direct regional providers: Steam, GOG, Fanatical and GamersGate.</summary>
+    private static readonly HashSet<long> CoveredShops = [61, 35, 6, 24];
+
+    /// <summary>GamesPlanet's UK, DE, FR and US shops, which ITAD lists side by side for every country.</summary>
+    private static readonly HashSet<long> GamesplanetShops = [26, 27, 28, 29];
+
+    private static readonly HashSet<string> FrenchShopCountries = ["FR", "BE", "LU"];
 
     public override ProviderInfo Info { get; } = new(ProviderId, "IsThereAnyDeal", StoreKind.Official, "https://isthereanydeal.com/")
     {
@@ -51,14 +53,26 @@ public sealed class IsThereAnyDealProvider(HttpClient http) : StoreProvider(http
             $"{Api}/games/prices/v3?key={Encode(key)}&country={context.Region.CountryCode}&deals=false&vouchers=false&capacity=0",
             body,
             cancellationToken).ConfigureAwait(false);
-        return Parse(prices.RootElement, games);
+        return Parse(prices.RootElement, games, context.Region);
     }
 
-    internal IReadOnlyList<Offer> Parse(JsonElement root, IReadOnlyDictionary<string, (string Title, string? Image, string? Type)> games)
+    /// <summary>The one GamesPlanet shop to show, so a game doesn't get four rows: the user's own, else UK.</summary>
+    internal static long GamesplanetShop(UserRegion region) => region.CountryCode switch
+    {
+        "GB" => 26,
+        "US" or "CA" => 29,
+        _ when FrenchShopCountries.Contains(region.CountryCode) => 28,
+        _ when region.CurrencyCode == "EUR" => 27,
+        _ => 26,
+    };
+
+    internal IReadOnlyList<Offer> Parse(JsonElement root, IReadOnlyDictionary<string, (string Title, string? Image, string? Type)> games, UserRegion region)
     {
         var offers = new List<Offer>();
         if (root.ValueKind != JsonValueKind.Array)
             return offers;
+
+        var gamesplanetShop = GamesplanetShop(region);
 
         foreach (var entry in root.EnumerateArray())
         {
@@ -72,7 +86,8 @@ public sealed class IsThereAnyDealProvider(HttpClient http) : StoreProvider(http
                 var url = deal.Str("url");
                 var amount = deal.Dec("price.amount");
                 var currency = deal.Str("price.currency");
-                if (shopId is null || CoveredShops.Contains(shopId.Value) || shopName is null || url is null || amount is null || currency is null)
+                if (shopId is not { } shop || CoveredShops.Contains(shop) || (GamesplanetShops.Contains(shop) && shop != gamesplanetShop)
+                    || shopName is null || url is null || amount is null || currency is null)
                     continue;
 
                 var regular = deal.Dec("regular.amount");

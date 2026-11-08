@@ -5,44 +5,6 @@ using GamePriceHunter.Core.Text;
 
 namespace GamePriceHunter.Core.Providers.KeyShops;
 
-/// <summary>IgroMagaz.ru: key shop (RUB); server-rendered search page.</summary>
-public sealed class IgroMagazProvider(HttpClient http) : StoreProvider(http)
-{
-    private const string Host = "https://www.igromagaz.ru";
-
-    public override ProviderInfo Info { get; } = new("igromagaz", "IgroMagaz", StoreKind.KeyShop, "https://www.igromagaz.ru/") { Note = ProviderNote.RussianStore };
-
-    public override async Task<IReadOnlyList<Offer>> SearchAsync(SearchContext context, CancellationToken cancellationToken)
-    {
-        var html = await GetStringAsync($"{Host}/search/?q={Encode(context.Query)}", cancellationToken).ConfigureAwait(false);
-        return Parse(html);
-    }
-
-    internal IReadOnlyList<Offer> Parse(string html)
-    {
-        var offers = new List<Offer>();
-        // Only real hits: "container-recommended-item" cards are suggestions shown when nothing matches.
-        foreach (var card in Html.Blocks(html, "<div class=\"product-card container-good-item-js_"))
-        {
-            if (card.Contains("product-availability--not-available", StringComparison.Ordinal))
-                continue;
-
-            var link = Html.Matches(card, @"href=""(/[^""]+\.php)""[^>]*class=""product-img""><img src=""([^""]+)"" alt=""([^""]*)""").FirstOrDefault();
-            var priceText = Html.Match(card, @"product-price__standart[^""]*"">\s*([\d\s]+)\s*руб");
-            if (link is null || !PriceParser.TryParseAmount(priceText ?? string.Empty, out var amount) || amount <= 0)
-                continue;
-
-            var old = Html.Match(card, @"product-price__fail"">\s*([\d\s]+)");
-            offers.Add(CreateOffer(Html.Decode(link.Groups[3].Value), Absolute(Host, link.Groups[1].Value), Money.Of(amount, "RUB")) with
-            {
-                RegularPrice = PriceParser.TryParseAmount(old ?? string.Empty, out var regular) && regular > amount ? Money.Of(regular, "RUB") : null,
-                ImageUrl = Absolute(Host, link.Groups[2].Value),
-            });
-        }
-        return offers;
-    }
-}
-
 /// <summary>Gamazavr.ru: key shop (RUB); one search page with all hits.</summary>
 public sealed class GamazavrProvider(HttpClient http) : StoreProvider(http)
 {
